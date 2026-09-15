@@ -1,0 +1,392 @@
+/* GLOBAL RESET & MONOCHROME PALETTE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+:root {
+    /* Pure white background and one dark primary tone */
+    --bg-white: #FFFFFF;
+    --primary-color: #0F172A;
+    --primary-muted: rgba(15, 23, 42, 0.08);
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--bg-white);
+}
+
+/* PRELOADER BASE LAYER */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 24px;
+}
+
+/* LAYOUT CONTAINER */
+.brand-wrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* SINGLE COLOR VECTOR ART STYLING */
+.vector-logo {
+    width: 110px;
+    height: 110px;
+}
+
+.layer {
+    transform-origin: center;
+    stroke: var(--primary-color);
+    stroke-width: 4.5;
+    stroke-linejoin: round;
+    fill: none;
+    animation: floatLayer 3s ease-in-out infinite alternate;
+}
+
+/* Layer stacked offset timings */
+.layer-1 { animation-delay: 0s; }
+.layer-2 { animation-delay: 0.2s; }
+.layer-3 { animation-delay: 0.4s; }
+
+/* TYPOGRAPHY CONFIGURATION */
+.text-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.brand-name {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.status-text {
+    color: var(--primary-color);
+    opacity: 0.6;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+/* TRACK BAR SYSTEM */
+.progress-container {
+    width: 100%;
+    max-width: 320px;
+    height: 4px;
+    background: var(--primary-muted);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: var(--primary-color);
+    border-radius: 99px;
+    transition: width 0.05s linear;
+}
+
+/* MAIN INTERFACE PREVIEW LAYOUT */
+#main-app {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: scale(0.98);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F8FAFC;
+    color: var(--primary-color);
+    padding: 40px;
+}
+
+.welcome-card h2 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.welcome-card p {
+    opacity: 0.7;
+}
+
+/* TRANSITION DOM STATES TRIGGERED BY JAVASCRIPT */
+body.loaded #preloader {
+    opacity: 0;
+    transform: scale(1.02);
+    pointer-events: none;
+}
+
+body.loaded #main-app {
+    opacity: 1;
+    transform: scale(1);
+}
+
+body.loaded {
+    overflow: auto;
+}
+
+/* FLOATING VECTOR MOTION ANIMATION */
+@keyframes floatLayer {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-8px); }
+}
+
+/* FLUID RESPONSIVE VIEWPORT BREAKPOINTS */
+@media (max-width: 500px) {
+    .brand-name { font-size: 2.5rem; }
+    .vector-logo { width: 90px; height: 90px; }
+    .brand-wrapper { gap: 24px; }
+}
+
+/* EXTENDED BRAND VARIABLE ARCHITECTURE */
+:root {
+    --ancient-green: #0D9488;
+    --ancient-green-hover: #0F766E;
+    --ancient-green-light: #F0FDFA;
+    --peach: #FB923C;
+    --peach-hover: #EA580C;
+    --peach-light: #FFF7ED;
+    --text-slate: #334155;
+    --white: #FFFFFF;
+    --shadow-sm: 0 10px 25px -5px rgba(13, 148, 136, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+}
+
+/* FLOATING CONTAINER ENGINE */
+.floating-header {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75%; /* Locked to user-specified architectural requirement */
+    height: 72px;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(13, 148, 136, 0.12);
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 0 28px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* BRAND IMAGE LOGO WRAPPER */
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text-slate);
+    transition: opacity 0.2s ease;
+}
+
+.brand-logo:hover {
+    opacity: 0.85;
+}
+
+.logo-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    /* Clean Ancient Green structural hue mask if fallback or blank is used */
+    background-color: var(--ancient-green-light);
+    border-radius: 6px;
+}
+
+.brand-name-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--text-slate);
+}
+
+/* CENTER ALIGNED NAV SYSTEM */
+.desktop-nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+}
+
+.nav-item {
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-slate);
+    position: relative;
+    padding: 6px 0;
+    transition: color 0.2s ease;
+}
+
+.nav-item:hover {
+    color: var(--ancient-green);
+}
+
+/* Ancient Green underline indicators on active anchors */
+.nav-item.active {
+    color: var(--ancient-green);
+    font-weight: 600;
+}
+
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--ancient-green);
+    border-radius: 99px;
+}
+
+/* RIGHT HAND SIDE AUTH ACTION BUTTON */
+.auth-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.btn-auth {
+    background-color: var(--peach);
+    color: var(--white);
+    border: none;
+    padding: 10px 22px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(251, 146, 60, 0.2);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-auth:hover {
+    background-color: var(--peach-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(251, 146, 60, 0.3);
+}
+
+/* RESPONSIVE MOBILE HAMBURGER BUTTON */
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1010;
+}
+
+.hamburger-bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-slate);
+    border-radius: 99px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: left center;
+}
+
+/* MOBILE DRAWER DRAWER MECHANICS */
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background-color: var(--white);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
+    z-index: 999;
+    padding: 110px 32px 40px 32px;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-drawer.open {
+    right: 0;
+}
+
+.mobile-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    list-style: none;
+}
+
+.mobile-nav-item {
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-slate);
+    display: block;
+    padding: 8px 0;
+    transition: color 0.2s ease;
+}
+
+.mobile-nav-item:hover,
+.mobile-nav-item.active {
+    color: var(--ancient-green);
+}
+
+/* ACTIVE RESPONSIVE HAMBURGER MACROS */
+.mobile-toggle.active .hamburger-bar:nth-child(1) { transform: rotate(45deg) translateY(-2px); background-color: var(--peach); }
+.mobile-toggle.active .hamburger-bar:nth-child(2) { opacity: 0; }
+.mobile-toggle.active .hamburger-bar:nth-child(3) { transform: rotate(-45deg) translateY(2px); background-color: var(--peach); }
+
+/* SCREEN VISUAL VIEWS BREAKPOINTS */
+@media (max-width: 1024px) {
+    .floating-header {
+        width: 90%; /* Dynamically scale up safely for tablet viewports */
+    }
+}
+
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none; /* Strip central menu items to mobile menu drawer */
+    }
+    
+    .mobile-toggle {
+        display: flex; /* Toggle display element visibility */
+    }
+}

@@ -1,0 +1,3241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackly - Corporate Training Management</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- MINIMAL PRELOADER SCREEN -->
+    <div id="preloader">
+        <div class="brand-wrapper">
+            <!-- Custom Vector Logo from Image Reference in Single Color Line Art -->
+            <svg class="vector-logo" viewBox="0 0 200 200" fill="none" xmlns="http://w3.org">
+                <!-- Bottom Base Diamond Layer -->
+                <path class="layer layer-1" d="M30 140L100 175L170 140L100 105L30 140Z" />
+                <!-- Middle Diamond Layer -->
+                <path class="layer layer-2" d="M30 100L100 135L170 100L100 65L30 100Z" />
+                <!-- Top Summit Diamond Layer -->
+                <path class="layer layer-3" d="M30 60L100 95L170 60L100 25L30 60Z" />
+            </svg>
+            
+            <div class="text-group">
+                <h1 class="brand-name">Stackly</h1>
+                <p class="status-text" id="status-label">CONNECTING DATABASE...</p>
+            </div>
+
+            <!-- Single-Color Progress Indicator -->
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const progressBar = document.getElementById("progress-bar");
+    const statusLabel = document.getElementById("status-label");
+    
+    const totalDuration = 2000; // Hardcoded 2-second timeout window
+    const frameRate = 30; 
+    const totalTicks = totalDuration / frameRate;
+    let currentTick = 0;
+
+    const phrases = [
+        { limit: 35, text: "OPTIMIZING CORE ENVIRONMENT..." },
+        { limit: 75, text: "CONNECTING DATABASE..." },
+        { limit: 100, text: "LAUNCHING..." }
+    ];
+
+    const loaderInterval = setInterval(() => {
+        currentTick++;
+        const percentage = Math.min((currentTick / totalTicks) * 100, 100);
+        
+        if (progressBar) {
+            progressBar.style.width = `${percentage}%`;
+        }
+
+        if (statusLabel) {
+            const match = phrases.find(p => percentage <= p.limit);
+            if (match) statusLabel.textContent = match.text;
+        }
+
+        if (currentTick >= totalTicks) {
+            clearInterval(loaderInterval);
+            
+            // Clean modal dismount
+            setTimeout(() => {
+                document.body.classList.add("loaded");
+            }, 100);
+        }
+    }, frameRate);
+});
+
+</script>
+
+<!-- FLOATING HEADER INTERFACE -->
+<header class="floating-header">
+    <div class="header-container">
+        
+        <a href="#" class="brand-logo" id="brand-logo-trigger" aria-label="Stackly Home - Refresh Portal">
+            <!-- Replace 'logo-placeholder.svg' with your actual vector file path -->
+            <img src="logo-placeholder.svg" alt="Stackly Logo" class="logo-img">
+            <span class="brand-name-text">Stackly</span>
+        </a>
+
+        <!-- Desktop Navigation Layer (Hidden on mobile via Media Query) -->
+        <nav class="desktop-nav">
+            <ul class="nav-menu">
+                <li><a href="#dashboard" class="nav-item active">Dashboard</a></li>
+                <li><a href="#courses" class="nav-item">Courses</a></li>
+                <li><a href="#analytics" class="nav-item">Analytics</a></li>
+                <li><a href="#teams" class="nav-item">Teams</a></li>
+                <li><a href="#settings" class="nav-item">Settings</a></li>
+            </ul>
+        </nav>
+
+        <!-- Right Side Authentication Area -->
+        <div class="auth-wrapper">
+            <button class="btn-auth">Sign In</button>
+            
+            <!-- Mobile Hamburger Menu Toggle Trigger Button -->
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Responsive Mobile Navigation Drawer Overlay Drawer Component -->
+<div class="mobile-drawer" id="mobile-navigation-drawer">
+    <nav class="mobile-nav">
+        <ul>
+            <li><a href="#dashboard" class="mobile-nav-item active">Dashboard</a></li>
+            <li><a href="#courses" class="mobile-nav-item">Courses</a></li>
+            <li><a href="#analytics" class="mobile-nav-item">Analytics</a></li>
+            <li><a href="#teams" class="mobile-nav-item">Teams</a></li>
+            <li><a href="#settings" class="mobile-nav-item">Settings</a></li>
+        </ul>
+    </nav>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    // 1. BRAND REFRESH CONTROLLER
+    const logoTrigger = document.getElementById("brand-logo-trigger");
+    if (logoTrigger) {
+        logoTrigger.addEventListener("click", (e) => {
+            e.preventDefault(); // Stop standard routing anchors
+            window.location.reload(); // Instantly trigger atomic state wipe refresh
+        });
+    }
+
+    // 2. MOBILE OVERLAY RESPONSIVE DRAWER MANAGEMENT
+    const menuToggle = document.getElementById("mobile-menu-toggle");
+    const navDrawer = document.getElementById("mobile-navigation-drawer");
+    const drawerLinks = document.querySelectorAll(".mobile-nav-item");
+
+    if (menuToggle && navDrawer) {
+        const toggleMenuState = () => {
+            menuToggle.classList.toggle("active");
+            navDrawer.classList.toggle("open");
+            
+            // Toggle body scroll control layers to prevent standard layout parallax shifts
+            if (navDrawer.classList.contains("open")) {
+                document.body.style.overflow = "hidden";
+            } else {
+                document.body.style.overflow = "";
+            }
+        };
+
+        menuToggle.addEventListener("click", toggleMenuState);
+
+        // Auto close navigation screen drawer whenever links are selected
+        drawerLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                if (navDrawer.classList.contains("open")) {
+                    toggleMenuState();
+                }
+            });
+        });
+    }
+});
+
+</script>
+
+<!-- DYNAMIC L&D SYSTEM HERO SECTION -->
+<section class="hero-section">
+    <!-- Main corporate training background graphical environment asset -->
+    <img src="./assests/hero section bg.webp" alt="Enterprise Training Workspace" class="hero-bg-img">
+
+    <div class="hero-container">
+        <!-- TOP GRID LAYER: Context Core Panels -->
+        <div class="hero-content-row">
+            <div class="hero-text-block">
+                <!-- Staggered parsing target title string tailored to L&D operations -->
+                <h1 class="hero-title" id="staggered-title">
+                    BECAUSE YOUR TEAMS DESERVE TO EXCEL HIGHER
+                </h1>
+                
+                <p class="hero-description">
+                    Join hundreds of forward-thinking enterprises upskilling their global workforce with targeted structural paths and expert-led curriculum paths.
+                </p>
+
+                <div class="hero-cta-group">
+                    <button class="btn-primary cta-left">Explore Courses</button>
+                    <button class="btn-secondary cta-right">Request Demo</button>
+                </div>
+            </div>
+            
+            <!-- Continuous Changing Metric Showcase Widget -->
+            <div class="hero-ticker-block">
+                <div class="ticker-slide active" id="feature-slide">
+                    <span class="ticker-badge">Live System</span>
+                    <h3 id="ticker-heading">Automated Skill Matrix Tracking</h3>
+                    <p id="ticker-desc">Map employee growth curves and capability limits instantly in real-time updates.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTTOM GRID LAYER: Dynamic Running Incremental Counter Ribbon -->
+        <div class="hero-stats-row">
+            <div class="stat-item">
+                <div class="stat-number-wrapper">
+                    <!-- Added data attributes to drive JavaScript increment count engine -->
+                    <span class="stat-number" data-target="250">0</span>
+                </div>
+                <span class="stat-label">Enterprise Courses</span>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-number-wrapper">
+                    <span class="stat-number" data-target="15">0</span><span class="stat-suffix">M+</span>
+                </div>
+                <span class="stat-label">Active Learners</span>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-number-wrapper">
+                    <span class="stat-number" data-target="98">0</span><span class="stat-suffix">%</span>
+                </div>
+                <span class="stat-label">Completion Rate</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* HERO LAYOUT ENVIRONMENT CONTAINER */
+.hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 160px 6% 80px 6%;
+    overflow: hidden;
+    background-color: #0A0F1D; /* Dark rich backdrop matching uploaded template layout */
+}
+
+.hero-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.15; /* Subdued baseline overlay mapping to the dark layout scheme */
+}
+
+/* Linear clear visual gradient masking layer */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 40%, #0A0F1D 100%);
+    z-index: 2;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+}
+
+/* STRUCTURAL CONTENT LAYOUT ARCHITECTURE */
+.hero-content-row {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+    align-items: flex-end;
+}
+
+.hero-text-block {
+    max-width: 680px;
+}
+
+/* REPLICATED TYPOGRAPHY SCHEME */
+.hero-title {
+    font-size: 3.8rem;
+    font-weight: 400; /* Crisp wireframe light-weight feel */
+    letter-spacing: 0.01em;
+    line-height: 1.15;
+    color: #FFFFFF;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 16px;
+}
+
+/* Side word animations configurations controls */
+.hero-title span {
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.hero-title span.slide-from-left { transform: translateX(-30px); }
+.hero-title span.slide-from-right { transform: translateX(30px); }
+.hero-title span.animate-in {
+    opacity: 1;
+    transform: translate(0) !important;
+}
+
+.hero-description {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #94A3B8;
+    margin-bottom: 40px;
+    max-width: 520px;
+}
+
+/* CTA CAPSULE CONTROLS */
+.hero-cta-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 14px 34px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+}
+
+.btn-primary.cta-left {
+    background-color: #4ADE80; /* Clean Corporate Green Main Accent */
+    color: #0A0F1D;
+    border: none;
+    transform: translateX(-40px);
+}
+.btn-primary.cta-left:hover {
+    background-color: #22C55E;
+    transform: translateY(-2px);
+}
+
+.btn-secondary.cta-right {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transform: translateX(40px);
+}
+.btn-secondary.cta-right:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-primary.animate-in, .btn-secondary.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* TICKER BOX COMPONENT FRAME */
+.hero-ticker-block {
+    justify-self: flex-end;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 36px;
+    border-radius: 20px;
+    max-width: 420px;
+    width: 100%;
+}
+
+.ticker-slide {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.ticker-slide.changing {
+    opacity: 0;
+    transform: scale(0.98) translateY(6px);
+}
+
+.ticker-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: rgba(74, 222, 128, 0.15);
+    color: #4ADE80;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+}
+
+.ticker-slide h3 {
+    color: #FFFFFF;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.ticker-slide p {
+    color: #94A3B8;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* TRACK METRICS SECTION SYSTEM */
+.hero-stats-row {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 36px;
+    width: 100%;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -40px;
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.stat-number-wrapper {
+    display: flex;
+    align-items: baseline;
+    color: #FFFFFF;
+}
+
+.stat-number {
+    font-size: 3.6rem;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.stat-suffix {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-left: 2px;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #64748B;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* RESPONSIVE LAYOUT BREAKPOINTS MEDIA INTERFACES */
+@media (max-width: 1024px) {
+    .hero-content-row {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+    .hero-ticker-block { justify-self: flex-start; max-width: 100%; }
+    .hero-title { font-size: 3rem; }
+    .hero-stats-row { gap: 48px; }
+    .stat-item:not(:last-child)::after { display: none; }
+}
+
+@media (max-width: 640px) {
+    .hero-section { padding-top: 120px; padding-bottom: 60px; }
+    .hero-title { font-size: 2.1rem; gap: 0 10px; }
+    .hero-cta-group { flex-direction: column; align-items: stretch; }
+    .btn-primary, .btn-secondary { text-align: center; }
+    .hero-stats-row { gap: 32px; flex-direction: column; align-items: flex-start; }
+    .stat-number { font-size: 3rem; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // FUNCTION: TRIGGER SEQUENTIAL SIDEWAYS TEXT ENTRY
+    const initStaggeredTitle = () => {
+        const titleContainer = document.getElementById("staggered-title");
+        if (!titleContainer) return;
+
+        const words = titleContainer.textContent.trim().split(/\s+/);
+        titleContainer.innerHTML = ""; // Wipe base raw block
+
+        words.forEach((word, index) => {
+            const span = document.createElement("span");
+            span.textContent = word + " ";
+            
+            // Alternate text arrival pathways
+            if (index % 2 === 0) {
+                span.classList.add("slide-from-left");
+            } else {
+                span.classList.add("slide-from-right");
+            }
+            
+            titleContainer.appendChild(span);
+
+            // Execute time staggered display sequence
+            setTimeout(() => {
+                span.classList.add("animate-in");
+            }, index * 65);
+        });
+
+        // Trigger action buttons entrance sequences immediately following title layers
+        setTimeout(() => {
+            const ctaLeft = document.querySelector(".cta-left");
+            const ctaRight = document.querySelector(".cta-right");
+            if (ctaLeft) ctaLeft.classList.add("animate-in");
+            if (ctaRight) ctaRight.classList.add("animate-in");
+        }, words.length * 65 + 100);
+    };
+
+    // FUNCTION: DYNAMIC METRICS COUNTER ENGINE
+    const runNumericCounters = () => {
+        const counters = document.querySelectorAll(".stat-number");
+        
+        counters.forEach(counter => {
+            const targetValue = parseInt(counter.getAttribute("data-target"), 10);
+            const counterDuration = 1500; // Total count runtime in milliseconds
+            const operationalFps = 60;
+            const absoluteSteps = Math.ceil(counterDuration / (1000 / operationalFps));
+            const numericIncrement = targetValue / absoluteSteps;
+            let initialStartValue = 0;
+            let frameTracker = 0;
+
+            const incrementSequenceLoop = setInterval(() => {
+                frameTracker++;
+                initialStartValue += numericIncrement;
+                
+                // Write output calculations
+                counter.textContent = Math.floor(initialStartValue);
+
+                if (frameTracker >= absoluteSteps) {
+                    clearInterval(incrementSequenceLoop);
+                    counter.textContent = targetValue; // Force clamp precision limits
+                }
+            }, 1000 / operationalFps);
+        });
+    };
+
+    // COORDINATE WITH PRELOADER EXIT SEQUENCE
+    // Checks periodically for the '.loaded' signature added by your loader script onto document body
+    const structuralStateObserver = setInterval(() => {
+        if (document.body.classList.contains("loaded")) {
+            clearInterval(structuralStateObserver);
+            
+            // Fire layout entrance movements simultaneously 
+            setTimeout(() => {
+                initStaggeredTitle();
+                runNumericCounters();
+            }, 200); // Elegant brief operational visual cushion
+        }
+    }, 100);
+
+    // DYNAMIC TICKER ROTATION LOOP OVERLAY
+    const trainingFeatures = [
+        { heading: "Automated Skill Matrix Tracking", desc: "Map employee growth curves and capability limits instantly in real-time updates." },
+        { heading: "Compliance Course Pathways", desc: "Automate regulatory validation modules and recurring security parameters effortlessly." },
+        { heading: "Unified Analytics Trackers", desc: "Examine execution metrics and department capabilities via centralized intelligence tools." }
+    ];
+
+    let activeFeatureIndex = 0;
+    const slideFrame = document.getElementById("feature-slide");
+    const labelHeading = document.getElementById("ticker-heading");
+    const descText = document.getElementById("ticker-desc");
+
+    if (slideFrame && labelHeading && descText) {
+        setInterval(() => {
+            slideFrame.classList.add("changing");
+            setTimeout(() => {
+                activeFeatureIndex = (activeFeatureIndex + 1) % trainingFeatures.length;
+                labelHeading.textContent = trainingFeatures[activeFeatureIndex].heading;
+                descText.textContent = trainingFeatures[activeFeatureIndex].desc;
+                slideFrame.classList.remove("changing");
+            }, 400);
+        }, 4500);
+    }
+});
+
+</script>
+
+<!-- ABOUT ENTERPRISE MATRIX SECTION -->
+<section class="about-section" id="about-portal-view">
+    <div class="about-container">
+        
+        <!-- LEFT COLUMN: Automatic Image Swapper System -->
+        <div class="about-visual-frame">
+            <!-- Image tags configured to auto-swap via JavaScript loop -->
+            <img src="./assests/about img 1.webp" alt="Enterprise Training Environment" class="about-swap-img active" id="about-img-target-1">
+            <img src="./assests/about img 2.webp" alt="Learners Collaboration Hub" class="about-swap-img" id="about-img-target-2">
+            
+            <!-- Graphic background floating element -->
+            <div class="visual-accent-box"></div>
+        </div>
+
+        <!-- RIGHT COLUMN: Company Details & Scroll-Animated Components -->
+        <div class="about-content-block">
+            <span class="about-pretitle scroll-trigger-bottom">WHO WE ARE</span>
+            
+            <!-- Target for sideways word-by-word structural entry -->
+            <h2 class="about-title" id="about-staggered-title">
+                Transforming Workplace Competency Through Advanced Learning Architecture
+            </h2>
+            
+            <div class="scroll-trigger-bottom transition-delay-1">
+                <p class="about-description">
+                    Stackly delivers a unified corporate training ecosystem engineered for modern global enterprises. We bridge the gap between employee capability gaps and business objectives by deploying automated training tracks, interactive skills mapping grids, and localized curricular models.
+                </p>
+                <p class="about-description">
+                    Over the past decade, our learning modules have empowered leadership development paths, compliance mandates, and technological upskilling pipelines across diverse international industries.
+                </p>
+            </div>
+
+            <!-- Floating CTA Actions Sub-Panel -->
+            <div class="about-cta-wrapper scroll-trigger-bottom transition-delay-2">
+                <a href="#company-profile" class="btn-about-floating primary">Read Our Story</a>
+                <a href="#partner-tracks" class="btn-about-floating secondary">Partner With Us</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* ABOUT SECTION LAYOUT FRAMEWORK */
+.about-section {
+    width: 100%;
+    padding: 10px 6% 80px 6%; /* Locked to user-specified 10px padding-top requirement */
+    background-color: #0A0F1D; /* Keeps seamless continuation of template background dark theme */
+    position: relative;
+    overflow: hidden;
+}
+
+.about-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 80px;
+    align-items: center;
+}
+
+/* LEFT SIDE: VISUAL AUTO-SWAPPING CONTAINER STYLING */
+.about-visual-frame {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    border-radius: 24px;
+}
+
+.about-swap-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 24px;
+    z-index: 2;
+    opacity: 0;
+    transform: scale(0.98);
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Toggle visibility layer settings */
+.about-swap-img.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 3;
+}
+
+.visual-accent-box {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    width: 60%;
+    height: 60%;
+    border: 2px solid rgba(74, 222, 128, 0.2); /* Corporate light green profile boundary lines */
+    border-radius: 24px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* RIGHT SIDE: TYPOGRAPHY AND CONTENT ELEMENT ARCHITECTURE */
+.about-content-block {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.about-pretitle {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #4ADE80; /* Ancient Green focus text */
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+}
+
+.about-title {
+    font-size: 2.8rem;
+    font-weight: 400;
+    line-height: 1.25;
+    color: #FFFFFF;
+    margin-bottom: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 12px;
+}
+
+/* Sideways entry parameters triggered on viewport scroll intersect hooks */
+.about-title span {
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.about-title span.slide-from-left { transform: translateX(-25px); }
+.about-title span.slide-from-right { transform: translateX(25px); }
+.about-title span.animate-in {
+    opacity: 1;
+    transform: translate(0) !important;
+}
+
+.about-description {
+    font-size: 1.02rem;
+    line-height: 1.65;
+    color: #94A3B8;
+    margin-bottom: 20px;
+    max-width: 620px;
+}
+
+/* FLOATING FLOATING ACTION CTA STRUCTURE */
+.about-cta-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 16px;
+}
+
+.btn-about-floating {
+    padding: 12px 30px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-about-floating.primary {
+    background-color: #4ADE80; /* Main Corporate Theme Accent Green */
+    color: #0A0F1D;
+}
+.btn-about-floating.primary:hover {
+    background-color: #22C55E;
+    transform: translateY(-3px) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 15px 25px rgba(34, 197, 94, 0.3);
+}
+
+.btn-about-floating.secondary {
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.btn-about-floating.secondary:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: #FFFFFF;
+    transform: translateY(-3px);
+}
+
+/* BOTTOM INTERSECT ENTRANCE CONTROLLER TRIGGERS */
+.scroll-trigger-bottom {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-bottom.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.transition-delay-1 { transition-delay: 0.2s; }
+.transition-delay-2 { transition-delay: 0.4s; }
+
+/* FLUID RESPONSIVE SYSTEM MEDIA BREAKPOINTS */
+@media (max-width: 1024px) {
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .about-visual-frame { height: 420px; max-width: 600px; margin: 0 auto; }
+    .about-title { font-size: 2.25rem; }
+}
+
+@media (max-width: 640px) {
+    .about-section { padding-top: 10px; padding-bottom: 40px; }
+    .about-visual-frame { height: 300px; }
+    .about-title { font-size: 1.85rem; }
+    .about-cta-wrapper { flex-direction: column; align-items: stretch; }
+    .btn-about-floating { text-align: center; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. LEFT COLUMN: AUTOMATIC 2-SECOND DUAL IMAGE SWAP SYSTEM
+    const slideImages = [
+        document.getElementById("about-img-target-1"),
+        document.getElementById("about-img-target-2")
+    ];
+    let activeImageIndex = 0;
+
+    if (slideImages[0] && slideImages[1]) {
+        setInterval(() => {
+            // Remove visibility parameters from current active item node
+            slideImages[activeImageIndex].classList.remove("active");
+            
+            // Switch pointer index position loop step 
+            activeImageIndex = (activeImageIndex + 1) % slideImages.length;
+            
+            // Add active visibility indicator triggers
+            slideImages[activeImageIndex].classList.add("active");
+        }, 2000); // Strict 2-second swap runtime loop target
+    }
+
+    // 2. RIGHT COLUMN: PARSE STAGGERED TITLE ELEMENTS
+    const initAboutTitleStagger = (titleElement) => {
+        const words = titleElement.textContent.trim().split(/\s+/);
+        titleElement.innerHTML = "";
+
+        words.forEach((word, index) => {
+            const span = document.createElement("span");
+            span.textContent = word + " ";
+            
+            if (index % 2 === 0) {
+                span.classList.add("slide-from-left");
+            } else {
+                span.classList.add("slide-from-right");
+            }
+            
+            titleElement.appendChild(span);
+        });
+    };
+
+    const runAboutTitleAnimation = (titleElement) => {
+        const spans = titleElement.querySelectorAll("span");
+        spans.forEach((span, index) => {
+            setTimeout(() => {
+                span.classList.add("animate-in");
+            }, index * 60);
+        });
+    };
+
+    const aboutTitle = document.getElementById("about-staggered-title");
+    if (aboutTitle) {
+        initAboutTitleStagger(aboutTitle);
+    }
+
+    // 3. MODERN VIEWPORT SCROLL INTERSECTION OBSERVER INTERFACE
+    // Monitors scroll patterns to fire bottom floating entries and parsing side texts seamlessly
+    const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.18 // Action starts when 18% of section element interacts with screen view
+    };
+
+    const scrollIntersectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const parentSection = entry.target;
+                
+                // Fire text parse execution triggers
+                if (aboutTitle) {
+                    runAboutTitleAnimation(aboutTitle);
+                }
+
+                // Gather and pop bottom-to-top floating elements sequentially
+                const bottomElements = parentSection.querySelectorAll(".scroll-trigger-bottom");
+                bottomElements.forEach(element => {
+                    element.classList.add("animate-in");
+                });
+
+                // Unmount observer tracking hook once visuals execute safely
+                observer.unobserve(parentSection);
+            }
+        });
+    }, observerOptions);
+
+    const targetAboutSection = document.getElementById("about-portal-view");
+    if (targetAboutSection) {
+        scrollIntersectionObserver.observe(targetAboutSection);
+    }
+});
+
+</script>
+
+<!-- CORPORATE OFFERINGS INTERACTIVE SECTION -->
+<section class="offerings-section" id="offerings-viewport-trigger">
+    <img src="./assests/about img 2.webp" alt="Corporate Training Infrastructure" class="offerings-bg-img">
+
+    <div class="offerings-container">
+        
+        <!-- TOP REGION: Section Header -->
+        <div class="offerings-header-row">
+            <h2 class="offerings-section-title" id="offerings-staggered-title">
+                WHAT WE OFFER
+            </h2>
+            <p class="offerings-section-subtitle scroll-trigger-side">
+                From targeted execution tracks to comprehensive department upskilling pipelines, explore structural programs built for modern enterprise growth metrics.
+            </p>
+        </div>
+
+        <!-- BOTTOM REGION: Service Matrix Grid -->
+        <div class="offerings-cards-grid">
+            
+            <!-- Card Node 1 -->
+            <div class="offering-card-item scroll-trigger-stagger">
+                <div class="offering-icon-frame">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+                        <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                    </svg>
+                </div>
+                <h3 class="offering-card-title">Onboarding Tracks</h3>
+                <p class="offering-card-desc">Deploy automated, standardized orientation modules to accelerate employee productivity windows seamlessly.</p>
+            </div>
+
+            <!-- Card Node 2 -->
+            <div class="offering-card-item scroll-trigger-stagger">
+                <div class="offering-icon-frame">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                </div>
+                <h3 class="offering-card-title">Leadership Labs</h3>
+                <p class="offering-card-desc">Cultivate management skill architectures with interactive executive training tracks and assessments.</p>
+            </div>
+
+            <!-- Card Node 3 -->
+            <div class="offering-card-item scroll-trigger-stagger">
+                <div class="offering-icon-frame">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618-3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                </div>
+                <h3 class="offering-card-title">Compliance Mandates</h3>
+                <p class="offering-card-desc">Keep international groups fully aligned with auto-renewing regulatory and standard modules.</p>
+            </div>
+
+            <!-- Card Node 4 -->
+            <div class="offering-card-item scroll-trigger-stagger">
+                <div class="offering-icon-frame">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/>
+                        <path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/>
+                    </svg>
+                </div>
+                <h3 class="offering-card-title">Upskilling Intelligence</h3>
+                <p class="offering-card-desc">Map internal workforce transitions using precise predictive data metrics and real-time completion tools.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    /* WHAT WE OFFER SECTOR LAYOUT MATRIX */
+.offerings-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 10px 6%;
+    background-color: #0A0F1D;
+    overflow: hidden;
+}
+
+.offerings-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.32;
+}
+
+.offerings-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #0A0F1D 0%, rgba(10, 15, 29, 0.7) 100%);
+    z-index: 2;
+}
+
+.offerings-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* HEADER LAYER BLOCK TYPOGRAPHY */
+.offerings-header-row {
+    text-align: left;
+    max-width: 600px;
+}
+
+.offerings-section-title {
+    font-size: 3.2rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 14px;
+}
+
+.offerings-section-title span {
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.offerings-section-title span.slide-from-left { transform: translateX(-30px); }
+.offerings-section-title span.slide-from-right { transform: translateX(30px); }
+.offerings-section-title span.animate-in {
+    opacity: 1;
+    transform: translate(0) !important;
+}
+
+.offerings-section-subtitle {
+    font-size: 1.02rem;
+    line-height: 1.55;
+    color: #94A3B8;
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.offerings-section-subtitle.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* HORIZONTAL BOTTOM SECTOR CARD STRUCTURES */
+.offerings-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    width: 100%;
+}
+
+.offering-card-item {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #0F172A;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    /* Added background-color and color transitions for hover responsiveness */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.3s ease, 
+                background-color 0.3s ease, 
+                color 0.3s ease;
+}
+
+.offering-card-item.scroll-trigger-stagger {
+    opacity: 0;
+    transform: translateY(50px) scale(0.96);
+    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                background-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.offering-card-item.scroll-trigger-stagger.animate-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.offering-icon-frame {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 24px;
+    color: #4ADE80; /* Initial Ancient Green icon color */
+    transition: color 0.3s ease;
+}
+
+.offering-icon-frame svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.offering-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.offering-card-desc {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    opacity: 0.8;
+}
+
+/* DYNAMIC HOVER STATE: TRANSITION CARDS INTO THE ACTIVE GREEN LAYOUT */
+.offering-card-item:hover {
+    transform: translateY(-8px);
+    background-color: #4ADE80; /* Switches to Ancient Green on Hover */
+    color: #0A0F1D; /* Dark text swap for accessibility */
+    box-shadow: 0 20px 40px rgba(74, 222, 128, 0.35);
+}
+
+/* Switch icon color to dark grey inside the hovered green card wrapper */
+.offering-card-item:hover .offering-icon-frame {
+    color: #0A0F1D;
+}
+
+/* FLUID RESPONSIVE SYSTEM VIEWPORT PARAMETERS */
+@media (max-width: 1200px) {
+    .offerings-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+    }
+    .offerings-section-title { font-size: 2.75rem; }
+}
+
+@media (max-width: 640px) {
+    .offerings-section { padding: 60px 4%; }
+    .offerings-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .offerings-section-title { font-size: 2.1rem; }
+    .offering-card-item { padding: 28px 20px; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. HEADER ROW: PARSE STAGGERED WORD ENTRY MATRICES
+    const parseOfferingsTitleStagger = (titleContainer) => {
+        if (!titleContainer) return;
+        const words = titleContainer.textContent.trim().split(/\s+/);
+        titleContainer.innerHTML = "";
+
+        words.forEach((word, index) => {
+            const span = document.createElement("span");
+            span.textContent = word + " ";
+            
+            // Alternate arriving visual pathways
+            if (index % 2 === 0) {
+                span.classList.add("slide-from-left");
+            } else {
+                span.classList.add("slide-from-right");
+            }
+            
+            titleContainer.appendChild(span);
+        });
+    };
+
+    const runOfferingsTitleAnimation = (titleContainer) => {
+        const spans = titleContainer.querySelectorAll("span");
+        spans.forEach((span, index) => {
+            setTimeout(() => {
+                span.classList.add("animate-in");
+            }, index * 70);
+        });
+    };
+
+    const offeringsTitle = document.getElementById("offerings-staggered-title");
+    if (offeringsTitle) {
+        parseOfferingsTitleStagger(offeringsTitle);
+    }
+
+    // 2. SCROLL INTERSECTION ENGINE FOR SIDE LABELS & STAGGERED BOTTOM CARDS
+    const offeringsObserverOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.15 // Fires animation loops when 15% of section framework is visible
+    };
+
+    const offeringsSectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const parentSection = entry.target;
+
+                // Fire header animations instantly
+                if (offeringsTitle) {
+                    runOfferingsTitleAnimation(offeringsTitle);
+                }
+                const subtitle = parentSection.querySelector(".offerings-section-subtitle");
+                if (subtitle) {
+                    subtitle.classList.add("animate-in");
+                }
+
+                // Gather and launch card components one-by-one sequentially
+                const staggerCards = parentSection.querySelectorAll(".scroll-trigger-stagger");
+                staggerCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add("animate-in");
+                    }, 300 + (index * 150)); // Clear 150ms incremental sequential step delay tracking
+                });
+
+                // Unmount loop monitoring listener to protect compute cycles
+                observer.unobserve(parentSection);
+            }
+        });
+    }, offeringsObserverOptions);
+
+    const targetOfferingsSection = document.getElementById("offerings-viewport-trigger");
+    if (targetOfferingsSection) {
+        offeringsSectionObserver.observe(targetOfferingsSection);
+    }
+});
+
+</script>
+
+<!-- MOBILE ECOSYSTEM GATEWAY SECTION -->
+<section class="app-gateway-section" id="app-gateway-viewport">
+    <div class="app-gateway-container">
+        
+        <!-- LEFT COLUMN: Domain Typography & Glowing Floating CTA -->
+        <div class="app-text-block">
+            <!-- Staggered star review rating layout -->
+            <div class="star-rating-row scroll-trigger-left">
+                <span class="star-icon">★</span>
+                <span class="star-icon">★</span>
+                <span class="star-icon">★</span>
+                <span class="star-icon">★</span>
+                <span class="star-icon">★</span>
+            </div>
+            
+            <h2 class="app-section-title" id="app-staggered-title">
+                YOUR LEARNING JOURNEY CONTINUES ON STACKLY MOBILE
+            </h2>
+            
+            <p class="app-section-description scroll-trigger-left transition-delay-1">
+                With real-time workforce metrics, offline capability models, and bite-sized adaptive modules, we make hitting your corporate professional training goals intuitive and continuous.
+            </p>
+
+            <div class="app-cta-row scroll-trigger-left transition-delay-2">
+                <!-- All buttons configured to navigate directly to user-requested 404.html page -->
+                <a href="404.html" class="btn-app-gateway-floating">Learn More</a>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Asymmetric Creative Presentation Grid Layout -->
+        <div class="app-visual-matrix">
+            
+            <!-- Grid Component 1: Phone UI Frame Showcase -->
+            <div class="matrix-card-item phone-frame-wrapper scroll-trigger-right">
+                <img src="./assests/mobile snip corporate trainning.webp" alt="Stackly Mobile Interface Track" class="matrix-embed-img">
+            </div>
+
+            <!-- Nested Stacked Layout Column Elements -->
+            <div class="matrix-nested-stack">
+                
+                <!-- Grid Component 2: Animated App Store Badge Link -->
+                <a href="404.html" class="matrix-card-item app-store-badge-card scroll-trigger-right transition-delay-1">
+                    <div class="app-store-content-wrapper">
+                        <!-- Apple icon SVG shape asset layer -->
+                        <svg class="apple-vector-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.21.67-2.93 1.49-.62.69-1.16 1.84-1.01 2.96 1.12.09 2.27-.58 2.95-1.39z"/>
+                        </svg>
+                        <div class="app-store-text-group">
+                            <span class="badge-subtext">Download on the</span>
+                            <!-- Targeted container for structural letter-by-letter runtime typing logic -->
+                            <h4 class="badge-main-title" id="typing-app-store-text">App Store</h4>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Grid Component 3: Contextual Action Shot Profile Card -->
+                <div class="matrix-card-item imagery-showcase-card scroll-trigger-right transition-delay-2">
+                    <img src="./assests/mo.webp" alt="Active Corporate Learner Track" class="matrix-embed-img">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* MOBILE APP GATEWAY ENVIRONMENT CONTAINER */
+.app-gateway-section {
+    width: 100%;
+    /* Strict layout requirements mapping to user parameters */
+    padding: 10px 6% 20px 6%;
+    background-color: #0A0F1D;
+    overflow: hidden;
+    position: relative;
+}
+
+.app-gateway-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* LEFT COLUMN: TYPOGRAPHY ENGINE ARCHITECTURE */
+.app-text-block {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.star-rating-row {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 20px;
+}
+
+.star-icon {
+    font-size: 1.25rem;
+    color: #FBBF24; /* Clean yellow amber review stars look from picture mockup */
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+}
+
+.app-section-title {
+    font-size: 3.2rem;
+    font-weight: 400; /* Replicates signature thin wire framework style fields */
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    color: #FFFFFF;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 14px;
+}
+
+/* Word-by-word horizontal sideways entry triggers hook setups */
+.app-section-title span {
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.app-section-title span.slide-from-left { transform: translateX(-35px); }
+.app-section-title span.slide-from-right { transform: translateX(35px); }
+.app-section-title span.animate-in {
+    opacity: 1;
+    transform: translate(0) !important;
+}
+
+.app-section-description {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #94A3B8;
+    margin-bottom: 36px;
+    max-width: 520px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* INTERACTIVE TEXT GLOW HOVER EFFECTS */
+.app-text-block:hover .app-section-description {
+    color: #FFFFFF;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+}
+
+/* FLOATING PRIMARY CTA BUTTON */
+.app-cta-row {
+    display: flex;
+}
+
+.btn-app-gateway-floating {
+    display: inline-block;
+    padding: 12px 36px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #0A0F1D;
+    background-color: #4ADE80; /* Stackly Main Theme Corporate Ancient Green */
+    border-radius: 30px;
+    box-shadow: 0 8px 20px rgba(74, 222, 128, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-app-gateway-floating:hover {
+    background-color: #22C55E;
+    transform: translateY(-4px);
+    /* High density neon green glow execution */
+    box-shadow: 0 0 25px rgba(74, 222, 128, 0.6), 0 12px 30px rgba(34, 197, 94, 0.4);
+}
+
+/* RIGHT COLUMN: ASYMMETRIC VISUAL GRID SYSTEM MATRIX */
+.app-visual-matrix {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: 100%;
+    align-items: stretch;
+}
+
+.matrix-card-item {
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* General interactive matrix glow framework logic states */
+.matrix-card-item:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 0 30px rgba(147, 197, 253, 0.3), 0 20px 45px rgba(0, 0, 0, 0.4); /* Built-in cyan-blue ambient perimeter lighting glow */
+}
+
+.matrix-embed-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* CARD VARIANT 1: PHONE MOCKUP */
+.phone-frame-wrapper {
+    background: linear-gradient(145deg, #FDBA74 0%, #FB923C 100%); /* Clean warm sand-peach presentation plate backdrop matching reference layout */
+    padding: 32px 24px 0 24px;
+    display: flex;
+    align-items: flex-end;
+    height: 480px;
+}
+
+.phone-frame-wrapper .matrix-embed-img {
+    object-position: top center;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* COLUMN RE-STACK WRAPPER */
+.matrix-nested-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: space-between;
+}
+
+/* CARD VARIANT 2: PREMIUM APP STORE BADGE LAYOUT LINK */
+.app-store-badge-card {
+    background-color: #93C5FD; /* Premium soft pastel slate-blue anchor backdrop plate copied directly from the visual blueprint */
+    text-decoration: none;
+    padding: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 140px;
+}
+
+.app-store-badge-card:hover {
+    background-color: #60A5FA;
+    box-shadow: 0 0 35px rgba(147, 197, 253, 0.7), 0 15px 30px rgba(96, 165, 250, 0.3); /* Dynamic active high glow layout */
+}
+
+.app-store-content-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: #FFFFFF;
+}
+
+.apple-vector-icon {
+    width: 42px;
+    height: 42px;
+}
+
+.app-store-text-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.badge-subtext {
+    font-size: 0.8rem;
+    font-weight: 500;
+    opacity: 0.9;
+    letter-spacing: 0.02em;
+    text-transform: capitalize;
+}
+
+.badge-main-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+}
+
+/* Base structural hidden elements layout state targeting character array inject loops */
+.badge-main-title span {
+    opacity: 0;
+    display: inline-block;
+    transform: translateY(4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.badge-main-title span.typed-letter {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* CARD VARIANT 3: ACTION SCREEN CONTAINER */
+.imagery-showcase-card {
+    height: calc(340px - 24px);
+}
+
+/* SCROLL INTERSECTION DRIVER DIRECTIONAL WRAPPER TAGS */
+.scroll-trigger-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-left.animate-in, .scroll-trigger-right.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.transition-delay-1 { transition-delay: 0.15s; }
+.transition-delay-2 { transition-delay: 0.3s; }
+
+/* FLUID RESPONSIVE SYSTEM MEDIA BREAKPOINTS */
+@media (max-width: 1100px) {
+    .app-gateway-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .app-text-block { max-width: 100%; }
+    .app-visual-matrix { max-width: 720px; margin: 0 auto; }
+    .app-section-title { font-size: 2.6rem; }
+}
+
+@media (max-width: 640px) {
+    /* Clamps paddings down layout constraints elegantly for ultra-compact systems */
+    .app-gateway-section { padding-top: 40px; padding-bottom: 24px; }
+    .app-section-title { font-size: 1.95rem; }
+    .app-visual-matrix { grid-template-columns: 1fr; gap: 20px; }
+    .phone-frame-wrapper { height: 380px; }
+    .matrix-nested-stack { gap: 20px; }
+    .app-store-badge-card { height: 120px; }
+    .badge-main-title { font-size: 1.45rem; }
+    .imagery-showcase-card { height: 220px; }
+    .app-cta-row { flex-direction: column; align-items: stretch; }
+    .btn-app-gateway-floating { text-align: center; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. LEFT SIDE: PARSE DYNAMIC STAGGERED WORD ENTRY ARRIVALS
+    const parseAppGatewayTitle = (titleContainer) => {
+        if (!titleContainer) return;
+        const words = titleContainer.textContent.trim().split(/\s+/);
+        titleContainer.innerHTML = "";
+
+        words.forEach((word, index) => {
+            const span = document.createElement("span");
+            span.textContent = word + " ";
+            
+            if (index % 2 === 0) {
+                span.classList.add("slide-from-left");
+            } else {
+                span.classList.add("slide-from-right");
+            }
+            
+            titleContainer.appendChild(span);
+        });
+    };
+
+    const runAppGatewayTitleAnimation = (titleContainer) => {
+        const spans = titleContainer.querySelectorAll("span");
+        spans.forEach((span, index) => {
+            setTimeout(() => {
+                span.classList.add("animate-in");
+            }, index * 60);
+        });
+    };
+
+    const appTitle = document.getElementById("app-staggered-title");
+    if (appTitle) {
+        parseAppGatewayTitle(appTitle);
+    }
+
+    // 2. INNER MODULE: LETTER-BY-LETTER TYPING SEQUENCE CONTROLLER
+    const initAppStoreLetterTyping = () => {
+        const textContainer = document.getElementById("typing-app-store-text");
+        if (!textContainer) return;
+
+        const structuralRawString = textContainer.textContent.trim();
+        const characterArray = structuralRawString.split("");
+        textContainer.innerHTML = ""; // Wipe base node configuration strings
+
+        characterArray.forEach(char => {
+            const span = document.createElement("span");
+            // Maintain layout structural tracking context spaces accurately
+            span.innerHTML = char === " " ? "&nbsp;" : char;
+            textContainer.appendChild(span);
+        });
+
+        // Loop execution parsing intervals
+        const structuralSpans = textContainer.querySelectorAll("span");
+        structuralSpans.forEach((span, index) => {
+            setTimeout(() => {
+                span.classList.add("typed-letter");
+            }, 400 + (index * 80)); // Clean 80ms sequential velocity step markers
+        });
+    };
+
+    // 3. INTERSECTION OBSERVER FOR SCROLL DETECT AND TRIGGER COORDINATION
+    const appGatewayObserverOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.15 // Activates when 15% of section boundary interacts with display monitor
+    };
+
+    const appGatewayIntersectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const activeSection = entry.target;
+
+                // Fire typography arrival arrays
+                if (appTitle) {
+                    runAppGatewayTitleAnimation(appTitle);
+                }
+                
+                // Fire remaining side-scrolling text containers
+                const leftElements = activeSection.querySelectorAll(".scroll-trigger-left");
+                leftElements.forEach(element => {
+                    element.classList.add("animate-in");
+                });
+
+                // Fire asymmetric visual grid columns entry transformations
+                const rightElements = activeSection.querySelectorAll(".scroll-trigger-right");
+                rightElements.forEach(element => {
+                    element.classList.add("animate-in");
+                });
+
+                // Fire high precision letter-by-letter app store typography sequence
+                initAppStoreLetterTyping();
+
+                // Terminate tracking hook to optimize runtime memory consumption loops
+                observer.unobserve(activeSection);
+            }
+        });
+    }, appGatewayObserverOptions);
+
+    const targetGatewaySection = document.getElementById("app-gateway-viewport");
+    if (targetGatewaySection) {
+        appGatewayIntersectionObserver.observe(targetGatewaySection);
+    }
+});
+
+</script>
+
+<section class="trending-courses-section" id="trending-courses-viewport">
+        <div class="trending-container">
+            
+            <!-- CORE HEADER BLOCK: Animates upward cleanly upon user scroll index -->
+            <div class="trending-header-block scroll-trigger-bottom">
+                <span class="trending-pretitle">ENTERPRISE SKILL MATRICES</span>
+                <h2 class="trending-section-title">Trending Workforce Pathways</h2>
+                <p class="trending-section-subtitle">
+                    Track the highest-velocity skill upskilling and management capability certification pathways trending across corporate divisions this quarter.
+                </p>
+            </div>
+
+            <!-- CAROUSEL TRACK COMPONENT FRAME: Hard-bounded with lateral 30px side padding spaces -->
+            <div class="carousel-outer-wrapper">
+                <div class="carousel-slider-track" id="courses-carousel-track">
+                    
+                    <!-- Course Matrix Module Node 1 -->
+                    <div class="course-card-item">
+                        <div class="course-image-frame">
+                            <img src="course-thumb-1.jpg" alt="Generative AI Systems Integration" class="course-img">
+                            <span class="course-badge-chip">AI Infrastructure</span>
+                        </div>
+                        <div class="course-body-content">
+                            <h3 class="course-card-heading">Generative AI Governance for Enterprise Operations</h3>
+                            <p class="course-card-summary">Manage the security, operational risk modeling, and practical infrastructure integration vectors of custom enterprise LLMs.</p>
+                            <div class="course-metric-footer">
+                                <span class="metric-node">⏱ 14 Hours</span>
+                                <span class="metric-node">📈 94% Compliant</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course Matrix Module Node 2 -->
+                    <div class="course-card-item">
+                        <div class="course-image-frame">
+                            <img src="course-thumb-2.jpg" alt="Zero Trust Cyber Command Strategy" class="course-img">
+                            <span class="course-badge-chip security">Risk Management</span>
+                        </div>
+                        <div class="course-body-content">
+                            <h3 class="course-card-heading">Zero-Trust Corporate Command Systems</h3>
+                            <p class="course-card-summary">Deploy comprehensive endpoint encryption protocols, regulatory structures, and adaptive digital authentication pipelines.</p>
+                            <div class="course-metric-footer">
+                                <span class="metric-node">⏱ 26 Hours</span>
+                                <span class="metric-node">📈 98% Pass Rate</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course Matrix Module Node 3 -->
+                    <div class="course-card-item">
+                        <div class="course-image-frame">
+                            <img src="course-thumb-3.jpg" alt="Predictive Business Intelligence Architecture" class="course-img">
+                            <span class="course-badge-chip data">Data Analytics</span>
+                        </div>
+                        <div class="course-body-content">
+                            <h3 class="course-card-heading">High-Scale Data Warehousing & Optimization</h3>
+                            <p class="course-card-summary">Build localized transactional processing queues, secure cloud data lakes, and sync cross-department performance tracking charts.</p>
+                            <div class="course-metric-footer">
+                                <span class="metric-node">⏱ 18 Hours</span>
+                                <span class="metric-node">📈 89% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course Matrix Module Node 4 -->
+                    <div class="course-card-item">
+                        <div class="course-image-frame">
+                            <img src="course-thumb-4.jpg" alt="Agile Leadership Matrix Sprints" class="course-img">
+                            <span class="course-badge-chip strategy">Executive Labs</span>
+                        </div>
+                        <div class="course-body-content">
+                            <h3 class="course-card-heading">Global Leadership & Agile Velocity Engineering</h3>
+                            <p class="course-card-summary">Optimize cross-functional global agile velocity indices, clear product development roadmaps, and scale department workflows.</p>
+                            <div class="course-metric-footer">
+                                <span class="metric-node">⏱ 12 Hours</span>
+                                <span class="metric-node">📈 91% Promotion Index</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+  <style>
+    /* DESIGN PARAMETERS RESET ACCORDING TO TEMPLATE CRITERIA */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* CAROUSEL WRAPPER CONTROL MODULE SECTION */
+.trending-courses-section {
+    width: 100%;
+    /* Strict adherence to structural configuration rules: 50px Top Padding / 30px Bottom Padding */
+    padding: 50px 0 30px 0;
+    background-color: #0A0F1D; /* Dark monochrome workspace overlay profile backdrop */
+    overflow: hidden;
+    position: relative;
+}
+
+.trending-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* CENTER-ALIGNED PLATFORM INTRO GRAPHICS LAYER */
+.trending-header-block {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.trending-pretitle {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #4ADE80; /* Stackly Core Primary Theme Accent Ancient Green Color Value */
+    letter-spacing: 0.16em;
+    display: inline-block;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.trending-section-title {
+    font-size: 2.75rem;
+    font-weight: 400; /* Fine premium aesthetic line weight style field properties */
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.trending-section-subtitle {
+    font-size: 1.02rem;
+    line-height: 1.6;
+    color: #94A3B8;
+}
+
+/* CAROUSEL SCROLLER COMPONENT ENGINE (Locked with lateral 30px padding margins) */
+.carousel-outer-wrapper {
+    width: 100%;
+    padding: 10px 30px 30px 30px; /* Precise side-border layout padding constraints */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Visual faded gradient overlay masks to smooth outer tracks boundaries elegantly */
+.carousel-outer-wrapper::before,
+.carousel-outer-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 140px;
+    height: 100%;
+    z-index: 4;
+    pointer-events: none;
+}
+.carousel-outer-wrapper::before {
+    left: 30px;
+    background: linear-gradient(to right, #0A0F1D 0%, transparent 100%);
+}
+.carousel-outer-wrapper::after {
+    right: 30px;
+    background: linear-gradient(to left, #0A0F1D 0%, transparent 100%);
+}
+
+.carousel-slider-track {
+    display: flex;
+    gap: 28px; /* Fixed spacing gaps matching matrix calculations in script file */
+    width: max-content;
+    will-change: transform;
+}
+
+/* HIGH-PERFORMANCE TRAINING CATALOG DISPLAY TILES */
+.course-card-item {
+    width: 340px; /* Locked width sizing boundary criteria */
+    background-color: #1E293B; /* Secondary card background panel style */
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.3s ease,
+                transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.course-image-frame {
+    position: relative;
+    width: 100%;
+    height: 185px;
+    overflow: hidden;
+}
+
+.course-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.course-badge-chip {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background-color: rgba(10, 15, 29, 0.85);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #4ADE80; /* Theme Accent Green Color */
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 8px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 1px solid rgba(74, 222, 128, 0.25);
+}
+
+/* Badge categorizing layout configuration variations */
+.course-badge-chip.security { color: #FDBA74; border-color: rgba(253, 186, 116, 0.25); }
+.course-badge-chip.data { color: #60A5FA; border-color: rgba(96, 165, 250, 0.25); }
+.course-badge-chip.strategy { color: #F472B6; border-color: rgba(244, 114, 182, 0.25); }
+
+.course-body-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.course-card-heading {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+
+.course-card-summary {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #94A3B8;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.course-metric-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 14px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #64748B;
+}
+
+/* CORPORATE ANCIENT GREEN AMBIENT HOVER GLOW STATE ENGINE */
+.course-card-item:hover {
+    transform: translateY(-8px);
+    border-color: rgba(74, 222, 128, 0.4); /* Swaps card line bounds profile to green accent */
+    /* Dynamic active corporate fluorescent green visual neon glow array output values */
+    box-shadow: 0 0 25px rgba(74, 222, 128, 0.22), 0 20px 45px rgba(0, 0, 0, 0.45);
+}
+
+.course-card-item:hover .course-img {
+    transform: scale(1.05); /* Smooth micro-scale image hover zoom */
+}
+
+.course-card-item:hover .course-card-heading {
+    color: #4ADE80; /* Switches title context color on active hover state elements */
+}
+
+/* UPWARD RUNTIME VISIBILITY INTERSECT CONTROLS */
+.scroll-trigger-bottom {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-bottom.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FLUID FLUID RESPONSIVE SYSTEM BREAKPOINTS ADAPTATION PARAMETERS */
+@media (max-width: 1024px) {
+    .trending-section-title { font-size: 2.2rem; }
+    .course-card-item { width: 302px; }
+    .course-image-frame { height: 165px; }
+}
+
+@media (max-width: 640px) {
+    /* Responsive custom padding boundaries overrides */
+    .trending-courses-section { padding-top: 40px; padding-bottom: 24px; }
+    .carousel-outer-wrapper { padding-left: 15px; padding-right: 15px; }
+    .carousel-outer-wrapper::before { left: 15px; width: 60px; }
+    .carousel-outer-wrapper::after { right: 15px; width: 60px; }
+    .trending-section-title { font-size: 1.85rem; }
+    .course-card-item { width: 265px; }
+    .course-body-content { padding: 20px 16px; }
+    .course-card-heading { font-size: 1.05rem; }
+}
+
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. CAROUSEL ENGINE: COMPILE SMOOTH CONTINUOUS TICKER MARQUEE AUTOMATION
+    const carouselTrack = document.getElementById("courses-carousel-track");
+    
+    if (carouselTrack) {
+        // Collect initial core list nodes array
+        const primaryCards = Array.from(carouselTrack.children);
+        
+        // Programmatically parse and clone original items list to construct seamless infinite loops padding
+        primaryCards.forEach(card => {
+            const trackNodeClone = card.cloneNode(true);
+            carouselTrack.appendChild(trackNodeClone);
+        });
+
+        let carouselOffsetPosition = 0;
+        const autoScrollVelocitySpeed = 0.85; // Fixed operational pace index constant values
+        let isCarouselInteractionPaused = false;
+
+        const executeCarouselMarqueeLoop = () => {
+            if (!isCarouselInteractionPaused) {
+                carouselOffsetPosition -= autoScrollVelocitySpeed;
+                
+                // Track length breakpoint calculation matrix index: (Width 340 + Grid Gap 28) * Items Length
+                const maxUniqueTrackWidthThreshold = (340 + 28) * primaryCards.length;
+                
+                // Whenever track moves past one original track segment boundary, cycle coordinates back cleanly
+                if (Math.abs(carouselOffsetPosition) >= maxUniqueTrackWidthThreshold) {
+                    carouselOffsetPosition = 0;
+                }
+                
+                // translate3d forces clean GPU rendering parameters optimization layer outputs
+                carouselTrack.style.transform = `translate3d(${carouselOffsetPosition}px, 0, 0)`;
+            }
+            
+            // Re-render recursively next monitor update pipeline tick pass
+            requestAnimationFrame(executeCarouselMarqueeLoop);
+        };
+
+        // Pause loop animation triggers any time users hover pointers onto components
+        carouselTrack.addEventListener("mouseenter", () => { isCarouselInteractionPaused = true; });
+        carouselTrack.addEventListener("mouseleave", () => { isCarouselInteractionPaused = false; });
+        
+        // Initialize carousel continuous runtime loop automatically
+        executeCarouselMarqueeLoop();
+    }
+
+    // 2. SCROLL OBSERVER INTERFACE: DISPATCH HEADERS TRANSFORMATION REVEALS
+    const trendingObserverOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.15
+    };
+
+    const trendingSectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const headerBlock = entry.target.querySelector(".trending-header-block");
+                if (headerBlock) {
+                    headerBlock.classList.add("animate-in");
+                }
+                // Unmount section tracker to save memory cycles efficiently
+                observer.unobserve(entry.target);
+            }
+        });
+    }, trendingObserverOptions);
+
+    const targetTrendingSection = document.getElementById("trending-courses-viewport");
+    if (targetTrendingSection) {
+        trendingSectionObserver.observe(targetTrendingSection);
+    }
+});
+
+  </script>
+
+  <!-- CORPORATE TESTIMONIAL MATRIX SECTION -->
+<section class="testimonials-section" id="testimonials-viewport">
+    <!-- Visual background image tag layer -->
+    <img src="testimonials-bg-placeholder.jpg" alt="Corporate Network Grid Background" class="testimonials-bg-img">
+
+    <div class="testimonials-container">
+        
+        <!-- CENTERED HEADER: Arrives from sides on scroll intersect -->
+        <div class="testimonials-header-block">
+            <span class="testimonials-badge scroll-trigger-left">💼 Enterprise Success Stories</span>
+            <h2 class="testimonials-title" id="testimonials-staggered-title">
+                What Our Enterprise Members Are Saying
+            </h2>
+        </div>
+
+        <!-- STAGGERED REPLICATED ASYMMETRIC GRID LAYER -->
+        <div class="testimonials-asymmetric-grid">
+            
+            <!-- ROW 1 LAYOUT: Top Grid Track (Reveals first) -->
+            <div class="testimonial-row-track track-1">
+                
+                <!-- Feedback Card 1 -->
+                <div class="testimonial-card-item scroll-trigger-stagger">
+                    <div class="star-rating-block">★★★★★</div>
+                    <p class="testimonial-quote">
+                        "The Compliance Path Matrix completely transformed our department onboarding lifecycle. We went from manual, scattered spreadsheet auditing to streamlined, automated skill validation pipelines within days."
+                    </p>
+                    <div class="client-profile-row">
+                        <img src="avatar-1.jpg" alt="Cameron Williamson" class="client-avatar-img">
+                        <div class="client-metadata">
+                            <h4>Cameron Williamson</h4>
+                            <span>VP of Organizational Development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Card 2 -->
+                <div class="testimonial-card-item scroll-trigger-stagger">
+                    <div class="star-rating-block">★★★★★</div>
+                    <p class="testimonial-quote">
+                        "This infrastructure completely changed how we approach continuous upskilling. Our development velocity increased, skill competency gaps collapsed, and our tech teams finally innovate with confidence."
+                    </p>
+                    <div class="client-profile-row">
+                        <img src="avatar-2.jpg" alt="Kristin Watson" class="client-avatar-img">
+                        <div class="client-metadata">
+                            <h4>Kristin Watson</h4>
+                            <span>Director of Engineering</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Card 3 -->
+                <div class="testimonial-card-item scroll-trigger-stagger">
+                    <div class="star-rating-block">★★★★★</div>
+                    <p class="testimonial-quote">
+                        "The predictive analytics metrics delivered exactly the micro-learning intelligence mapping our leadership boards needed. Tracking certification expiration thresholds is now entirely hands-free."
+                    </p>
+                    <div class="client-profile-row">
+                        <img src="avatar-3.jpg" alt="Darlene Robertson" class="client-avatar-img">
+                        <div class="client-metadata">
+                            <h4>Darlene Robertson</h4>
+                            <span>Chief Information Officer</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ROW 2 LAYOUT: Offset Bottom Grid Track (Reveals with staggered delay) -->
+            <div class="testimonial-row-track track-2">
+                
+                <!-- Feedback Card 4 -->
+                <div class="testimonial-card-item scroll-trigger-stagger">
+                    <div class="star-rating-block">★★★★★</div>
+                    <p class="testimonial-quote">
+                        "From chaotic regulatory updates to structured corporate compliance confidence, Stackly scaled our training nodes flawlessly. Highly recommended for international operations tracking."
+                    </p>
+                    <div class="client-profile-row">
+                        <img src="avatar-4.jpg" alt="Theresa Webb" class="client-avatar-img">
+                        <div class="client-metadata">
+                            <h4>Theresa Webb</h4>
+                            <span>Global Compliance Manager</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Card 5 -->
+                <div class="testimonial-card-item scroll-trigger-stagger">
+                    <div class="star-rating-block">★★★★★</div>
+                    <p class="testimonial-quote">
+                        "What I love most is the practical enterprise approach. Real infrastructure sandbox setups, true compliance path renewals, and zero academic fluff. This completely rewired our workforce training curves."
+                    </p>
+                    <div class="client-profile-row">
+                        <img src="avatar-5.jpg" alt="Jane Cooper" class="client-avatar-img">
+                        <div class="client-metadata">
+                            <h4>Jane Cooper</h4>
+                            <span>Senior Systems Architect</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Card 6 -->
+                <div class="testimonial-card-item scroll-trigger-stagger">
+                    <div class="star-rating-block">★★★★★</div>
+                    <p class="testimonial-quote">
+                        "Our global management teams now align with corporate objectives across distinct branches effortlessly. The localized course paths solved our language barriers instantly."
+                    </p>
+                    <div class="client-profile-row">
+                        <img src="avatar-6.jpg" alt="Arlene McCoy" class="client-avatar-img">
+                        <div class="client-metadata">
+                            <h4>Arlene McCoy</h4>
+                            <span>Human Resources Director</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FOOTER CALL TO ACTION: Directs straight to user-requested 404 navigation -->
+        <div class="testimonials-footer-row scroll-trigger-bottom">
+            <a href="404.html" class="btn-testimonials-browse">Browse Our Courses ›</a>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* TESTIMONIAL MATRIX PANEL WRAPPER */
+.testimonials-section {
+    position: relative;
+    width: 100%;
+    /* Strict adherence to requested specifications boundaries (50px Top / 30px Bottom Padding) */
+    padding: 50px 4% 30px 4%;
+    background-color: #0A0F1D; /* Matches seamless dark template theme layout */
+    overflow: hidden;
+}
+
+.testimonials-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.08; /* Blends background environment assets cleanly like image overlay reference */
+}
+
+.testimonials-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* SECTION CENTERED TYPOGRAPHY BLOCK */
+.testimonials-header-block {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.testimonials-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.06);
+    color: #94A3B8;
+    border-radius: 30px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.testimonials-title {
+    font-size: 2.8rem;
+    font-weight: 400; /* Fine wire layout typography structure mirroring picture reference */
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    line-height: 1.25;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 14px;
+}
+
+/* Side word animation arrivals setup classes */
+.testimonials-title span {
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.testimonials-title span.slide-from-left { transform: translateX(-35px); }
+.testimonials-title span.slide-from-right { transform: translateX(35px); }
+.testimonials-title span.animate-in {
+    opacity: 1;
+    transform: translate(0) !important;
+}
+
+/* ASYMMETRIC STAGGERED ROW LAYOUT SYSTEM */
+.testimonials-asymmetric-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+.testimonial-row-track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+}
+
+/* Creates the offset asymmetric staggered alignment effect from the image mockup */
+.testimonial-row-track.track-2 {
+    padding-left: 60px;
+    padding-right: 20px;
+}
+
+/* PREMIUM TESTIMONIAL DISPLAY TILES */
+.testimonial-card-item {
+    background-color: rgba(30, 41, 59, 0.4); /* Translucent plate layer mapping to reference graphic */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    position: relative;
+    /* Core scroller entrance states initialization configuration triggers */
+    opacity: 0;
+    transform: translateY(40px) scale(0.97);
+    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                background-color 0.3s ease;
+}
+
+.testimonial-card-item.animate-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.star-rating-block {
+    font-size: 0.95rem;
+    color: #FBBF24; /* Amber yellow review star lines look */
+    letter-spacing: 2px;
+}
+
+.testimonial-quote {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #CBD5E1;
+    font-weight: 300;
+}
+
+.client-profile-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.client-avatar-img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.client-metadata h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 2px;
+}
+
+.client-metadata span {
+    font-size: 0.8rem;
+    color: #64748B;
+}
+
+/* INTERACTIVE NEON GLOW HOVER STATES ENGINE MODULE */
+.testimonial-card-item:hover {
+    transform: translateY(-5px);
+    background-color: rgba(30, 41, 59, 0.7);
+    border-color: rgba(74, 222, 128, 0.4); /* Highlights card outline frame to Ancient Green */
+    /* Immersive, rich enterprise neon green aura backdrop glow emission */
+    box-shadow: 0 0 25px rgba(74, 222, 128, 0.2), 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* FOOTER CALL TO ACTION BUTTON (Exact match to image design shapes) */
+.testimonials-footer-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.btn-testimonials-browse {
+    display: inline-block;
+    background-color: #FFFFFF;
+    color: #0A0F1D;
+    text-decoration: none;
+    padding: 14px 40px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 4px; /* Crisp square pill radius copied directly from image layout mockup */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-testimonials-browse:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.3), 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* INDEPENDENT DRIVER ANIMATION SCROLL TRIGGERS SETUP MARKS */
+.scroll-trigger-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-bottom {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-left.animate-in, .scroll-trigger-bottom.animate-in {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+}
+
+/* FLUID FLUID RESPONSIVE MATRIX MEDIA VIEWPORTS BREAKPOINTS */
+@media (max-width: 1150px) {
+    .testimonial-row-track {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .testimonial-row-track.track-2 { padding-left: 0; padding-right: 0; }
+    .testimonials-title { font-size: 2.25rem; }
+}
+
+@media (max-width: 768px) {
+    .testimonial-row-track {
+        grid-template-columns: 1fr;
+    }
+    .testimonials-section { padding-top: 40px; padding-bottom: 24px; }
+    .testimonials-title { font-size: 1.85rem; }
+    .testimonial-card-item { padding: 24px; }
+    .btn-testimonials-browse { width: 100%; text-align: center; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. TYPOGRAPHY ENGINE: PARSE STAGGERED SIDEWAYS ARRIVALS
+    const parseTestimonialsTitleStagger = (titleContainer) => {
+        if (!titleContainer) return;
+        const words = titleContainer.textContent.trim().split(/\s+/);
+        titleContainer.innerHTML = "";
+
+        words.forEach((word, index) => {
+            const span = document.createElement("span");
+            span.textContent = word + " ";
+            
+            // Stagger arrivals systematically from opposite borders
+            if (index % 2 === 0) {
+                span.classList.add("slide-from-left");
+            } else {
+                span.classList.add("slide-from-right");
+            }
+            
+            titleContainer.appendChild(span);
+        });
+    };
+
+    const runTestimonialsTitleAnimation = (titleContainer) => {
+        const spans = titleContainer.querySelectorAll("span");
+        spans.forEach((span, index) => {
+            setTimeout(() => {
+                span.classList.add("animate-in");
+            }, index * 60);
+        });
+    };
+
+    const testimonialsTitle = document.getElementById("testimonials-staggered-title");
+    if (testimonialsTitle) {
+        parseTestimonialsTitleStagger(testimonialsTitle);
+    }
+
+    // 2. MODERN VIEWPORT SCROLL INTERSECTION ENGINE MODULE
+    // Monitors scroll parameters to reveal cards track-by-track, one-by-one sequentially
+    const testimonialsObserverOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.12 // Activates loops as soon as 12% of section framework shows on monitor
+    };
+
+    const testimonialsIntersectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const activeSection = entry.target;
+
+                // Fire typography animations instantly
+                if (testimonialsTitle) {
+                    runTestimonialsTitleAnimation(testimonialsTitle);
+                }
+                const badgeLabel = activeSection.querySelector(".testimonials-badge");
+                if (badgeLabel) badgeLabel.classList.add("animate-in");
+
+                // Track 1 Card Deployments: Launch card items one-by-one sequentially
+                const row1Cards = activeSection.querySelectorAll(".track-1 .scroll-trigger-stagger");
+                row1Cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add("animate-in");
+                    }, 200 + (index * 120)); // Stagger card delivery by 120ms intervals
+                });
+
+                // Track 2 Card Deployments: Launch offset track with systematic subsequent delay loop
+                const row2Cards = activeSection.querySelectorAll(".track-2 .scroll-trigger-stagger");
+                row2Cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add("animate-in");
+                    }, 500 + (index * 120)); // Delay second row launch relative to first track completion
+                });
+
+                // Launch footer capsule buttons
+                const footerRow = activeSection.querySelector(".testimonials-footer-row");
+                if (footerRow) {
+                    setTimeout(() => {
+                        footerRow.classList.add("animate-in");
+                    }, 900);
+                }
+
+                // Unmount loop listener hook to free up runtime computational overhead threads
+                observer.unobserve(activeSection);
+            }
+        });
+    }, testimonialsObserverOptions);
+
+    const targetTestimonialsSection = document.getElementById("testimonials-viewport");
+    if (targetTestimonialsSection) {
+        testimonialsIntersectionObserver.observe(targetTestimonialsSection);
+    }
+});
+
+</script>
+
+<!-- CORPORATE FAQ ARCHITECTURE SECTION -->
+<section class="faq-section" id="faq-viewport-trigger">
+    <div class="faq-container">
+        
+        <!-- LEFT COLUMN: Domain Header Panel (Arrives from sides on scroll) -->
+        <div class="faq-sticky-sidebar">
+            <span class="faq-pretitle scroll-trigger-left">💡 KNOWLEDGE BASE</span>
+            <h2 class="faq-main-title" id="faq-staggered-title">
+                Frequently Asked Questions
+            </h2>
+            <p class="faq-sidebar-desc scroll-trigger-left transition-delay-1">
+                Have inquiries regarding corporate enrollment paths, system tracking metrics, or custom curriculum integration plans? Explore our automated platform breakdown guides.
+            </p>
+        </div>
+
+        <!-- RIGHT COLUMN: Interactive Accordion Grid (Reveals card-by-card on scroll) -->
+        <div class="faq-accordion-grid">
+            
+            <!-- Accordion Panel 1 -->
+            <div class="faq-item-card scroll-trigger-stagger">
+                <button class="faq-accordion-header" aria-expanded="false">
+                    <span class="faq-question-text">How does Stackly synchronize automated skill matrix updates?</span>
+                    <span class="faq-toggle-icon">＋</span>
+                </button>
+                <div class="faq-accordion-body">
+                    <div class="faq-answer-inner">
+                        Our centralized tracking engine uses predictive data models to monitor course completion thresholds and certificate validation windows. As employees finish adaptive modules, departmental grids refresh instantly in real time.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion Panel 2 -->
+            <div class="faq-item-card scroll-trigger-stagger">
+                <button class="faq-accordion-header" aria-expanded="false">
+                    <span class="faq-question-text">Can we integrate custom internal compliance tracks?</span>
+                    <span class="faq-toggle-icon">＋</span>
+                </button>
+                <div class="faq-accordion-body">
+                    <div class="faq-answer-inner">
+                        Yes. Stackly’s adaptive L&D infrastructure allows enterprise administrators to upload localized documentation, configure specific regulatory renewal cycles, and enforce mandatory testing paths safely.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion Panel 3 -->
+            <div class="faq-item-card scroll-trigger-stagger">
+                <button class="faq-accordion-header" aria-expanded="false">
+                    <span class="faq-question-text">Is offline learning supported on the Mobile App platform?</span>
+                    <span class="faq-toggle-icon">＋</span>
+                </button>
+                <div class="faq-accordion-body">
+                    <div class="faq-answer-inner">
+                        Absolutely. Users can securely cache core training paths and micro-learning modules locally within our iOS/Android ecosystem. Progress parameters automatically sync back once a network connection is verified.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion Panel 4 -->
+            <div class="faq-item-card scroll-trigger-stagger">
+                <button class="faq-accordion-header" aria-expanded="false">
+                    <span class="faq-question-text">What metrics are provided inside the executive analytics dashboard?</span>
+                    <span class="faq-toggle-icon">＋</span>
+                </button>
+                <div class="faq-accordion-body">
+                    <div class="faq-answer-inner">
+                        Leadership boards gain access to aggregate capability index averages, departmental pass rates, running certification compliance statuses, and predictive workforce transition vectors formatted for corporate reporting.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* FAQ SECTION MASTER CONTROLS */
+.faq-section {
+    width: 100%;
+    /* Hard-locked to your precise padding parameters (50px Top / 30px Bottom Spacing) */
+    padding: 50px 6% 30px 6%;
+    background-color: #0A0F1D; /* Seamless integration with template dark theme background layout */
+    position: relative;
+    overflow: hidden;
+}
+
+.faq-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr; /* Premium split dashboard alignment layout column mapping */
+    gap: 80px;
+    align-items: flex-start;
+}
+
+/* LEFT COLUMN: SIDEBAR SIDELONG CONTAINER TYPOGRAPHY */
+.faq-sticky-sidebar {
+    position: sticky;
+    top: 120px; /* Positions section elements comfortably underneath your floating header */
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.faq-pretitle {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #4ADE80; /* Stackly Main Core Corporate Ancient Green Theme Brand Accent */
+    letter-spacing: 0.16em;
+    margin-bottom: 14px;
+    display: inline-block;
+}
+
+.faq-main-title {
+    font-size: 3rem;
+    font-weight: 400; /* Fine wire layout typography structure style properties */
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 14px;
+}
+
+/* Side word parsing entrance transitions animations setups */
+.faq-main-title span {
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.faq-main-title span.slide-from-left { transform: translateX(-35px); }
+.faq-main-title span.slide-from-right { transform: translateX(35px); }
+.faq-main-title span.animate-in {
+    opacity: 1;
+    transform: translate(0) !important;
+}
+
+.faq-sidebar-desc {
+    font-size: 1.02rem;
+    line-height: 1.6;
+    color: #94A3B8;
+    max-width: 460px;
+}
+
+/* RIGHT COLUMN: ACCORDION LIST HARDWARE */
+.faq-accordion-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.faq-item-card {
+    background-color: #1E293B; /* Slate blue card body background contrast element */
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    /* Initial state variables for sequential list element scroller reveals */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.faq-item-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* INTERACTIVE ACCORDION BUTTON CONTROLLER HOVER FIELDS */
+.faq-accordion-header {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 24px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    text-align: left;
+    color: #FFFFFF;
+}
+
+.faq-question-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+.faq-toggle-icon {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: #64748B;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+}
+
+/* DYNAMIC HOVER GLOW STATE: EMIT FLUORESCENT GREEN OUTLINES */
+.faq-item-card:hover {
+    border-color: rgba(74, 222, 128, 0.35); /* Swaps card line bounds to green profile focus path */
+    /* Active high-density neon green ambient visual backdrop aura emission values */
+    box-shadow: 0 0 22px rgba(74, 222, 128, 0.2), 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.faq-item-card:hover .faq-question-text {
+    color: #4ADE80; /* Text highlight swap mapping focus keys */
+}
+
+.faq-item-card:hover .faq-toggle-icon {
+    color: #4ADE80;
+}
+
+/* COLLAPSIBLE ACCORDION BODY TRANSITION ENGINE */
+.faq-accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    /* Uses pure CSS transit timing scales to manage expand/collapse actions with zero grid stutter */
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-answer-inner {
+    padding: 0 28px 24px 28px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #94A3B8;
+    font-weight: 300;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    padding-top: 16px;
+}
+
+/* Expanding operational active states triggered classes */
+.faq-item-card.active-open .faq-accordion-body {
+    max-height: 200px; /* Clean height headroom buffer ceiling mapping lengthy answers safely */
+}
+
+.faq-item-card.active-open .faq-toggle-icon {
+    transform: rotate(45deg); /* Rotates plus icon into close cross multiplication matrices */
+    color: #4ADE80;
+}
+
+.faq-item-card.active-open {
+    border-color: rgba(74, 222, 128, 0.25);
+    background-color: rgba(30, 41, 59, 0.8);
+}
+
+/* INDEPENDENT DRIVER DIRECTIONAL OBSERVER WRAPPERS */
+.scroll-trigger-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-left.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.transition-delay-1 { transition-delay: 0.15s; }
+
+/* FLUID SYSTEM RESPONSIVE MATRIX MEDIA BREAKPOINTS CONTROL BOARDS */
+@media (max-width: 1100px) {
+    .faq-container {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+    .faq-sticky-sidebar { position: relative; top: 0; max-width: 100%; }
+    .faq-main-title { font-size: 2.5rem; }
+}
+
+@media (max-width: 640px) {
+    /* Custom low viewport padding clamps rules */
+    .faq-section { padding-top: 40px; padding-bottom: 24px; }
+    .faq-main-title { font-size: 1.95rem; gap: 0 10px; }
+    .faq-accordion-header { padding: 20px; }
+    .faq-answer-inner { padding: 0 20px 20px 20px; font-size: 0.9rem; }
+    .faq-question-text { font-size: 1rem; }
+    .faq-item-card.active-open .faq-accordion-body { max-height: 300px; } /* Extends ceiling index for stacked text fields mobile view */
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. LEFT SIDE: PARSE STAGGERED SIDEWAYS HEADER ENTRY
+    const parseFaqTitleStagger = (titleContainer) => {
+        if (!titleContainer) return;
+        const words = titleContainer.textContent.trim().split(/\s+/);
+        titleContainer.innerHTML = "";
+
+        words.forEach((word, index) => {
+            const span = document.createElement("span");
+            span.textContent = word + " ";
+            
+            if (index % 2 === 0) {
+                span.classList.add("slide-from-left");
+            } else {
+                span.classList.add("slide-from-right");
+            }
+            
+            titleContainer.appendChild(span);
+        });
+    };
+
+    const runFaqTitleAnimation = (titleContainer) => {
+        const spans = titleContainer.querySelectorAll("span");
+        spans.forEach((span, index) => {
+            setTimeout(() => {
+                span.classList.add("animate-in");
+            }, index * 65);
+        });
+    };
+
+    const faqTitle = document.getElementById("faq-staggered-title");
+    if (faqTitle) {
+        parseFaqTitleStagger(faqTitle);
+    }
+
+    // 2. RIGHT SIDE: ACCORDION TOGGLE MECHANICS INTERFACES
+    const accordionHeaders = document.querySelectorAll(".faq-accordion-header");
+    
+    accordionHeaders.forEach(header => {
+        header.addEventListener("click", () => {
+            const parentCardItem = header.parentElement;
+            const isCardCurrentlyOpen = parentCardItem.classList.contains("active-open");
+            
+            // Loop pattern to auto-close any alternate open question blocks (Single expand focus layout rule)
+            document.querySelectorAll(".faq-item-card").forEach(item => {
+                item.classList.remove("active-open");
+                item.querySelector(".faq-accordion-header").setAttribute("aria-expanded", "false");
+            });
+
+            // If selected item was closed, trigger active expand parameters
+            if (!isCardCurrentlyOpen) {
+                parentCardItem.classList.add("active-open");
+                header.setAttribute("aria-expanded", "true");
+            }
+        });
+    });
+
+    // 3. SCROLL INTERSECTION: MONITOR LAYOUT BOUNDS & POP CARD-BY-CARD SEQUENTIALLY
+    const faqObserverOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.12 // Fires animation callbacks when 12% of section window cross paths with scroller
+    };
+
+    const faqSectionIntersectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const parentSection = entry.target;
+
+                // Fire left typography panels
+                if (faqTitle) {
+                    runFaqTitleAnimation(faqTitle);
+                }
+                const leftElements = parentSection.querySelectorAll(".scroll-trigger-left");
+                leftElements.forEach(el => el.classList.add("animate-in"));
+
+                // Fire right column accordion question items one-by-one sequentially
+                const accordionCards = parentSection.querySelectorAll(".faq-item-card");
+                accordionCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add("animate-in");
+                    }, 300 + (index * 140)); // Strict 140ms incremental deployment stagger tracking loop
+                });
+
+                // Unmount loop listener thread safely to optimize computer background tasks
+                observer.unobserve(parentSection);
+            }
+        });
+    }, faqObserverOptions);
+
+    const targetFaqSection = document.getElementById("faq-viewport-trigger");
+    if (targetFaqSection) {
+        faqSectionIntersectionObserver.observe(targetFaqSection);
+    }
+});
+
+</script>
+
+<!-- TWO-LINE ECOSYSTEM CTA BANNER -->
+<section class="banner-cta-section" id="banner-cta-viewport">
+    <!-- Visual structural background graphics asset layer -->
+    <img src="./assests/hero section bg.webp" alt="Abstract Digital Network Vector" class="banner-bg-img">
+
+    <div class="banner-container">
+        
+        <!-- LEFT REGION: Rigid Two-Line Structured Text Content Grid -->
+        <div class="banner-typography-block">
+            <!-- Line 1: Upper Headline Structure Element -->
+            <div class="banner-text-line line-upper scroll-trigger-left" id="banner-title-line-1">
+                READY TO COLLAPSE WORKFORCE COMPETENCY GAPS?
+            </div>
+            
+            <!-- Line 2: Lower Subheadline Domain Element -->
+            <div class="banner-text-line line-lower scroll-trigger-right" id="banner-title-line-2">
+                Deploy automated skill matrix tracking systems across your departments today.
+            </div>
+        </div>
+
+        <!-- RIGHT REGION: Glassmorphic Fluorescent Floating CTA Button -->
+        <div class="banner-action-block scroll-trigger-bottom">
+            <!-- Wires straight to your requested 404.html page gate -->
+            <a href="404.html" class="btn-banner-floating">
+                Request Enterprise Demo
+                <span class="btn-arrow-icon">➔</span>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* TWO-LINE CTA BANNER CORE ENVIRONMENT CONTROL */
+.banner-cta-section {
+    width: 100%;
+    /* Strict compliance mapping to your specific layout coordinates (50px Top / 30px Bottom Padding) */
+    padding: 50px 6% 30px 6%;
+    background-color: #0A0F1D; /* Clean continuity transition theme shadow layers */
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.34; /* Subdued baseline overlay mapping to the premium layout template */
+    transition: transform 0.6s ease;
+}
+
+/* Semi-transparent protective layer vector to maintain absolute typography clarity grid */
+.banner-cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(10, 15, 29, 0.95) 0%, rgba(10, 15, 29, 0.6) 100%);
+    z-index: 2;
+}
+
+/* HIGH-DENSITY GLASSMORPHIC FRAME CONTAINER */
+.banner-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    background: rgba(30, 41, 59, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 28px;
+    padding: 44px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* LEFT COLUMN: RIGID TWO-LINE ACCENT TYPOGRAPHY */
+.banner-typography-block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.banner-text-line {
+    color: #FFFFFF;
+    transition: all 0.3s ease;
+}
+
+/* Line 1 Sizing (Crisp Upper Headline Matrix Elements) */
+.banner-text-line.line-upper {
+    font-size: 2.2rem;
+    font-weight: 400; /* Replicates signature thin wire framework style template metrics */
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    line-height: 1.15;
+}
+
+/* Line 2 Sizing (Subdued Lower Context Elements) */
+.banner-text-line.line-lower {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: #94A3B8;
+    font-weight: 300;
+}
+
+/* DYNAMIC HOVER GLOW STATE ENGINE MODULE OVERLAYS */
+.banner-container:hover {
+    border-color: rgba(74, 222, 128, 0.35); /* Focus box triggers to Ancient Green */
+    /* Immersive active fluorescent green visual neon aura glow output values */
+    box-shadow: 0 0 30px rgba(74, 222, 128, 0.22), 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+/* Trigger typography glow parameters on card overlay intersect */
+.banner-container:hover .banner-text-line.line-upper {
+    color: #4ADE80; /* Line 1 transforms cleanly to Stackly Main Brand Ancient Green */
+    text-shadow: 0 0 12px rgba(74, 222, 128, 0.3);
+}
+
+.banner-container:hover .banner-text-line.line-lower {
+    color: #FFFFFF;
+}
+
+.banner-container:hover .banner-bg-img {
+    transform: scale(1.03); /* Subtle backdrop coordinate visual zoom */
+}
+
+/* RIGHT COLUMN: HIGH FIDELITY FLOATING CAPSULE CTA BUTTON */
+.banner-action-block {
+    flex-shrink: 0;
+}
+
+.btn-banner-floating {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 34px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #0A0F1D;
+    background-color: #4ADE80; /* Main Corporate Accent Theme Green Color */
+    border-radius: 30px; /* Locked capsule geometry path values */
+    box-shadow: 0 8px 20px rgba(74, 222, 128, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-arrow-icon {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+/* Button micro-interaction layouts */
+.btn-banner-floating:hover {
+    background-color: #22C55E;
+    transform: translateY(-4px);
+    box-shadow: 0 0 25px rgba(74, 222, 128, 0.5), 0 12px 25px rgba(34, 197, 94, 0.3); /* Integrated localized neon green focus shine */
+}
+
+.btn-banner-floating:hover .btn-arrow-icon {
+    transform: translateX(4px); /* Interactive horizontal pointer bounce arrow element */
+}
+
+/* VIEWPORT ENTRY DIRECTIONAL OBSERVER WRAPPERS BASE TARGETS */
+.scroll-trigger-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-bottom {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-left.animate-in, 
+.scroll-trigger-right.animate-in, 
+.scroll-trigger-bottom.animate-in {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+}
+
+/* FLUID FLUID RESPONSIVE SYSTEM MEDIA VIEWPANELS BREAKPOINTS */
+@media (max-width: 1024px) {
+    .banner-container {
+        padding: 36px;
+    }
+    .banner-text-line.line-upper { font-size: 1.85rem; }
+}
+
+@media (max-width: 768px) {
+    .banner-container {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        padding: 32px 24px;
+        gap: 28px;
+    }
+    .banner-typography-block { text-align: center; }
+    .banner-text-line.line-upper { font-size: 1.5rem; }
+    .btn-banner-floating { justify-content: center; width: 100%; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // TWO-LINE CTA BANNER VIEWPORT OBSERVER DRIVE ROUTINES
+    const bannerObserverOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.15 // Fires animation timelines when 15% of banner container footprint cuts screen view bounds
+    };
+
+    const bannerSectionIntersectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const parentBannerSection = entry.target;
+
+                // Fire Line 1 arrival timeline (Slides seamlessly from left border metrics)
+                const upperLine = parentBannerSection.querySelector(".line-upper");
+                if (upperLine) upperLine.classList.add("animate-in");
+
+                // Fire Line 2 arrival timeline (Slides systematically from opposite right border coordinates)
+                const lowerLine = parentBannerSection.querySelector(".line-lower");
+                if (lowerLine) {
+                    setTimeout(() => {
+                        lowerLine.classList.add("animate-in");
+                    }, 120); // Smooth 120ms execution stagger offset buffer
+                }
+
+                // Fire floating action capsule buttons entrance transformation rules
+                const actionBlock = parentBannerSection.querySelector(".banner-action-block");
+                if (actionBlock) {
+                    setTimeout(() => {
+                        actionBlock.classList.add("animate-in");
+                    }, 250);
+                }
+
+                // Unmount component track tracking hook safely to stabilize application memory curves
+                observer.unobserve(parentBannerSection);
+            }
+        });
+    }, bannerObserverOptions);
+
+    const targetBannerSection = document.getElementById("banner-cta-viewport");
+    if (targetBannerSection) {
+        bannerSectionIntersectionObserver.observe(targetBannerSection);
+    }
+});
+
+</script>
+</body>
+</html>
