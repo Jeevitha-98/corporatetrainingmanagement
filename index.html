@@ -89,18 +89,18 @@
 
         <!-- Desktop Navigation Layer (Hidden on mobile via Media Query) -->
         <nav class="desktop-nav">
-            <ul class="nav-menu">
-                <li><a href="#dashboard" class="nav-item active">Dashboard</a></li>
-                <li><a href="#courses" class="nav-item">Courses</a></li>
-                <li><a href="#analytics" class="nav-item">Analytics</a></li>
-                <li><a href="#teams" class="nav-item">Teams</a></li>
-                <li><a href="#settings" class="nav-item">Settings</a></li>
+          <ul class="nav-menu">
+                <li><a href="index.html" class="nav-item active">Home</a></li>
+                <li><a href="courses.html" class="nav-item">Courses</a></li>
+                <li><a href="blogs.html" class="nav-item">Blogs</a></li>
+                <li><a href="about.html" class="nav-item">About Us</a></li>
+                <li><a href="contact.html" class="nav-item">Contact Us</a></li>
             </ul>
         </nav>
 
         <!-- Right Side Authentication Area -->
         <div class="auth-wrapper">
-            <button class="btn-auth">Sign In</button>
+           <button class="btn-auth" onclick="window.location.href='login.html'">Sign In</button>
             
             <!-- Mobile Hamburger Menu Toggle Trigger Button -->
             <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
@@ -3233,6 +3233,467 @@
     const targetBannerSection = document.getElementById("banner-cta-viewport");
     if (targetBannerSection) {
         bannerSectionIntersectionObserver.observe(targetBannerSection);
+    }
+});
+
+</script>
+
+<!-- UPDATE: FOOTER CONTAINER MATRIX WITH ADVANCED SOCIAL SVG VECTORS -->
+<footer class="portal-footer" id="stackly-global-footer">
+    <div class="footer-upper-grid">
+        
+        <!-- COLUMN 1: Brand Overview & Fluid SVG Social Controls -->
+        <div class="footer-column brand-summary-block">
+            <a href="#" class="footer-brand-logo" id="back-to-top-trigger" aria-label="Stackly Portal - Scroll Back To Top">
+                <img src="logo-dark.svg" alt="Stackly Logo" class="footer-logo-img">
+                <span class="footer-brand-name">STACKLY</span>
+            </a>
+            <p class="footer-brand-desc">
+                Engineering premium scalable corporate learning setups, skill matrices tracking pipelines, and decentralized enterprise upskilling nodes designed to fuel global workforce productivity alike.
+            </p>
+            
+            <!-- Dynamic SVG Vector Social Media Row Icons -->
+            <div class="footer-social-row">
+                <a href="404.html" class="social-circle-item" aria-label="Instagram Portal Link">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="404.html" class="social-circle-item" aria-label="Facebook Portal Link">
+                    <svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                </a>
+                <a href="404.html" class="social-circle-item" aria-label="X Platform Portal Link">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="404.html" class="social-circle-item" aria-label="LinkedIn Portal Link">
+                    <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="404.html" class="social-circle-item" aria-label="YouTube Portal Link">
+                    <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- COLUMN 2: Explore Tracks Link Column -->
+        <div class="footer-column link-list-block">
+            <h3 class="footer-column-heading">EXPLORE TRACKS</h3>
+            <ul class="footer-links-list">
+                <li><a href="404.html" class="footer-nav-link">L&D Architecture</a></li>
+                <li><a href="404.html" class="footer-nav-link">Compliance Pathways</a></li>
+                <li><a href="404.html" class="footer-nav-link">Leadership Labs</a></li>
+                <li><a href="404.html" class="footer-nav-link">Skill Matrix Grids</a></li>
+            </ul>
+        </div>
+
+        <!-- COLUMN 3: Platform Support Link Column -->
+        <div class="footer-column link-list-block">
+            <h3 class="footer-column-heading">PORTAL SUPPORT</h3>
+            <ul class="footer-links-list">
+                <li><a href="404.html" class="footer-nav-link">Curriculum Telemetry</a></li>
+                <li><a href="404.html" class="footer-nav-link">Course Catalog Sync</a></li>
+                <li><a href="404.html" class="footer-nav-link">Diagnostics & Help Center</a></li>
+                <li><a href="404.html" class="footer-nav-link">API Credentials</a></li>
+            </ul>
+        </div>
+
+        <!-- COLUMN 4: Headquarters Metadata & Inline Subscription Form -->
+        <div class="footer-column headquarters-form-block">
+            <h3 class="footer-column-heading">HEADQUARTERS</h3>
+            
+            <div class="footer-address-row">
+                <span class="location-pin-vector">📍</span>
+                <p class="address-text">
+                    Stackly Hub Complex, Periyakollappatty, Chinna Thirupathi,<br>
+                    Salem, Tamil Nadu 636008
+                </p>
+            </div>
+
+            <form class="footer-subscribe-form" id="newsletter-subscription-form" novalidate>
+                <div class="input-inner-wrapper">
+                    <input type="email" class="form-input-field" id="subscriber-email-input" placeholder="Enter corporate operator email...">
+                    <button type="submit" class="form-btn-submit">Subscribe</button>
+                </div>
+                <span class="validation-error-label" id="form-validation-notice">Please fill the fields</span>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- LOWER REGION: Copyright Ribbon Bar Grid Elements -->
+    <div class="footer-bottom-ribbon">
+        <div class="ribbon-container">
+            <span class="copyright-text">© 2026 Stackly Industries. All instructional management hardware rights reserved.</span>
+            <div class="ribbon-legal-anchors">
+                <a href="404.html" class="legal-link">Privacy Policy</a>
+                <a href="404.html" class="legal-link">Terms of Service</a>
+                <a href="404.html" class="legal-link">Cookie Governance</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    /* SYSTEM GLOBAL FOOTER CORE LAYOUT MAPPING */
+.portal-footer {
+    width: 100%;
+    background-color: #050811; 
+    padding: 60px 6% 0 6%;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.footer-upper-grid {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr 0.75fr 1.25fr;
+    gap: 40px;
+    padding-bottom: 50px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* SECTION 1: BRAND IDENTITY WRAPPERS */
+.footer-brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    margin-bottom: 24px;
+    transition: opacity 0.2s ease;
+}
+
+.footer-brand-logo:hover {
+    opacity: 0.85;
+}
+
+.footer-logo-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.3));
+}
+
+.footer-brand-name {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
+}
+
+/* UPDATE: Increased font-size scale factor for dim baseline text tracking values */
+.footer-brand-desc {
+    font-size: 0.98rem; /* Scaled up from 0.9rem to ensure rich screen readability */
+    line-height: 1.65;
+    color: #7E8B9B; /* Lifted text luminance scale slightly to complement layout reference template text */
+    margin-bottom: 24px;
+    max-width: 340px;
+}
+
+/* UPDATE: INTEGRATED DYNAMIC SVG SCALING FOR SOCIALS ROW NODES */
+.footer-social-row {
+    display: flex;
+    gap: 14px;
+}
+
+.social-circle-item {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-circle-item svg {
+    width: 18px;
+    height: 18px;
+    fill: #64748B; /* Matches layout reference dim vector mask hue value exactly */
+    transition: fill 0.3s ease;
+}
+
+.social-circle-item:hover {
+    background-color: rgba(74, 222, 128, 0.1);
+    border-color: rgba(74, 222, 128, 0.4); 
+    transform: translateY(-2px);
+}
+
+/* Highlight SVG vectors cleanly inside active hover state tracking index nodes */
+.social-circle-item:hover svg {
+    fill: #4ADE80; 
+}
+
+/* CATEGORY LINK COLUMNS INTERFACES */
+.footer-column-heading {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.06em;
+    margin-bottom: 24px;
+    position: relative;
+    padding-bottom: 6px;
+}
+
+.footer-column-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background-color: #EF4444; 
+    border-radius: 99px;
+}
+
+.footer-links-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* UPDATE: Increased font-size scale factor for navigational listing arrays */
+.footer-nav-link {
+    font-size: 1.02rem; /* Scaled up from 0.9rem to balance visual presence layout */
+    color: #7E8B9B; 
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.footer-nav-link:hover {
+    color: #4ADE80; 
+    transform: translateX(4px);
+}
+
+/* HEADQUARTERS ADDRESS GEOLOCATION BLOCKS */
+.footer-address-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 28px;
+}
+
+.location-pin-vector {
+    font-size: 1.1rem;
+    color: #38BDF8; 
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+    margin-top: 2px;
+}
+
+/* UPDATE: Increased font-size scale parameter for local text block assets */
+.address-text {
+    font-size: 0.98rem; /* Scaled up from 0.9rem for precision layout validation tracks */
+    line-height: 1.6;
+    color: #7E8B9B;
+}
+
+/* INLINE NEWSLETTER FORM SYSTEM */
+.footer-subscribe-form {
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+}
+
+.input-inner-wrapper {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 30px; 
+    padding: 4px;
+    width: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-inner-wrapper:focus-within {
+    border-color: rgba(74, 222, 128, 0.4);
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.15);
+}
+
+.form-input-field {
+    flex-grow: 1;
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 0.92rem;
+    color: #FFFFFF;
+    outline: none;
+    width: 60%;
+}
+
+.form-input-field::placeholder {
+    color: #334155;
+}
+
+.form-btn-submit {
+    background-color: #FFFFFF;
+    color: #050811;
+    border: none;
+    padding: 10px 24px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-btn-submit:hover {
+    background-color: #4ADE80; 
+    box-shadow: 0 0 12px rgba(74, 222, 128, 0.4);
+}
+
+.validation-error-label {
+    position: absolute;
+    bottom: -22px;
+    left: 18px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #F87171; 
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.validation-error-label.reveal-notice {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* LOWER REGION: COPYRIGHT RIBBON BAR STRIPS */
+.footer-bottom-ribbon {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 28px 0;
+    margin-top: 20px;
+}
+
+.ribbon-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.copyright-text {
+    font-size: 0.85rem;
+    color: #334155; 
+}
+
+.ribbon-legal-anchors {
+    display: flex;
+    gap: 24px;
+}
+
+.legal-link {
+    font-size: 0.85rem;
+    color: #334155;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.legal-link:hover {
+    color: #64748B;
+}
+
+/* RESPONSIVE LAYOUT MATRIX CONTROLS PARAMETERS */
+@media (max-width: 1200px) {
+    .footer-upper-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 48px;
+    }
+}
+
+@media (max-width: 640px) {
+    .portal-footer { padding: 40px 4% 0 4%; }
+    .footer-upper-grid { grid-template-columns: 1fr; gap: 36px; }
+    .input-inner-wrapper { flex-direction: column; border-radius: 16px; padding: 6px; gap: 8px; }
+    .form-input-field { width: 100%; padding: 8px 12px; }
+    .form-btn-submit { width: 100%; padding: 12px; border-radius: 12px; }
+    .ribbon-container { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .ribbon-legal-anchors { width: 100%; justify-content: space-between; gap: 12px; }
+    .validation-error-label { bottom: -20px; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. BRAND LOGO INTERFACES: SMOOTH RUNTIME BACK TO TOP ANIMATION ROUTINE
+    const topScrollTrigger = document.getElementById("back-to-top-trigger");
+    
+    if (topScrollTrigger) {
+        topScrollTrigger.addEventListener("click", (event) => {
+            event.preventDefault(); // Nullify instant standard anchor jump paramenters
+            
+            // Fires fluid operational scroll alignment to the absolute top grid index
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    }
+
+    // 2. INLINE FORM NEWSLETTER SYSTEM: DYNAMIC FIELD VALIDATION CHECKS
+    const subscribeForm = document.getElementById("newsletter-subscription-form");
+    const emailFieldInput = document.getElementById("subscriber-email-input");
+    const warningLabelNotice = document.getElementById("form-validation-notice");
+
+    if (subscribeForm && emailFieldInput && warningLabelNotice) {
+        subscribeForm.addEventListener("submit", (event) => {
+            event.preventDefault(); // Hold automatic browser action gates instantly
+            
+            const processedEmailString = emailFieldInput.value.trim();
+
+            // STEP A: Field Check Validation — Check if input field contains values
+            if (processedEmailString === "") {
+                warningLabelNotice.textContent = "Please fill the fields";
+                warningLabelNotice.classList.add("reveal-notice");
+                
+                // Clear notice warning animation dynamically after short visibility window
+                setTimeout(() => {
+                    warningLabelNotice.classList.remove("reveal-notice");
+                }, 3500);
+                
+                return; // Cease execution path sequence loop
+            }
+
+            // STEP B: Content Format Check — Basic syntax compliance review
+            if (!processedEmailString.includes("@") || processedEmailString.length < 5) {
+                warningLabelNotice.textContent = "Please enter a valid corporate email";
+                warningLabelNotice.classList.add("reveal-notice");
+                
+                setTimeout(() => {
+                    warningLabelNotice.classList.remove("reveal-notice");
+                }, 3500);
+                
+                return;
+            }
+
+            // STEP C: Navigation Execution Gate — Successful evaluation moves to 404 gate
+            window.location.href = "404.html";
+        });
+        
+        // Auto reset verification class indicators whenever users input fresh characters
+        emailFieldInput.addEventListener("input", () => {
+            if (warningLabelNotice.classList.contains("reveal-notice")) {
+                warningLabelNotice.classList.remove("reveal-notice");
+            }
+        });
     }
 });
 

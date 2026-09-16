@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackly Portal - Client Trainee Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- BLURRY BACKDROP MASK FOR RESPONSIVE MENU SIDEBAR CLOSURES -->
+    <div class="dashboard-blur-backdrop-mask" id="client-blur-backdrop-mask"></div>
+
+    <!-- MAIN APP FLOW LAYOUT CONTAINER -->
+    <div class="dashboard-app-frame">
+
+        <!-- Left Column: Sticky L&D Client Sidebar Navigation Menu (Exactly 4 Menus) -->
+        <aside class="dashboard-sidebar-panel" id="client-sidebar-panel">
+            <div class="sidebar-header-wrapper">
+                <!-- Brand logo behaves as an instant interactive dashboard reset trigger -->
+                <a href="#" class="sidebar-brand-refresh-link" id="client-brand-refresh-logo">
+                    <div class="sidebar-brand-vector">
+                        <svg viewBox="0 0 24 24"><path fill="#38BDF8" d="M12 3L1 9l11 5 11-5-11-5zm0 18l-11-5 11 5 11-5-11 5zm0-6l-11-5 11 5 11-5-11 5z"/></svg>
+                    </div>
+                    <span class="sidebar-brand-name">Stackly<em>Client</em></span>
+                </a>
+                <!-- Mobile Only Hidden Close Control Button -->
+                <button class="btn-sidebar-close" id="client-close-trigger" aria-label="Close Sidebar Menu">✕</button>
+            </div>
+
+            <!-- SCROLLER DOCK FOR SIDEBAR LINKS (Streamlined to 4 items) -->
+            <nav class="sidebar-navigation-dock">
+                <ul class="sidebar-menu-list">
+                    <li>
+                        <a href="#" class="menu-nav-anchor active" data-target-section="panel-my-curriculum">
+                            <!-- Learning Pathway Icon -->
+                            <svg class="menu-svg-vector-icon" viewBox="0 0 24 24"><path d="M12 3L1 9l11 5 11-5-11-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                            <span class="anchor-item-text">My Learning Path</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-nav-anchor" data-target-section="panel-sandbox-labs">
+                            <!-- Simulated Laboratory/Terminal Icon -->
+                            <svg class="menu-svg-vector-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+                            <span class="anchor-item-text">Sandbox Labs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-nav-anchor" data-target-section="panel-regulatory-compliance">
+                            <!-- Compliance Status Badges Icon -->
+                            <svg class="menu-svg-vector-icon" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+                            <span class="anchor-item-text">Compliance Status</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-nav-anchor" data-target-section="panel-certification-vault">
+                            <!-- Diploma Award Credentials Icon -->
+                            <svg class="menu-svg-vector-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-1.9 1.14-2.56l1.24-1.26c.37-.36.56-.86.56-1.38 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+                            <span class="anchor-item-text">Certification Vault</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- FOOTER SESSION SIGNOUT DOCK -->
+            <div class="sidebar-footer-action-dock">
+                <a href="#" class="btn-sidebar-logout" id="client-session-logout-trigger">
+                    <svg class="menu-svg-vector-icon color-danger" viewBox="0 0 24 24"><path d="M13 3h-2v10h2V3zm4.33 2.12l-1.42 1.42C17.99 7.86 19 9.77 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.23 1.01-4.14 2.09-5.46L5.67 5.12C4.04 6.87 3 9.31 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.69-1.04-5.13-2.67-6.88z"/></svg>
+                    <span class="anchor-item-text">Secure Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- RIGHT OPERATIONAL CONSOLE VIEWPORT WORKSPACE WRAPPER -->
+        <div class="dashboard-viewport-console-wrapper">
+
+            <!-- FIXED APP TOPHEADER BAR -->
+           <!-- FIXED APP TOPHEADER BAR -->
+<header class="dashboard-app-topheader">
+
+    <div class="topheader-left-cluster">
+
+        <!-- Hamburger icon -->
+        <button class="dashboard-hamburger-trigger"
+                id="client-hamburger-trigger"
+                aria-label="Open Navigation Sidebar">
+
+            <svg viewBox="0 0 24 24" class="hamburger-svg-icon">
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </svg>
+
+        </button>
+
+        <h2 class="topheader-current-workspace">
+            Trainee Terminal Deck
+        </h2>
+
+    </div>
+
+
+    <div class="topheader-right-cluster">
+
+        <!-- Notification Bell Button -->
+        <button class="topheader-action-bell-btn"
+                aria-label="View Curriculum Alerts">
+
+            <svg viewBox="0 0 24 24" class="bell-svg-icon">
+                <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1-1.5-1s-1.5.17-1.5 1v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/>
+            </svg>
+
+            <span class="bell-pulse-alert-dot"></span>
+
+        </button>
+
+
+        <!-- Profile -->
+        <div class="topheader-profile-badge-pill">
+
+            <div class="profile-avatar-frame-avatar">
+                <span class="avatar-initials-placeholder">T</span>
+            </div>
+
+            <span class="operator-first-name-token" id="client-user-first-name">
+                Loading...
+            </span>
+
+            <span class="operator-tier-badge">
+                Private Trainee Operator
+            </span>
+
+        </div>
+
+    </div>
+
+</header>
+            <!-- SWITCHABLE MULTI SECTION WORKSPACE MODULE PANELS STACK CANVAS -->
+            <main class="dashboard-sections-stack-canvas" id="client-sections-main-container">
+                
+                <!-- Section Viewport Panel 1 (My Learning Path) -->
+                <section class="dashboard-section-viewport-panel active-view" id="panel-my-curriculum">
+                    <div class="clean-section-header">
+                        <span class="clean-section-badge">📚 ASSIGNED ROADMAPS</span>
+                        <h1 class="clean-section-title">My Learning Path</h1>
+                        <div class="clean-section-divider"></div>
+                    </div>
+                </section>
+
+                <!-- Section Viewport Panel 2 (Sandbox Labs) -->
+                <section class="dashboard-section-viewport-panel" id="panel-sandbox-labs">
+                    <div class="clean-section-header">
+                        <span class="clean-section-badge">🧪 SIMULATED TERMINALS</span>
+                        <h1 class="clean-section-title">Sandbox Labs</h1>
+                        <div class="clean-section-divider"></div>
+                    </div>
+                </section>
+
+                <!-- Section Viewport Panel 3 (Compliance Status) -->
+                <section class="dashboard-section-viewport-panel" id="panel-regulatory-compliance">
+                    <div class="clean-section-header">
+                        <span class="clean-section-badge">🛡️ VALIDATION ENDPOINTS</span>
+                        <h1 class="clean-section-title">Compliance Status</h1>
+                        <div class="clean-section-divider"></div>
+                    </div>
+                </section>
+
+                <!-- Section Viewport Panel 4 (Certification Vault) -->
+                <section class="dashboard-section-viewport-panel" id="panel-certification-vault">
+                    <div class="clean-section-header">
+                        <span class="clean-section-badge">🎓 SECURED CREDENTIALS</span>
+                        <h1 class="clean-section-title">Certification Vault</h1>
+                        <div class="clean-section-divider"></div>
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+
+    /* =========================================================
+   HEADER WIDTH & PROFILE ALIGNMENT FIX
+   Prevents title wrapping and profile clipping
+   ========================================================= */
+
+.dashboard-app-topheader {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+}
+
+/* Allow left side to shrink without pushing profile outside */
+.topheader-left-cluster {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+}
+
+/* Keep dashboard title on one line */
+.topheader-current-workspace {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+
+/* Keep right profile area visible */
+.topheader-right-cluster {
+    flex: 0 0 auto;
+    min-width: max-content;
+    display: flex;
+    align-items: center;
+}
+
+/* Proper 2-row profile layout */
+.topheader-profile-badge-pill {
+    display: grid;
+    grid-template-columns: 40px auto;
+    grid-template-rows: auto auto;
+    column-gap: 14px;
+    row-gap: 2px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* Avatar occupies both rows */
+.profile-avatar-frame-avatar {
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+
+/* User name */
+.operator-first-name-token {
+    grid-column: 2;
+    grid-row: 1;
+    white-space: nowrap;
+}
+
+/* User role */
+.operator-tier-badge {
+    grid-column: 2;
+    grid-row: 2;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   RESPONSIVE HEADER FIX
+   ========================================================= */
+
+@media (max-width: 1024px) {
+
+    .dashboard-app-topheader {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .topheader-left-cluster {
+        flex: 1 1 0;
+    }
+
+}
+
+
+@media (max-width: 640px) {
+
+    .dashboard-app-topheader {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .topheader-current-workspace {
+        display: none;
+    }
+
+    .topheader-right-cluster {
+        gap: 16px;
+    }
+
+    .topheader-profile-badge-pill {
+        padding-left: 16px;
+    }
+
+}
+
+    /* ========================================================
+   STACKLY STREAMLINED CLIENT TRAINEE DASHBOARD STYLES
+   ======================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background-color: #050811; 
+    color: #FFFFFF;
+    overflow: hidden;
+}
+
+.dashboard-app-frame {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ========================================================
+   LEFT SIDEBAR: STICKY MENU NAVIGATION WRAPPER
+   ======================================================== */
+.dashboard-sidebar-panel {
+    width: 280px;
+    height: 100%;
+    background-color: #0A0F1D; 
+    border-right: 1px solid rgba(255, 255, 255, 0.04);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 100;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.sidebar-header-wrapper {
+    padding: 24px 28px;
+    height: 80px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-brand-refresh-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.sidebar-brand-vector {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-brand-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+}
+
+.sidebar-brand-name em {
+    font-style: italic;
+    font-weight: 300;
+    color: #38BDF8; /* Soft blue brand suffix trace accents matching Client domain metrics */
+}
+
+.btn-sidebar-close {
+    display: none; 
+    background: transparent;
+    color: #64748B;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.sidebar-navigation-dock {
+    flex-grow: 1;
+    padding: 32px 16px;
+    overflow-y: auto; 
+}
+
+.sidebar-menu-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu-nav-anchor {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    color: #64748B; 
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.menu-svg-vector-icon {
+    width: 20px;
+    height: 20px;
+    fill: #475569; 
+    transition: fill 0.3s ease;
+}
+
+.menu-nav-anchor:hover, .menu-nav-anchor.active {
+    color: #FFFFFF;
+    background-color: rgba(56, 189, 248, 0.03);
+}
+
+.menu-nav-anchor:hover .menu-svg-vector-icon, 
+.menu-nav-anchor.active .menu-svg-vector-icon {
+    fill: #38BDF8; 
+}
+
+.menu-nav-anchor.active {
+    background-color: rgba(56, 189, 248, 0.06);
+    border: 1px solid rgba(56, 189, 248, 0.12);
+    box-shadow: inset 0 1px 8px rgba(56, 189, 248, 0.05);
+}
+
+.sidebar-footer-action-dock {
+    padding: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.btn-sidebar-logout {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    color: #64748B;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.btn-sidebar-logout:hover {
+    color: #F87171; 
+    background-color: rgba(248, 113, 113, 0.04);
+}
+.btn-sidebar-logout:hover .menu-svg-vector-icon.color-danger { fill: #F87171; }
+
+/* ========================================================
+   RIGHT WORKSPACE PANEL: ADAPTIVE FLUID DISPLAY FIELDS
+   ======================================================== */
+.dashboard-viewport-console-wrapper {
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    background-color: #050811;
+    min-width: 0; 
+}
+
+.dashboard-app-topheader {
+    height: 80px;
+    width: 100%;
+    background-color: #0A0F1D;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    flex-shrink: 0;
+    z-index: 90;
+}
+
+.topheader-left-cluster {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.dashboard-hamburger-trigger {
+    display: none; 
+    background: transparent;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+}
+
+.hamburger-svg-icon {
+    width: 24px;
+    height: 24px;
+    fill: #FFFFFF;
+}
+
+.topheader-current-workspace {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+}
+
+.topheader-right-cluster {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.topheader-action-bell-btn {
+    background: transparent;
+    border: none;
+    color: #64748B;
+    cursor: pointer;
+    position: relative;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+.topheader-action-bell-btn:hover { color: #FFFFFF; }
+
+.bell-svg-icon {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+}
+
+.bell-pulse-alert-dot {
+    position: absolute;
+    top: 4px;
+    right: 5px;
+    width: 8px;
+    height: 8px;
+    background-color: #FB923C; 
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(251, 146, 60, 0.4);
+}
+
+.topheader-profile-badge-pill {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    padding-left: 32px;
+}
+
+.profile-avatar-frame-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.avatar-initials-placeholder {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #94A3B8;
+}
+
+.profile-identity-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.operator-first-name-token {
+    font-size: 0.98rem; 
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+.operator-tier-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #475569;
+}
+
+/* ========================================================
+   MAIN WORKSPACE VIEWPANEL CANVASES STYLE
+   ======================================================== */
+.dashboard-sections-stack-canvas {
+    flex-grow: 1;
+    width: 100%;
+    padding: 44px;
+    overflow-y: auto; 
+    -webkit-overflow-scrolling: touch;
+}
+
+.dashboard-section-viewport-panel {
+    display: none; 
+    width: 100%;
+    flex-direction: column;
+}
+
+.dashboard-section-viewport-panel.active-view {
+    display: flex; 
+}
+
+.clean-section-header {
+    text-align: left;
+    width: 100%;
+    padding: 10px 0;
+    position: relative;
+}
+
+.clean-section-badge {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #38BDF8; 
+    letter-spacing: 0.14em;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.clean-section-title {
+    font-size: 2.8rem; 
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    line-height: 1.15;
+    margin-bottom: 24px;
+}
+
+.clean-section-divider {
+    width: 80px;
+    height: 2px;
+    background-color: #38BDF8; 
+    border-radius: 2px;
+}
+
+/* ========================================================
+   RESPONSIVE OVERLAYS MASKS BLUR CONTROLS
+   ======================================================== */
+.dashboard-blur-backdrop-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(5, 8, 17, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 95;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.dashboard-blur-backdrop-mask.visible-blur {
+    opacity: 1;
+    pointer-events: auto; 
+}
+
+/* ========================================================
+   FLUID RESPONSIVE SYSTEM MEDIA BREAKPOINTS PANELS
+   ======================================================== */
+@media (max-width: 1024px) {
+    .dashboard-sidebar-panel {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        transform: translateX(-100%); 
+        height: 100vh;
+    }
+    
+    .dashboard-sidebar-panel.mobile-open {
+        transform: translateX(0); 
+    }
+    
+    .btn-sidebar-close {
+        display: flex; 
+    }
+    
+    .dashboard-hamburger-trigger {
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .dashboard-app-topheader {
+        padding: 0 24px; 
+    }
+    
+    .dashboard-sections-stack-canvas {
+        padding: 36px 24px;
+    }
+    
+    .clean-section-title { font-size: 2.2rem; }
+}
+
+@media (max-width: 640px) {
+    .dashboard-app-topheader { height: 72px; padding: 0 16px; }
+    .topheader-current-workspace { display: none; } 
+    .topheader-right-cluster { gap: 16px; width: auto; }
+    .topheader-profile-badge-pill { padding-left: 16px; }
+    .profile-identity-meta { display: none; } 
+    .clean-section-title { font-size: 1.85rem; }
+}
+
+</style>
+
+<script>
+    /**
+ * STACKLY CLIENT TRAINEE DASHBOARD CONTROLLER SYSTEM
+ * High-Performance Session Tracking & Responsive Interface Navigation Engine
+ */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    // ========================================================
+    // 1. SESSION INITIALIZATION & IDENTITY NAME PARSER ENGINE
+    // ========================================================
+    const initializeUserIdentityProfile = () => {
+        const headerUserNameTarget = document.getElementById("client-user-first-name");
+        const cachedOperatorEmail = localStorage.getItem("stackly_operator_cached_email");
+
+        if (headerUserNameTarget) {
+            if (cachedOperatorEmail && cachedOperatorEmail.includes("@")) {
+                const rawUserPrefix = cachedOperatorEmail.split("@")[0];
+                const alphabeticalOnlyString = rawUserPrefix.replace(/[0-9._-]/g, ' ').trim();
+                const fullyFormattedFirstName = alphabeticalOnlyString.charAt(0).toUpperCase() + alphabeticalOnlyString.slice(1);
+                
+                headerUserNameTarget.textContent = fullyFormattedFirstName;
+            } else {
+                headerUserNameTarget.textContent = "Trainee Operator";
+            }
+        }
+    };
+
+    initializeUserIdentityProfile();
+
+    // ========================================================
+    // 2. RESPONSIVE SIDEBAR MOBILE CONTROLS (HAMBURGER TOGGLE)
+    // ========================================================
+    const mobileHamburgerBtn = document.getElementById("client-hamburger-trigger");
+    const mobileCloseSidebarBtn = document.getElementById("client-close-trigger");
+    const masterSidebarWrapper = document.getElementById("client-sidebar-panel");
+    const blurryBackdropOverlay = document.getElementById("client-blur-backdrop-mask");
+
+    const openMobileSidebarMenu = () => {
+        if (masterSidebarWrapper && blurryBackdropOverlay) {
+            masterSidebarWrapper.classList.add("mobile-open");
+            blurryBackdropOverlay.classList.add("visible-blur");
+            document.body.style.overflow = "hidden"; 
+        }
+    };
+
+    const closeMobileSidebarMenu = () => {
+        if (masterSidebarWrapper && blurryBackdropOverlay) {
+            masterSidebarWrapper.classList.remove("mobile-open");
+            blurryBackdropOverlay.classList.remove("visible-blur");
+            document.body.style.overflow = "auto"; 
+        }
+    };
+
+    if (mobileHamburgerBtn) mobileHamburgerBtn.addEventListener("click", openMobileSidebarMenu);
+    if (mobileCloseSidebarBtn) mobileCloseSidebarBtn.addEventListener("click", closeMobileSidebarMenu);
+    if (blurryBackdropOverlay) blurryBackdropOverlay.addEventListener("click", closeMobileSidebarMenu);
+
+    // ========================================================
+    // 3. SECTION VIEWPANELS SWITCHER CONTROLLER ROUTINES
+    // ========================================================
+    const sidebarMenuNavigationLinks = document.querySelectorAll(".menu-nav-anchor");
+    const sectionWorkspacePanels = document.querySelectorAll(".dashboard-section-viewport-panel");
+
+    sidebarMenuNavigationLinks.forEach(link => {
+        link.addEventListener("click", (event) => {
+            event.preventDefault(); 
+
+            const targetSectionId = link.getAttribute("data-target-section");
+            
+            if (targetSectionId) {
+                sidebarMenuNavigationLinks.forEach(item => item.classList.remove("active"));
+                link.classList.add("active");
+
+                sectionWorkspacePanels.forEach(panel => panel.classList.remove("active-view"));
+                
+                const targetWorkspaceSectionNode = document.getElementById(targetSectionId);
+                if (targetWorkspaceSectionNode) {
+                    targetWorkspaceSectionNode.classList.add("active-view");
+                }
+
+                if (window.innerWidth <= 1024) {
+                    closeMobileSidebarMenu();
+                }
+            }
+        });
+    });
+
+    // ========================================================
+    // 4. LOGO INTERACTIVE DASHBOARD REFRESH SIMULATION SYSTEM
+    // ========================================================
+    const brandLogoHeaderNode = document.getElementById("client-brand-refresh-logo");
+
+    if (brandLogoHeaderNode) {
+        brandLogoHeaderNode.addEventListener("click", (event) => {
+            event.preventDefault();
+
+            sectionWorkspacePanels.forEach(panel => {
+                panel.style.opacity = "0.2";
+                panel.style.transform = "scale(0.995)";
+                panel.style.transition = "opacity 0.2s ease, transform 0.2s ease";
+            });
+
+            setTimeout(() => {
+                sidebarMenuNavigationLinks.forEach(item => item.classList.remove("active"));
+                sectionWorkspacePanels.forEach(panel => panel.classList.remove("active-view"));
+
+                if (sidebarMenuNavigationLinks.length > 0 && sectionWorkspacePanels.length > 0) {
+                    sidebarMenuNavigationLinks[0].classList.add("active");
+                    sectionWorkspacePanels[0].classList.add("active-view");
+                }
+
+                sectionWorkspacePanels.forEach(panel => {
+                    panel.style.opacity = "1";
+                    panel.style.transform = "scale(1)";
+                });
+            }, 300); 
+        });
+    }
+
+    // ========================================================
+    // 5. SESSION DE-AUTHENTICATION MANAGER (LOGOUT)
+    // ========================================================
+    const sessionLogoutBtn = document.getElementById("client-session-logout-trigger");
+
+    if (sessionLogoutBtn) {
+        sessionLogoutBtn.addEventListener("click", (event) => {
+            event.preventDefault();
+
+            localStorage.removeItem("stackly_operator_cached_email");
+            localStorage.removeItem("stackly_operator_active_role");
+
+            document.body.style.overflow = "auto";
+            window.location.href = "login.html";
+        });
+    }
+});
+
+</script>

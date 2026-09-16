@@ -1,0 +1,4020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackly - Corporate Training Management</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- MINIMAL PRELOADER SCREEN -->
+    <div id="preloader">
+        <div class="brand-wrapper">
+            <!-- Custom Vector Logo from Image Reference in Single Color Line Art -->
+            <svg class="vector-logo" viewBox="0 0 200 200" fill="none" xmlns="http://w3.org">
+                <!-- Bottom Base Diamond Layer -->
+                <path class="layer layer-1" d="M30 140L100 175L170 140L100 105L30 140Z" />
+                <!-- Middle Diamond Layer -->
+                <path class="layer layer-2" d="M30 100L100 135L170 100L100 65L30 100Z" />
+                <!-- Top Summit Diamond Layer -->
+                <path class="layer layer-3" d="M30 60L100 95L170 60L100 25L30 60Z" />
+            </svg>
+            
+            <div class="text-group">
+                <h1 class="brand-name">Stackly</h1>
+                <p class="status-text" id="status-label">CONNECTING DATABASE...</p>
+            </div>
+
+            <!-- Single-Color Progress Indicator -->
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const progressBar = document.getElementById("progress-bar");
+    const statusLabel = document.getElementById("status-label");
+    
+    const totalDuration = 2000; // Hardcoded 2-second timeout window
+    const frameRate = 30; 
+    const totalTicks = totalDuration / frameRate;
+    let currentTick = 0;
+
+    const phrases = [
+        { limit: 35, text: "OPTIMIZING CORE ENVIRONMENT..." },
+        { limit: 75, text: "CONNECTING DATABASE..." },
+        { limit: 100, text: "LAUNCHING..." }
+    ];
+
+    const loaderInterval = setInterval(() => {
+        currentTick++;
+        const percentage = Math.min((currentTick / totalTicks) * 100, 100);
+        
+        if (progressBar) {
+            progressBar.style.width = `${percentage}%`;
+        }
+
+        if (statusLabel) {
+            const match = phrases.find(p => percentage <= p.limit);
+            if (match) statusLabel.textContent = match.text;
+        }
+
+        if (currentTick >= totalTicks) {
+            clearInterval(loaderInterval);
+            
+            // Clean modal dismount
+            setTimeout(() => {
+                document.body.classList.add("loaded");
+            }, 100);
+        }
+    }, frameRate);
+});
+
+</script>
+
+<!-- FLOATING HEADER INTERFACE -->
+<header class="floating-header">
+    <div class="header-container">
+        
+        <a href="#" class="brand-logo" id="brand-logo-trigger" aria-label="Stackly Home - Refresh Portal">
+            <!-- Replace 'logo-placeholder.svg' with your actual vector file path -->
+            <img src="logo-placeholder.svg" alt="Stackly Logo" class="logo-img">
+            <span class="brand-name-text">Stackly</span>
+        </a>
+
+        <!-- Desktop Navigation Layer (Hidden on mobile via Media Query) -->
+        <nav class="desktop-nav">
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-item ">Home</a></li>
+                <li><a href="courses.html" class="nav-item ">Courses</a></li>
+                <li><a href="blogs.html" class="nav-item ">Blogs</a></li>
+                <li><a href="about.html" class="nav-item active">About Us</a></li>
+                <li><a href="contact.html" class="nav-item">Contact Us</a></li>
+            </ul>
+        </nav>
+
+        <!-- Right Side Authentication Area -->
+        <div class="auth-wrapper">
+            <button class="btn-auth">Sign In</button>
+            
+            <!-- Mobile Hamburger Menu Toggle Trigger Button -->
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Responsive Mobile Navigation Drawer Overlay Drawer Component -->
+<div class="mobile-drawer" id="mobile-navigation-drawer">
+    <nav class="mobile-nav">
+        <ul>
+            <li><a href="#dashboard" class="mobile-nav-item ">Dashboard</a></li>
+            <li><a href="#courses" class="mobile-nav-item">Courses</a></li>
+            <li><a href="#analytics" class="mobile-nav-item">Analytics</a></li>
+            <li><a href="#teams" class="mobile-nav-item">Teams</a></li>
+            <li><a href="#settings" class="mobile-nav-item">Settings</a></li>
+        </ul>
+    </nav>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    // 1. BRAND REFRESH CONTROLLER
+    const logoTrigger = document.getElementById("brand-logo-trigger");
+    if (logoTrigger) {
+        logoTrigger.addEventListener("click", (e) => {
+            e.preventDefault(); // Stop standard routing anchors
+            window.location.reload(); // Instantly trigger atomic state wipe refresh
+        });
+    }
+
+    // 2. MOBILE OVERLAY RESPONSIVE DRAWER MANAGEMENT
+    const menuToggle = document.getElementById("mobile-menu-toggle");
+    const navDrawer = document.getElementById("mobile-navigation-drawer");
+    const drawerLinks = document.querySelectorAll(".mobile-nav-item");
+
+    if (menuToggle && navDrawer) {
+        const toggleMenuState = () => {
+            menuToggle.classList.toggle("active");
+            navDrawer.classList.toggle("open");
+            
+            // Toggle body scroll control layers to prevent standard layout parallax shifts
+            if (navDrawer.classList.contains("open")) {
+                document.body.style.overflow = "hidden";
+            } else {
+                document.body.style.overflow = "";
+            }
+        };
+
+        menuToggle.addEventListener("click", toggleMenuState);
+
+        // Auto close navigation screen drawer whenever links are selected
+        drawerLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                if (navDrawer.classList.contains("open")) {
+                    toggleMenuState();
+                }
+            });
+        });
+    }
+});
+
+</script>
+
+<!-- DYNAMIC L&D SYSTEM HERO SECTION -->
+<section class="about-hero-section" id="about-hero-viewport">
+    <img src="about-hero-bg.jpg" alt="Corporate Training Environment" class="about-hero-bg-img">
+
+    <div class="about-hero-container">
+        <div class="about-hero-content-block">
+            
+            <!-- Top Pill Badge -->
+            <div class="about-hero-badge-strip scroll-trigger-up animate-in">
+                <span class="badge-icon">🎓</span> Trusted since 2016 • 50,000+ Students
+            </div>
+
+            <!-- Staggered word-by-word title container -->
+            <h1 class="about-hero-main-title" id="about-hero-staggered-title">
+                Master Corporate intelligence Expert Led
+            </h1>
+            
+            <p class="about-hero-subtitle scroll-trigger-up animate-in">
+                Learn corporate trading, blockchain technology matrices, compliance frameworks, and AI-powered workflow investment strategies.
+            </p>
+
+            <!-- Dual CTA Action Buttons -->
+            <div class="about-hero-cta-row scroll-trigger-up animate-in">
+                <a href="404.html" class="btn-hero-primary">
+                    Get started <span class="btn-arrow-vector">›</span>
+                </a>
+                <a href="404.html" class="btn-hero-secondary">View courses</a>
+            </div>
+
+            <!-- BOTTOM REGION: High-Performance Decrease-to-Increase Odometer Ribbon -->
+            <div class="about-hero-metrics-ribbon scroll-trigger-up animate-in">
+                
+                <!-- Metric Block 1 -->
+                <div class="metric-item-node">
+                    <div class="metric-number-wrapper">
+                        <!-- Removed absolute text to let JavaScript handle safe numeric increments -->
+                        <span class="metric-active-number" id="odometer-students">0</span><span class="metric-suffix">K+</span>
+                    </div>
+                    <span class="metric-label-text">Active students</span>
+                </div>
+                
+                <!-- Metric Block 2 -->
+                <div class="metric-item-node">
+                    <div class="metric-number-wrapper">
+                        <span class="metric-active-number" id="odometer-rating">0.0</span><span class="metric-suffix">/5</span>
+                    </div>
+                    <span class="metric-label-text">Average rating</span>
+                </div>
+                
+                <!-- Metric Block 3 -->
+                <div class="metric-item-node">
+                    <div class="metric-number-wrapper">
+                        <span class="metric-active-number" id="odometer-reports">0</span><span class="metric-suffix">+</span>
+                    </div>
+                    <span class="metric-label-text">Expert reports</span>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    /* MASTER CENTERED HERO ARCHITECTURE CONTROLS */
+.about-hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Strict parameter spacing compliance: 50px Top Padding / 30px Bottom Padding */
+    padding: 50px 6% 30px 6%;
+    background-color: #050811; 
+    overflow: hidden;
+}
+
+.about-hero-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.15; 
+}
+
+.about-hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #050811 0%, rgba(5, 8, 17, 0.6) 50%, #050811 100%),
+                radial-gradient(circle at center, rgba(5, 8, 17, 0.2) 0%, #050811 90%);
+    z-index: 2;
+}
+
+.about-hero-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 920px; 
+    margin: 0 auto;
+}
+
+.about-hero-content-block {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-hero-badge-strip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #FDBA74; 
+    background-color: rgba(253, 186, 116, 0.06);
+    border: 1px solid rgba(253, 186, 116, 0.15);
+    border-radius: 30px;
+    margin-bottom: 28px;
+}
+
+.badge-icon { font-size: 0.95rem; }
+
+.about-hero-main-title {
+    font-size: 4rem; 
+    font-weight: 700; 
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 16px;
+}
+
+.about-hero-main-title span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(25px); 
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.about-hero-main-title span.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-hero-subtitle {
+    font-size: 1.2rem; 
+    line-height: 1.65;
+    color: #94A3B8; 
+    max-width: 680px;
+    margin-bottom: 40px;
+}
+
+.about-hero-cta-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 64px; 
+}
+
+.btn-hero-primary, .btn-hero-secondary {
+    padding: 14px 36px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px; 
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-hero-primary {
+    background-color: #6366F1; 
+    color: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+}
+
+.btn-arrow-vector { font-size: 1.1rem; line-height: 1; }
+
+.btn-hero-secondary {
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.btn-hero-primary:hover {
+    background-color: #4F46E5;
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(99, 102, 241, 0.45);
+}
+
+.btn-hero-secondary:hover {
+    background-color: rgba(74, 222, 128, 0.08); 
+    border-color: #4ADE80; 
+    color: #4ADE80;
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.25);
+}
+
+/* ========================================================
+   BOTTOM LAYER: FLUORESCENT DECREASE-TO-INCREASE ODOMETER RIBBON
+   ======================================================== */
+.about-hero-metrics-ribbon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px; 
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 40px;
+}
+
+.metric-item-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.metric-number-wrapper {
+    display: flex;
+    align-items: baseline;
+    color: #FFFFFF;
+    font-size: 2.2rem; 
+    font-weight: 700;
+    line-height: 1;
+}
+
+.metric-active-number {
+    will-change: text-content;
+    /* Soft color color shift during active computation updates */
+    transition: color 0.15s ease;
+}
+
+/* Visual color swap marker while calculations are decreasing to zero */
+.metric-active-number.dropping-values {
+    color: #EF4444; /* High visibility notice crimson red */
+}
+
+.metric-suffix {
+    color: #FFFFFF;
+    margin-left: 1px;
+}
+
+.metric-label-text {
+    font-size: 0.9rem;
+    color: #64748B; 
+    margin-top: 10px;
+    text-transform: capitalize;
+}
+
+/* INTERACTIVE TEXT HOVER GLOW TRANSLATIONS ON THE METRICS CANVAS */
+.about-hero-content-block:hover .metric-active-number {
+    color: #4ADE80; 
+    text-shadow: 0 0 12px rgba(74, 222, 128, 0.35);
+}
+
+/* FLUID RESPONSIVE SYSTEM MEDIA BREAKPOINTS CONTROLLER */
+@media (max-width: 900px) {
+    .about-hero-main-title { font-size: 3.2rem; }
+    .about-hero-metrics-ribbon { gap: 48px; } 
+}
+
+@media (max-width: 768px) {
+    .about-hero-main-title { font-size: 2.6rem; gap: 0 12px; }
+    .about-hero-subtitle { font-size: 1.05rem; }
+    .about-hero-metrics-ribbon { gap: 36px; flex-wrap: wrap; justify-content: space-around; }
+    .about-hero-cta-row { gap: 12px; width: 100%; }
+}
+
+@media (max-width: 520px) {
+    .about-hero-section { padding-top: 130px; padding-bottom: 40px; }
+    .about-hero-badge-strip { font-size: 0.78rem; padding: 6px 12px; margin-bottom: 20px; }
+    .about-hero-main-title { font-size: 1.95rem; }
+    .about-hero-cta-row { flex-direction: column; align-items: stretch; gap: 12px; }
+    .btn-hero-primary, .btn-hero-secondary { text-align: center; justify-content: center; width: 100%; border-radius: 10px; }
+    .about-hero-metrics-ribbon { flex-direction: column; gap: 28px; align-items: center; padding-top: 32px; }
+    .metric-number-wrapper { font-size: 1.95rem; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // ==========================================
+    // 1. TYPOGRAPHY ENGINE: WORD-BY-WORD TITLE PARSER
+    // ==========================================
+    const parseAboutHeroTitle = (titleContainer) => {
+        if (!titleContainer) return;
+        const words = titleContainer.textContent.trim().split(/\s+/);
+        titleContainer.innerHTML = "";
+
+        words.forEach((word) => {
+            const span = document.createElement("span");
+            span.textContent = word + " ";
+            titleContainer.appendChild(span);
+        });
+    };
+
+    const runAboutHeroTitleAnimation = (titleContainer) => {
+        if (!titleContainer) return;
+        const spans = titleContainer.querySelectorAll("span");
+        spans.forEach((span, index) => {
+            setTimeout(() => span.classList.add("animate-in"), index * 70);
+        });
+    };
+
+    const heroTitleNode = document.getElementById("about-hero-staggered-title");
+    if (heroTitleNode) {
+        parseAboutHeroTitle(heroTitleNode);
+        // Instant mount reveal trigger
+        setTimeout(() => runAboutHeroTitleAnimation(heroTitleNode), 200);
+    }
+
+
+    // ==========================================
+    // 2. ASYNC ODOMETER ENGINE: DECREASE-TO-INCREASE LOOP
+    // ==========================================
+    const targetMetricsData = [
+        { students: 50, rating: 4.9, reports: 200 },
+        { students: 74, rating: 4.7, reports: 280 },
+        { students: 35, rating: 5.0, reports: 140 },
+        { students: 95, rating: 4.8, reports: 410 }
+    ];
+    let activeDataPointer = 0;
+
+    // Track active baseline numeric variables to compute increments smoothly
+    let currentStudents = 0;
+    let currentRating = 0.0;
+    let currentReports = 0;
+
+    const runHighPrecisionCounterTick = (targetStudents, targetRating, targetReports) => {
+        const studentNode = document.getElementById("odometer-students");
+        const ratingNode = document.getElementById("odometer-rating");
+        const reportsNode = document.getElementById("odometer-reports");
+
+        if (!studentNode || !ratingNode || !reportsNode) return;
+
+        // Configuration matrices thresholds variables controls
+        const loopSteps = 40; 
+        const executionFpsRate = 1000 / 60; // Clean 60 FPS update speed
+        let runningFrame = 0;
+
+        const deltaStudents = (targetStudents - currentStudents) / loopSteps;
+        const deltaRating = (targetRating - currentRating) / loopSteps;
+        const deltaReports = (targetReports - currentReports) / loopSteps;
+
+        const calculationLoopTick = setInterval(() => {
+            runningFrame++;
+            
+            currentStudents += deltaStudents;
+            currentRating += deltaRating;
+            currentReports += deltaReports;
+
+            // Output clamp data formatting rules calculations
+            studentNode.textContent = Math.floor(currentStudents);
+            ratingNode.textContent = currentRating.toFixed(1);
+            reportsNode.textContent = Math.floor(currentReports);
+
+            if (runningFrame >= loopSteps) {
+                clearInterval(calculationLoopTick);
+                
+                // Absolute terminal precision locking bounds parameters
+                currentStudents = targetStudents;
+                currentRating = targetRating;
+                currentReports = targetReports;
+
+                studentNode.textContent = currentStudents;
+                ratingNode.textContent = currentRating.toFixed(1);
+                reportsNode.textContent = currentReports;
+
+                // Strips values dropping color flags overlay loops cleanly
+                studentNode.classList.remove("dropping-values");
+                ratingNode.classList.remove("dropping-values");
+                reportsNode.classList.remove("dropping-values");
+            }
+        }, executionFpsRate);
+    };
+
+    const triggerOdometerLifecyclePhase = () => {
+        const studentNode = document.getElementById("odometer-students");
+        const ratingNode = document.getElementById("odometer-rating");
+        const reportsNode = document.getElementById("odometer-reports");
+
+        if (!studentNode || !ratingNode || !reportsNode) return;
+
+        // PHASE A: DECREASE CURRENT VALUES RAPIDLY TO 0 FIRST
+        studentNode.classList.add("dropping-values");
+        ratingNode.classList.add("dropping-values");
+        reportsNode.classList.add("dropping-values");
+
+        runHighPrecisionCounterTick(0, 0.0, 0);
+
+        // PHASE B: SECURE BRIEF VISUAL BALANCE AT 0 THEN COUNT UP TO NEXT TARGET
+        setTimeout(() => {
+            activeDataPointer = (activeDataPointer + 1) % targetMetricsData.length;
+            const nextSet = targetMetricsData[activeDataPointer];
+
+            runHighPrecisionCounterTick(nextSet.students, nextSet.rating, nextSet.reports);
+        }, 1000); // 1-second pause ceiling window right at zero bounds markers
+    };
+
+    // Initialize initial loading count up to the first data index
+    setTimeout(() => {
+        const initialSet = targetMetricsData[0];
+        runHighPrecisionCounterTick(initialSet.students, initialSet.rating, initialSet.reports);
+    }, 400);
+
+    // Schedule subsequent automated decrease-to-increase cycles to repeat every 5 seconds
+    setInterval(triggerOdometerLifecyclePhase, 5000);
+});
+
+</script>
+
+<!-- DYNAMIC REVERSED WHO WE ARE INTERACTIVE SECTION -->
+<section class="whoweare-section" id="whoweare-viewport-trigger">
+    <div class="whoweare-container">
+        
+        <!-- LEFT COLUMN: Visual Media Frame (Features smooth zoom-in hover parameters) -->
+        <div class="whoweare-visual-column">
+            <div class="whoweare-image-wrapper">
+                <!-- Replace 'corporate-sandbox-hub.jpg' with your target platform image asset layer path -->
+                <img src="./assests/about img 1.webp" alt="Stackly Corporate Upskilling Sandbox Center" class="whoweare-embed-img">
+                
+                <!-- Decorative brand green border overlay accent box -->
+                <div class="whoweare-perimeter-box"></div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Corporate Content Core (Features word-by-word scroll text builders) -->
+        <div class="whoweare-content-column">
+            <span class="whoweare-pretitle">⚙️ UNIFIED TRAINING ARCHITECTURE</span>
+            
+            <!-- Target title parsed word-by-word sequentially on page scroll thresholds -->
+            <h2 class="whoweare-main-title" id="whoweare-staggered-title">
+                Evolving human capital through automated metrics mapping
+            </h2>
+            
+            <!-- Target paragraph parsed word-by-word with staggered sequence delays -->
+            <p class="whoweare-description-text" id="whoweare-staggered-description">
+                Stackly bridges organizational capability gaps by deploying continuous learning tracks, localized regulatory compliance frameworks, and real-time completion telemetry. We empower international departments to assess completion indices, configure mandating renewal loops, and unlock workforce velocity records hands-free.
+            </p>
+
+            <div class="whoweare-metric-subrow">
+                <div class="whoweare-subnode">
+                    <span class="subnode-accent">✓</span> Real-Time Matrix Grids
+                </div>
+                <div class="whoweare-subnode">
+                    <span class="subnode-accent">✓</span> Simulated Sandbox Labs
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* GLOBAL RESETS FOR RESOLVING BOUNDS BLOCKS friction */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* WHO WE ARE MASTER SECTION CONTROLS */
+.whoweare-section {
+    width: 100%;
+    /* Strict parameter spacing compliance: 50px Top Padding / 30px Bottom Padding */
+    padding: 50px 6% 30px 6%;
+    background-color: #0A0F1D; /* Seamless dark-theme continuity profile canvas */
+    position: relative;
+    overflow: hidden;
+}
+
+.whoweare-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr; /* Asymmetric balance distribution mapping reference layout */
+    gap: 72px;
+    align-items: center;
+}
+
+/* ==========================================
+   LEFT SIDE: MEDIA DISPLAY FRAMES ARCHITECTURE
+   ========================================== */
+.whoweare-visual-column {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.whoweare-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 460px; /* Rigidity proportions ceiling to prevent layout stretch during zoom cycles */
+    border-radius: 24px;
+}
+
+.whoweare-embed-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 24px;
+    display: block;
+    position: relative;
+    z-index: 3;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    /* Micro scale zoom transition timing filters */
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.3s ease;
+}
+
+/* Ambient green boundary profile line accent box backdrop */
+.whoweare-perimeter-box {
+    position: absolute;
+    bottom: -16px;
+    left: -16px;
+    width: 50%;
+    height: 50%;
+    border-left: 2px solid rgba(74, 222, 128, 0.15); /* Stackly Primary Theme Ancient Green */
+    border-bottom: 2px solid rgba(74, 222, 128, 0.15);
+    border-radius: 0 0 0 24px;
+    z-index: 1;
+    pointer-events: none;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease;
+}
+
+/* ==========================================
+   RIGHT SIDE: TYPOGRAPHY WORD REVEAL CORE
+   ========================================== */
+.whoweare-content-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.whoweare-pretitle {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #4ADE80; 
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.whoweare-main-title {
+    font-size: 3.2rem;
+    font-weight: 700; /* Rich thick bold headers exactly like image typography reference mapping */
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 12px;
+}
+
+/* WORD-BY-WORD STRUCTURAL REVEAL TOKEN CONTAINERS */
+.whoweare-main-title span, .whoweare-description-text span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(12px) scale(0.98); /* Forces tokens to arrive with fluid buoyancy upward shift */
+    transition: opacity 0.45s cubic-bezier(0.25, 1, 0.5, 1), transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.whoweare-main-title span.animate-token-in, 
+.whoweare-description-text span.animate-token-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.whoweare-description-text {
+    font-size: 1.08rem; /* High visibility text scale factor matching preferences */
+    line-height: 1.65;
+    color: #94A3B8; /* Slate light gray text block lines */
+    margin-bottom: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 6px;
+}
+
+.whoweare-metric-subrow {
+    display: flex;
+    gap: 28px;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding-top: 20px;
+}
+
+.whoweare-subnode {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #64748B;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.subnode-accent {
+    color: #4ADE80;
+    font-weight: 700;
+}
+
+/* ==========================================
+   HIGH-FREQUENCY HOVER GLOW ACTIONS ENGINE 
+   ========================================== */
+.whoweare-container:hover .whoweare-perimeter-box {
+    border-color: rgba(74, 222, 128, 0.45);
+    transform: translate(-4px, 4px); /* Interactive visual extension step multiplier */
+}
+
+.whoweare-container:hover .whoweare-embed-img {
+    transform: scale(1.03); /* Lens focus scale adjustments overlay */
+    filter: brightness(1.02);
+}
+
+/* Trigger immersive radiant fluorescent neon green aura glow overlay on hover focus */
+.whoweare-container:hover .whoweare-main-title {
+    text-shadow: 0 0 15px rgba(74, 222, 128, 0.2);
+}
+
+.whoweare-container:hover .whoweare-subnode {
+    color: #FFFFFF;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+}
+
+/* FLUID FLUID RESPONSIVE SYSTEM MEDIA BREAKPOINTS CONTROLLERS */
+@media (max-width: 1100px) {
+    .whoweare-container { grid-template-columns: 1fr; gap: 44px; }
+    .whoweare-image-wrapper { height: 360px; max-width: 680px; margin: 0 auto; }
+    .whoweare-content-column { max-width: 100%; }
+    .whoweare-main-title { font-size: 2.6rem; }
+}
+
+@media (max-width: 640px) {
+    /* Custom low profile padding clamps overrides */
+    .whoweare-section { padding-top: 40px; padding-bottom: 24px; }
+    .whoweare-main-title { font-size: 1.95rem; gap: 0 10px; }
+    .whoweare-description-text { font-size: 1rem; gap: 0 5px; }
+    .whoweare-image-wrapper { height: 250px; }
+    .whoweare-metric-subrow { flex-direction: column; gap: 14px; }
+}
+
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // ========================================================
+    // WHO WE ARE SECTOR: TWO-COLUMN WORD-BY-WORD TEXT CONSTRUCTOR
+    // ========================================================
+    
+    const segmentTextIntoWordTokens = (containerElement) => {
+        if (!containerElement) return null;
+        
+        // Extract flat baseline content strings and split via regex whitespaces parameters
+        const originalRawTextString = containerElement.textContent.trim();
+        const wordsArrayMatrix = originalRawTextString.split(/\s+/);
+        containerElement.innerHTML = ""; // Wipe flat content layout strings
+
+        const fragmentsArrayCollector = [];
+
+        wordsArrayMatrix.forEach((word) => {
+            const spanToken = document.createElement("span");
+            // Maintain spacing layouts context cleanly inside word splits transformations
+            spanToken.innerHTML = word + " ";
+            containerElement.appendChild(spanToken);
+            fragmentsArrayCollector.push(spanToken);
+        });
+
+        return fragmentsArrayCollector;
+    };
+
+    const titleTarget = document.getElementById("whoweare-staggered-title");
+    const descTarget = document.getElementById("whoweare-staggered-description");
+
+    // Segment text blocks programmatically into separate list structures loops instantly
+    const titleTokenSpans = segmentTextIntoWordTokens(titleTarget);
+    const descTokenSpans = segmentTextIntoWordTokens(descTarget);
+
+    // High performance scroller intersection listener configuration mapping requirements
+    const whoweareObserverOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.12 // Fires calculation dispatches when 12% of container cuts scroller view bounds
+    };
+
+    const whoweareIntersectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                
+                // STEP A: Fire Main Title Headline Sequence — Word-by-Word
+                if (titleTokenSpans) {
+                    titleTokenSpans.forEach((span, index) => {
+                        setTimeout(() => {
+                            span.classList.add("animate-token-in");
+                        }, index * 60); // Clear 60ms sequence separation velocity step markers
+                    });
+                }
+
+                // STEP B: Fire Description Paragraph Sequence — Word-by-Word with Subsequent offset buffer
+                if (descTokenSpans) {
+                    // Compute absolute total runtime width delay factor of title deployment pass
+                    const titleTotalDelayCeiling = titleTokenSpans ? titleTokenSpans.length * 60 : 0;
+                    const paragraphStartOffset = titleTotalDelayCeiling + 150; // Smooth 150ms buffer clearance track
+
+                    descTokenSpans.forEach((span, index) => {
+                        setTimeout(() => {
+                            span.classList.add("animate-token-in");
+                        }, paragraphStartOffset + (index * 25)); // Ultra rapid 25ms text compilation cadence
+                    });
+                }
+
+                // Unmount target observer thread safely to conserve active background processing cycles
+                observer.unobserve(entry.target);
+            }
+        });
+    }, whoweareObserverOptions);
+
+    const targetWhoWeAreSection = document.getElementById("whoweare-viewport-trigger");
+    if (targetWhoWeAreSection) {
+        whoweareIntersectionObserver.observe(targetWhoWeAreSection);
+    }
+});
+
+</script>
+
+<!-- DYNAMIC L&D CATEGORIES ASYMMETRIC MORPHING INTERFACE -->
+<section class="ld-categories-section" id="categories-viewport-trigger">
+    <div class="ld-categories-container">
+        
+        <!-- LEFT REGION: Interactive Morphing Circle-to-Shape Grid Track -->
+        <div class="ld-cards-morph-stack">
+            
+            <!-- Category Node 1: Circular Foundational Lab (Morphs on hover) -->
+            <div class="ld-morph-card node-small">
+                <div class="ld-card-inner-canvas">
+                    <div class="ld-image-media-layer">
+                        <img src="corporate-category-1.jpg" alt="Compliance Mandates Track" class="ld-embed-img">
+                        <div class="ld-image-matte-filter"></div>
+                        <span class="ld-top-floating-label">Compliance Paths</span>
+                    </div>
+                    <!-- Details drawer expands seamlessly downwards when card gets cursor focus -->
+                    <div class="ld-details-drawer">
+                        <h3 class="ld-drawer-heading">Compliance</h3>
+                        <p class="ld-drawer-summary-para">Automate legal training metrics and recurring regulatory validation paths effortlessly across sections.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Node 2: Circular Intermediate Lab (Morphs on hover) -->
+            <div class="ld-morph-card node-medium">
+                <div class="ld-card-inner-canvas">
+                    <div class="ld-image-media-layer">
+                        <img src="corporate-category-2.jpg" alt="Agile Leadership Sprints" class="ld-embed-img">
+                        <div class="ld-image-matte-filter"></div>
+                        <span class="ld-top-floating-label">Agile Sprints</span>
+                    </div>
+                    <div class="ld-details-drawer">
+                        <h3 class="ld-drawer-heading">Agile Sprints</h3>
+                        <p class="ld-drawer-summary-para">Accelerate departmental development velocity and clear pipeline communication bottlenecks hands-free.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Node 3: Large Active Focus Lab (Open by default, scales on alternate hovers) -->
+            <div class="ld-morph-card node-large active-default-focus">
+                <div class="ld-card-inner-canvas">
+                    <div class="ld-image-media-layer">
+                        <img src="corporate-category-3.jpg" alt="Technical Micro-Architecture Sandboxes" class="ld-embed-img">
+                        <div class="ld-image-matte-filter"></div>
+                        <span class="ld-top-floating-label">Technical Labs</span>
+                    </div>
+                    <div class="ld-details-drawer">
+                        <h3 class="ld-drawer-heading">Technical Labs</h3>
+                        <p class="ld-drawer-summary-para">Elevate workforce proficiency thresholds with specialized skill development sandbox clinics led.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT REGION: High Contrast Corporate Typography (Parses Word-by-Word from sides) -->
+        <div class="ld-categories-typography-block">
+            <h2 class="ld-categories-section-title" id="categories-staggered-title">
+                Variant Training Category
+            </h2>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* MASTER L&D PATHS MATRIX ENVIRONMENT CONTROL PANEL */
+.ld-categories-section {
+    width: 100%;
+    /* Strict parameter spacing compliance: 50px Top Padding / 30px Bottom Padding */
+    padding: 50px 6% 30px 6%;
+    background-color: #0A0F1D; /* Deep template background to guarantee rich contrast curves */
+    overflow: hidden;
+    position: relative;
+}
+
+.ld-categories-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr; /* Split asymmetric alignment matching image reference exactly */
+    gap: 48px;
+    align-items: center;
+}
+
+/* ==========================================
+   LEFT SIDE: CIRCLE-TO-SHAPE MORPHING GRID
+   ========================================== */
+.ld-cards-morph-stack {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 32px;
+    position: relative;
+    width: 100%;
+    height: 540px; /* Headroom lock boundary ceiling ensuring layout parameters stability */
+}
+
+/* CORE MORPH MECHANICS CONTROLLER TILES */
+.ld-morph-card {
+    position: relative;
+    background-color: #121829; /* Slate matte background mask focus anchors */
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    /* Strict timing curves driving width/height radius transformations simultaneously */
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                border-radius 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.3s ease,
+                box-shadow 0.4s ease;
+    will-change: width, height, border-radius;
+}
+
+.ld-card-inner-canvas {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.ld-image-media-layer {
+    position: relative;
+    width: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.ld-embed-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease, filter 0.4s ease;
+    filter: grayscale(0.25) brightness(0.65);
+}
+
+/* Polarising dark film mask to complement reference image color palettes exactly */
+.ld-image-matte-filter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 15, 29, 0.4);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.ld-top-floating-label {
+    position: absolute;
+    top: 24px;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748B;
+    z-index: 3;
+    opacity: 0.7;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* ========================================================
+   GEOMETRIC INITIALIZATION STATES (HARD CRADLED INTO PERFECT CIRCLES)
+   ======================================================== */
+
+/* Card 1 Sizing (Perfect Circle by Default) */
+.ld-morph-card.node-small {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+}
+
+/* Card 2 Sizing (Perfect Circle by Default) */
+.ld-morph-card.node-medium {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+}
+
+/* Card 3 Sizing (Active focus capsule shape from upload reference image layout) */
+.ld-morph-card.node-large {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%; /* Initial circle state baseline */
+    align-self: flex-start;
+}
+
+/* Force Card 3 into its open active-focus capsule display state on initialization */
+.ld-morph-card.node-large.active-default-focus {
+    width: 320px;
+    height: 500px;
+    border-radius: 160px 160px 32px 32px; /* Smooth arch cap capsule profile grid */
+}
+
+/* ========================================================
+   DYNAMIC HOVER STATE EXECUTIONS (MORPH INTO EXTENDED SHAPES & SHOW DETAILS)
+   ======================================================= */
+
+.ld-morph-card:hover {
+    border-color: rgba(74, 222, 128, 0.35); /* Highlights outline frame to Stackly Ancient Green */
+    /* High density fluorescent active green neon backdrop aura emission parameters */
+    box-shadow: 0 0 30px rgba(74, 222, 128, 0.22), 0 20px 45px rgba(0, 0, 0, 0.45);
+}
+
+/* Force morphing shapes transformation profiles symmetrically on hover focus */
+.ld-morph-card.node-small:hover {
+    width: 300px;
+    height: 440px;
+    border-radius: 150px 150px 24px 24px;
+}
+
+.ld-morph-card.node-medium:hover {
+    width: 320px;
+    height: 480px;
+    border-radius: 160px 160px 24px 24px;
+}
+
+.ld-morph-card.node-large:hover,
+.ld-morph-card.node-large.active-default-focus {
+    width: 330px;
+    height: 520px;
+    border-radius: 165px 160px 32px 32px;
+}
+
+.ld-morph-card:hover .ld-embed-img {
+    transform: scale(1.04);
+    filter: grayscale(0) brightness(0.85); /* Restores clean colors on active hover focus track */
+}
+
+.ld-morph-card:hover .ld-top-floating-label {
+    opacity: 0; /* Dissolves upper tracking string labels cleanly on shape stretch */
+}
+
+/* HIDDEN EXPANDING BODY TEXT DRAWER SYSTEM */
+.ld-details-drawer {
+    width: 100%;
+    max-height: 0; /* Hidden completely inside circle frames bounds by default settings */
+    overflow: hidden;
+    padding: 0 32px;
+    text-align: center;
+    background-color: #121829;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                padding 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 0.3s ease;
+}
+
+.ld-drawer-heading {
+    font-size: 1.65rem; /* High visibility typography font scale factor increase */
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+    letter-spacing: 0.01em;
+}
+
+.ld-drawer-summary-para {
+    font-size: 1.05rem; /* Increased text content paragraph sizes */
+    line-height: 1.6;
+    color: #94A3B8;
+    font-weight: 300;
+    padding-bottom: 32px;
+}
+
+/* Reveal drawer contents cleanly on focus tracks expansion updates */
+.ld-morph-card:hover .ld-details-drawer,
+.ld-morph-card.active-default-focus .ld-details-drawer {
+    max-height: 240px; /* Extended depth headroom ceiling allocation */
+    padding: 24px 32px 32px 32px;
+}
+
+.ld-morph-card:hover .ld-details-drawer {
+    background-color: #0F172A; /* Transitions background tone comfortably on active hover */
+}
+
+.ld-morph-card:hover .ld-drawer-heading {
+    color: #4ADE80; /* Heading text swaps smoothly to theme main Ancient Green */
+}
+
+/* Squeeze down Large default layout capsule when users focus alternate circle blocks */
+.ld-cards-morph-stack:hover .ld-morph-card.node-large.active-default-focus:not(:hover) {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    align-self: flex-end;
+}
+.ld-cards-morph-stack:hover .ld-morph-card.node-large.active-default-focus:not(:hover) .ld-details-drawer {
+    max-height: 0;
+    padding: 0 32px;
+}
+
+/* ==========================================
+   RIGHT SIDE: BOLD TYPOGRAPHY BLOCK WORKSPACE
+   ========================================== */
+.ld-categories-typography-block {
+    text-align: left;
+    padding-left: 36px;
+}
+
+.ld-categories-section-title {
+    font-size: 4rem; /* High-visibility increased font scale factor */
+    font-weight: 700; 
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    line-height: 1.15;
+    text-transform: uppercase;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 16px;
+}
+
+/* Word-by-word horizontal sideways entry triggers hook setups */
+.ld-categories-section-title span {
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.ld-categories-section-title span.slide-from-left { transform: translateX(-35px); }
+.ld-categories-section-title span.slide-from-right { transform: translateX(35px); }
+.ld-categories-section-title span.animate-in {
+    opacity: 1;
+    transform: translate(0) !important;
+}
+
+/* Replicating corporate focus green string accent layer precisely from visual reference image */
+.ld-categories-section-title span:nth-child(2) {
+    color: #4ADE80; /* Re-mapped smoothly from crimson red to Stackly Ancient Green */
+    text-shadow: 0 0 15px rgba(74, 222, 128, 0.3);
+}
+
+/* FLUID RESPONSIVE SYSTEM MEDIA BREAKPOINTS CONTROLLER MATRIX BOARDS */
+@media (max-width: 1300px) {
+    .ld-categories-container { grid-template-columns: 1fr; gap: 48px; }
+    .ld-categories-typography-block { padding-left: 0; order: -1; } /* Shifts header block above stacking grid row for clean balance tablet formats */
+    .ld-categories-section-title { font-size: 3.2rem; }
+    .ld-cards-morph-stack { justify-content: center; }
+}
+
+@media (max-width: 960px) {
+    .ld-cards-morph-stack { flex-direction: column; height: auto; align-items: center; gap: 36px; }
+    .ld-morph-card { width: 100% !important; max-width: 380px; height: auto !important; border-radius: 24px !important; }
+    .ld-details-drawer { border-radius: 0 0 24px 24px !important; max-height: none !important; padding: 24px 32px 32px 32px !important; background-color: #0F172A !important; }
+    .ld-drawer-summary-para { padding-bottom: 0; }
+    .ld-image-media-layer { height: 200px; }
+    .ld-top-floating-label { display: none; }
+}
+
+@media (max-width: 640px) {
+    .ld-categories-matrix-section { padding-top: 40px; padding-bottom: 24px; }
+    .ld-categories-section-title { font-size: 2.2rem; gap: 0 10px; }
+    .ld-drawer-heading { font-size: 1.4rem; }
+    .ld-drawer-summary-para { font-size: 0.98rem; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // ========================================================
+    // VARIANT CATEGORIES SECTOR: REVEAL TITLES WORD-BY-WORD ON SCROLL
+    // ========================================================
+    const parseCategoriesTitleStagger = (titleContainer) => {
+        if (!titleContainer) return;
+        const wordsArrayMatrix = titleContainer.textContent.trim().split(/\s+/);
+        titleContainer.innerHTML = ""; // Wipe flat standard template layout raw content strings data node
+
+        wordsArrayMatrix.forEach((word, index) => {
+            const spanToken = document.createElement("span");
+            spanToken.textContent = word + " ";
+            
+            // Stagger horizontal directional entrance paths alternatively from side grids bounds
+            if (index % 2 === 0) {
+                spanToken.classList.add("slide-from-left");
+            } else {
+                spanToken.classList.add("slide-from-right");
+            }
+            
+            titleContainer.appendChild(spanToken);
+        });
+    };
+
+    const runCategoriesTitleAnimation = (titleContainer) => {
+        if (!titleContainer) return;
+        const elementSpans = titleContainer.querySelectorAll("span");
+        elementSpans.forEach((span, index) => {
+            setTimeout(() => {
+                span.classList.add("animate-in");
+            }, index * 65); // Clear smooth 65ms clean velocity sequence separation time indicators
+        });
+    };
+
+    const categoriesTitleNode = document.getElementById("categories-staggered-title");
+    if (categoriesTitleNode) {
+        parseCategoriesTitleStagger(categoriesTitleNode);
+    }
+
+    // High performance scroller intersection listener configuration metrics
+    const categoriesObserverOptions = { root: null, rootMargin: "0px", threshold: 0.1 };
+
+    const categoriesSectionIntersectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Fire text vector elements parsing loops instantly on scroll cross paths
+                if (categoriesTitleNode) {
+                    runCategoriesTitleAnimation(categoriesTitleNode);
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, categoriesObserverOptions);
+
+    const targetCategoriesSection = document.getElementById("categories-viewport-trigger");
+    if (targetCategoriesSection) {
+        categoriesSectionIntersectionObserver.observe(targetCategoriesSection);
+    }
+});
+
+</script>
+
+<section class="oneline-cta-section" id="oneline-cta-viewport">
+    <!-- Visual structural background graphics asset layer -->
+    <img src="oneline-banner-bg-placeholder.jpg" alt="Abstract Corporate Grid Background" class="oneline-bg-img">
+
+    <div class="oneline-banner-container">
+        
+        <!-- INNER LAYOUT WRAPPER: Fluid Single-Line Content Stream -->
+        <div class="oneline-content-wrapper scroll-trigger-bottom">
+            <!-- Left Aligned Core Domain Action Statement -->
+            <h2 class="oneline-headline-text">
+                TRANSFORM YOUR WORKFORCE CAPABILITIES WITH AUTOMATED LMS METRICS
+            </h2>
+            
+            <!-- Right Aligned Capsule CTA Button (Wires safely to your requested 404 gate) -->
+            <a href="404.html" class="btn-oneline-floating">
+                Request Demo 
+                <span class="btn-arrow-vector">➔</span>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* ONE-LINE CTA BANNER ENGINE CONTROL PANEL */
+.oneline-cta-section {
+    width: 100%;
+    /* Strict compliance mapping to your specific layout coordinates (50px Top / 30px Bottom Padding) */
+    padding: 50px 6% 30px 6%;
+    background-color: #0A0F1D; /* Clean continuity transition theme shadow layers */
+    position: relative;
+    overflow: hidden;
+}
+
+.oneline-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.12; /* Keep structural continuity with dark homepage assets */
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Semi-transparent protective layer vector to maintain absolute typography clarity grid */
+.oneline-cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(10, 15, 29, 0.95) 0%, rgba(10, 15, 29, 0.7) 100%);
+    z-index: 2;
+}
+
+/* HIGH-DENSITY GLASSMORPHIC FRAME CONTAINER */
+.oneline-banner-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    background: rgba(30, 41, 59, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 24px;
+    padding: 36px 44px;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* HORIZONTAL ALIGNMENT FLUID ENGINE */
+.oneline-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+}
+
+/* Streamlined Single-Line Typography Element Layout */
+.oneline-headline-text {
+    font-size: 1.6rem;
+    font-weight: 400; /* Crisp thin-wire premium styling field properties */
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-align: left;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* DYNAMIC HOVER GLOW STATE ENGINE MODULE OVERLAYS */
+.oneline-banner-container:hover {
+    border-color: rgba(74, 222, 128, 0.35); /* Focus box triggers to Ancient Green */
+    /* Immersive active fluorescent green visual neon aura glow output values */
+    box-shadow: 0 0 25px rgba(74, 222, 128, 0.2), 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* Trigger typography glow parameters on card overlay intersect */
+.oneline-banner-container:hover .oneline-headline-text {
+    color: #4ADE80; /* Line transforms cleanly to Stackly Main Brand Ancient Green */
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.25);
+}
+
+.oneline-banner-container:hover .oneline-bg-img {
+    transform: scale(1.02); /* Subtle backdrop coordinate visual zoom */
+}
+
+/* HIGH FIDELITY FLOATING CAPSULE CTA BUTTON */
+.btn-oneline-floating {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 30px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #0A0F1D;
+    background-color: #4ADE80; /* Main Corporate Accent Theme Green Color */
+    border-radius: 30px; /* Locked capsule geometry path values */
+    box-shadow: 0 8px 20px rgba(74, 222, 128, 0.12);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+}
+
+.btn-arrow-vector {
+    font-size: 0.95rem;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Button micro-interaction layouts */
+.btn-oneline-floating:hover {
+    background-color: #22C55E;
+    transform: translateY(-3px);
+    /* Integrated localized neon green focus shine */
+    box-shadow: 0 0 20px rgba(74, 222, 128, 0.45), 0 8px 20px rgba(34, 197, 94, 0.25);
+}
+
+.btn-oneline-floating:hover .btn-arrow-vector {
+    transform: translateX(4px); /* Interactive horizontal pointer bounce arrow element */
+}
+
+/* VIEWPORT ENTRY SCROLLER OBSERVER BASE TAGS */
+.scroll-trigger-bottom {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-bottom.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FLUID FLUID RESPONSIVE SYSTEM MEDIA VIEWPANELS BREAKPOINTS */
+@media (max-width: 1024px) {
+    .oneline-headline-text { font-size: 1.35rem; }
+}
+
+@media (max-width: 768px) {
+    .oneline-banner-container { padding: 28px 20px; }
+    .oneline-content-wrapper { flex-direction: column; text-align: center; gap: 20px; }
+    .oneline-headline-text { font-size: 1.15rem; text-align: center; }
+    .btn-oneline-floating { justify-content: center; width: 100%; }
+}
+
+</style>
+
+<script>
+        // ==========================================
+    // 12. RUNTIME ONE-LINE CTA BANNER INTERSECT OBSERVER
+    // ==========================================
+    const onelineObserverOptions = { root: null, rootMargin: "0px", threshold: 0.15 };
+
+    const onelineSectionIntersectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const wrapperBlock = entry.target.querySelector(".scroll-trigger-bottom");
+                if (wrapperBlock) {
+                    // Forces smooth upward entry slide path sequence
+                    wrapperBlock.classList.add("animate-in");
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, onelineObserverOptions);
+
+    const targetOnelineSection = document.getElementById("oneline-cta-viewport");
+    if (targetOnelineSection) {
+        onelineSectionIntersectionObserver.observe(targetOnelineSection);
+    }
+
+</script>
+
+<!-- DYNAMIC L&D CORPORATE CORE INTEL SECTION -->
+<section class="corporate-core-section" id="corporate-core-viewport">
+    <div class="corporate-core-container">
+        
+        <!-- LEFT REGION: Overlapping Mosaic Canvas -->
+        <div class="corporate-core-visual-mosaic">
+            <div class="mosaic-tile-frame primary-frame scroll-trigger-left">
+                <img src="./assests/hero section bg.webp" alt="Workforce Metrics Infrastructure Sync" class="mosaic-embed-img">
+            </div>
+            <div class="mosaic-tile-frame secondary-frame scroll-trigger-right">
+                <img src="./assests/about img 1.webp" alt="Centralized Intelligence Reporting Sandbox" class="mosaic-embed-img">
+                <div class="mosaic-neon-aura"></div>
+            </div>
+        </div>
+
+        <!-- RIGHT REGION: Corporate Content Core -->
+        <div class="corporate-core-typography-block scroll-trigger-right transition-delay-1">
+            <span class="corporate-core-pretitle">📊 OPERATIONAL METRICS</span>
+            
+            <h2 class="corporate-core-main-title" id="corporate-core-staggered-title">
+                Driving cross department engineering velocity indices
+            </h2>
+            
+            <p class="corporate-core-description">
+                Stackly optimizes global workforce capability development matrices through centralized training management systems. We empower multi-national divisions to monitor running certification compliance statuses, configure automated renewal loops, and collapse operational competency gaps cleanly in real time.
+            </p>
+
+            <!-- UPDATE: Grid Matrix with high-performance inline SVG Vector Icons -->
+            <div class="corporate-core-matrices-grid">
+                
+                <!-- Matrix Node 1 -->
+                <div class="matrix-node">
+                    <div class="matrix-node-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 13h6c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1zm0 8h6c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1zm10 0h6c.55 0 1-.45 1-1v-8c0-.55-.45-1-1-1h-6c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1zM13 4v4c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1h-6c-.55 0-1 .45-1 1z"/>
+                        </svg>
+                    </div>
+                    <div class="matrix-node-info">
+                        <h4>Predictive Analytics</h4>
+                        <p>Track capability ceilings and workforce transition maps easily.</p>
+                    </div>
+                </div>
+                
+                <!-- Matrix Node 2 -->
+                <div class="matrix-node">
+                    <div class="matrix-node-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                        </svg>
+                    </div>
+                    <div class="matrix-node-info">
+                        <h4>Regulatory Compliance</h4>
+                        <p>Enforce mandatory legal certification renewal cycles safely.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* MASTER ENVIRONMENT CONTROL INTERFACE */
+.corporate-core-section {
+    width: 100%;
+    /* Strict parameter spacing compliance: 50px Top Padding / 30px Bottom Padding */
+    padding: 50px 6% 30px 6%;
+    background-color: #0A0F1D; 
+    overflow: hidden;
+    position: relative;
+}
+
+.corporate-core-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 72px;
+    align-items: center;
+}
+
+/* ==========================================
+   LEFT SIDE: OVERLAPPING MOSAIC TILES
+   ========================================== */
+.corporate-core-visual-mosaic {
+    position: relative;
+    width: 100%;
+    height: 500px; 
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.mosaic-tile-frame {
+    position: absolute;
+    overflow: hidden;
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.mosaic-embed-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    filter: brightness(0.85);
+}
+
+.mosaic-tile-frame.primary-frame { width: 75%; height: 380px; left: 0; top: 0; z-index: 1; }
+.mosaic-tile-frame.secondary-frame { width: 50%; height: 260px; right: 0; bottom: 20px; z-index: 3; }
+
+.mosaic-neon-aura {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(74, 222, 128, 0.12); 
+    border-radius: 24px;
+    z-index: 4;
+    pointer-events: none;
+    transition: border-color 0.4s ease;
+}
+
+/* ==========================================
+   RIGHT SIDE: HIGH VISIBILITY CONTENT CORE
+   ========================================== */
+.corporate-core-typography-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.corporate-core-pretitle {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #4ADE80; 
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.corporate-core-main-title {
+    font-size: 3.2rem;
+    font-weight: 700; 
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 12px;
+}
+
+.corporate-core-main-title span {
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.corporate-core-main-title span.slide-from-left { transform: translateX(-35px); }
+.corporate-core-main-title span.slide-from-right { transform: translateX(35px); }
+.corporate-core-main-title span.animate-in { opacity: 1; transform: translate(0) !important; }
+
+.corporate-core-description {
+    font-size: 1.1rem; 
+    line-height: 1.65;
+    color: #94A3B8; 
+    margin-bottom: 32px;
+    font-weight: 300;
+}
+
+/* GRID MATRIX SUB-BLOCK METRIC TILES */
+.corporate-core-matrices-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding-top: 24px;
+}
+
+.matrix-node {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+/* UPDATE: STYLING HANDLERS FOR THE NEW SVG CONTAINER NODES */
+.matrix-node-icon {
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.matrix-node-icon svg {
+    width: 22px;
+    height: 22px;
+    fill: #64748B; /* Default dim slate gray vector outline */
+    transition: fill 0.3s ease;
+}
+
+.matrix-node-info h4 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+    transition: color 0.3s ease;
+}
+
+.matrix-node-info p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #64748B;
+    font-weight: 300;
+}
+
+/* ==========================================
+   HIGH-FREQUENCY HOVER GLOW ACTIONS ENGINE 
+   ========================================== */
+.corporate-core-container:hover .mosaic-tile-frame.primary-frame {
+    transform: translate(-6px, -6px) rotate(-0.5deg);
+}
+
+.corporate-core-container:hover .mosaic-tile-frame.secondary-frame {
+    transform: translate(6px, 6px) rotate(0.5deg);
+    border-color: rgba(74, 222, 128, 0.35); 
+    box-shadow: 0 0 25px rgba(74, 222, 128, 0.22), 0 20px 45px rgba(0, 0, 0, 0.45);
+}
+
+.corporate-core-container:hover .mosaic-neon-aura { border-color: rgba(74, 222, 128, 0.5); }
+.corporate-core-container:hover .mosaic-embed-img { transform: scale(1.03); }
+.corporate-core-container:hover .corporate-core-main-title { text-shadow: 0 0 15px rgba(74, 222, 128, 0.2); }
+
+/* UPDATE: High density activation swap loops for vectors inside the hover channel */
+.corporate-core-container:hover .matrix-node-icon {
+    background-color: rgba(74, 222, 128, 0.08);
+    border-color: rgba(74, 222, 128, 0.25);
+    transform: scale(1.05);
+}
+
+.corporate-core-container:hover .matrix-node-icon svg {
+    fill: #4ADE80; /* Vector symbols safely transform into active corporate green values */
+}
+
+.corporate-core-container:hover .matrix-node-info h4 {
+    color: #4ADE80; 
+}
+
+/* DIRECTIONAL SIDE SCROLLER TRANSITIONS SCALARS */
+.scroll-trigger-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+.scroll-trigger-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+.scroll-trigger-left.animate-in, .scroll-trigger-right.animate-in { opacity: 1; transform: translateX(0); }
+.transition-delay-1 { transition-delay: 0.15s; }
+
+/* FLUID RESPONSIVE DESIGN PARAMETERS VIEWPORTS BREAKPOINTS */
+@media (max-width: 1100px) {
+    .corporate-core-container { grid-template-columns: 1fr; gap: 48px; }
+    .corporate-core-visual-mosaic { max-width: 600px; margin: 0 auto; height: 420px; }
+    .corporate-core-typography-block { max-width: 100%; }
+    .corporate-core-main-title { font-size: 2.6rem; }
+    .mosaic-tile-frame.primary-frame { height: 320px; }
+    .mosaic-tile-frame.secondary-frame { height: 200px; bottom: 10px; }
+}
+
+@media (max-width: 640px) {
+    .corporate-core-section { padding-top: 40px; padding-bottom: 24px; }
+    .corporate-core-main-title { font-size: 1.95rem; gap: 0 10px; }
+    .corporate-core-description { font-size: 1rem; }
+    .corporate-core-matrices-grid { grid-template-columns: 1fr; gap: 20px; }
+    .corporate-core-visual-mosaic { height: 300px; }
+    .mosaic-tile-frame.primary-frame { height: 240px; }
+    .mosaic-tile-frame.secondary-frame { height: 150px; bottom: 5px; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // ========================================================
+    // STRATEGIC CORE SECTOR: PARSE MAIN HEADINGS WORD-BY-WORD REVEALS
+    // ========================================================
+    const parseCorporateCoreTitleStagger = (titleContainer) => {
+        if (!titleContainer) return;
+        const wordsArrayMatrix = titleContainer.textContent.trim().split(/\s+/);
+        titleContainer.innerHTML = ""; // Wipe flat standard template layout raw content strings
+
+        wordsArrayMatrix.forEach((word, index) => {
+            const spanToken = document.createElement("span");
+            spanToken.textContent = word + " ";
+            
+            // Stagger horizontal directional entrance paths alternatively from opposite side walls
+            if (index % 2 === 0) {
+                spanToken.classList.add("slide-from-left");
+            } else {
+                spanToken.classList.add("slide-from-right");
+            }
+            
+            titleContainer.appendChild(spanToken);
+        });
+    };
+
+    const runCorporateCoreTitleAnimation = (titleContainer) => {
+        if (!titleContainer) return;
+        const elementSpans = titleContainer.querySelectorAll("span");
+        elementSpans.forEach((span, index) => {
+            setTimeout(() => {
+                span.classList.add("animate-in");
+            }, index * 60); // Clear smooth 60ms sequence separation indicators velocity parameters
+        });
+    };
+
+    const coreTitleElement = document.getElementById("corporate-core-staggered-title");
+    if (coreTitleElement) {
+        parseCorporateCoreTitleStagger(coreTitleElement);
+    }
+
+    // High performance scroller intersection observer framework listener tracking layout coordinates
+    const coreObserverOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.12 // Fires animation timelines callback functions when 12% of container boundary cuts monitor view
+    };
+
+    const coreSectionIntersectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const parentCoreSection = entry.target;
+
+                // Fire header text vector array parsing loops instantly on scroll cross paths
+                if (coreTitleElement) {
+                    runCorporateCoreTitleAnimation(coreTitleElement);
+                }
+
+                // Gather left column mosaic frames and right column context text blocks to slide open from opposite walls
+                const sideElements = parentCoreSection.querySelectorAll(".scroll-trigger-left, .scroll-trigger-right");
+                sideElements.forEach(element => {
+                    element.classList.add("animate-in");
+                });
+
+                // Unmount loop visibility monitoring hooks safely to conserve computer background memory cycles data
+                observer.unobserve(parentCoreSection);
+            }
+        });
+    }, coreObserverOptions);
+
+    const targetCoreViewportSection = document.getElementById("corporate-core-viewport");
+    if (targetCoreViewportSection) {
+        coreSectionIntersectionObserver.observe(targetCoreViewportSection);
+    }
+});
+
+</script>
+
+<!-- DYNAMIC L&D PROGRESSION TIMELINE SECTION -->
+<section class="timeline-section" id="timeline-viewport-trigger">
+    <!-- Visual structural backdrop overlay layer -->
+    <img src="timeline-bg-placeholder.jpg" alt="Corporate Growth Network Grid Background" class="timeline-bg-img">
+
+    <div class="timeline-container">
+        
+        <!-- SECTION CENTERED HEADER: Arrives word-by-word on scroll intersect -->
+        <div class="timeline-header-block">
+            <span class="timeline-badge">🧭 OUR JOURNEY</span>
+            <h2 class="timeline-main-title" id="timeline-staggered-title">
+                Building for the long term
+            </h2>
+        </div>
+
+        <!-- ASYMMETRICAL VERTICAL SPINE TRACK TIMELINE -->
+        <div class="timeline-backbone-track">
+            
+            <!-- YEAR BLOCK 1: 2025 (Top Node Matrix Grid) -->
+            <div class="timeline-year-node-block row-2025 scroll-trigger-stagger">
+                <!-- Left aligned card block component -->
+                <div class="timeline-panel-card left-panel block-purple">
+                    <span class="panel-badge-label">Key Milestone</span>
+                    <p class="panel-summary-text">Established our core enterprise teaching philosophy: practical, actionable dashboard metrology from international trainers.</p>
+                </div>
+
+                <!-- Centralized node element anchor indicator -->
+                <div class="timeline-spine-center">
+                    <div class="node-circle-icon icon-sparkle">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l2.4 4.9 5.3.8-3.8 3.7.9 5.3-4.8-2.5-4.8 2.5.9-5.3-3.8-3.7 5.3-.8z"/></svg>
+                    </div>
+                    <span class="spine-year-label">2025</span>
+                </div>
+
+                <!-- Right aligned textual listing paths -->
+                <div class="timeline-details-list right-panel">
+                    <ul class="bullet-metrics-strip">
+                        <li><span class="list-bullet bullet-green"></span> Launch of Stackly Enterprise Compliance Matrix</li>
+                        <li><span class="list-bullet bullet-blue"></span> Launch of L&D Telemetry Advanced Trading Pipeline</li>
+                        <li><span class="list-bullet bullet-pink"></span> Launch of Automated Sandbox Sandbox Simulation Environments</li>
+                        <li><span class="list-bullet bullet-gold"></span> Launch of Self-Paced Foundational Upskilling Course Track</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- YEAR BLOCK 2: 2024 (Middle Node Matrix Grid) -->
+            <div class="timeline-year-node-block row-2024 scroll-trigger-stagger">
+                <!-- Left aligned listing paths -->
+                <div class="timeline-details-list left-panel text-right-alignment">
+                    <ul class="bullet-metrics-strip lines-right-bound">
+                        <li>Launch of iOS Mobile Operator App <span class="list-bullet bullet-green"></span></li>
+                        <li>Launch of Android Mobile Operator App <span class="list-bullet bullet-blue"></span></li>
+                        <li>Launch of Decentralized Workforce Competency Certification Nodes <span class="list-bullet bullet-pink"></span></li>
+                    </ul>
+                </div>
+
+                <div class="timeline-spine-center">
+                    <div class="node-circle-icon icon-matrix">
+                        <svg viewBox="0 0 24 24"><path d="M4 13h6c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1zm0 8h6c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1zm10 0h6c.55 0 1-.45 1-1v-8c0-.55-.45-1-1-1h-6c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1z"/></svg>
+                    </div>
+                    <span class="spine-year-label">2024</span>
+                </div>
+
+                <!-- Right aligned card block component -->
+                <div class="timeline-panel-card right-panel block-purple">
+                    <span class="panel-badge-label">Achievement</span>
+                    <p class="panel-summary-text">Enrolled over 15,000 corporate operators globally and launched our live cross-functional leadership labs.</p>
+                </div>
+            </div>
+
+            <!-- YEAR BLOCK 3: 2023 (Bottom Node Matrix Grid) -->
+            <div class="timeline-year-node-block row-2023 scroll-trigger-stagger">
+                <div class="timeline-panel-card left-panel block-gold">
+                    <span class="panel-badge-label">Key Milestone</span>
+                    <p class="panel-summary-text">Platform architecture validation phase finalized. Secured integration infrastructure partnerships with leading multi-nationals.</p>
+                </div>
+
+                <div class="timeline-spine-center">
+                    <div class="node-circle-icon icon-launch">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-1.9 1.14-2.56l1.24-1.26c.37-.36.56-.86.56-1.38 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+                    </div>
+                    <span class="spine-year-label">2023</span>
+                </div>
+
+                <div class="timeline-details-list right-panel">
+                    <ul class="bullet-metrics-strip">
+                        <li><span class="list-bullet bullet-gold"></span> Stackly Portal Launch Sequence Initiated</li>
+                        <li><span class="list-bullet bullet-gray"></span> Launch of Compliance Path Auditing Beta</li>
+                        <li><span class="list-bullet bullet-gray"></span> Launch of Aggregate Capability Index Tracking Engine</li>
+                        <li><span class="list-bullet bullet-gray"></span> Launch of Initial Micro-Learning Knowledge Base</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* DYNAMIC PROGRESSION TIMELINE CORE LAYOUT CONTROLS */
+.timeline-section {
+    position: relative;
+    width: 100%;
+    /* Strict parameter spacing compliance: 50px Top Padding / 30px Bottom Padding */
+    padding: 50px 6% 30px 6%;
+    background-color: #0A0F1D; /* Clean high-contrast dark mode background continuity */
+    overflow: hidden;
+}
+
+.timeline-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.05; /* Subdued baseline layer to maintain absolute text legibility */
+}
+
+.timeline-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1200px; /* Constrained column workspace to perfectly align spine vectors */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* CENTERED MODULE SECTION TYPOGRAPHY HEADER */
+.timeline-header-block {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.timeline-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.04);
+    color: #94A3B8;
+    border-radius: 30px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.timeline-main-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    line-height: 1.25;
+    text-transform: capitalize;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 14px;
+}
+
+/* Word-by-word horizontal sideways scroller arrivals settings */
+.timeline-main-title span {
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.timeline-main-title span.slide-from-left { transform: translateX(-35px); }
+.timeline-main-title span.slide-from-right { transform: translateX(35px); }
+.timeline-main-title span.animate-in {
+    opacity: 1;
+    transform: translate(0) !important;
+}
+
+/* ========================================================
+   VERTICAL BACKBONE SPINE ARCHITECTURE STRUCTURE
+   ======================================================= */
+.timeline-backbone-track {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    padding: 20px 0;
+}
+
+/* Master vertical backbone vector line element exactly like image reference */
+.timeline-backbone-track::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.12) 20%, rgba(255, 255, 255, 0.12) 80%, rgba(255, 255, 255, 0.03) 100%);
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* INDIVIDUAL CHRONOLOGICAL TRACK TIMELINE GRID BLOCKS */
+.timeline-year-node-block {
+    display: grid;
+    grid-template-columns: 1fr 180px 1fr; /* Centered 180px spine tracking headroom strip */
+    align-items: center;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    /* Core state settings fields driving lazy-load list reveals */
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.timeline-year-node-block.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* LEFT/RIGHT STAGGERED RE-TRANSFORMS PANEL PLACEMENTS CONFIGS */
+.left-panel {
+    grid-column: 1;
+    width: 100%;
+}
+
+.right-panel {
+    grid-column: 3;
+    width: 100%;
+}
+
+.timeline-spine-center {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+/* ========================================================
+   HIGH ACCURACY GLASSMORPHIC MILESTONE CARDS STYLING
+   ======================================================= */
+.timeline-panel-card {
+    background: rgba(30, 41, 59, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.panel-badge-label {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+/* Replicating custom card variant groupings directly from image visualization overlay */
+.block-purple .panel-badge-label { background-color: rgba(147, 51, 234, 0.15); color: #C084FC; }
+.block-purple { border-left: 3px solid #9333EA; }
+
+.block-gold .panel-badge-label { background-color: rgba(217, 119, 6, 0.15); color: #FBBF24; }
+.block-gold { border-left: 3px solid #D97706; }
+
+.panel-summary-text {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: #CBD5E1;
+    font-weight: 300;
+}
+
+/* ========================================================
+   CENTRALIZED NODE ELEMENTS VECTOR ANCHORS
+   ======================================================= */
+.node-circle-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0A0F1D;
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 5;
+}
+
+.node-circle-icon svg {
+    width: 18px;
+    height: 18px;
+    transition: fill 0.3s ease;
+}
+
+/* Custom vector icons coloring schemes matching layout mapping requirements precisely */
+.icon-sparkle svg { fill: #C084FC; }
+.icon-matrix svg { fill: #A78BFA; }
+.icon-launch svg { fill: #FBBF24; }
+
+.spine-year-label {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+/* ========================================================
+   TEXTUAL BULLETED PROGRESSION LIST DETAILS STYLING
+   ======================================================= */
+.timeline-details-list {
+    padding: 0 10px;
+}
+
+.bullet-metrics-strip {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.bullet-metrics-strip li {
+    font-size: 0.92rem;
+    color: #94A3B8;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 400;
+    line-height: 1.4;
+    transition: color 0.25s ease;
+}
+
+.list-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: inline-block;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+}
+
+/* Bullet list variation vectors color metrics mapping loops */
+.bullet-green { background-color: #4ADE80; box-shadow: 0 0 8px rgba(74, 222, 128, 0.4); }
+.bullet-blue { background-color: #38BDF8; box-shadow: 0 0 8px rgba(56, 189, 248, 0.4); }
+.bullet-pink { background-color: #F472B6; box-shadow: 0 0 8px rgba(244, 114, 182, 0.4); }
+.bullet-gold { background-color: #FBBF24; box-shadow: 0 0 8px rgba(251, 191, 36, 0.4); }
+.bullet-gray { background-color: #334155; }
+
+.text-right-alignment {
+    text-align: right;
+}
+.lines-right-bound li {
+    justify-content: flex-end;
+}
+
+/* ========================================================
+   HIGH FIDELITY HOVER GLOW TRANSLATIONS MODULE OVERLAYS
+   ======================================================= */
+.timeline-year-node-block:hover .node-circle-icon {
+    border-color: #4ADE80; /* Flashes node circle boundary edge line to active green values */
+    background-color: rgba(74, 222, 128, 0.08);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(74, 222, 128, 0.35);
+}
+
+.timeline-year-node-block:hover .node-circle-icon svg {
+    fill: #4ADE80; /* Switches internal vector icon symbol smoothly to green colors */
+}
+
+.timeline-year-node-block:hover .spine-year-label {
+    color: #4ADE80; 
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.25);
+}
+
+.timeline-year-node-block:hover .timeline-panel-card {
+    border-color: rgba(74, 222, 128, 0.25);
+    background-color: rgba(30, 41, 59, 0.5);
+    box-shadow: 0 0 22px rgba(74, 222, 128, 0.12), 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-year-node-block:hover .bullet-metrics-strip li {
+    color: #E2E8F0; /* Lights up list items text content color cleanly inside focus states */
+}
+
+/* ========================================================
+   FLUID FLUID RESPONSIVE SYSTEM MEDIA BREAKPOINTS VIEWPANELS
+   ======================================================= */
+@media (max-width: 992px) {
+    .timeline-main-title { font-size: 2.6rem; }
+    
+    /* Demolish asymmetric split architecture layout to implement single unified vertical stream column */
+    .timeline-backbone-track::before { left: 24px; transform: none; }
+    .timeline-year-node-block { grid-template-columns: 1fr; gap: 20px; padding-left: 64px; }
+    
+    .left-panel, .right-panel { grid-column: 1; text-align: left !important; width: 100%; }
+    .lines-right-bound li { justify-content: flex-start; }
+    .lines-right-bound li .list-bullet { order: -1; margin-right: 0; } /* Reset bullet flip order for mobile screens flow */
+    
+    .timeline-spine-center {
+        position: absolute;
+        left: 0;
+        top: 4px;
+        width: 48px;
+        align-items: center;
+    }
+    .spine-year-label { font-size: 1.15rem; margin-top: 4px; }
+    .node-circle-icon { width: 36px; height: 36px; }
+    .node-circle-icon svg { width: 14px; height: 14px; }
+}
+
+@media (max-width: 640px) {
+    .timeline-section { padding-top: 40px; padding-bottom: 24px; }
+    .timeline-main-title { font-size: 1.95rem; gap: 0 10px; }
+    .timeline-year-node-block { padding-left: 52px; gap: 16px; }
+    .timeline-backbone-track::before { left: 18px; }
+    .timeline-spine-center { width: 36px; }
+    .timeline-panel-card { padding: 18px; border-radius: 12px; }
+    .panel-summary-text, .bullet-metrics-strip li { font-size: 0.88rem; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // ========================================================
+    // CHRONOLOGICAL TIMELINE SECTOR: PROCESS HEADERS WORD-BY-WORD
+    // ========================================================
+    const parseTimelineTitleStagger = (titleContainer) => {
+        if (!titleContainer) return;
+        const wordsArrayMatrix = titleContainer.textContent.trim().split(/\s+/);
+        titleContainer.innerHTML = ""; // Wipe flat standard template layout data strings
+
+        wordsArrayMatrix.forEach((word, index) => {
+            const spanToken = document.createElement("span");
+            spanToken.textContent = word + " ";
+            
+            // Stagger horizontal directional entrance paths alternatively from side borders
+            if (index % 2 === 0) {
+                spanToken.classList.add("slide-from-left");
+            } else {
+                spanToken.classList.add("slide-from-right");
+            }
+            
+            titleContainer.appendChild(spanToken);
+        });
+    };
+
+    const runTimelineTitleAnimation = (titleContainer) => {
+        if (!titleContainer) return;
+        const elementSpans = titleContainer.querySelectorAll("span");
+        elementSpans.forEach((span, index) => {
+            setTimeout(() => {
+                span.classList.add("animate-in");
+            }, index * 60); // Clean 60ms sequence separation parameters velocity constants
+        });
+    };
+
+    const timelineTitle = document.getElementById("timeline-staggered-title");
+    if (timelineTitle) {
+        parseTimelineTitleStagger(timelineTitle);
+    }
+
+    // High performance scroller intersection observer framework listener tracking coordinates setup
+    const timelineObserverOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1 // Fires animation timeline callback loops as soon as 10% of container footprint hits view
+    };
+
+    const timelineSectionIntersectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const parentTimelineSection = entry.target;
+
+                // Fire header text vector arrays loops instantly on scroll cross paths
+                if (timelineTitle) {
+                    runTimelineTitleAnimation(timelineTitle);
+                }
+
+                // Gather asymmetrical chronological blocks nodes and open them one-by-one sequentially
+                const yearRowsList = parentTimelineSection.querySelectorAll(".timeline-year-node-block");
+                yearRowsList.forEach((row, index) => {
+                    setTimeout(() => {
+                        row.classList.add("animate-in");
+                    }, 250 + (index * 140)); // Strict 140ms incremental sequential entry delay loop markers
+                });
+
+                // Unmount loop visibility monitoring hooks safely to prevent computer background tasks memory lag
+                observer.unobserve(parentTimelineSection);
+            }
+        });
+    }, timelineObserverOptions);
+
+    const targetTimelineSectionViewport = document.getElementById("timeline-viewport-trigger");
+    if (targetTimelineSectionViewport) {
+        timelineSectionIntersectionObserver.observe(targetTimelineSectionViewport);
+    }
+});
+
+</script>
+
+ <!-- CORPORATE TESTIMONIAL MATRIX SECTION -->
+<section class="testimonials-section" id="testimonials-viewport">
+    <!-- Visual background image tag layer -->
+    <img src="testimonials-bg-placeholder.jpg" alt="Corporate Network Grid Background" class="testimonials-bg-img">
+
+    <div class="testimonials-container">
+        
+        <!-- CENTERED HEADER: Arrives from sides on scroll intersect -->
+        <div class="testimonials-header-block">
+            <span class="testimonials-badge scroll-trigger-left">💼 Enterprise Success Stories</span>
+            <h2 class="testimonials-title" id="testimonials-staggered-title">
+                What Our Enterprise Members Are Saying
+            </h2>
+        </div>
+
+        <!-- STAGGERED REPLICATED ASYMMETRIC GRID LAYER -->
+        <div class="testimonials-asymmetric-grid">
+            
+            <!-- ROW 1 LAYOUT: Top Grid Track (Reveals first) -->
+            <div class="testimonial-row-track track-1">
+                
+                <!-- Feedback Card 1 -->
+                <div class="testimonial-card-item scroll-trigger-stagger">
+                    <div class="star-rating-block">★★★★★</div>
+                    <p class="testimonial-quote">
+                        "The Compliance Path Matrix completely transformed our department onboarding lifecycle. We went from manual, scattered spreadsheet auditing to streamlined, automated skill validation pipelines within days."
+                    </p>
+                    <div class="client-profile-row">
+                        <img src="avatar-1.jpg" alt="Cameron Williamson" class="client-avatar-img">
+                        <div class="client-metadata">
+                            <h4>Cameron Williamson</h4>
+                            <span>VP of Organizational Development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Card 2 -->
+                <div class="testimonial-card-item scroll-trigger-stagger">
+                    <div class="star-rating-block">★★★★★</div>
+                    <p class="testimonial-quote">
+                        "This infrastructure completely changed how we approach continuous upskilling. Our development velocity increased, skill competency gaps collapsed, and our tech teams finally innovate with confidence."
+                    </p>
+                    <div class="client-profile-row">
+                        <img src="avatar-2.jpg" alt="Kristin Watson" class="client-avatar-img">
+                        <div class="client-metadata">
+                            <h4>Kristin Watson</h4>
+                            <span>Director of Engineering</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Card 3 -->
+                <div class="testimonial-card-item scroll-trigger-stagger">
+                    <div class="star-rating-block">★★★★★</div>
+                    <p class="testimonial-quote">
+                        "The predictive analytics metrics delivered exactly the micro-learning intelligence mapping our leadership boards needed. Tracking certification expiration thresholds is now entirely hands-free."
+                    </p>
+                    <div class="client-profile-row">
+                        <img src="avatar-3.jpg" alt="Darlene Robertson" class="client-avatar-img">
+                        <div class="client-metadata">
+                            <h4>Darlene Robertson</h4>
+                            <span>Chief Information Officer</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ROW 2 LAYOUT: Offset Bottom Grid Track (Reveals with staggered delay) -->
+            <div class="testimonial-row-track track-2">
+                
+                <!-- Feedback Card 4 -->
+                <div class="testimonial-card-item scroll-trigger-stagger">
+                    <div class="star-rating-block">★★★★★</div>
+                    <p class="testimonial-quote">
+                        "From chaotic regulatory updates to structured corporate compliance confidence, Stackly scaled our training nodes flawlessly. Highly recommended for international operations tracking."
+                    </p>
+                    <div class="client-profile-row">
+                        <img src="avatar-4.jpg" alt="Theresa Webb" class="client-avatar-img">
+                        <div class="client-metadata">
+                            <h4>Theresa Webb</h4>
+                            <span>Global Compliance Manager</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Card 5 -->
+                <div class="testimonial-card-item scroll-trigger-stagger">
+                    <div class="star-rating-block">★★★★★</div>
+                    <p class="testimonial-quote">
+                        "What I love most is the practical enterprise approach. Real infrastructure sandbox setups, true compliance path renewals, and zero academic fluff. This completely rewired our workforce training curves."
+                    </p>
+                    <div class="client-profile-row">
+                        <img src="avatar-5.jpg" alt="Jane Cooper" class="client-avatar-img">
+                        <div class="client-metadata">
+                            <h4>Jane Cooper</h4>
+                            <span>Senior Systems Architect</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Card 6 -->
+                <div class="testimonial-card-item scroll-trigger-stagger">
+                    <div class="star-rating-block">★★★★★</div>
+                    <p class="testimonial-quote">
+                        "Our global management teams now align with corporate objectives across distinct branches effortlessly. The localized course paths solved our language barriers instantly."
+                    </p>
+                    <div class="client-profile-row">
+                        <img src="avatar-6.jpg" alt="Arlene McCoy" class="client-avatar-img">
+                        <div class="client-metadata">
+                            <h4>Arlene McCoy</h4>
+                            <span>Human Resources Director</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FOOTER CALL TO ACTION: Directs straight to user-requested 404 navigation -->
+        <div class="testimonials-footer-row scroll-trigger-bottom">
+            <a href="404.html" class="btn-testimonials-browse">Browse Our Courses ›</a>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* TESTIMONIAL MATRIX PANEL WRAPPER */
+.testimonials-section {
+    position: relative;
+    width: 100%;
+    /* Strict adherence to requested specifications boundaries (50px Top / 30px Bottom Padding) */
+    padding: 50px 4% 30px 4%;
+    background-color: #0A0F1D; /* Matches seamless dark template theme layout */
+    overflow: hidden;
+}
+
+.testimonials-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.08; /* Blends background environment assets cleanly like image overlay reference */
+}
+
+.testimonials-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* SECTION CENTERED TYPOGRAPHY BLOCK */
+.testimonials-header-block {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.testimonials-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.06);
+    color: #94A3B8;
+    border-radius: 30px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.testimonials-title {
+    font-size: 2.8rem;
+    font-weight: 400; /* Fine wire layout typography structure mirroring picture reference */
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    line-height: 1.25;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 14px;
+}
+
+/* Side word animation arrivals setup classes */
+.testimonials-title span {
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.testimonials-title span.slide-from-left { transform: translateX(-35px); }
+.testimonials-title span.slide-from-right { transform: translateX(35px); }
+.testimonials-title span.animate-in {
+    opacity: 1;
+    transform: translate(0) !important;
+}
+
+/* ASYMMETRIC STAGGERED ROW LAYOUT SYSTEM */
+.testimonials-asymmetric-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+.testimonial-row-track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+}
+
+/* Creates the offset asymmetric staggered alignment effect from the image mockup */
+.testimonial-row-track.track-2 {
+    padding-left: 60px;
+    padding-right: 20px;
+}
+
+/* PREMIUM TESTIMONIAL DISPLAY TILES */
+.testimonial-card-item {
+    background-color: rgba(30, 41, 59, 0.4); /* Translucent plate layer mapping to reference graphic */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    position: relative;
+    /* Core scroller entrance states initialization configuration triggers */
+    opacity: 0;
+    transform: translateY(40px) scale(0.97);
+    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                background-color 0.3s ease;
+}
+
+.testimonial-card-item.animate-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.star-rating-block {
+    font-size: 0.95rem;
+    color: #FBBF24; /* Amber yellow review star lines look */
+    letter-spacing: 2px;
+}
+
+.testimonial-quote {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #CBD5E1;
+    font-weight: 300;
+}
+
+.client-profile-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.client-avatar-img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.client-metadata h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 2px;
+}
+
+.client-metadata span {
+    font-size: 0.8rem;
+    color: #64748B;
+}
+
+/* INTERACTIVE NEON GLOW HOVER STATES ENGINE MODULE */
+.testimonial-card-item:hover {
+    transform: translateY(-5px);
+    background-color: rgba(30, 41, 59, 0.7);
+    border-color: rgba(74, 222, 128, 0.4); /* Highlights card outline frame to Ancient Green */
+    /* Immersive, rich enterprise neon green aura backdrop glow emission */
+    box-shadow: 0 0 25px rgba(74, 222, 128, 0.2), 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* FOOTER CALL TO ACTION BUTTON (Exact match to image design shapes) */
+.testimonials-footer-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.btn-testimonials-browse {
+    display: inline-block;
+    background-color: #FFFFFF;
+    color: #0A0F1D;
+    text-decoration: none;
+    padding: 14px 40px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 4px; /* Crisp square pill radius copied directly from image layout mockup */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-testimonials-browse:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.3), 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* INDEPENDENT DRIVER ANIMATION SCROLL TRIGGERS SETUP MARKS */
+.scroll-trigger-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-bottom {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-left.animate-in, .scroll-trigger-bottom.animate-in {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+}
+
+/* FLUID FLUID RESPONSIVE MATRIX MEDIA VIEWPORTS BREAKPOINTS */
+@media (max-width: 1150px) {
+    .testimonial-row-track {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .testimonial-row-track.track-2 { padding-left: 0; padding-right: 0; }
+    .testimonials-title { font-size: 2.25rem; }
+}
+
+@media (max-width: 768px) {
+    .testimonial-row-track {
+        grid-template-columns: 1fr;
+    }
+    .testimonials-section { padding-top: 40px; padding-bottom: 24px; }
+    .testimonials-title { font-size: 1.85rem; }
+    .testimonial-card-item { padding: 24px; }
+    .btn-testimonials-browse { width: 100%; text-align: center; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. TYPOGRAPHY ENGINE: PARSE STAGGERED SIDEWAYS ARRIVALS
+    const parseTestimonialsTitleStagger = (titleContainer) => {
+        if (!titleContainer) return;
+        const words = titleContainer.textContent.trim().split(/\s+/);
+        titleContainer.innerHTML = "";
+
+        words.forEach((word, index) => {
+            const span = document.createElement("span");
+            span.textContent = word + " ";
+            
+            // Stagger arrivals systematically from opposite borders
+            if (index % 2 === 0) {
+                span.classList.add("slide-from-left");
+            } else {
+                span.classList.add("slide-from-right");
+            }
+            
+            titleContainer.appendChild(span);
+        });
+    };
+
+    const runTestimonialsTitleAnimation = (titleContainer) => {
+        const spans = titleContainer.querySelectorAll("span");
+        spans.forEach((span, index) => {
+            setTimeout(() => {
+                span.classList.add("animate-in");
+            }, index * 60);
+        });
+    };
+
+    const testimonialsTitle = document.getElementById("testimonials-staggered-title");
+    if (testimonialsTitle) {
+        parseTestimonialsTitleStagger(testimonialsTitle);
+    }
+
+    // 2. MODERN VIEWPORT SCROLL INTERSECTION ENGINE MODULE
+    // Monitors scroll parameters to reveal cards track-by-track, one-by-one sequentially
+    const testimonialsObserverOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.12 // Activates loops as soon as 12% of section framework shows on monitor
+    };
+
+    const testimonialsIntersectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const activeSection = entry.target;
+
+                // Fire typography animations instantly
+                if (testimonialsTitle) {
+                    runTestimonialsTitleAnimation(testimonialsTitle);
+                }
+                const badgeLabel = activeSection.querySelector(".testimonials-badge");
+                if (badgeLabel) badgeLabel.classList.add("animate-in");
+
+                // Track 1 Card Deployments: Launch card items one-by-one sequentially
+                const row1Cards = activeSection.querySelectorAll(".track-1 .scroll-trigger-stagger");
+                row1Cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add("animate-in");
+                    }, 200 + (index * 120)); // Stagger card delivery by 120ms intervals
+                });
+
+                // Track 2 Card Deployments: Launch offset track with systematic subsequent delay loop
+                const row2Cards = activeSection.querySelectorAll(".track-2 .scroll-trigger-stagger");
+                row2Cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add("animate-in");
+                    }, 500 + (index * 120)); // Delay second row launch relative to first track completion
+                });
+
+                // Launch footer capsule buttons
+                const footerRow = activeSection.querySelector(".testimonials-footer-row");
+                if (footerRow) {
+                    setTimeout(() => {
+                        footerRow.classList.add("animate-in");
+                    }, 900);
+                }
+
+                // Unmount loop listener hook to free up runtime computational overhead threads
+                observer.unobserve(activeSection);
+            }
+        });
+    }, testimonialsObserverOptions);
+
+    const targetTestimonialsSection = document.getElementById("testimonials-viewport");
+    if (targetTestimonialsSection) {
+        testimonialsIntersectionObserver.observe(targetTestimonialsSection);
+    }
+});
+
+</script>
+
+<!-- CORPORATE FAQ ARCHITECTURE SECTION -->
+<section class="faq-section" id="faq-viewport-trigger">
+    <div class="faq-container">
+        
+        <!-- LEFT COLUMN: Domain Header Panel (Arrives from sides on scroll) -->
+        <div class="faq-sticky-sidebar">
+            <span class="faq-pretitle scroll-trigger-left">💡 KNOWLEDGE BASE</span>
+            <h2 class="faq-main-title" id="faq-staggered-title">
+                Frequently Asked Questions
+            </h2>
+            <p class="faq-sidebar-desc scroll-trigger-left transition-delay-1">
+                Have inquiries regarding corporate enrollment paths, system tracking metrics, or custom curriculum integration plans? Explore our automated platform breakdown guides.
+            </p>
+        </div>
+
+        <!-- RIGHT COLUMN: Interactive Accordion Grid (Reveals card-by-card on scroll) -->
+        <div class="faq-accordion-grid">
+            
+            <!-- Accordion Panel 1 -->
+            <div class="faq-item-card scroll-trigger-stagger">
+                <button class="faq-accordion-header" aria-expanded="false">
+                    <span class="faq-question-text">How does Stackly synchronize automated skill matrix updates?</span>
+                    <span class="faq-toggle-icon">＋</span>
+                </button>
+                <div class="faq-accordion-body">
+                    <div class="faq-answer-inner">
+                        Our centralized tracking engine uses predictive data models to monitor course completion thresholds and certificate validation windows. As employees finish adaptive modules, departmental grids refresh instantly in real time.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion Panel 2 -->
+            <div class="faq-item-card scroll-trigger-stagger">
+                <button class="faq-accordion-header" aria-expanded="false">
+                    <span class="faq-question-text">Can we integrate custom internal compliance tracks?</span>
+                    <span class="faq-toggle-icon">＋</span>
+                </button>
+                <div class="faq-accordion-body">
+                    <div class="faq-answer-inner">
+                        Yes. Stackly’s adaptive L&D infrastructure allows enterprise administrators to upload localized documentation, configure specific regulatory renewal cycles, and enforce mandatory testing paths safely.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion Panel 3 -->
+            <div class="faq-item-card scroll-trigger-stagger">
+                <button class="faq-accordion-header" aria-expanded="false">
+                    <span class="faq-question-text">Is offline learning supported on the Mobile App platform?</span>
+                    <span class="faq-toggle-icon">＋</span>
+                </button>
+                <div class="faq-accordion-body">
+                    <div class="faq-answer-inner">
+                        Absolutely. Users can securely cache core training paths and micro-learning modules locally within our iOS/Android ecosystem. Progress parameters automatically sync back once a network connection is verified.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion Panel 4 -->
+            <div class="faq-item-card scroll-trigger-stagger">
+                <button class="faq-accordion-header" aria-expanded="false">
+                    <span class="faq-question-text">What metrics are provided inside the executive analytics dashboard?</span>
+                    <span class="faq-toggle-icon">＋</span>
+                </button>
+                <div class="faq-accordion-body">
+                    <div class="faq-answer-inner">
+                        Leadership boards gain access to aggregate capability index averages, departmental pass rates, running certification compliance statuses, and predictive workforce transition vectors formatted for corporate reporting.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* FAQ SECTION MASTER CONTROLS */
+.faq-section {
+    width: 100%;
+    /* Hard-locked to your precise padding parameters (50px Top / 30px Bottom Spacing) */
+    padding: 50px 6% 30px 6%;
+    background-color: #0A0F1D; /* Seamless integration with template dark theme background layout */
+    position: relative;
+    overflow: hidden;
+}
+
+.faq-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr; /* Premium split dashboard alignment layout column mapping */
+    gap: 80px;
+    align-items: flex-start;
+}
+
+/* LEFT COLUMN: SIDEBAR SIDELONG CONTAINER TYPOGRAPHY */
+.faq-sticky-sidebar {
+    position: sticky;
+    top: 120px; /* Positions section elements comfortably underneath your floating header */
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.faq-pretitle {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #4ADE80; /* Stackly Main Core Corporate Ancient Green Theme Brand Accent */
+    letter-spacing: 0.16em;
+    margin-bottom: 14px;
+    display: inline-block;
+}
+
+.faq-main-title {
+    font-size: 3rem;
+    font-weight: 400; /* Fine wire layout typography structure style properties */
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 14px;
+}
+
+/* Side word parsing entrance transitions animations setups */
+.faq-main-title span {
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.faq-main-title span.slide-from-left { transform: translateX(-35px); }
+.faq-main-title span.slide-from-right { transform: translateX(35px); }
+.faq-main-title span.animate-in {
+    opacity: 1;
+    transform: translate(0) !important;
+}
+
+.faq-sidebar-desc {
+    font-size: 1.02rem;
+    line-height: 1.6;
+    color: #94A3B8;
+    max-width: 460px;
+}
+
+/* RIGHT COLUMN: ACCORDION LIST HARDWARE */
+.faq-accordion-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.faq-item-card {
+    background-color: #1E293B; /* Slate blue card body background contrast element */
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    /* Initial state variables for sequential list element scroller reveals */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.faq-item-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* INTERACTIVE ACCORDION BUTTON CONTROLLER HOVER FIELDS */
+.faq-accordion-header {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 24px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    text-align: left;
+    color: #FFFFFF;
+}
+
+.faq-question-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+.faq-toggle-icon {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: #64748B;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+}
+
+/* DYNAMIC HOVER GLOW STATE: EMIT FLUORESCENT GREEN OUTLINES */
+.faq-item-card:hover {
+    border-color: rgba(74, 222, 128, 0.35); /* Swaps card line bounds to green profile focus path */
+    /* Active high-density neon green ambient visual backdrop aura emission values */
+    box-shadow: 0 0 22px rgba(74, 222, 128, 0.2), 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.faq-item-card:hover .faq-question-text {
+    color: #4ADE80; /* Text highlight swap mapping focus keys */
+}
+
+.faq-item-card:hover .faq-toggle-icon {
+    color: #4ADE80;
+}
+
+/* COLLAPSIBLE ACCORDION BODY TRANSITION ENGINE */
+.faq-accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    /* Uses pure CSS transit timing scales to manage expand/collapse actions with zero grid stutter */
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-answer-inner {
+    padding: 0 28px 24px 28px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #94A3B8;
+    font-weight: 300;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    padding-top: 16px;
+}
+
+/* Expanding operational active states triggered classes */
+.faq-item-card.active-open .faq-accordion-body {
+    max-height: 200px; /* Clean height headroom buffer ceiling mapping lengthy answers safely */
+}
+
+.faq-item-card.active-open .faq-toggle-icon {
+    transform: rotate(45deg); /* Rotates plus icon into close cross multiplication matrices */
+    color: #4ADE80;
+}
+
+.faq-item-card.active-open {
+    border-color: rgba(74, 222, 128, 0.25);
+    background-color: rgba(30, 41, 59, 0.8);
+}
+
+/* INDEPENDENT DRIVER DIRECTIONAL OBSERVER WRAPPERS */
+.scroll-trigger-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-left.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.transition-delay-1 { transition-delay: 0.15s; }
+
+/* FLUID SYSTEM RESPONSIVE MATRIX MEDIA BREAKPOINTS CONTROL BOARDS */
+@media (max-width: 1100px) {
+    .faq-container {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+    .faq-sticky-sidebar { position: relative; top: 0; max-width: 100%; }
+    .faq-main-title { font-size: 2.5rem; }
+}
+
+@media (max-width: 640px) {
+    /* Custom low viewport padding clamps rules */
+    .faq-section { padding-top: 40px; padding-bottom: 24px; }
+    .faq-main-title { font-size: 1.95rem; gap: 0 10px; }
+    .faq-accordion-header { padding: 20px; }
+    .faq-answer-inner { padding: 0 20px 20px 20px; font-size: 0.9rem; }
+    .faq-question-text { font-size: 1rem; }
+    .faq-item-card.active-open .faq-accordion-body { max-height: 300px; } /* Extends ceiling index for stacked text fields mobile view */
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. LEFT SIDE: PARSE STAGGERED SIDEWAYS HEADER ENTRY
+    const parseFaqTitleStagger = (titleContainer) => {
+        if (!titleContainer) return;
+        const words = titleContainer.textContent.trim().split(/\s+/);
+        titleContainer.innerHTML = "";
+
+        words.forEach((word, index) => {
+            const span = document.createElement("span");
+            span.textContent = word + " ";
+            
+            if (index % 2 === 0) {
+                span.classList.add("slide-from-left");
+            } else {
+                span.classList.add("slide-from-right");
+            }
+            
+            titleContainer.appendChild(span);
+        });
+    };
+
+    const runFaqTitleAnimation = (titleContainer) => {
+        const spans = titleContainer.querySelectorAll("span");
+        spans.forEach((span, index) => {
+            setTimeout(() => {
+                span.classList.add("animate-in");
+            }, index * 65);
+        });
+    };
+
+    const faqTitle = document.getElementById("faq-staggered-title");
+    if (faqTitle) {
+        parseFaqTitleStagger(faqTitle);
+    }
+
+    // 2. RIGHT SIDE: ACCORDION TOGGLE MECHANICS INTERFACES
+    const accordionHeaders = document.querySelectorAll(".faq-accordion-header");
+    
+    accordionHeaders.forEach(header => {
+        header.addEventListener("click", () => {
+            const parentCardItem = header.parentElement;
+            const isCardCurrentlyOpen = parentCardItem.classList.contains("active-open");
+            
+            // Loop pattern to auto-close any alternate open question blocks (Single expand focus layout rule)
+            document.querySelectorAll(".faq-item-card").forEach(item => {
+                item.classList.remove("active-open");
+                item.querySelector(".faq-accordion-header").setAttribute("aria-expanded", "false");
+            });
+
+            // If selected item was closed, trigger active expand parameters
+            if (!isCardCurrentlyOpen) {
+                parentCardItem.classList.add("active-open");
+                header.setAttribute("aria-expanded", "true");
+            }
+        });
+    });
+
+    // 3. SCROLL INTERSECTION: MONITOR LAYOUT BOUNDS & POP CARD-BY-CARD SEQUENTIALLY
+    const faqObserverOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.12 // Fires animation callbacks when 12% of section window cross paths with scroller
+    };
+
+    const faqSectionIntersectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const parentSection = entry.target;
+
+                // Fire left typography panels
+                if (faqTitle) {
+                    runFaqTitleAnimation(faqTitle);
+                }
+                const leftElements = parentSection.querySelectorAll(".scroll-trigger-left");
+                leftElements.forEach(el => el.classList.add("animate-in"));
+
+                // Fire right column accordion question items one-by-one sequentially
+                const accordionCards = parentSection.querySelectorAll(".faq-item-card");
+                accordionCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add("animate-in");
+                    }, 300 + (index * 140)); // Strict 140ms incremental deployment stagger tracking loop
+                });
+
+                // Unmount loop listener thread safely to optimize computer background tasks
+                observer.unobserve(parentSection);
+            }
+        });
+    }, faqObserverOptions);
+
+    const targetFaqSection = document.getElementById("faq-viewport-trigger");
+    if (targetFaqSection) {
+        faqSectionIntersectionObserver.observe(targetFaqSection);
+    }
+});
+
+</script>
+
+<!-- TWO-LINE ECOSYSTEM CTA BANNER -->
+<section class="banner-cta-section" id="banner-cta-viewport">
+    <!-- Visual structural background graphics asset layer -->
+    <img src="./assests/hero section bg.webp" alt="Abstract Digital Network Vector" class="banner-bg-img">
+
+    <div class="banner-container">
+        
+        <!-- LEFT REGION: Rigid Two-Line Structured Text Content Grid -->
+        <div class="banner-typography-block">
+            <!-- Line 1: Upper Headline Structure Element -->
+            <div class="banner-text-line line-upper scroll-trigger-left" id="banner-title-line-1">
+                READY TO COLLAPSE WORKFORCE COMPETENCY GAPS?
+            </div>
+            
+            <!-- Line 2: Lower Subheadline Domain Element -->
+            <div class="banner-text-line line-lower scroll-trigger-right" id="banner-title-line-2">
+                Deploy automated skill matrix tracking systems across your departments today.
+            </div>
+        </div>
+
+        <!-- RIGHT REGION: Glassmorphic Fluorescent Floating CTA Button -->
+        <div class="banner-action-block scroll-trigger-bottom">
+            <!-- Wires straight to your requested 404.html page gate -->
+            <a href="404.html" class="btn-banner-floating">
+                Request Enterprise Demo
+                <span class="btn-arrow-icon">➔</span>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* TWO-LINE CTA BANNER CORE ENVIRONMENT CONTROL */
+.banner-cta-section {
+    width: 100%;
+    /* Strict compliance mapping to your specific layout coordinates (50px Top / 30px Bottom Padding) */
+    padding: 50px 6% 30px 6%;
+    background-color: #0A0F1D; /* Clean continuity transition theme shadow layers */
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.34; /* Subdued baseline overlay mapping to the premium layout template */
+    transition: transform 0.6s ease;
+}
+
+/* Semi-transparent protective layer vector to maintain absolute typography clarity grid */
+.banner-cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(10, 15, 29, 0.95) 0%, rgba(10, 15, 29, 0.6) 100%);
+    z-index: 2;
+}
+
+/* HIGH-DENSITY GLASSMORPHIC FRAME CONTAINER */
+.banner-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    background: rgba(30, 41, 59, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 28px;
+    padding: 44px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* LEFT COLUMN: RIGID TWO-LINE ACCENT TYPOGRAPHY */
+.banner-typography-block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.banner-text-line {
+    color: #FFFFFF;
+    transition: all 0.3s ease;
+}
+
+/* Line 1 Sizing (Crisp Upper Headline Matrix Elements) */
+.banner-text-line.line-upper {
+    font-size: 2.2rem;
+    font-weight: 400; /* Replicates signature thin wire framework style template metrics */
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    line-height: 1.15;
+}
+
+/* Line 2 Sizing (Subdued Lower Context Elements) */
+.banner-text-line.line-lower {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: #94A3B8;
+    font-weight: 300;
+}
+
+/* DYNAMIC HOVER GLOW STATE ENGINE MODULE OVERLAYS */
+.banner-container:hover {
+    border-color: rgba(74, 222, 128, 0.35); /* Focus box triggers to Ancient Green */
+    /* Immersive active fluorescent green visual neon aura glow output values */
+    box-shadow: 0 0 30px rgba(74, 222, 128, 0.22), 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+/* Trigger typography glow parameters on card overlay intersect */
+.banner-container:hover .banner-text-line.line-upper {
+    color: #4ADE80; /* Line 1 transforms cleanly to Stackly Main Brand Ancient Green */
+    text-shadow: 0 0 12px rgba(74, 222, 128, 0.3);
+}
+
+.banner-container:hover .banner-text-line.line-lower {
+    color: #FFFFFF;
+}
+
+.banner-container:hover .banner-bg-img {
+    transform: scale(1.03); /* Subtle backdrop coordinate visual zoom */
+}
+
+/* RIGHT COLUMN: HIGH FIDELITY FLOATING CAPSULE CTA BUTTON */
+.banner-action-block {
+    flex-shrink: 0;
+}
+
+.btn-banner-floating {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 34px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #0A0F1D;
+    background-color: #4ADE80; /* Main Corporate Accent Theme Green Color */
+    border-radius: 30px; /* Locked capsule geometry path values */
+    box-shadow: 0 8px 20px rgba(74, 222, 128, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-arrow-icon {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+/* Button micro-interaction layouts */
+.btn-banner-floating:hover {
+    background-color: #22C55E;
+    transform: translateY(-4px);
+    box-shadow: 0 0 25px rgba(74, 222, 128, 0.5), 0 12px 25px rgba(34, 197, 94, 0.3); /* Integrated localized neon green focus shine */
+}
+
+.btn-banner-floating:hover .btn-arrow-icon {
+    transform: translateX(4px); /* Interactive horizontal pointer bounce arrow element */
+}
+
+/* VIEWPORT ENTRY DIRECTIONAL OBSERVER WRAPPERS BASE TARGETS */
+.scroll-trigger-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-bottom {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-left.animate-in, 
+.scroll-trigger-right.animate-in, 
+.scroll-trigger-bottom.animate-in {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+}
+
+/* FLUID FLUID RESPONSIVE SYSTEM MEDIA VIEWPANELS BREAKPOINTS */
+@media (max-width: 1024px) {
+    .banner-container {
+        padding: 36px;
+    }
+    .banner-text-line.line-upper { font-size: 1.85rem; }
+}
+
+@media (max-width: 768px) {
+    .banner-container {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        padding: 32px 24px;
+        gap: 28px;
+    }
+    .banner-typography-block { text-align: center; }
+    .banner-text-line.line-upper { font-size: 1.5rem; }
+    .btn-banner-floating { justify-content: center; width: 100%; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // TWO-LINE CTA BANNER VIEWPORT OBSERVER DRIVE ROUTINES
+    const bannerObserverOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.15 // Fires animation timelines when 15% of banner container footprint cuts screen view bounds
+    };
+
+    const bannerSectionIntersectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const parentBannerSection = entry.target;
+
+                // Fire Line 1 arrival timeline (Slides seamlessly from left border metrics)
+                const upperLine = parentBannerSection.querySelector(".line-upper");
+                if (upperLine) upperLine.classList.add("animate-in");
+
+                // Fire Line 2 arrival timeline (Slides systematically from opposite right border coordinates)
+                const lowerLine = parentBannerSection.querySelector(".line-lower");
+                if (lowerLine) {
+                    setTimeout(() => {
+                        lowerLine.classList.add("animate-in");
+                    }, 120); // Smooth 120ms execution stagger offset buffer
+                }
+
+                // Fire floating action capsule buttons entrance transformation rules
+                const actionBlock = parentBannerSection.querySelector(".banner-action-block");
+                if (actionBlock) {
+                    setTimeout(() => {
+                        actionBlock.classList.add("animate-in");
+                    }, 250);
+                }
+
+                // Unmount component track tracking hook safely to stabilize application memory curves
+                observer.unobserve(parentBannerSection);
+            }
+        });
+    }, bannerObserverOptions);
+
+    const targetBannerSection = document.getElementById("banner-cta-viewport");
+    if (targetBannerSection) {
+        bannerSectionIntersectionObserver.observe(targetBannerSection);
+    }
+});
+
+</script>
+
+<!-- UPDATE: FOOTER CONTAINER MATRIX WITH ADVANCED SOCIAL SVG VECTORS -->
+<footer class="portal-footer" id="stackly-global-footer">
+    <div class="footer-upper-grid">
+        
+        <!-- COLUMN 1: Brand Overview & Fluid SVG Social Controls -->
+        <div class="footer-column brand-summary-block">
+            <a href="#" class="footer-brand-logo" id="back-to-top-trigger" aria-label="Stackly Portal - Scroll Back To Top">
+                <img src="logo-dark.svg" alt="Stackly Logo" class="footer-logo-img">
+                <span class="footer-brand-name">STACKLY</span>
+            </a>
+            <p class="footer-brand-desc">
+                Engineering premium scalable corporate learning setups, skill matrices tracking pipelines, and decentralized enterprise upskilling nodes designed to fuel global workforce productivity alike.
+            </p>
+            
+            <!-- Dynamic SVG Vector Social Media Row Icons -->
+            <div class="footer-social-row">
+                <a href="404.html" class="social-circle-item" aria-label="Instagram Portal Link">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="404.html" class="social-circle-item" aria-label="Facebook Portal Link">
+                    <svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                </a>
+                <a href="404.html" class="social-circle-item" aria-label="X Platform Portal Link">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="404.html" class="social-circle-item" aria-label="LinkedIn Portal Link">
+                    <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="404.html" class="social-circle-item" aria-label="YouTube Portal Link">
+                    <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- COLUMN 2: Explore Tracks Link Column -->
+        <div class="footer-column link-list-block">
+            <h3 class="footer-column-heading">EXPLORE TRACKS</h3>
+            <ul class="footer-links-list">
+                <li><a href="404.html" class="footer-nav-link">L&D Architecture</a></li>
+                <li><a href="404.html" class="footer-nav-link">Compliance Pathways</a></li>
+                <li><a href="404.html" class="footer-nav-link">Leadership Labs</a></li>
+                <li><a href="404.html" class="footer-nav-link">Skill Matrix Grids</a></li>
+            </ul>
+        </div>
+
+        <!-- COLUMN 3: Platform Support Link Column -->
+        <div class="footer-column link-list-block">
+            <h3 class="footer-column-heading">PORTAL SUPPORT</h3>
+            <ul class="footer-links-list">
+                <li><a href="404.html" class="footer-nav-link">Curriculum Telemetry</a></li>
+                <li><a href="404.html" class="footer-nav-link">Course Catalog Sync</a></li>
+                <li><a href="404.html" class="footer-nav-link">Diagnostics & Help Center</a></li>
+                <li><a href="404.html" class="footer-nav-link">API Credentials</a></li>
+            </ul>
+        </div>
+
+        <!-- COLUMN 4: Headquarters Metadata & Inline Subscription Form -->
+        <div class="footer-column headquarters-form-block">
+            <h3 class="footer-column-heading">HEADQUARTERS</h3>
+            
+            <div class="footer-address-row">
+                <span class="location-pin-vector">📍</span>
+                <p class="address-text">
+                    Stackly Hub Complex, Periyakollappatty, Chinna Thirupathi,<br>
+                    Salem, Tamil Nadu 636008
+                </p>
+            </div>
+
+            <form class="footer-subscribe-form" id="newsletter-subscription-form" novalidate>
+                <div class="input-inner-wrapper">
+                    <input type="email" class="form-input-field" id="subscriber-email-input" placeholder="Enter corporate operator email...">
+                    <button type="submit" class="form-btn-submit">Subscribe</button>
+                </div>
+                <span class="validation-error-label" id="form-validation-notice">Please fill the fields</span>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- LOWER REGION: Copyright Ribbon Bar Grid Elements -->
+    <div class="footer-bottom-ribbon">
+        <div class="ribbon-container">
+            <span class="copyright-text">© 2026 Stackly Industries. All instructional management hardware rights reserved.</span>
+            <div class="ribbon-legal-anchors">
+                <a href="404.html" class="legal-link">Privacy Policy</a>
+                <a href="404.html" class="legal-link">Terms of Service</a>
+                <a href="404.html" class="legal-link">Cookie Governance</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    /* SYSTEM GLOBAL FOOTER CORE LAYOUT MAPPING */
+.portal-footer {
+    width: 100%;
+    background-color: #050811; 
+    padding: 60px 6% 0 6%;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.footer-upper-grid {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr 0.75fr 1.25fr;
+    gap: 40px;
+    padding-bottom: 50px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* SECTION 1: BRAND IDENTITY WRAPPERS */
+.footer-brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    margin-bottom: 24px;
+    transition: opacity 0.2s ease;
+}
+
+.footer-brand-logo:hover {
+    opacity: 0.85;
+}
+
+.footer-logo-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.3));
+}
+
+.footer-brand-name {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
+}
+
+/* UPDATE: Increased font-size scale factor for dim baseline text tracking values */
+.footer-brand-desc {
+    font-size: 0.98rem; /* Scaled up from 0.9rem to ensure rich screen readability */
+    line-height: 1.65;
+    color: #7E8B9B; /* Lifted text luminance scale slightly to complement layout reference template text */
+    margin-bottom: 24px;
+    max-width: 340px;
+}
+
+/* UPDATE: INTEGRATED DYNAMIC SVG SCALING FOR SOCIALS ROW NODES */
+.footer-social-row {
+    display: flex;
+    gap: 14px;
+}
+
+.social-circle-item {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-circle-item svg {
+    width: 18px;
+    height: 18px;
+    fill: #64748B; /* Matches layout reference dim vector mask hue value exactly */
+    transition: fill 0.3s ease;
+}
+
+.social-circle-item:hover {
+    background-color: rgba(74, 222, 128, 0.1);
+    border-color: rgba(74, 222, 128, 0.4); 
+    transform: translateY(-2px);
+}
+
+/* Highlight SVG vectors cleanly inside active hover state tracking index nodes */
+.social-circle-item:hover svg {
+    fill: #4ADE80; 
+}
+
+/* CATEGORY LINK COLUMNS INTERFACES */
+.footer-column-heading {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.06em;
+    margin-bottom: 24px;
+    position: relative;
+    padding-bottom: 6px;
+}
+
+.footer-column-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background-color: #EF4444; 
+    border-radius: 99px;
+}
+
+.footer-links-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* UPDATE: Increased font-size scale factor for navigational listing arrays */
+.footer-nav-link {
+    font-size: 1.02rem; /* Scaled up from 0.9rem to balance visual presence layout */
+    color: #7E8B9B; 
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.footer-nav-link:hover {
+    color: #4ADE80; 
+    transform: translateX(4px);
+}
+
+/* HEADQUARTERS ADDRESS GEOLOCATION BLOCKS */
+.footer-address-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 28px;
+}
+
+.location-pin-vector {
+    font-size: 1.1rem;
+    color: #38BDF8; 
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+    margin-top: 2px;
+}
+
+/* UPDATE: Increased font-size scale parameter for local text block assets */
+.address-text {
+    font-size: 0.98rem; /* Scaled up from 0.9rem for precision layout validation tracks */
+    line-height: 1.6;
+    color: #7E8B9B;
+}
+
+/* INLINE NEWSLETTER FORM SYSTEM */
+.footer-subscribe-form {
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+}
+
+.input-inner-wrapper {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 30px; 
+    padding: 4px;
+    width: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-inner-wrapper:focus-within {
+    border-color: rgba(74, 222, 128, 0.4);
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.15);
+}
+
+.form-input-field {
+    flex-grow: 1;
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 0.92rem;
+    color: #FFFFFF;
+    outline: none;
+    width: 60%;
+}
+
+.form-input-field::placeholder {
+    color: #334155;
+}
+
+.form-btn-submit {
+    background-color: #FFFFFF;
+    color: #050811;
+    border: none;
+    padding: 10px 24px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-btn-submit:hover {
+    background-color: #4ADE80; 
+    box-shadow: 0 0 12px rgba(74, 222, 128, 0.4);
+}
+
+.validation-error-label {
+    position: absolute;
+    bottom: -22px;
+    left: 18px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #F87171; 
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.validation-error-label.reveal-notice {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* LOWER REGION: COPYRIGHT RIBBON BAR STRIPS */
+.footer-bottom-ribbon {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 28px 0;
+    margin-top: 20px;
+}
+
+.ribbon-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.copyright-text {
+    font-size: 0.85rem;
+    color: #334155; 
+}
+
+.ribbon-legal-anchors {
+    display: flex;
+    gap: 24px;
+}
+
+.legal-link {
+    font-size: 0.85rem;
+    color: #334155;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.legal-link:hover {
+    color: #64748B;
+}
+
+/* RESPONSIVE LAYOUT MATRIX CONTROLS PARAMETERS */
+@media (max-width: 1200px) {
+    .footer-upper-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 48px;
+    }
+}
+
+@media (max-width: 640px) {
+    .portal-footer { padding: 40px 4% 0 4%; }
+    .footer-upper-grid { grid-template-columns: 1fr; gap: 36px; }
+    .input-inner-wrapper { flex-direction: column; border-radius: 16px; padding: 6px; gap: 8px; }
+    .form-input-field { width: 100%; padding: 8px 12px; }
+    .form-btn-submit { width: 100%; padding: 12px; border-radius: 12px; }
+    .ribbon-container { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .ribbon-legal-anchors { width: 100%; justify-content: space-between; gap: 12px; }
+    .validation-error-label { bottom: -20px; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. BRAND LOGO INTERFACES: SMOOTH RUNTIME BACK TO TOP ANIMATION ROUTINE
+    const topScrollTrigger = document.getElementById("back-to-top-trigger");
+    
+    if (topScrollTrigger) {
+        topScrollTrigger.addEventListener("click", (event) => {
+            event.preventDefault(); // Nullify instant standard anchor jump paramenters
+            
+            // Fires fluid operational scroll alignment to the absolute top grid index
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    }
+
+    // 2. INLINE FORM NEWSLETTER SYSTEM: DYNAMIC FIELD VALIDATION CHECKS
+    const subscribeForm = document.getElementById("newsletter-subscription-form");
+    const emailFieldInput = document.getElementById("subscriber-email-input");
+    const warningLabelNotice = document.getElementById("form-validation-notice");
+
+    if (subscribeForm && emailFieldInput && warningLabelNotice) {
+        subscribeForm.addEventListener("submit", (event) => {
+            event.preventDefault(); // Hold automatic browser action gates instantly
+            
+            const processedEmailString = emailFieldInput.value.trim();
+
+            // STEP A: Field Check Validation — Check if input field contains values
+            if (processedEmailString === "") {
+                warningLabelNotice.textContent = "Please fill the fields";
+                warningLabelNotice.classList.add("reveal-notice");
+                
+                // Clear notice warning animation dynamically after short visibility window
+                setTimeout(() => {
+                    warningLabelNotice.classList.remove("reveal-notice");
+                }, 3500);
+                
+                return; // Cease execution path sequence loop
+            }
+
+            // STEP B: Content Format Check — Basic syntax compliance review
+            if (!processedEmailString.includes("@") || processedEmailString.length < 5) {
+                warningLabelNotice.textContent = "Please enter a valid corporate email";
+                warningLabelNotice.classList.add("reveal-notice");
+                
+                setTimeout(() => {
+                    warningLabelNotice.classList.remove("reveal-notice");
+                }, 3500);
+                
+                return;
+            }
+
+            // STEP C: Navigation Execution Gate — Successful evaluation moves to 404 gate
+            window.location.href = "404.html";
+        });
+        
+        // Auto reset verification class indicators whenever users input fresh characters
+        emailFieldInput.addEventListener("input", () => {
+            if (warningLabelNotice.classList.contains("reveal-notice")) {
+                warningLabelNotice.classList.remove("reveal-notice");
+            }
+        });
+    }
+});
+
+</script>
+</body>
+</html>

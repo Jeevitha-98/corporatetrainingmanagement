@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackly Portal - Request Token Access</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- MASTER GATEWAY SCROLLABLE WRAPPER -->
+    <div class="auth-gateway-scroll-wrapper">
+        <main class="auth-gateway-viewport">
+            <div class="auth-glass-container">
+                
+                <!-- UPPER BACK CONTEXT BUTTON NAVIGATION (Wired straight to login gate) -->
+                <div class="auth-header-actions">
+                    <a href="login.html" class="btn-back-home">← BACK TO LOG IN</a>
+                </div>
+
+                <!-- CORE BRAND IDENTIFIERS -->
+                <div class="auth-brand-strip">
+                    <span class="auth-pretitle">— STACKLY REGISTER —</span>
+                    <h1 class="auth-main-title">Create <em>Account.</em></h1>
+                    <p class="auth-subtitle">Register your manager or trainee operator profile to initialize your custom upskilling registry sandbox track.</p>
+                </div>
+
+                <!-- SECURE REGISTRATION SIGN UP ENTRY MATRIX FORM -->
+                <form class="auth-form-element" id="portal-secure-signup-form" novalidate>
+                    
+                    <!-- Field Block 1: Full Operator Name -->
+                    <div class="auth-input-group">
+                        <label class="auth-field-label">FULL NAME</label>
+                        <input type="text" class="auth-input-field" id="auth-name-input" placeholder="Enter your full name..." autocomplete="name">
+                    </div>
+
+                    <!-- Field Block 2: Corporate Email Address -->
+                    <div class="auth-input-group">
+                        <label class="auth-field-label">CORPORATE EMAIL ADDRESS</label>
+                        <input type="email" class="auth-input-field" id="auth-email-input" placeholder="you@example.com" autocomplete="email">
+                    </div>
+
+                    <!-- Field Block 3: Security Password Key -->
+                    <div class="auth-input-group">
+                        <label class="auth-field-label">PASSWORD</label>
+                        <div class="password-field-wrapper">
+                            <input type="password" class="auth-input-field" id="auth-password-input" placeholder="••••••••" autocomplete="new-password">
+                            <span class="password-toggle-eye" data-target="auth-password-input">👁️</span>
+                        </div>
+                    </div>
+
+                    <!-- Field Block 4: Confirm Security Password Key -->
+                    <div class="auth-input-group">
+                        <label class="auth-field-label">CONFIRM PASSWORD</label>
+                        <div class="password-field-wrapper">
+                            <input type="password" class="auth-input-field" id="auth-confirm-password-input" placeholder="••••••••" autocomplete="new-password">
+                            <span class="password-toggle-eye" data-target="auth-confirm-password-input">👁️</span>
+                        </div>
+                    </div>
+
+                    <!-- SUBMIT SYSTEM CAP ACTIONS BUTTON MODULE -->
+                    <div class="auth-submit-wrapper">
+                        <button type="submit" class="btn-auth-secure-submit">SIGN UP →</button>
+                        
+                        <!-- Floating validation warning alert message overlay -->
+                        <span class="auth-validation-notice" id="auth-warning-alert-label">Please fill the fields</span>
+                    </div>
+
+                </form>
+
+                <!-- REGISTER NAVIGATION LINK BAR FOOTER -->
+                <div class="auth-gateway-footer">
+                    <p>Already have an account? <a href="login.html" class="auth-register-trigger">Log In</a></p>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- MODERN POPUP SUCCESS BALANCER MODAL NOTICE LAYER -->
+    <div class="success-popup-toast" id="success-toast-modal">
+        <div class="toast-content-block">
+            <span class="toast-vector-check">✓</span>
+            <p>Successfully signed up!</p>
+        </div>
+    </div>
+
+   <style>
+    /* ========================================================
+   STACKLY SECURE REGISTRATION SIGNUP PRESENTATION STYLES
+   ======================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background-color: #050811; /* Pristine deep black base canvas to optimize text clarity */
+}
+
+/* FLUID SCROLL SYSTEM HOOKS */
+.auth-gateway-scroll-wrapper {
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto; /* Restores local native vertical layout scrolling */
+    background-color: #050811;
+    -webkit-overflow-scrolling: touch;
+}
+
+.auth-gateway-viewport {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Strict parameter spacing compliance: 50px Top Padding / 30px Bottom Padding */
+    padding: 50px 6% 30px 6%;
+}
+
+/* HIGH FIDELITY GLASSMORPHIC RECREATION HOUSING MASK */
+.auth-glass-container {
+    width: 100%;
+    max-width: 550px; /* Perfectly aligned vertically to replicate template width proportions */
+    background-color: rgba(18, 24, 41, 0.45); 
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 28px;
+    padding: 44px;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* UPPER ACTION HEADER RIBBON */
+.auth-header-actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 24px;
+}
+
+.btn-back-home {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #E2E8F0;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 8px 18px;
+    border-radius: 30px;
+    letter-spacing: 0.05em;
+    background-color: rgba(255, 255, 255, 0.01);
+    transition: all 0.25s ease;
+}
+
+.btn-back-home:hover {
+    color: #4ADE80; /* Switches smoothly onto Stackly Ancient Green highlight trace */
+    border-color: rgba(74, 222, 128, 0.25);
+    background-color: rgba(74, 222, 128, 0.04);
+}
+
+/* BRAND TYPOGRAPHY LABELS STRIPS */
+.auth-brand-strip {
+    text-align: left;
+    margin-bottom: 32px;
+}
+
+.auth-pretitle {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #475569;
+    letter-spacing: 0.16em;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.auth-main-title {
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 16px;
+}
+
+.auth-main-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: #E2E8F0;
+}
+
+.auth-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #64748B;
+}
+
+/* ========================================================
+   FORM ELEMENT INTERFACES & INPUTS VALIDATION CORES
+   ======================================================== */
+.auth-form-element {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+.auth-input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.auth-field-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #475569;
+    letter-spacing: 0.06em;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.auth-input-field {
+    width: 100%;
+    background-color: rgba(5, 8, 17, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 1rem;
+    color: #FFFFFF;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-input-field::placeholder { color: #334155; }
+
+.auth-input-field:focus {
+    border-color: rgba(74, 222, 128, 0.35); /* Active line flashes onto focus green paths */
+    box-shadow: 0 0 12px rgba(74, 222, 128, 0.15);
+}
+
+.password-field-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Internal privacy mask floating eye icon matching image reference details */
+.password-toggle-eye {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.95rem;
+    cursor: pointer;
+    opacity: 0.22;
+    user-select: none;
+    transition: opacity 0.2s ease;
+}
+.password-toggle-eye:hover { opacity: 0.6; }
+
+/* ========================================================
+   SUBMIT INTERFACE CAP ACTIONS BUTTON & ERROR LABELS
+   ======================================================== */
+.auth-submit-wrapper {
+    position: relative;
+    width: 100%;
+    margin-top: 12px;
+}
+
+.btn-auth-secure-submit {
+    width: 100%;
+    background-color: #4ADE80; /* Replicated crisp sand-beige layout color matching reference card */
+    color: #050811;
+    border: none;
+    padding: 16px 32px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border-radius: 30px; /* Precise capsule trajectory track geometry button shape curves */
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+    text-transform: uppercase;
+}
+
+.btn-auth-secure-submit:hover {
+    background-color: #D6BEAE;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* RE-BALANCED CRIMSON VALIDATION ALERTS BANNER FIELD OVERLAY */
+.auth-validation-notice {
+    position: absolute;
+    bottom: -24px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #F87171; 
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+}
+
+.auth-validation-notice.reveal-notice { opacity: 1; transform: translateY(0); }
+
+/* GATEWAY NAVIGATION REGISTER LINK LINK FOOTER REPLICATED */
+.auth-gateway-footer {
+    width: 100%;
+    text-align: center;
+    margin-top: 36px;
+    font-size: 0.88rem;
+    color: #64748B;
+}
+
+.auth-register-trigger {
+    color: #E2E8F0;
+    text-decoration: none;
+    font-weight: 700;
+    margin-left: 4px;
+    transition: color 0.2s ease;
+}
+.auth-register-trigger:hover { color: #4ADE80; }
+
+/* IMMERSIVE CORES OVERLAY HOVER TRACES GLOW CONTROLS */
+.auth-glass-container:hover {
+    border-color: rgba(74, 222, 128, 0.12); /* Triggers clean ambient corporate green trace tracks */
+    box-shadow: 0 0 35px rgba(74, 222, 128, 0.04), 0 30px 70px rgba(0, 0, 0, 0.6);
+}
+
+/* ========================================================
+   MODERN HIGH ACCURACY DISPATCH NOTIFICATION MODAL TOAST
+   ======================================================== */
+.success-popup-toast {
+    position: fixed;
+    top: -100px; /* Hidden offscreen by default layout initialization coordinates */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #10B981; /* High density crisp rich emerald notification green */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 40px rgba(16, 185, 129, 0.3), 0 10px 20px rgba(0, 0, 0, 0.4);
+    padding: 16px 36px;
+    border-radius: 50px; /* Full floating capsule outline boundary */
+    z-index: 9999; /* Forces high order stack cascade presence over any site element templates */
+    transition: top 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    will-change: top;
+}
+
+.success-popup-toast.engage-banner {
+    top: 40px; /* Drops cleanly into clear monitor headroom layout viewports bounds */
+}
+
+.toast-content-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.toast-vector-check {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #050811;
+    background-color: #FFFFFF;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toast-content-block p {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.02em;
+}
+
+/* ========================================================
+   FLUID RESPONSIVE DESIGN PARAMETERS BREAKPOINTS CONTROLS
+   ======================================================== */
+@media (max-width: 640px) {
+    .auth-gateway-viewport { padding: 36px 4% 24px 4%; }
+    .auth-glass-container { padding: 32px 20px; border-radius: 20px; }
+    .auth-main-title { font-size: 2.1rem; }
+    .auth-input-field { padding: 12px 14px; font-size: 0.95rem; }
+    .btn-auth-secure-submit { padding: 14px 24px; font-size: 0.88rem; }
+    .auth-form-element { gap: 20px; }
+    .success-popup-toast { width: 90%; text-align: center; }
+    .toast-content-block { justify-content: center; }
+}
+
+   </style>
+
+   <script>
+    // ========================================================
+// STACKLY ENTERPRISE CLIENT REGISTRATION MANAGEMENT SYSTEM
+// ========================================================
+
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. INPUT SECURITY PASSWORD VISIBILITY CONTROLLER OVERLAY EYE MASK
+    const eyeTogglesList = document.querySelectorAll(".password-toggle-eye");
+
+    eyeTogglesList.forEach(eyeIcon => {
+        eyeIcon.addEventListener("click", () => {
+            const targetedFieldId = eyeIcon.getAttribute("data-target");
+            const matchingInput = document.getElementById(targetedFieldId);
+
+            if (matchingInput) {
+                // Toggle element data type matrices layout parameters comfortably
+                if (matchingInput.type === "password") {
+                    matchingInput.type = "text";
+                    eyeIcon.textContent = "🔒"; // Closes lock to indicate mask exposure visibility state
+                } else {
+                    matchingInput.type = "password";
+                    eyeIcon.textContent = "👁️";
+                }
+            }
+        });
+    });
+
+
+    // 2. REGISTRATION CRITERIA EVALUATION & DISPATCH NOTIFICATION HANDLER
+    const signupForm = document.getElementById("portal-secure-signup-form");
+    
+    const nameField = document.getElementById("auth-name-input");
+    const emailField = document.getElementById("auth-email-input");
+    const passField = document.getElementById("auth-password-input");
+    const confirmPassField = document.getElementById("auth-confirm-password-input");
+    
+    const warningNoticeLabel = document.getElementById("auth-warning-alert-label");
+    const successToastModal = document.getElementById("success-toast-modal");
+
+    if (signupForm && warningNoticeLabel && successToastModal) {
+        signupForm.addEventListener("submit", (event) => {
+            event.preventDefault(); // Catch backend server refreshes loops from executing automatically
+            
+            // Gather element inputs row text lengths variables
+            const nameVal = nameField ? nameField.value.trim() : "";
+            const emailVal = emailField ? emailField.value.trim() : "";
+            const passVal = passField ? passField.value.trim() : "";
+            const confirmPassVal = confirmPassField ? confirmPassField.value.trim() : "";
+
+            // STEP A: Field Check Validation — Check if ANY input cell container is empty
+            if (nameVal === "" || emailVal === "" || passVal === "" || confirmPassVal === "") {
+                warningNoticeLabel.textContent = "Please fill the fields";
+                warningNoticeLabel.classList.add("reveal-notice");
+                
+                // Clear warning trace overlay systematically after 3.5 seconds
+                setTimeout(() => {
+                    warningNoticeLabel.classList.remove("reveal-notice");
+                }, 3500);
+                
+                return; // Break active submit track processing workflows loops
+            }
+
+            // STEP B: Structural Email Format Check Validation
+            if (!emailVal.includes("@") || emailVal.length < 5) {
+                warningNoticeLabel.textContent = "Please enter a valid corporate email format";
+                warningNoticeLabel.classList.add("reveal-notice");
+                setTimeout(() => warningNoticeLabel.classList.remove("reveal-notice"), 3500);
+                return;
+            }
+
+            // STEP C: Identity Matrix Check — Enforce strict safety key congruence verification
+            if (passVal !== confirmPassVal) {
+                warningNoticeLabel.textContent = "Security password keys do not match";
+                warningNoticeLabel.classList.add("reveal-notice");
+                setTimeout(() => warningNoticeLabel.classList.remove("reveal-notice"), 3500);
+                return;
+            }
+
+            // STEP D: Passwords Cryptographic Length Boundary Lock Checks
+            if (passVal.length < 6) {
+                warningNoticeLabel.textContent = "Password key must possess at least 6 characters";
+                warningNoticeLabel.classList.add("reveal-notice");
+                setTimeout(() => warningNoticeLabel.classList.remove("reveal-notice"), 3500);
+                return;
+            }
+
+            // ========================================================
+            // SUCCESS ACTIONS LIFECYCLE: ENGAGE NOTIFICATION BANNER & REDIRECT
+            // ========================================================
+            // Launch the floating capsule emerald modal notice cleanly down onto monitor viewports
+            successToastModal.classList.add("engage-banner");
+
+            // Secure transient timing delay index before launching programmatic redirection routing tracks
+            setTimeout(() => {
+                successToastModal.classList.remove("engage-banner");
+                
+                // Forward operators safely back to secure login gate interface page
+                window.location.href = "login.html";
+            }, 2500); // Gives users a perfect 2.5-second clearance view window to digest success status
+        });
+
+        // Strip validation warning traces instantly as soon as trainees type string data metrics again
+        [nameField, emailField, passField, confirmPassField].forEach(field => {
+            if (field) {
+                field.addEventListener("input", () => {
+                    if (warningNoticeLabel.classList.contains("reveal-notice")) {
+                        warningNoticeLabel.classList.remove("reveal-notice");
+                    }
+                });
+            }
+        });
+    }
+});
+
+   </script>
+</body>
+</html>

@@ -1,0 +1,3097 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackly - Corporate Training Management</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- MINIMAL PRELOADER SCREEN -->
+    <div id="preloader">
+        <div class="brand-wrapper">
+            <!-- Custom Vector Logo from Image Reference in Single Color Line Art -->
+            <svg class="vector-logo" viewBox="0 0 200 200" fill="none" xmlns="http://w3.org">
+                <!-- Bottom Base Diamond Layer -->
+                <path class="layer layer-1" d="M30 140L100 175L170 140L100 105L30 140Z" />
+                <!-- Middle Diamond Layer -->
+                <path class="layer layer-2" d="M30 100L100 135L170 100L100 65L30 100Z" />
+                <!-- Top Summit Diamond Layer -->
+                <path class="layer layer-3" d="M30 60L100 95L170 60L100 25L30 60Z" />
+            </svg>
+            
+            <div class="text-group">
+                <h1 class="brand-name">Stackly</h1>
+                <p class="status-text" id="status-label">CONNECTING DATABASE...</p>
+            </div>
+
+            <!-- Single-Color Progress Indicator -->
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const progressBar = document.getElementById("progress-bar");
+    const statusLabel = document.getElementById("status-label");
+    
+    const totalDuration = 2000; // Hardcoded 2-second timeout window
+    const frameRate = 30; 
+    const totalTicks = totalDuration / frameRate;
+    let currentTick = 0;
+
+    const phrases = [
+        { limit: 35, text: "OPTIMIZING CORE ENVIRONMENT..." },
+        { limit: 75, text: "CONNECTING DATABASE..." },
+        { limit: 100, text: "LAUNCHING..." }
+    ];
+
+    const loaderInterval = setInterval(() => {
+        currentTick++;
+        const percentage = Math.min((currentTick / totalTicks) * 100, 100);
+        
+        if (progressBar) {
+            progressBar.style.width = `${percentage}%`;
+        }
+
+        if (statusLabel) {
+            const match = phrases.find(p => percentage <= p.limit);
+            if (match) statusLabel.textContent = match.text;
+        }
+
+        if (currentTick >= totalTicks) {
+            clearInterval(loaderInterval);
+            
+            // Clean modal dismount
+            setTimeout(() => {
+                document.body.classList.add("loaded");
+            }, 100);
+        }
+    }, frameRate);
+});
+
+</script>
+
+<!-- FLOATING HEADER INTERFACE -->
+<header class="floating-header">
+    <div class="header-container">
+        
+        <a href="#" class="brand-logo" id="brand-logo-trigger" aria-label="Stackly Home - Refresh Portal">
+            <!-- Replace 'logo-placeholder.svg' with your actual vector file path -->
+            <img src="logo-placeholder.svg" alt="Stackly Logo" class="logo-img">
+            <span class="brand-name-text">Stackly</span>
+        </a>
+
+        <!-- Desktop Navigation Layer (Hidden on mobile via Media Query) -->
+        <nav class="desktop-nav">
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-item ">Home</a></li>
+                <li><a href="courses.html" class="nav-item active">Courses</a></li>
+                <li><a href="blogs.html" class="nav-item">Blogs</a></li>
+                <li><a href="about.html" class="nav-item">About Us</a></li>
+                <li><a href="contact.html" class="nav-item">Contact Us</a></li>
+            </ul>
+        </nav>
+
+        <!-- Right Side Authentication Area -->
+        <div class="auth-wrapper">
+           <button class="btn-auth" onclick="window.location.href='login.html'">Sign In</button>
+            
+            <!-- Mobile Hamburger Menu Toggle Trigger Button -->
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Responsive Mobile Navigation Drawer Overlay Drawer Component -->
+<div class="mobile-drawer" id="mobile-navigation-drawer">
+    <nav class="mobile-nav">
+        <ul>
+            <li><a href="#dashboard" class="mobile-nav-item active">Dashboard</a></li>
+            <li><a href="#courses" class="mobile-nav-item">Courses</a></li>
+            <li><a href="#analytics" class="mobile-nav-item">Analytics</a></li>
+            <li><a href="#teams" class="mobile-nav-item">Teams</a></li>
+            <li><a href="#settings" class="mobile-nav-item">Settings</a></li>
+        </ul>
+    </nav>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    // 1. BRAND REFRESH CONTROLLER
+    const logoTrigger = document.getElementById("brand-logo-trigger");
+    if (logoTrigger) {
+        logoTrigger.addEventListener("click", (e) => {
+            e.preventDefault(); // Stop standard routing anchors
+            window.location.reload(); // Instantly trigger atomic state wipe refresh
+        });
+    }
+
+    // 2. MOBILE OVERLAY RESPONSIVE DRAWER MANAGEMENT
+    const menuToggle = document.getElementById("mobile-menu-toggle");
+    const navDrawer = document.getElementById("mobile-navigation-drawer");
+    const drawerLinks = document.querySelectorAll(".mobile-nav-item");
+
+    if (menuToggle && navDrawer) {
+        const toggleMenuState = () => {
+            menuToggle.classList.toggle("active");
+            navDrawer.classList.toggle("open");
+            
+            // Toggle body scroll control layers to prevent standard layout parallax shifts
+            if (navDrawer.classList.contains("open")) {
+                document.body.style.overflow = "hidden";
+            } else {
+                document.body.style.overflow = "";
+            }
+        };
+
+        menuToggle.addEventListener("click", toggleMenuState);
+
+        // Auto close navigation screen drawer whenever links are selected
+        drawerLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                if (navDrawer.classList.contains("open")) {
+                    toggleMenuState();
+                }
+            });
+        });
+    }
+});
+
+</script>
+
+<!-- CORPORATE CATALOG HERO SECTION -->
+<section class="catalog-hero-section" id="catalog-hero-viewport">
+    <!-- Main catalog visual background layout image asset tag -->
+    <img src="./assests/about img 2.webp" alt="Digital Learning Hub Environment" class="catalog-hero-bg-img">
+
+    <div class="catalog-hero-container">
+        <!-- CENTERED REGION: Staggered entry visual control block -->
+        <div class="catalog-hero-content-block scroll-trigger-up">
+            
+            <span class="catalog-pretitle">UPGRADE WORKFORCE COMPETENCY</span>
+            
+            <h1 class="catalog-main-title">
+                Explore Enterprise Training<br>Pathways
+            </h1>
+            
+            <p class="catalog-subtitle">
+                Accelerate operational proficiency, enforce regulatory compliance compliance architectures, and map cross-functional capability development modules seamlessly in real time.
+            </p>
+
+            <!-- Floating CTA Filters Grid Row (All components mapped safely to 404 gates) -->
+            <div class="catalog-filter-cta-group">
+                <a href="404.html" class="btn-filter active">All Pathways</a>
+                <a href="404.html" class="btn-filter">Compliance Mandates</a>
+                <a href="404.html" class="btn-filter">Technical Labs</a>
+                <a href="404.html" class="btn-filter">Executive Leadership</a>
+            </div>
+
+            <!-- Integrated Search Bar System (Features high-performance check overlays) -->
+            <form class="catalog-search-wrapper" id="catalog-search-engine" novalidate>
+                <div class="search-input-inner">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" id="catalog-search-input" placeholder="Search by skill matrix index, pathway title, or certification keyword...">
+                    <button type="submit" class="btn-search-submit">Search</button>
+                </div>
+                <!-- Interactive validation notice overlay element -->
+                <span class="search-validation-notice" id="search-error-label">Please fill the fields</span>
+            </form>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    /* MASTER CATALOG HERO WRAPPER CONTROLS */
+.catalog-hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 160px 6% 100px 6%;
+    background-color: #0A0F1D;
+    overflow: hidden;
+}
+
+.catalog-hero-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.12;
+}
+
+/* Linear overlay mask to secure maximum centered text contrast options */
+.catalog-hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 20%, #0A0F1D 100%),
+                radial-gradient(circle at center, transparent 30%, #0A0F1D 90%);
+    z-index: 2;
+}
+
+.catalog-hero-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* CENTERED CORE CONTENT TEXT BLOCK */
+.catalog-hero-content-block {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.catalog-pretitle {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #4ADE80; /* Stackly Core Ancient Green Theme Accent Color */
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.2);
+}
+
+.catalog-main-title {
+    font-size: 3.8rem;
+    font-weight: 400; /* Crisp thin-wire style weight matches reference mockup image layout */
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+    line-height: 1.2;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+}
+
+.catalog-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #94A3B8;
+    max-width: 820px;
+    margin-bottom: 44px;
+}
+
+/* FLOATING DYNAMIC CAPSULE FILTER CTA ROW */
+.catalog-filter-cta-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 48px;
+    width: 100%;
+}
+
+.btn-filter {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 30px; /* Capsule capsule constraints matching layout reference image */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Active and Hover Neon Glow Configurations */
+.btn-filter.active, .btn-filter:hover {
+    color: #0A0F1D;
+    background-color: #4ADE80; 
+    border-color: #4ADE80;
+    transform: translateY(-2px);
+    /* High density neon green aura lighting emission profiles */
+    box-shadow: 0 0 20px rgba(74, 222, 128, 0.4), 0 8px 16px rgba(74, 222, 128, 0.15);
+}
+
+/* INTEGRATED INLINE SEARCH WIDGET BAR */
+.catalog-search-wrapper {
+    width: 100%;
+    max-width: 720px;
+    position: relative;
+}
+
+.search-input-inner {
+    display: flex;
+    align-items: center;
+    background-color: rgba(30, 41, 59, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 40px; /* Pill layout parameters structure */
+    padding: 6px 6px 6px 24px;
+    width: 100%;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-input-inner:focus-within {
+    border-color: rgba(74, 222, 128, 0.4);
+    box-shadow: 0 0 25px rgba(74, 222, 128, 0.25), 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.search-icon {
+    font-size: 1.05rem;
+    color: #475569;
+    margin-right: 14px;
+    flex-shrink: 0;
+}
+
+.search-input {
+    flex-grow: 1;
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    font-size: 0.95rem;
+    outline: none;
+    width: 50%;
+}
+
+.search-input::placeholder {
+    color: #475569;
+}
+
+.btn-search-submit {
+    background-color: #FFFFFF;
+    color: #0A0F1D;
+    border: none;
+    padding: 12px 32px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-search-submit:hover {
+    background-color: #4ADE80;
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.4);
+}
+
+/* HIGH DEFINITION ERROR NOTICE VISUAL LABELS */
+.search-validation-notice {
+    position: absolute;
+    bottom: -26px;
+    left: 24px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #F87171; /* High luminosity crimson error text colors */
+    letter-spacing: 0.03em;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.search-validation-notice.reveal-notice {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* INITIAL CONFIGURATION FOR MOUNT ENTRANCE ANIMATIONS */
+.scroll-trigger-up {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-up.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FLUID RESPONSIVE DESIGN VIEWPORT BREAKPOINTS MAPPING SYSTEM */
+@media (max-width: 768px) {
+    .catalog-main-title { font-size: 2.6rem; }
+    .catalog-subtitle { font-size: 1rem; margin-bottom: 32px; }
+    .catalog-filter-cta-group { gap: 8px; margin-bottom: 36px; }
+    .btn-filter { padding: 10px 20px; font-size: 0.85rem; }
+    .search-input-inner { padding: 4px 4px 4px 16px; border-radius: 20px; flex-direction: column; gap: 12px; }
+    .search-icon { display: none; }
+    .search-input { width: 100%; text-align: center; padding: 8px 0; }
+    .btn-search-submit { width: 100%; padding: 12px; border-radius: 12px; }
+    .search-validation-notice { bottom: -22px; left: 0; width: 100%; text-align: center; }
+}
+
+@media (max-width: 480px) {
+    .catalog-hero-section { padding-top: 140px; padding-bottom: 60px; }
+    .catalog-main-title { font-size: 2.1rem; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. HIGH-PERFORMANCE SEARCH CONTROLLER INTERFACES WITH INPUT VALIDATION CHECKS
+    const searchForm = document.getElementById("catalog-search-engine");
+    const searchFieldInput = document.getElementById("catalog-search-input");
+    const errorNoticeLabel = document.getElementById("search-error-label");
+
+    if (searchForm && searchFieldInput && errorNoticeLabel) {
+        searchForm.addEventListener("submit", (event) => {
+            event.preventDefault(); // Intercept automatic browser post actions instantly
+            
+            const rawQueryString = searchFieldInput.value.trim();
+
+            // STEP A: Field Check Validation — Stop empty submissions
+            if (rawQueryString === "") {
+                errorNoticeLabel.classList.add("reveal-notice");
+                
+                // Dissolve alert banner layout elements automatically after visual tracking window expiration
+                setTimeout(() => {
+                    errorNoticeLabel.classList.remove("reveal-notice");
+                }, 3500);
+                
+                return; // Break execution cycle pathway loops
+            }
+
+            // STEP B: Navigation — Valid criteria forces link straight to requested 404 gate
+            window.location.href = "404.html";
+        });
+
+        // Suppress layout validation warnings instantly as soon as users write new strings
+        searchFieldInput.addEventListener("input", () => {
+            if (errorNoticeLabel.classList.contains("reveal-notice")) {
+                errorNoticeLabel.classList.remove("reveal-notice");
+            }
+        });
+    }
+
+    // 2. VIEWPORT OBSERVER ENTRANCE TRACK TIMELINE
+    const catalogHeroObserverOptions = { root: null, rootMargin: "0px", threshold: 0.05 };
+
+    const catalogHeroIntersectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const textBlock = entry.target.querySelector(".catalog-hero-content-block");
+                if (textBlock) {
+                    textBlock.classList.add("animate-in");
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, catalogHeroObserverOptions);
+
+    const targetCatalogHero = document.getElementById("catalog-hero-viewport");
+    if (targetCatalogHero) {
+        catalogHeroIntersectionObserver.observe(targetCatalogHero);
+    }
+});
+
+</script>
+
+<!-- CORPORATE TELEMETRY INSIGHTS SECTION -->
+<section class="insights-matrix-section" id="insights-matrix-viewport">
+    <div class="insights-matrix-container">
+        
+        <!-- TOP REGION: Reversed Asymmetric Header Row (Text block aligned right) -->
+        <div class="insights-header-row">
+            <!-- Left Side Interactive Slider Trigger Arrows Mapped to 404 Gates -->
+            <div class="insights-navigation-arrows">
+                <a href="404.html" class="arrow-btn-item prev-btn" aria-label="Previous Insight Matrix Step">←</a>
+                <a href="404.html" class="arrow-btn-item next-btn active" aria-label="Next Insight Matrix Step">→</a>
+            </div>
+
+            <!-- Right Side Context Block -->
+            <div class="insights-text-block">
+                <span class="insights-pretitle">ACHIEVE YOUR CORPORATE GOALS</span>
+                <h2 class="insights-main-title">Personalized Insights and Recommendations</h2>
+                <p class="insights-description">
+                    Based on your core department skill matrix telemetry data, Stackly delivers targeted module paths and upskilling pathways engineered around your workflow needs.
+                </p>
+            </div>
+        </div>
+
+        <!-- BOTTOM REGION: Asymmetric 3-Card Carousel Track (Positions swap dynamically via JS loop) -->
+        <div class="insights-asymmetric-grid" id="insights-swap-track">
+            
+            <!-- Insight Element Card Node 1 -->
+            <div class="insight-grid-card position-left" id="insight-node-1" data-current-pos="left">
+                <div class="insight-card-image-frame">
+                    <img src="insight-img-1.jpg" alt="Workforce Skills Mapping Sandbox" class="insight-embed-img">
+                </div>
+                <div class="insight-card-caption-layer">
+                    <h3>Exercises Focused on Specific Skills</h3>
+                </div>
+            </div>
+
+            <!-- Insight Element Card Node 2 -->
+            <div class="insight-grid-card position-center" id="insight-node-2" data-current-pos="center">
+                <div class="insight-card-image-frame">
+                    <img src="insight-img-2.jpg" alt="Adaptive Certification Matrices Workspace" class="insight-embed-img">
+                </div>
+                <div class="insight-card-caption-layer">
+                    <h3>Adaptive Learning Progression Labs</h3>
+                </div>
+            </div>
+
+            <!-- Insight Element Card Node 3 -->
+            <div class="insight-grid-card position-right" id="insight-node-3" data-current-pos="right">
+                <div class="insight-card-image-frame">
+                    <img src="insight-img-3.jpg" alt="Automated Telemetry Dashboards Tracker" class="insight-embed-img">
+                </div>
+                <div class="insight-card-caption-layer">
+                    <h3>Real-Time Competency Overviews</h3>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* GLOBAL CORE CONFIGURATION STYLING PARAMETERS */
+.insights-matrix-section {
+    width: 100%;
+    /* Adheres strictly to the user padding rules: 50px Top Padding / 30px Bottom Padding */
+    padding: 30px 6% 30px 6%;
+    background-color: #0A0F1D; /* Clean rich corporate theme dark background */
+    overflow: hidden;
+    position: relative;
+}
+
+.insights-matrix-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+/* TOP ROW: SPLIT REVERSED HEADER STRUCTURE */
+.insights-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    width: 100%;
+}
+
+.insights-navigation-arrows {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.arrow-btn-item {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.arrow-btn-item.active, .arrow-btn-item:hover {
+    background-color: #4ADE80; /* Corporate Theme Primary Ancient Green */
+    border-color: #4ADE80;
+    color: #0A0F1D;
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.4);
+}
+
+/* Right Side aligned text layout mirroring reference template visual */
+.insights-text-block {
+    max-width: 640px;
+    text-align: left;
+}
+
+.insights-pretitle {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #4ADE80; 
+    letter-spacing: 0.15em;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.insights-main-title {
+    font-size: 3rem;
+    font-weight: 400; /* Fine wire premium line weight style properties */
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.insights-description {
+    font-size: 1.02rem;
+    line-height: 1.6;
+    color: #94A3B8;
+}
+
+/* BOTTOM ROW: DYNAMIC ASYMMETRIC POSITIONING POSITION ENGINE MAPPING */
+.insights-asymmetric-grid {
+    position: relative;
+    width: 100%;
+    height: 490px; /* Rigidity headroom block ensuring grid layout parameters stability */
+}
+
+.insight-grid-card {
+    position: absolute;
+    bottom: 0;
+    width: 31%; /* Scaled for 3 horizontal structural segments inside max bounds width */
+    background-color: rgba(30, 41, 59, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    /* High precision transformations rules driving location swap loops safely */
+    transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                height 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.insight-card-image-frame {
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.insight-embed-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.insight-card-caption-layer {
+    padding: 24px 20px;
+    background-color: transparent;
+    text-align: left;
+}
+
+.insight-card-caption-layer h3 {
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: #FFFFFF;
+    line-height: 1.3;
+    transition: color 0.3s ease;
+}
+
+/* POSITION MATRIX LAYOUT VALUES: REPLICATING THE STAGGERED ASPECT HEAP HIGHS */
+.insight-grid-card.position-left {
+    left: 0%;
+    height: 420px;
+}
+
+.insight-grid-card.position-center {
+    left: 34.5%;
+    height: 490px; /* Large center card visual height blueprint mapping */
+}
+
+.insight-grid-card.position-right {
+    left: 69%;
+    height: 380px;
+}
+
+/* CORPORATE ACCENT NEON GLOW EFFECTS */
+.insight-grid-card:hover {
+    border-color: rgba(74, 222, 128, 0.35); 
+    /* Radiant corporate main fluorescent green neon aura glow emission properties */
+    box-shadow: 0 0 25px rgba(74, 222, 128, 0.22), 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+.insight-grid-card:hover .insight-card-caption-layer h3 {
+    color: #4ADE80; /* Swaps typography context color cleanly inside user focus state */
+}
+
+/* FLUID RESPONSIVE SYSTEM MEDIA BREAKPOINTS MATRIX */
+@media (max-width: 1024px) {
+    .insights-header-row { flex-direction: column-reverse; align-items: flex-start; gap: 24px; }
+    .insights-main-title { font-size: 2.3rem; }
+    .insights-asymmetric-grid { height: auto; display: flex; flex-direction: column; gap: 24px; }
+    
+    /* Strip dynamic coordinate trackers safely to accommodate fluid mobile flexflows cleanly */
+    .insight-grid-card { position: relative !important; left: 0 !important; width: 100% !important; height: 320px !important; }
+}
+
+@media (max-width: 640px) {
+    .insights-matrix-section { padding-top: 40px; padding-bottom: 24px; }
+    .insights-main-title { font-size: 1.85rem; }
+    .insight-grid-card { height: 260px !important; }
+    .insight-card-caption-layer h3 { font-size: 1.15rem; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. CAROUSEL ENGINE: CONFIGURE HIGH SPEED 2-SECOND INTERCHANGE GENERATOR
+    const insightGridTrack = document.getElementById("insights-swap-track");
+    
+    if (insightGridTrack) {
+        const cardNodes = [
+            document.getElementById("insight-node-1"),
+            document.getElementById("insight-node-2"),
+            document.getElementById("insight-node-3")
+        ];
+
+        // Track pointer alignment variables array loop matrix steps
+        let positionStatesArray = ["left", "center", "right"];
+        let isInsightInteractionPaused = false;
+
+        const executeCardPositionSwapCycle = () => {
+            // Only perform automatic coordinate transitions on larger desktop screens
+            if (!isInsightInteractionPaused && window.innerWidth > 1024) {
+                // Cycle array labels systematically to rotate parameters seamlessly
+                const terminalPositionValue = positionStatesArray.pop();
+                positionStatesArray.unshift(terminalPositionValue);
+
+                // Re-write layout positioning tracking class metrics to item card templates
+                cardNodes.forEach((card, index) => {
+                    if (card) {
+                        card.classList.remove("position-left", "position-center", "position-right");
+                        
+                        const nextTargetPosition = positionStatesArray[index];
+                        card.classList.add(`position-${nextTargetPosition}`);
+                        card.setAttribute("data-current-pos", nextTargetPosition);
+                    }
+                });
+            }
+        };
+
+        // Strict 2 seconds auto shifting lifecycle timer loop execution boundaries
+        setInterval(executeCardPositionSwapCycle, 2000);
+
+        // Pause layout swapping ticks anywhere mouse parameters interact inside tiles
+        cardNodes.forEach(card => {
+            if (card) {
+                card.addEventListener("mouseenter", () => { isInsightInteractionPaused = true; });
+                card.addEventListener("mouseleave", () => { isInsightInteractionPaused = false; });
+            }
+        });
+    }
+});
+
+</script>
+
+<!-- CORPORATE INFRASTRUCTURE COURSE GRID MATRIX WITH 6 TILES -->
+<section class="catalog-grid-section" id="catalog-grid-viewport">
+    <div class="catalog-grid-container">
+        
+        <!-- LEFT REGION: Sticky Corporate Filter Sidebar Control Panel -->
+        <aside class="catalog-sidebar">
+            <div class="filter-group">
+                <h3 class="filter-group-title">Training Type</h3>
+                <label class="filter-checkbox-item">
+                    <input type="checkbox" name="type" value="management" checked>
+                    <span class="custom-checkbox"></span>
+                    <span class="filter-label-text">Management</span>
+                    <span class="filter-count-badge">12</span>
+                </label>
+                <label class="filter-checkbox-item">
+                    <input type="checkbox" name="type" value="technical" checked>
+                    <span class="custom-checkbox"></span>
+                    <span class="filter-label-text">Technical Labs</span>
+                    <span class="filter-count-badge">18</span>
+                </label>
+                <label class="filter-checkbox-item">
+                    <input type="checkbox" name="type" value="compliance" checked>
+                    <span class="custom-checkbox"></span>
+                    <span class="filter-label-text">Compliance Paths</span>
+                    <span class="filter-count-badge">15</span>
+                </label>
+            </div>
+
+            <div class="filter-group">
+                <h3 class="filter-group-title">Competency Level</h3>
+                <label class="filter-radio-item">
+                    <input type="radio" name="level" value="intermediate" checked>
+                    <span class="custom-radio"></span>
+                    <span class="filter-label-text">Intermediate</span>
+                </label>
+                <label class="filter-radio-item">
+                    <input type="radio" name="level" value="advanced">
+                    <span class="custom-radio"></span>
+                    <span class="filter-label-text">Advanced Expert</span>
+                </label>
+            </div>
+        </aside>
+
+        <!-- RIGHT REGION: Interactive Grid Matrix Showcasing 6 Distinct Modules -->
+        <main class="catalog-results-block">
+            
+            <div class="results-meta-header">
+                <h2 class="results-count-title" id="catalog-grid-staggered-title">
+                    6 active enterprise pathways curated for your division
+                </h2>
+                <div class="results-sorting-action">
+                    <a href="404.html" class="btn-sort-selector">Most Popular ↓</a>
+                </div>
+            </div>
+
+            <!-- Staggered Multi-Column Course Display Grid Container -->
+            <div class="courses-cards-showcase-grid">
+                
+                <!-- Course Card 1 -->
+                <div class="showcase-card-node scroll-trigger-stagger">
+                    <div class="showcase-image-frame">
+                        <img src="corporate-course-1.jpg" alt="Technical Matrix Implementation" class="showcase-embed-img">
+                        <span class="showcase-level-badge">Intermediate</span>
+                        <!-- Blur Hover Overlay Wrapper Element -->
+                        <div class="image-blur-overlay">
+                            <div class="overlay-rating-strip">⭐ 4.8</div>
+                            <span class="overlay-metric">35 Mins • 1.2k Views</span>
+                        </div>
+                    </div>
+                    <div class="showcase-card-details">
+                        <h3 class="showcase-card-title">Technical Matrix Implementation</h3>
+                        <div class="showcase-instructor-strip">
+                            <img src="instructor-1.jpg" alt="Mike Anderson" class="instructor-avatar">
+                            <span>Mike Anderson</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 2 -->
+                <div class="showcase-card-node scroll-trigger-stagger">
+                    <div class="showcase-image-frame">
+                        <img src="corporate-course-2.jpg" alt="Agile Leadership Matrix Sprints" class="showcase-embed-img">
+                        <span class="showcase-level-badge">Intermediate</span>
+                        <div class="image-blur-overlay">
+                            <div class="overlay-rating-strip">⭐ 4.7</div>
+                            <span class="overlay-metric">32 Mins • 950 Views</span>
+                        </div>
+                    </div>
+                    <div class="showcase-card-details">
+                        <h3 class="showcase-card-title">Agile Leadership Matrix Sprints</h3>
+                        <div class="showcase-instructor-strip">
+                            <img src="instructor-2.jpg" alt="Emma Lee" class="instructor-avatar">
+                            <span>Emma Lee</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 3 -->
+                <div class="showcase-card-node scroll-trigger-stagger">
+                    <div class="showcase-image-frame">
+                        <img src="corporate-course-3.jpg" alt="Zero-Trust Corporate Command Systems" class="showcase-embed-img">
+                        <span class="showcase-level-badge">Intermediate</span>
+                        <div class="image-blur-overlay">
+                            <div class="overlay-rating-strip">⭐ 4.5</div>
+                            <span class="overlay-metric">40 Mins • 810 Views</span>
+                        </div>
+                    </div>
+                    <div class="showcase-card-details">
+                        <h3 class="showcase-card-title">Zero-Trust Enterprise Compliance</h3>
+                        <div class="showcase-instructor-strip">
+                            <img src="instructor-3.jpg" alt="Jason White" class="instructor-avatar">
+                            <span>Jason White</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 4 -->
+                <div class="showcase-card-node scroll-trigger-stagger">
+                    <div class="showcase-image-frame">
+                        <img src="corporate-course-4.jpg" alt="Workforce Capability Optimization" class="showcase-embed-img">
+                        <span class="showcase-level-badge">Intermediate</span>
+                        <div class="image-blur-overlay">
+                            <div class="overlay-rating-strip">⭐ 5.0</div>
+                            <span class="overlay-metric">30 Mins • 2.1k Views</span>
+                        </div>
+                    </div>
+                    <div class="showcase-card-details">
+                        <h3 class="showcase-card-title">Workforce Capability Optimization</h3>
+                        <div class="showcase-instructor-strip">
+                            <img src="instructor-4.jpg" alt="Sarah Johnson" class="instructor-avatar">
+                            <span>Sarah Johnson</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 5 -->
+                <div class="showcase-card-node scroll-trigger-stagger">
+                    <div class="showcase-image-frame">
+                        <img src="corporate-course-5.jpg" alt="Regulatory Compliance Management" class="showcase-embed-img">
+                        <span class="showcase-level-badge">Advanced</span>
+                        <div class="image-blur-overlay">
+                            <div class="overlay-rating-strip">⭐ 4.9</div>
+                            <span class="overlay-metric">45 Mins • 1.4k Views</span>
+                        </div>
+                    </div>
+                    <div class="showcase-card-details">
+                        <h3 class="showcase-card-title">Regulatory Expiration Protocols</h3>
+                        <div class="showcase-instructor-strip">
+                            <img src="instructor-5.jpg" alt="David Clark" class="instructor-avatar">
+                            <span>David Clark</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 6 -->
+                <div class="showcase-card-node scroll-trigger-stagger">
+                    <div class="showcase-image-frame">
+                        <img src="corporate-course-6.jpg" alt="Executive Operations Strategy Analytics" class="showcase-embed-img">
+                        <span class="showcase-level-badge">Intermediate</span>
+                        <div class="image-blur-overlay">
+                            <div class="overlay-rating-strip">⭐ 4.8</div>
+                            <span class="overlay-metric">35 Mins • 1.1k Views</span>
+                        </div>
+                    </div>
+                    <div class="showcase-card-details">
+                        <h3 class="showcase-card-title">Executive Operations Strategy Analytics</h3>
+                        <div class="showcase-instructor-strip">
+                            <img src="instructor-6.jpg" alt="Lisa Brown" class="instructor-avatar">
+                            <span>Lisa Brown</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+</section>
+
+<style>
+    /* DYNAMIC CATALOG SECTION ARCHITECTURE */
+.catalog-grid-section {
+    width: 100%;
+    /* Strict parameter spacing compliance: 50px Top Padding / 30px Bottom Padding */
+    padding: 50px 6% 30px 6%;
+    background-color: #0A0F1D; 
+    position: relative;
+}
+
+.catalog-grid-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* LEFT SIDE: STICKY FILTER PANEL LAYOUT SYSTEM */
+.catalog-sidebar {
+    background-color: rgba(30, 41, 59, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 24px;
+    position: sticky;
+    top: 110px;
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+}
+
+.filter-group {
+    width: 100%;
+    margin-bottom: 28px;
+}
+
+.filter-group-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.filter-checkbox-item, .filter-radio-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 8px 0;
+    cursor: pointer;
+    color: #94A3B8;
+    font-size: 0.92rem;
+}
+
+.filter-checkbox-item input, .filter-radio-item input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.custom-checkbox {
+    width: 18px;
+    height: 18px;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+    margin-right: 12px;
+    position: relative;
+    transition: all 0.2s ease;
+}
+.filter-checkbox-item input:checked ~ .custom-checkbox {
+    background-color: #4ADE80;
+    border-color: #4ADE80;
+}
+.custom-checkbox::after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 5px;
+    top: 2px;
+    width: 5px;
+    height: 9px;
+    border: solid #0A0F1D;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+.filter-checkbox-item input:checked ~ .custom-checkbox::after { display: block; }
+
+.custom-radio {
+    width: 18px;
+    height: 18px;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    margin-right: 12px;
+    position: relative;
+    transition: all 0.2s ease;
+}
+.filter-radio-item input:checked ~ .custom-radio { border-color: #4ADE80; }
+.custom-radio::after {
+    content: '';
+    position: absolute;
+    display: none;
+    top: 4px;
+    left: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #4ADE80;
+}
+.filter-radio-item input:checked ~ .custom-radio::after { display: block; }
+
+.filter-label-text { flex-grow: 1; }
+.filter-count-badge {
+    font-size: 0.75rem;
+    color: #64748B;
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 2px 6px;
+    border-radius: 6px;
+}
+
+/* ==========================================
+   RIGHT SIDE: MULTI-COLUMN 6-CARD DISPLAY MATRIX
+   ========================================== */
+.catalog-results-block {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.results-meta-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    padding-bottom: 20px;
+}
+
+.results-count-title {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #FFFFFF;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 8px;
+}
+
+.results-count-title span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.results-count-title span.animate-in { opacity: 1; transform: translateY(0); }
+
+.btn-sort-selector {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 0.88rem;
+    color: #94A3B8;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+.btn-sort-selector:hover { color: #FFFFFF; background-color: rgba(255, 255, 255, 0.05); }
+
+/* Grid layout precisely scaled for a neat balanced 6 elements array presentation */
+.courses-cards-showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+}
+
+.showcase-card-node {
+    background-color: rgba(30, 41, 59, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: translateY(35px) scale(0.98);
+    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                background-color 0.3s ease;
+}
+.showcase-card-node.animate-in { opacity: 1; transform: translateY(0) scale(1); }
+
+/* IMAGE FRAME AND BLUR INTERACTION SCHEME BLOCK */
+.showcase-image-frame {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+}
+
+.showcase-embed-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                filter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: blur(0px);
+}
+
+.showcase-level-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    background-color: rgba(10, 15, 29, 0.8);
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    z-index: 3; 
+}
+
+/* INTERACTIVE BLUR HOVER FILTER SCREEN LAYERS */
+.image-blur-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 15, 29, 0.55); 
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    opacity: 0; 
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.overlay-rating-strip {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #FBBF24; 
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+    transform: translateY(10px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.overlay-metric {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #E2E8F0;
+    transform: translateY(10px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition-delay: 0.05s;
+}
+
+/* RE-TRIGGER HOVER SYSTEM INTERACTIVES */
+.showcase-card-node:hover .showcase-embed-img {
+    transform: scale(1.06);
+    filter: blur(8px); 
+}
+
+.showcase-card-node:hover .image-blur-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.showcase-card-node:hover .overlay-rating-strip,
+.showcase-card-node:hover .overlay-metric {
+    transform: translateY(0); 
+}
+
+.showcase-card-details {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+}
+
+.showcase-card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+.showcase-instructor-strip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: #64748B;
+}
+
+.instructor-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* GENERAL NEON OUTLINE GLOW STATES ON ACTIVE HOVER INTERFACES */
+.showcase-card-node:hover {
+    transform: translateY(-6px);
+    background-color: rgba(30, 41, 59, 0.6);
+    border-color: rgba(74, 222, 128, 0.35);
+    box-shadow: 0 0 25px rgba(74, 222, 128, 0.22), 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+.showcase-card-node:hover .showcase-card-title {
+    color: #4ADE80; 
+}
+
+/* FLUID RESPONSIVE MARGINS SYSTEM BREAKPOINTS */
+@media (max-width: 1400px) {
+    .courses-cards-showcase-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 992px) {
+    .catalog-grid-container { grid-template-columns: 1fr; gap: 36px; }
+    .catalog-sidebar { position: relative; top: 0; max-height: none; max-width: 100%; width: 100%; }
+}
+
+@media (max-width: 640px) {
+    .catalog-grid-section { padding-top: 40px; padding-bottom: 24px; }
+    .results-meta-header { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .results-count-title { font-size: 1.25rem; gap: 0 6px; }
+    .courses-cards-showcase-grid { grid-template-columns: 1fr; gap: 20px; }
+    .btn-sort-selector { width: 100%; text-align: center; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. TYPOGRAPHY ENGINE: PARSE META TITLE COUNT PHRASES WORD-BY-WORD
+    const parseCatalogGridTitleStagger = (titleContainer) => {
+        if (!titleContainer) return;
+        const wordsArray = titleContainer.textContent.trim().split(/\s+/);
+        titleContainer.innerHTML = "";
+
+        wordsArray.forEach((word) => {
+            const span = document.createElement("span");
+            span.textContent = word + " ";
+            titleContainer.appendChild(span);
+        });
+    };
+
+    const runCatalogGridTitleAnimation = (titleContainer) => {
+        if (!titleContainer) return;
+        const spans = titleContainer.querySelectorAll("span");
+        spans.forEach((span, index) => {
+            setTimeout(() => {
+                span.classList.add("animate-in");
+            }, index * 60);
+        });
+    };
+
+    const catalogGridTitle = document.getElementById("catalog-grid-staggered-title");
+    if (catalogGridTitle) {
+        parseCatalogGridTitleStagger(catalogGridTitle);
+    }
+
+    // 2. VIEWPORT OBSERVER ENTRANCE: TRIGGER SEQUENTIAL CARD DEPLOYMENTS
+    const catalogGridObserverOptions = { root: null, rootMargin: "0px", threshold: 0.05 };
+
+    const catalogGridSectionIntersectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const parentSection = entry.target;
+
+                if (catalogGridTitle) {
+                    runCatalogGridTitleAnimation(catalogGridTitle);
+                }
+
+                // Gather the 6 distinct card nodes and open them one-by-one sequentially
+                const targetCards = parentSection.querySelectorAll(".showcase-card-node");
+                targetCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add("animate-in");
+                    }, 150 + (index * 110)); 
+                });
+
+                observer.unobserve(parentSection);
+            }
+        });
+    }, catalogGridObserverOptions);
+
+    const targetCatalogGridViewport = document.getElementById("catalog-grid-viewport");
+    if (targetCatalogGridViewport) {
+        catalogGridSectionIntersectionObserver.observe(targetCatalogGridViewport);
+    }
+});
+
+</script>
+
+<!-- DYNAMIC ONE-LINE ENTERPRISE CTA BANNER -->
+<section class="oneline-cta-section" id="oneline-cta-viewport">
+    <!-- Visual structural background graphics asset layer -->
+    <img src="oneline-banner-bg-placeholder.jpg" alt="Abstract Corporate Grid Background" class="oneline-bg-img">
+
+    <div class="oneline-banner-container">
+        
+        <!-- INNER LAYOUT WRAPPER: Fluid Single-Line Content Stream -->
+        <div class="oneline-content-wrapper scroll-trigger-bottom">
+            <!-- Left Aligned Core Domain Action Statement -->
+            <h2 class="oneline-headline-text">
+                TRANSFORM YOUR WORKFORCE CAPABILITIES WITH AUTOMATED LMS METRICS
+            </h2>
+            
+            <!-- Right Aligned Capsule CTA Button (Wires safely to your requested 404 gate) -->
+            <a href="404.html" class="btn-oneline-floating">
+                Request Demo 
+                <span class="btn-arrow-vector">➔</span>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* ONE-LINE CTA BANNER ENGINE CONTROL PANEL */
+.oneline-cta-section {
+    width: 100%;
+    /* Strict compliance mapping to your specific layout coordinates (50px Top / 30px Bottom Padding) */
+    padding: 50px 6% 30px 6%;
+    background-color: #0A0F1D; /* Clean continuity transition theme shadow layers */
+    position: relative;
+    overflow: hidden;
+}
+
+.oneline-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.12; /* Keep structural continuity with dark homepage assets */
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Semi-transparent protective layer vector to maintain absolute typography clarity grid */
+.oneline-cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(10, 15, 29, 0.95) 0%, rgba(10, 15, 29, 0.7) 100%);
+    z-index: 2;
+}
+
+/* HIGH-DENSITY GLASSMORPHIC FRAME CONTAINER */
+.oneline-banner-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    background: rgba(30, 41, 59, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 24px;
+    padding: 36px 44px;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* HORIZONTAL ALIGNMENT FLUID ENGINE */
+.oneline-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+}
+
+/* Streamlined Single-Line Typography Element Layout */
+.oneline-headline-text {
+    font-size: 1.6rem;
+    font-weight: 400; /* Crisp thin-wire premium styling field properties */
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-align: left;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* DYNAMIC HOVER GLOW STATE ENGINE MODULE OVERLAYS */
+.oneline-banner-container:hover {
+    border-color: rgba(74, 222, 128, 0.35); /* Focus box triggers to Ancient Green */
+    /* Immersive active fluorescent green visual neon aura glow output values */
+    box-shadow: 0 0 25px rgba(74, 222, 128, 0.2), 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* Trigger typography glow parameters on card overlay intersect */
+.oneline-banner-container:hover .oneline-headline-text {
+    color: #4ADE80; /* Line transforms cleanly to Stackly Main Brand Ancient Green */
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.25);
+}
+
+.oneline-banner-container:hover .oneline-bg-img {
+    transform: scale(1.02); /* Subtle backdrop coordinate visual zoom */
+}
+
+/* HIGH FIDELITY FLOATING CAPSULE CTA BUTTON */
+.btn-oneline-floating {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 30px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #0A0F1D;
+    background-color: #4ADE80; /* Main Corporate Accent Theme Green Color */
+    border-radius: 30px; /* Locked capsule geometry path values */
+    box-shadow: 0 8px 20px rgba(74, 222, 128, 0.12);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+}
+
+.btn-arrow-vector {
+    font-size: 0.95rem;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Button micro-interaction layouts */
+.btn-oneline-floating:hover {
+    background-color: #22C55E;
+    transform: translateY(-3px);
+    /* Integrated localized neon green focus shine */
+    box-shadow: 0 0 20px rgba(74, 222, 128, 0.45), 0 8px 20px rgba(34, 197, 94, 0.25);
+}
+
+.btn-oneline-floating:hover .btn-arrow-vector {
+    transform: translateX(4px); /* Interactive horizontal pointer bounce arrow element */
+}
+
+/* VIEWPORT ENTRY SCROLLER OBSERVER BASE TAGS */
+.scroll-trigger-bottom {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-bottom.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FLUID FLUID RESPONSIVE SYSTEM MEDIA VIEWPANELS BREAKPOINTS */
+@media (max-width: 1024px) {
+    .oneline-headline-text { font-size: 1.35rem; }
+}
+
+@media (max-width: 768px) {
+    .oneline-banner-container { padding: 28px 20px; }
+    .oneline-content-wrapper { flex-direction: column; text-align: center; gap: 20px; }
+    .oneline-headline-text { font-size: 1.15rem; text-align: center; }
+    .btn-oneline-floating { justify-content: center; width: 100%; }
+}
+
+</style>
+
+<script>
+        // ==========================================
+    // 12. RUNTIME ONE-LINE CTA BANNER INTERSECT OBSERVER
+    // ==========================================
+    const onelineObserverOptions = { root: null, rootMargin: "0px", threshold: 0.15 };
+
+    const onelineSectionIntersectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const wrapperBlock = entry.target.querySelector(".scroll-trigger-bottom");
+                if (wrapperBlock) {
+                    // Forces smooth upward entry slide path sequence
+                    wrapperBlock.classList.add("animate-in");
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, onelineObserverOptions);
+
+    const targetOnelineSection = document.getElementById("oneline-cta-viewport");
+    if (targetOnelineSection) {
+        onelineSectionIntersectionObserver.observe(targetOnelineSection);
+    }
+
+</script>
+
+<!-- HIGH-VISIBILITY INSTRUCTORS SECTION (3 CARDS Grid Variant) -->
+<section class="instructors-section" id="instructors-viewport-trigger">
+    <div class="instructors-container">
+        
+        <!-- SECTION HEADER REGION (Text parses word-by-word on scroll) -->
+        <div class="instructors-header-row">
+            <span class="instructors-badge scroll-trigger-bottom">👥 LEADERSHIP MENTORS</span>
+            <h2 class="instructors-main-title" id="instructors-staggered-title">
+                Expert Corporate Instructors
+            </h2>
+        </div>
+
+        <!-- 3-COLUMN DISPLAY ROW GRID -->
+        <div class="instructors-showcase-grid">
+            
+            <!-- Instructor Node 1 -->
+            <div class="instructor-profile-card scroll-trigger-stagger">
+                <div class="instructor-image-frame">
+                    <img src="instructor-img-1.jpg" alt="Kristin Watson" class="instructor-profile-img">
+                </div>
+                <div class="instructor-info-body">
+                    <h3 class="instructor-name">Kristin Watson</h3>
+                    <span class="instructor-role-label">VP of L&D Architecture</span>
+                    <div class="instructor-rating-row">⭐ 4.9 Corporate Rating</div>
+                    <p class="instructor-bio-summary">Over 15 years mapping global training matrices, structural corporate compliance models, and workforce capability ceilings across Fortune 500 nodes.</p>
+                    
+                    <div class="instructor-actions-strip">
+                        <!-- Direct requested 404 navigation gateway override button -->
+                        <a href="404.html" class="btn-instructor-profile">View Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instructor Node 2 -->
+            <div class="instructor-profile-card scroll-trigger-stagger">
+                <div class="instructor-image-frame">
+                    <img src="instructor-img-2.jpg" alt="Michael Rivers" class="instructor-profile-img">
+                </div>
+                <div class="instructor-info-body">
+                    <h3 class="instructor-name">Michael Rivers</h3>
+                    <span class="instructor-role-label">Trading Strategy Director</span>
+                    <div class="instructor-rating-row">⭐ 4.8 Corporate Rating</div>
+                    <p class="instructor-bio-summary">Former financial infrastructure manager specializing in automated risk modeling tools, commodities auditing, and operational compliance tracks.</p>
+                    
+                    <div class="instructor-actions-strip">
+                        <a href="404.html" class="btn-instructor-profile">View Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instructor Node 3 -->
+            <div class="instructor-profile-card scroll-trigger-stagger">
+                <div class="instructor-image-frame">
+                    <img src="instructor-img-3.jpg" alt="Emily Watson" class="instructor-profile-img">
+                </div>
+                <div class="instructor-info-body">
+                    <h3 class="instructor-name">Emily Watson</h3>
+                    <span class="instructor-role-label">AI Systems Architect</span>
+                    <div class="instructor-rating-row">⭐ 5.0 Corporate Rating</div>
+                    <p class="instructor-bio-summary">PhD in Behavioral L&D data systems. Engineering adaptive sandboxes, cloud laboratory protocols, and metrics tracking dashboards.</p>
+                    
+                    <div class="instructor-actions-strip">
+                        <a href="404.html" class="btn-instructor-profile">View Profile</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* HIGH-VISIBILITY INSTRUCTORS MATRIX CONFIGURATIONS */
+.instructors-section {
+    width: 100%;
+    /* Strict parameter spacing compliance: 50px Top Padding / 30px Bottom Padding */
+    padding: 50px 6% 30px 6%;
+    background-color: #0A0F1D; 
+    position: relative;
+    overflow: hidden;
+}
+
+.instructors-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.instructors-header-row {
+    text-align: left;
+    max-width: 720px;
+}
+
+.instructors-badge {
+    font-size: 0.95rem; /* Increased font size */
+    font-weight: 700;
+    color: #38BDF8; 
+    letter-spacing: 0.16em;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.instructors-main-title {
+    font-size: 3.5rem; /* Increased font size */
+    font-weight: 400; 
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    line-height: 1.2;
+    text-transform: capitalize;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 14px;
+}
+
+.instructors-main-title span {
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.instructors-main-title span.slide-from-left { transform: translateX(-35px); }
+.instructors-main-title span.slide-from-right { transform: translateX(35px); }
+.instructors-main-title span.animate-in {
+    opacity: 1;
+    transform: translate(0) !important;
+}
+
+/* 3-COLUMN DISPLAY ROW GRID BLUEPRINT */
+.instructors-showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Reformatted into exactly 3 columns scale */
+    gap: 32px;
+    width: 100%;
+}
+
+.instructor-profile-card {
+    background-color: rgba(30, 41, 59, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(35px) scale(0.98);
+    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.instructor-profile-card.animate-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.instructor-image-frame {
+    width: 100%;
+    height: 300px; /* Enhanced visibility height proportions */
+    overflow: hidden;
+    position: relative;
+}
+
+.instructor-profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s ease;
+    filter: grayscale(0.12) brightness(0.95);
+}
+
+.instructor-info-body {
+    padding: 32px; /* Enhanced space distribution */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.instructor-name {
+    font-size: 1.6rem; /* Increased font size */
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+    transition: color 0.3s ease;
+}
+
+.instructor-role-label {
+    font-size: 1.05rem; /* Increased font size */
+    color: #64748B;
+    font-weight: 500;
+    margin-bottom: 14px;
+}
+
+.instructor-rating-row {
+    font-size: 0.9rem; /* Increased font size */
+    font-weight: 700;
+    color: #FBBF24; 
+    background-color: rgba(251, 191, 36, 0.06);
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-bottom: 18px;
+}
+
+.instructor-bio-summary {
+    font-size: 1.02rem; /* Increased font size to optimize readability limits */
+    line-height: 1.6;
+    color: #94A3B8;
+    margin-bottom: 28px;
+    font-weight: 300;
+    flex-grow: 1;
+}
+
+/* BUTTON ACTION FOOTER MODULES MAPPED ACCORDINGLY */
+.instructor-actions-strip {
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding-top: 20px;
+    width: 100%;
+    display: flex;
+}
+
+.btn-instructor-profile {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 30px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* HIGH FIDELITY HOVER GLOW SYSTEM EXECUTIONS */
+.instructor-profile-card:hover {
+    transform: translateY(-8px);
+    background-color: rgba(30, 41, 59, 0.5);
+    border-color: rgba(74, 222, 128, 0.35); 
+    box-shadow: 0 0 25px rgba(74, 222, 128, 0.22), 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+.instructor-profile-card:hover .instructor-profile-img {
+    transform: scale(1.05);
+    filter: grayscale(0) brightness(1); 
+}
+
+.instructor-profile-card:hover .instructor-name {
+    color: #4ADE80; 
+}
+
+.btn-instructor-profile:hover {
+    background-color: #4ADE80;
+    border-color: #4ADE80;
+    color: #0A0F1D;
+    box-shadow: 0 0 12px rgba(74, 222, 128, 0.3);
+}
+
+.scroll-trigger-bottom {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.scroll-trigger-bottom.animate-in { opacity: 1; transform: translateY(0); }
+
+/* FLUID RESPONSIVE SYSTEM MEDIA VIEWPANELS BREAKPOINTS */
+@media (max-width: 1024px) {
+    .instructors-showcase-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .instructors-main-title { font-size: 2.75rem; }
+}
+
+@media (max-width: 768px) {
+    .instructors-showcase-grid { grid-template-columns: 1fr; gap: 24px; }
+    .instructors-main-title { font-size: 2.1rem; }
+    .instructor-image-frame { height: 260px; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. TYPOGRAPHY ENGINE: PARSE INSTRUCTORS MAIN TITLE WORD-BY-WORD
+    const parseInstructorsTitleStagger = (titleContainer) => {
+        if (!titleContainer) return;
+        const rawWordsArray = titleContainer.textContent.trim().split(/\s+/);
+        titleContainer.innerHTML = ""; 
+
+        rawWordsArray.forEach((word, index) => {
+            const span = document.createElement("span");
+            span.textContent = word + " ";
+            span.classList.add(index % 2 === 0 ? "slide-from-left" : "slide-from-right");
+            titleContainer.appendChild(span);
+        });
+    };
+
+    const runInstructorsTitleAnimation = (titleContainer) => {
+        if (!titleContainer) return;
+        const spans = titleContainer.querySelectorAll("span");
+        spans.forEach((span, index) => {
+            setTimeout(() => {
+                span.classList.add("animate-in");
+            }, index * 60);
+        });
+    };
+
+    const instructorsTitle = document.getElementById("instructors-staggered-title");
+    if (instructorsTitle) {
+        parseInstructorsTitleStagger(instructorsTitle);
+    }
+
+    // 2. SCROLL INTERSECTION OBSERVER BINDINGS FOR 3 CARDS MATRIX
+    const instructorsObserverOptions = { root: null, rootMargin: "0px", threshold: 0.1 };
+
+    const instructorsIntersectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const parentSection = entry.target;
+
+                if (instructorsTitle) {
+                    runInstructorsTitleAnimation(instructorsTitle);
+                }
+                
+                const badgeLabel = parentSection.querySelector(".instructors-badge");
+                if (badgeLabel) badgeLabel.classList.add("animate-in");
+
+                // Sequentially stagger delivery of the 3 cards nodes
+                const profileCards = parentSection.querySelectorAll(".instructor-profile-card");
+                profileCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add("animate-in");
+                    }, 200 + (index * 120)); 
+                });
+
+                observer.unobserve(parentSection);
+            }
+        });
+    }, instructorsObserverOptions);
+
+    const targetInstructorsViewport = document.getElementById("instructors-viewport-trigger");
+    if (targetInstructorsViewport) {
+        instructorsIntersectionObserver.observe(targetInstructorsViewport);
+    }
+});
+
+</script>
+
+<!-- DYNAMIC REPLICATED PLATFORM OVERVIEW SECTION -->
+<section class="portal-intro-section" id="portal-intro-viewport">
+    <div class="portal-intro-container">
+        
+        <!-- TOP REGION: Replicated Horizontal Tabbed Menu Strip Component -->
+        <nav class="portal-tabs-nav scroll-trigger-bottom">
+            <ul class="tabs-menu-list">
+                <li class="tab-menu-item active"><a href="404.html">Paths Catalog</a></li>
+                <li class="tab-menu-item"><a href="404.html">Skill Reports</a></li>
+                <li class="tab-menu-item"><a href="404.html">Division Analysis</a></li>
+                <li class="tab-menu-item"><a href="404.html">KPI Indicators</a></li>
+                <li class="tab-menu-item"><a href="404.html">L&D Consulting</a></li>
+            </ul>
+        </nav>
+
+        <!-- BOTTOM REGION: Split Content Columns Architecture Grid -->
+        <div class="intro-split-grid">
+            
+            <!-- LEFT COLUMN: Typography Block & Floating CTA Button -->
+            <div class="intro-text-column">
+                <!-- Target title string parsed word-by-word sequentially via JavaScript -->
+                <h2 class="intro-main-title" id="intro-staggered-title">
+                    Stackly enterprise online tracks
+                </h2>
+                
+                <!-- Description blocks float upward smoothly on page scroll thresholds -->
+                <div class="scroll-trigger-bottom transition-delay-1">
+                    <p class="intro-paragraph-text">
+                        To begin with, creating scalable competency growth matrices through targeted training streams across diverse operational roles ensures reliable workforce agility. In addition to daily tracking, our long-term curriculum mapping framework scales beyond basic instruction into simulated sandboxes and compliance validation paths.
+                    </p>
+                    <p class="intro-paragraph-text">
+                        Have a look at our specialized corporate learning paths below and choose the infrastructure module setup that suits your department objectives and company portfolio goals best.
+                    </p>
+                    <p class="intro-paragraph-text quiz-callout">
+                        Not sure which pathway fits your group? Take our capability assessment quiz to find out.
+                    </p>
+                </div>
+
+                <!-- Floating Glassmorphic Primary Capsule CTA -->
+                <div class="intro-cta-wrapper scroll-trigger-bottom transition-delay-2">
+                    <a href="404.html" class="btn-intro-floating">
+                        Explore Courses <span class="btn-arrow-icon">›</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Floating Interactive Mockup Imagery Showcase Screen -->
+            <div class="intro-visual-column scroll-trigger-bottom transition-delay-1">
+                <!-- Custom continuous floating frame layout precisely matched to design requirements -->
+                <div class="floating-image-frame">
+                    <!-- Replace 'workspace-mockup.jpg' with your target corporate image layer path -->
+                    <img src="./assests/about img 2.webp" alt="Active L&D Telemetry Dashboard Interaction" class="intro-embed-img">
+                    
+                    <!-- Decorative neon ambient focus border plate backdrop -->
+                    <div class="floating-accent-aura"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* PLATFORM INTRO PROFILE BLOCK MASTER WRAPPER */
+.portal-intro-section {
+    width: 100%;
+    /* Strict parameter spacing compliance: 50px Top Padding / 30px Bottom Padding */
+    padding: 50px 6% 30px 6%;
+    background-color: #0A0F1D; /* Seamless dark monochrome template background continuation */
+    position: relative;
+    overflow: hidden;
+}
+
+.portal-intro-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 56px; /* Separator workspace distance between upper tabs and bottom split columns grid */
+}
+
+/* ==========================================
+   TOP REGION: REPLICATED TABBED LINK NAV BAR
+   ========================================== */
+.portal-tabs-nav {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tabs-menu-list {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: auto; /* Fluid swipe tracking support overlay for compact mobile screens */
+    scrollbar-width: none; /* Strip standard thick browser tracking tracks scrollbars */
+}
+.tabs-menu-list::-webkit-scrollbar { display: none; }
+
+.tab-menu-item {
+    position: relative;
+    white-space: nowrap;
+}
+
+.tab-menu-item a {
+    display: block;
+    padding: 16px 32px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #64748B; /* Replicates dim inactive navigation palette parameters from visual lookup */
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.3s ease;
+}
+
+.tab-menu-item:hover a, .tab-menu-item.active a {
+    color: #FFFFFF;
+}
+
+/* Active solid orange tab plate indicator exactly matching reference layout mockup */
+.tab-menu-item.active {
+    background-color: #FB923C; /* Peach Orange block background mask focus anchors */
+    border-radius: 8px 8px 0 0;
+}
+.tab-menu-item.active a {
+    color: #0A0F1D; /* High contrast text inside highlight background */
+}
+
+/* ==========================================
+   BOTTOM REGION: ASYMMETRICAL SPLIT COLS GRID
+   ========================================== */
+.intro-split-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr; /* Extended text box width allocation profile */
+    gap: 60px;
+    align-items: center;
+    width: 100%;
+}
+
+.intro-text-column {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+/* STAGGERED SIDEWAYS PHRASE TYPOGRAPHY ENGINE */
+.intro-main-title {
+    font-size: 3.5rem;
+    font-weight: 700; /* Rich thick bold headers exactly like image typography reference */
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    line-height: 1.15;
+    margin-bottom: 28px;
+    text-transform: capitalize;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 14px;
+}
+
+/* Alternative directional slide transformations coordinates */
+.intro-main-title span {
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.intro-main-title span.slide-from-left { transform: translateX(-30px); }
+.intro-main-title span.slide-from-right { transform: translateX(30px); }
+.intro-main-title span.animate-in {
+    opacity: 1;
+    transform: translate(0) !important;
+}
+
+.intro-paragraph-text {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: #94A3B8;
+    margin-bottom: 20px;
+}
+
+.intro-paragraph-text.quiz-callout {
+    font-weight: 500;
+    color: #E2E8F0; /* Lighter emphasis luminance text line paths */
+    margin-top: 10px;
+}
+
+/* DYNAMIC HOVER GLOW STATE ON TEXT MODULE INTERSECTION CONTROLS */
+.intro-text-column:hover .intro-paragraph-text.quiz-callout {
+    color: #4ADE80; /* Flashes capability focus line text instantly to Ancient Green */
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.2);
+}
+
+/* FLOATING GLASSMORPHIC CAPSULE CTA ACTION ELEMENT */
+.intro-cta-wrapper {
+    margin-top: 16px;
+    display: flex;
+}
+
+.btn-intro-floating {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 36px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #6366F1; /* Premium rich corporate indigo-purple canvas block exactly from image layout button shape color */
+    border-radius: 4px; /* Crisp square pill radius copied directly from reference template */
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-arrow-icon {
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
+}
+
+.btn-intro-floating:hover {
+    background-color: #4F46E5;
+    transform: translateY(-4px);
+    /* Radiant localized high output indigo aura glow emission values */
+    box-shadow: 0 0 25px rgba(99, 102, 241, 0.5), 0 12px 30px rgba(79, 70, 229, 0.3);
+}
+
+.btn-intro-floating:hover .btn-arrow-icon {
+    transform: translateX(4px); /* Interactive horizontal pointer bounce arrow element */
+}
+
+/* ==========================================
+   RIGHT SIDE: DYNAMIC FLOATING IMAGE MODULE
+   ========================================== */
+.intro-visual-column {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.floating-image-frame {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    border-radius: 16px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+    /* Harnesses core hardware motion loops driven via keyframes natively */
+    animation: continuousFloatModel 4.5s ease-in-out infinite alternate;
+}
+
+.intro-embed-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+    position: relative;
+    z-index: 3;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Ambient backdrop aura ring focus path layer */
+.floating-accent-aura {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 40%;
+    height: 40%;
+    border-top: 3px solid #4ADE80; /* Flashes high-end corporate Ancient Green outline vectors */
+    border-right: 3px solid #4ADE80;
+    border-radius: 0 16px 0 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.4;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.floating-image-frame:hover .floating-accent-aura {
+    opacity: 1;
+    transform: translate(6px, -6px); /* Interactive micro-expansion alignment layer */
+}
+
+/* CORE CONTINUOUS FLOATING RE-ROTATION MOTION PARAMETERS BLOCKS */
+@keyframes continuousFloatModel {
+    0% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(-14px) rotate(0.5deg); } /* Clean fluid buoyancy float execution path */
+}
+
+/* VIEWPORT ENTRANCE UPWARD SCROLLER HOOK LABELS CONTROL FIELDS */
+.scroll-trigger-bottom {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-bottom.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.transition-delay-1 { transition-delay: 0.15s; }
+.transition-delay-2 { transition-delay: 0.3s; }
+
+/* FLUID FLUID RESPONSIVE SYSTEM MEDIA BREAKPOINTS MATRIX CONNECTIONS */
+@media (max-width: 1100px) {
+    .intro-split-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+    .intro-text-column { max-width: 100%; }
+    .intro-main-title { font-size: 2.75rem; }
+    .floating-image-frame { max-width: 100%; }
+}
+
+@media (max-width: 640px) {
+    /* Clamps paddings constraints parameters elegantly for ultra-compact systems viewport screens */
+    .portal-intro-section { padding-top: 40px; padding-bottom: 24px; }
+    .intro-main-title { font-size: 2rem; gap: 0 8px; }
+    .tabs-menu-list { padding-bottom: 4px; }
+    .tab-menu-item a { padding: 12px 20px; font-size: 0.88rem; }
+    .intro-paragraph-text { font-size: 0.98rem; }
+    .btn-intro-floating { width: 100%; justify-content: center; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. TYPOGRAPHY ENGINE: PARSE PLATFORM OVERVIEW HEADING WORD-BY-WORD
+    const parseIntroTitleStagger = (titleContainer) => {
+        if (!titleContainer) return;
+        const wordsArray = titleContainer.textContent.trim().split(/\s+/);
+        titleContainer.innerHTML = ""; // Wipe flat baseline raw text strings node configuration data
+
+        wordsArray.forEach((word, index) => {
+            const span = document.createElement("span");
+            span.textContent = word + " ";
+            
+            // Stagger horizontal directional entries alternatively from side walls boundaries
+            if (index % 2 === 0) {
+                span.classList.add("slide-from-left");
+            } else {
+                span.classList.add("slide-from-right");
+            }
+            
+            titleContainer.appendChild(span);
+        });
+    };
+
+    const runIntroTitleAnimation = (titleContainer) => {
+        if (!titleContainer) return;
+        const elementSpans = titleContainer.querySelectorAll("span");
+        elementSpans.forEach((span, index) => {
+            setTimeout(() => {
+                span.classList.add("animate-in");
+            }, index * 65); // Clear smooth 65ms staggered entry interval step velocity timers
+        });
+    };
+
+    const introSectionTitle = document.getElementById("intro-staggered-title");
+    if (introSectionTitle) {
+        parseIntroTitleStagger(introSectionTitle);
+    }
+
+    // 2. SCROLL INTERSECTION OBSERVER DRIVER MATRIX TIMELINE CONFIGURATION
+    const introObserverOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.12 // Activates animation timelines execution as soon as 12% of container cuts view bounds
+    };
+
+    const introSectionIntersectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const activeIntroSection = entry.target;
+
+                // Fire headline text loops instantly
+                if (introSectionTitle) {
+                    runIntroTitleAnimation(introSectionTitle);
+                }
+
+                // Gather left column description strings and pop upward sequentially
+                const scrollElements = activeIntroSection.querySelectorAll(".scroll-trigger-bottom");
+                scrollElements.forEach(element => {
+                    element.classList.add("animate-in");
+                });
+
+                // Unmount component track tracking hook safely to optimize computer system memory cycles
+                observer.unobserve(activeIntroSection);
+            }
+        });
+    }, introObserverOptions);
+
+    const targetIntroViewportSection = document.getElementById("portal-intro-viewport");
+    if (targetIntroViewportSection) {
+        introSectionIntersectionObserver.observe(targetIntroViewportSection);
+    }
+});
+
+</script>
+
+<!-- TWO-LINE ECOSYSTEM CTA BANNER -->
+<section class="banner-cta-section" id="banner-cta-viewport">
+    <!-- Visual structural background graphics asset layer -->
+    <img src="./assests/hero section bg.webp" alt="Abstract Digital Network Vector" class="banner-bg-img">
+
+    <div class="banner-container">
+        
+        <!-- LEFT REGION: Rigid Two-Line Structured Text Content Grid -->
+        <div class="banner-typography-block">
+            <!-- Line 1: Upper Headline Structure Element -->
+            <div class="banner-text-line line-upper scroll-trigger-left" id="banner-title-line-1">
+                READY TO COLLAPSE WORKFORCE COMPETENCY GAPS?
+            </div>
+            
+            <!-- Line 2: Lower Subheadline Domain Element -->
+            <div class="banner-text-line line-lower scroll-trigger-right" id="banner-title-line-2">
+                Deploy automated skill matrix tracking systems across your departments today.
+            </div>
+        </div>
+
+        <!-- RIGHT REGION: Glassmorphic Fluorescent Floating CTA Button -->
+        <div class="banner-action-block scroll-trigger-bottom">
+            <!-- Wires straight to your requested 404.html page gate -->
+            <a href="404.html" class="btn-banner-floating">
+                Request Enterprise Demo
+                <span class="btn-arrow-icon">➔</span>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* TWO-LINE CTA BANNER CORE ENVIRONMENT CONTROL */
+.banner-cta-section {
+    width: 100%;
+    /* Strict compliance mapping to your specific layout coordinates (50px Top / 30px Bottom Padding) */
+    padding: 50px 6% 30px 6%;
+    background-color: #0A0F1D; /* Clean continuity transition theme shadow layers */
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.34; /* Subdued baseline overlay mapping to the premium layout template */
+    transition: transform 0.6s ease;
+}
+
+/* Semi-transparent protective layer vector to maintain absolute typography clarity grid */
+.banner-cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(10, 15, 29, 0.95) 0%, rgba(10, 15, 29, 0.6) 100%);
+    z-index: 2;
+}
+
+/* HIGH-DENSITY GLASSMORPHIC FRAME CONTAINER */
+.banner-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    background: rgba(30, 41, 59, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 28px;
+    padding: 44px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* LEFT COLUMN: RIGID TWO-LINE ACCENT TYPOGRAPHY */
+.banner-typography-block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.banner-text-line {
+    color: #FFFFFF;
+    transition: all 0.3s ease;
+}
+
+/* Line 1 Sizing (Crisp Upper Headline Matrix Elements) */
+.banner-text-line.line-upper {
+    font-size: 2.2rem;
+    font-weight: 400; /* Replicates signature thin wire framework style template metrics */
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    line-height: 1.15;
+}
+
+/* Line 2 Sizing (Subdued Lower Context Elements) */
+.banner-text-line.line-lower {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: #94A3B8;
+    font-weight: 300;
+}
+
+/* DYNAMIC HOVER GLOW STATE ENGINE MODULE OVERLAYS */
+.banner-container:hover {
+    border-color: rgba(74, 222, 128, 0.35); /* Focus box triggers to Ancient Green */
+    /* Immersive active fluorescent green visual neon aura glow output values */
+    box-shadow: 0 0 30px rgba(74, 222, 128, 0.22), 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+/* Trigger typography glow parameters on card overlay intersect */
+.banner-container:hover .banner-text-line.line-upper {
+    color: #4ADE80; /* Line 1 transforms cleanly to Stackly Main Brand Ancient Green */
+    text-shadow: 0 0 12px rgba(74, 222, 128, 0.3);
+}
+
+.banner-container:hover .banner-text-line.line-lower {
+    color: #FFFFFF;
+}
+
+.banner-container:hover .banner-bg-img {
+    transform: scale(1.03); /* Subtle backdrop coordinate visual zoom */
+}
+
+/* RIGHT COLUMN: HIGH FIDELITY FLOATING CAPSULE CTA BUTTON */
+.banner-action-block {
+    flex-shrink: 0;
+}
+
+.btn-banner-floating {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 34px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #0A0F1D;
+    background-color: #4ADE80; /* Main Corporate Accent Theme Green Color */
+    border-radius: 30px; /* Locked capsule geometry path values */
+    box-shadow: 0 8px 20px rgba(74, 222, 128, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-arrow-icon {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+/* Button micro-interaction layouts */
+.btn-banner-floating:hover {
+    background-color: #22C55E;
+    transform: translateY(-4px);
+    box-shadow: 0 0 25px rgba(74, 222, 128, 0.5), 0 12px 25px rgba(34, 197, 94, 0.3); /* Integrated localized neon green focus shine */
+}
+
+.btn-banner-floating:hover .btn-arrow-icon {
+    transform: translateX(4px); /* Interactive horizontal pointer bounce arrow element */
+}
+
+/* VIEWPORT ENTRY DIRECTIONAL OBSERVER WRAPPERS BASE TARGETS */
+.scroll-trigger-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-bottom {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-trigger-left.animate-in, 
+.scroll-trigger-right.animate-in, 
+.scroll-trigger-bottom.animate-in {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+}
+
+/* FLUID FLUID RESPONSIVE SYSTEM MEDIA VIEWPANELS BREAKPOINTS */
+@media (max-width: 1024px) {
+    .banner-container {
+        padding: 36px;
+    }
+    .banner-text-line.line-upper { font-size: 1.85rem; }
+}
+
+@media (max-width: 768px) {
+    .banner-container {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        padding: 32px 24px;
+        gap: 28px;
+    }
+    .banner-typography-block { text-align: center; }
+    .banner-text-line.line-upper { font-size: 1.5rem; }
+    .btn-banner-floating { justify-content: center; width: 100%; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // TWO-LINE CTA BANNER VIEWPORT OBSERVER DRIVE ROUTINES
+    const bannerObserverOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.15 // Fires animation timelines when 15% of banner container footprint cuts screen view bounds
+    };
+
+    const bannerSectionIntersectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const parentBannerSection = entry.target;
+
+                // Fire Line 1 arrival timeline (Slides seamlessly from left border metrics)
+                const upperLine = parentBannerSection.querySelector(".line-upper");
+                if (upperLine) upperLine.classList.add("animate-in");
+
+                // Fire Line 2 arrival timeline (Slides systematically from opposite right border coordinates)
+                const lowerLine = parentBannerSection.querySelector(".line-lower");
+                if (lowerLine) {
+                    setTimeout(() => {
+                        lowerLine.classList.add("animate-in");
+                    }, 120); // Smooth 120ms execution stagger offset buffer
+                }
+
+                // Fire floating action capsule buttons entrance transformation rules
+                const actionBlock = parentBannerSection.querySelector(".banner-action-block");
+                if (actionBlock) {
+                    setTimeout(() => {
+                        actionBlock.classList.add("animate-in");
+                    }, 250);
+                }
+
+                // Unmount component track tracking hook safely to stabilize application memory curves
+                observer.unobserve(parentBannerSection);
+            }
+        });
+    }, bannerObserverOptions);
+
+    const targetBannerSection = document.getElementById("banner-cta-viewport");
+    if (targetBannerSection) {
+        bannerSectionIntersectionObserver.observe(targetBannerSection);
+    }
+});
+
+</script>
+
+<!-- UPDATE: FOOTER CONTAINER MATRIX WITH ADVANCED SOCIAL SVG VECTORS -->
+<footer class="portal-footer" id="stackly-global-footer">
+    <div class="footer-upper-grid">
+        
+        <!-- COLUMN 1: Brand Overview & Fluid SVG Social Controls -->
+        <div class="footer-column brand-summary-block">
+            <a href="#" class="footer-brand-logo" id="back-to-top-trigger" aria-label="Stackly Portal - Scroll Back To Top">
+                <img src="logo-dark.svg" alt="Stackly Logo" class="footer-logo-img">
+                <span class="footer-brand-name">STACKLY</span>
+            </a>
+            <p class="footer-brand-desc">
+                Engineering premium scalable corporate learning setups, skill matrices tracking pipelines, and decentralized enterprise upskilling nodes designed to fuel global workforce productivity alike.
+            </p>
+            
+            <!-- Dynamic SVG Vector Social Media Row Icons -->
+            <div class="footer-social-row">
+                <a href="404.html" class="social-circle-item" aria-label="Instagram Portal Link">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="404.html" class="social-circle-item" aria-label="Facebook Portal Link">
+                    <svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                </a>
+                <a href="404.html" class="social-circle-item" aria-label="X Platform Portal Link">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="404.html" class="social-circle-item" aria-label="LinkedIn Portal Link">
+                    <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="404.html" class="social-circle-item" aria-label="YouTube Portal Link">
+                    <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- COLUMN 2: Explore Tracks Link Column -->
+        <div class="footer-column link-list-block">
+            <h3 class="footer-column-heading">EXPLORE TRACKS</h3>
+            <ul class="footer-links-list">
+                <li><a href="404.html" class="footer-nav-link">L&D Architecture</a></li>
+                <li><a href="404.html" class="footer-nav-link">Compliance Pathways</a></li>
+                <li><a href="404.html" class="footer-nav-link">Leadership Labs</a></li>
+                <li><a href="404.html" class="footer-nav-link">Skill Matrix Grids</a></li>
+            </ul>
+        </div>
+
+        <!-- COLUMN 3: Platform Support Link Column -->
+        <div class="footer-column link-list-block">
+            <h3 class="footer-column-heading">PORTAL SUPPORT</h3>
+            <ul class="footer-links-list">
+                <li><a href="404.html" class="footer-nav-link">Curriculum Telemetry</a></li>
+                <li><a href="404.html" class="footer-nav-link">Course Catalog Sync</a></li>
+                <li><a href="404.html" class="footer-nav-link">Diagnostics & Help Center</a></li>
+                <li><a href="404.html" class="footer-nav-link">API Credentials</a></li>
+            </ul>
+        </div>
+
+        <!-- COLUMN 4: Headquarters Metadata & Inline Subscription Form -->
+        <div class="footer-column headquarters-form-block">
+            <h3 class="footer-column-heading">HEADQUARTERS</h3>
+            
+            <div class="footer-address-row">
+                <span class="location-pin-vector">📍</span>
+                <p class="address-text">
+                    Stackly Hub Complex, Periyakollappatty, Chinna Thirupathi,<br>
+                    Salem, Tamil Nadu 636008
+                </p>
+            </div>
+
+            <form class="footer-subscribe-form" id="newsletter-subscription-form" novalidate>
+                <div class="input-inner-wrapper">
+                    <input type="email" class="form-input-field" id="subscriber-email-input" placeholder="Enter corporate operator email...">
+                    <button type="submit" class="form-btn-submit">Subscribe</button>
+                </div>
+                <span class="validation-error-label" id="form-validation-notice">Please fill the fields</span>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- LOWER REGION: Copyright Ribbon Bar Grid Elements -->
+    <div class="footer-bottom-ribbon">
+        <div class="ribbon-container">
+            <span class="copyright-text">© 2026 Stackly Industries. All instructional management hardware rights reserved.</span>
+            <div class="ribbon-legal-anchors">
+                <a href="404.html" class="legal-link">Privacy Policy</a>
+                <a href="404.html" class="legal-link">Terms of Service</a>
+                <a href="404.html" class="legal-link">Cookie Governance</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    /* SYSTEM GLOBAL FOOTER CORE LAYOUT MAPPING */
+.portal-footer {
+    width: 100%;
+    background-color: #050811; 
+    padding: 60px 6% 0 6%;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.footer-upper-grid {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr 0.75fr 1.25fr;
+    gap: 40px;
+    padding-bottom: 50px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* SECTION 1: BRAND IDENTITY WRAPPERS */
+.footer-brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    margin-bottom: 24px;
+    transition: opacity 0.2s ease;
+}
+
+.footer-brand-logo:hover {
+    opacity: 0.85;
+}
+
+.footer-logo-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.3));
+}
+
+.footer-brand-name {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
+}
+
+/* UPDATE: Increased font-size scale factor for dim baseline text tracking values */
+.footer-brand-desc {
+    font-size: 0.98rem; /* Scaled up from 0.9rem to ensure rich screen readability */
+    line-height: 1.65;
+    color: #7E8B9B; /* Lifted text luminance scale slightly to complement layout reference template text */
+    margin-bottom: 24px;
+    max-width: 340px;
+}
+
+/* UPDATE: INTEGRATED DYNAMIC SVG SCALING FOR SOCIALS ROW NODES */
+.footer-social-row {
+    display: flex;
+    gap: 14px;
+}
+
+.social-circle-item {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-circle-item svg {
+    width: 18px;
+    height: 18px;
+    fill: #64748B; /* Matches layout reference dim vector mask hue value exactly */
+    transition: fill 0.3s ease;
+}
+
+.social-circle-item:hover {
+    background-color: rgba(74, 222, 128, 0.1);
+    border-color: rgba(74, 222, 128, 0.4); 
+    transform: translateY(-2px);
+}
+
+/* Highlight SVG vectors cleanly inside active hover state tracking index nodes */
+.social-circle-item:hover svg {
+    fill: #4ADE80; 
+}
+
+/* CATEGORY LINK COLUMNS INTERFACES */
+.footer-column-heading {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.06em;
+    margin-bottom: 24px;
+    position: relative;
+    padding-bottom: 6px;
+}
+
+.footer-column-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background-color: #EF4444; 
+    border-radius: 99px;
+}
+
+.footer-links-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* UPDATE: Increased font-size scale factor for navigational listing arrays */
+.footer-nav-link {
+    font-size: 1.02rem; /* Scaled up from 0.9rem to balance visual presence layout */
+    color: #7E8B9B; 
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.footer-nav-link:hover {
+    color: #4ADE80; 
+    transform: translateX(4px);
+}
+
+/* HEADQUARTERS ADDRESS GEOLOCATION BLOCKS */
+.footer-address-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 28px;
+}
+
+.location-pin-vector {
+    font-size: 1.1rem;
+    color: #38BDF8; 
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+    margin-top: 2px;
+}
+
+/* UPDATE: Increased font-size scale parameter for local text block assets */
+.address-text {
+    font-size: 0.98rem; /* Scaled up from 0.9rem for precision layout validation tracks */
+    line-height: 1.6;
+    color: #7E8B9B;
+}
+
+/* INLINE NEWSLETTER FORM SYSTEM */
+.footer-subscribe-form {
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+}
+
+.input-inner-wrapper {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 30px; 
+    padding: 4px;
+    width: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-inner-wrapper:focus-within {
+    border-color: rgba(74, 222, 128, 0.4);
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.15);
+}
+
+.form-input-field {
+    flex-grow: 1;
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 0.92rem;
+    color: #FFFFFF;
+    outline: none;
+    width: 60%;
+}
+
+.form-input-field::placeholder {
+    color: #334155;
+}
+
+.form-btn-submit {
+    background-color: #FFFFFF;
+    color: #050811;
+    border: none;
+    padding: 10px 24px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-btn-submit:hover {
+    background-color: #4ADE80; 
+    box-shadow: 0 0 12px rgba(74, 222, 128, 0.4);
+}
+
+.validation-error-label {
+    position: absolute;
+    bottom: -22px;
+    left: 18px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #F87171; 
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.validation-error-label.reveal-notice {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* LOWER REGION: COPYRIGHT RIBBON BAR STRIPS */
+.footer-bottom-ribbon {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 28px 0;
+    margin-top: 20px;
+}
+
+.ribbon-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.copyright-text {
+    font-size: 0.85rem;
+    color: #334155; 
+}
+
+.ribbon-legal-anchors {
+    display: flex;
+    gap: 24px;
+}
+
+.legal-link {
+    font-size: 0.85rem;
+    color: #334155;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.legal-link:hover {
+    color: #64748B;
+}
+
+/* RESPONSIVE LAYOUT MATRIX CONTROLS PARAMETERS */
+@media (max-width: 1200px) {
+    .footer-upper-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 48px;
+    }
+}
+
+@media (max-width: 640px) {
+    .portal-footer { padding: 40px 4% 0 4%; }
+    .footer-upper-grid { grid-template-columns: 1fr; gap: 36px; }
+    .input-inner-wrapper { flex-direction: column; border-radius: 16px; padding: 6px; gap: 8px; }
+    .form-input-field { width: 100%; padding: 8px 12px; }
+    .form-btn-submit { width: 100%; padding: 12px; border-radius: 12px; }
+    .ribbon-container { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .ribbon-legal-anchors { width: 100%; justify-content: space-between; gap: 12px; }
+    .validation-error-label { bottom: -20px; }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. BRAND LOGO INTERFACES: SMOOTH RUNTIME BACK TO TOP ANIMATION ROUTINE
+    const topScrollTrigger = document.getElementById("back-to-top-trigger");
+    
+    if (topScrollTrigger) {
+        topScrollTrigger.addEventListener("click", (event) => {
+            event.preventDefault(); // Nullify instant standard anchor jump paramenters
+            
+            // Fires fluid operational scroll alignment to the absolute top grid index
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    }
+
+    // 2. INLINE FORM NEWSLETTER SYSTEM: DYNAMIC FIELD VALIDATION CHECKS
+    const subscribeForm = document.getElementById("newsletter-subscription-form");
+    const emailFieldInput = document.getElementById("subscriber-email-input");
+    const warningLabelNotice = document.getElementById("form-validation-notice");
+
+    if (subscribeForm && emailFieldInput && warningLabelNotice) {
+        subscribeForm.addEventListener("submit", (event) => {
+            event.preventDefault(); // Hold automatic browser action gates instantly
+            
+            const processedEmailString = emailFieldInput.value.trim();
+
+            // STEP A: Field Check Validation — Check if input field contains values
+            if (processedEmailString === "") {
+                warningLabelNotice.textContent = "Please fill the fields";
+                warningLabelNotice.classList.add("reveal-notice");
+                
+                // Clear notice warning animation dynamically after short visibility window
+                setTimeout(() => {
+                    warningLabelNotice.classList.remove("reveal-notice");
+                }, 3500);
+                
+                return; // Cease execution path sequence loop
+            }
+
+            // STEP B: Content Format Check — Basic syntax compliance review
+            if (!processedEmailString.includes("@") || processedEmailString.length < 5) {
+                warningLabelNotice.textContent = "Please enter a valid corporate email";
+                warningLabelNotice.classList.add("reveal-notice");
+                
+                setTimeout(() => {
+                    warningLabelNotice.classList.remove("reveal-notice");
+                }, 3500);
+                
+                return;
+            }
+
+            // STEP C: Navigation Execution Gate — Successful evaluation moves to 404 gate
+            window.location.href = "404.html";
+        });
+        
+        // Auto reset verification class indicators whenever users input fresh characters
+        emailFieldInput.addEventListener("input", () => {
+            if (warningLabelNotice.classList.contains("reveal-notice")) {
+                warningLabelNotice.classList.remove("reveal-notice");
+            }
+        });
+    }
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackly | Corporate Training Partner Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Professional vector icons font suite -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body>
+
+    <!-- Main Workspace Application Interface (Loads Immediately) -->
+    <div id="dashboard-screen" class="dashboard-wrapper">
+        
+        <!-- Top App Navigation Banner Bar -->
+        <header class="dash-header">
+            <div class="header-left">
+                <button class="hamburger-menu" id="hamburger" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="brand-logo" onclick="refreshDashboard()" title="Refresh Dashboard">
+                    <!-- Global Image Tag Anchor provided for adding custom company branding logo icons -->
+                    <img src="https://unsplash.com" alt="Stackly Logo" class="brand-img">
+                    <span class="brand-text">Stackly<span>Partner</span></span>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="notifications-bell">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="badge"></span>
+                </div>
+                <div class="profile-pill">
+                    <div class="profile-avatar">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <!-- Direct Name Greeting -->
+                    <span class="user-greeting" id="user-display-name">Partner Workspace</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-container">
+            <!-- Sidebar Structural Drawer Panel -->
+            <aside class="dash-sidebar" id="sidebar">
+                <nav class="sidebar-nav">
+                    <button class="nav-item active" onclick="switchSection('overview')">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Overview Performance</span>
+                    </button>
+                    <button class="nav-item" onclick="switchSection('programs')">
+                        <i class="fa-solid fa-book-bookmark"></i>
+                        <span>Training Programs</span>
+                    </button>
+                    <button class="nav-item" onclick="switchSection('analytics')">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <span>Corporate Analytics</span>
+                    </button>
+                    <button class="nav-item" onclick="switchSection('clients')">
+                        <i class="fa-solid fa-building-user"></i>
+                        <span>Enterprise Clients</span>
+                    </button>
+                    <button class="nav-item" onclick="switchSection('settings')">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span>Portal Settings</span>
+                    </button>
+                </nav>
+                
+                <div class="sidebar-footer">
+                    <button class="logout-btn" onclick="resetDashboardView()">
+                        <i class="fa-solid fa-arrow-rotate-left"></i>
+                        <span>Reset View</span>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Main Live Presentation Content Viewports -->
+            <main class="content-viewport">
+                
+                <!-- Section 1: Overview Panel Content -->
+                <section id="section-overview" class="dash-section">
+                    <h2>Overview Performance Workspace</h2>
+                    <p class="section-desc">Real-time status overview of active corporate contracts and training pipelines.</p>
+                    <div class="placeholder-card">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                        <p>Overview Metrics and Workspace Configuration Live Content Zone</p>
+                    </div>
+                </section>
+
+                <!-- Section 2: Programs Panel Content -->
+                <section id="section-programs" class="dash-section hidden">
+                    <h2>Training Programs Catalog</h2>
+                    <p class="section-desc">Manage curriculums, upskilling models, and certification validation rules pathways.</p>
+                    <div class="placeholder-card">
+                        <i class="fa-solid fa-laptop-code"></i>
+                        <p>Course Catalogs & Enterprise Syllabus Deployment Modules</p>
+                    </div>
+                </section>
+
+                <!-- Section 3: Analytics Panel Content -->
+                <section id="section-analytics" class="dash-section hidden">
+                    <h2>Corporate Analytics Tracking</h2>
+                    <p class="section-desc">Review client completion velocity rates, assessment evaluations, and scores.</p>
+                    <div class="placeholder-card">
+                        <i class="fa-solid fa-square-poll-vertical"></i>
+                        <p>ROI Metric Graphs & Enterprise Learning Velocity Datasets</p>
+                    </div>
+                </section>
+
+                <!-- Section 4: Clients Panel Content -->
+                <section id="section-clients" class="dash-section hidden">
+                    <h2>Enterprise Clients Registry</h2>
+                    <p class="section-desc">Manage communication contacts and configurations across your B2B corporate network.</p>
+                    <div class="placeholder-card">
+                        <i class="fa-solid fa-handshake"></i>
+                        <p>Corporate Stakeholder Contracts & Multi-Tenant Access Logs</p>
+                    </div>
+                </section>
+
+                <!-- Section 5: Settings Panel Content -->
+                <section id="section-settings" class="dash-section hidden">
+                    <h2>Portal Configuration & Settings</h2>
+                    <p class="section-desc">Configure security profiles, integration webhooks, and payment preferences.</p>
+                    <div class="placeholder-card">
+                        <i class="fa-solid fa-gears"></i>
+                        <p>System Webhooks, Permissions Profiles & White-label Configurations</p>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+  <style>
+    /* Core Custom Root Variables */
+:root {
+    --brand-primary: #1E3A8A; /* Clean Professional Slate Corporate Blue Theme */
+    --brand-accent: #3B82F6;
+    --bg-light: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --text-main: #0F172A;
+    --text-muted: #64748B;
+    --border-color: #E2E8F0;
+    --sidebar-width: 260px;
+    --header-height: 70px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Master Program Platform Layout Layout Framework */
+.dashboard-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* App Banner Headers Layout System */
+.dash-header {
+    height: var(--header-height);
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.hamburger-menu {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--text-main);
+    display: none; /* Managed responsively via media queries layout rules */
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.brand-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.brand-text {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0F172A;
+}
+
+.brand-text span {
+    color: var(--brand-accent);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.notifications-bell {
+    position: relative;
+    font-size: 20px;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.notifications-bell .badge {
+    position: absolute;
+    top: 0;
+    right: 2px;
+    width: 8px;
+    height: 8px;
+    background: #EF4444;
+    border-radius: 50%;
+}
+
+.profile-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #E2E8F0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--brand-primary);
+}
+
+.user-greeting {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Master Grid Alignment Panels Container */
+.main-container {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - var(--header-height));
+    overflow: hidden;
+}
+
+/* Sidebar Element Layout CSS Configuration rules */
+.dash-sidebar {
+    width: var(--sidebar-width);
+    background: var(--bg-card);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 90;
+}
+
+.sidebar-nav {
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nav-item i {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+.nav-item:hover, .nav-item.active {
+    background: #EFF6FF;
+    color: var(--brand-accent);
+}
+
+.sidebar-footer {
+    padding: 24px 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.logout-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    background: none;
+    border: none;
+    color: var(--brand-accent);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+}
+
+.logout-btn:hover {
+    background: #EFF6FF;
+}
+
+/* Active Section Display Layout Frame Panels */
+.content-viewport {
+    flex: 1;
+    overflow-y: auto;
+    padding: 32px;
+}
+
+.dash-section h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.section-desc {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+.placeholder-card {
+    background: var(--bg-card);
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 60px 20px;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.placeholder-card i {
+    font-size: 48px;
+    color: var(--border-color);
+    margin-bottom: 16px;
+}
+
+/* Responsiveness Media Rules Breakpoints query layout logic */
+@media (max-width: 992px) {
+    .hamburger-menu {
+        display: block;
+    }
+
+    .dash-sidebar {
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        bottom: 0;
+        transform: translateX(-100%);
+        box-shadow: 5px 0 15px rgba(0,0,0,0.05);
+    }
+
+    .dash-sidebar.open {
+        transform: translateX(0);
+    }
+    
+    .content-viewport {
+        padding: 24px;
+    }
+}
+
+  </style>
+
+  <script>
+    // Global Active Window Framework Matrix Tracker
+let activeTrackingSegmentId = 'overview';
+
+// Brand Logo Anchor Interface Reset Component 
+function refreshDashboard() {
+    console.log("Refreshing structural workspace container matrices...");
+    
+    const brandElement = document.querySelector('.brand-logo');
+    brandElement.style.opacity = '0.4';
+    
+    // Clear out navigation status models and guide back to dashboard starting point home metrics
+    setTimeout(() => {
+        brandElement.style.opacity = '1';
+        switchSection('overview');
+    }, 250);
+}
+
+// Sidebar Interactive Navigation Page Switch Engine
+function switchSection(sectionId) {
+    // Structural layout loop passing over section visibility tags array parameters
+    document.querySelectorAll('.dash-section').forEach(section => {
+        section.classList.add('hidden');
+    });
+    
+    // Activate individual chosen tracking content segment
+    const targetSection = document.getElementById(`section-${sectionId}`);
+    if (targetSection) {
+        targetSection.classList.remove('hidden');
+    }
+    
+    // Align visual state selection modifiers smoothly on links index layout lists
+    document.querySelectorAll('.nav-item').forEach(button => {
+        button.classList.remove('active');
+    });
+    
+    // Match element index binding targets matching selection inputs string arguments variables
+    const activeItem = Array.from(document.querySelectorAll('.nav-item')).find(btn => 
+        btn.getAttribute('onclick').includes(`'${sectionId}'`)
+    );
+    if (activeItem) {
+        activeItem.classList.add('active');
+    }
+    
+    // Minimize drawer interface on screen resize media breakpoints instantly after transition routing completed
+    if (window.innerWidth <= 992) {
+        document.getElementById('sidebar').classList.remove('open');
+    }
+}
+
+// Responsive Drawer Drawer Menu Trigger Action
+function toggleSidebar() {
+    const sidebarElement = document.getElementById('sidebar');
+    sidebarElement.classList.toggle('open');
+}
+
+// Reset Dashboard Navigation Layout State back to Home
+function resetDashboardView() {
+    switchSection('overview');
+}
+
+  </script>
+</body>
+</html>
