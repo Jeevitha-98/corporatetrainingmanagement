@@ -19,16 +19,14 @@
             <div class="sidebar-header-wrapper">
                 <!-- Brand logo behaves as an instant interactive dashboard reset trigger -->
                 <a href="#" class="sidebar-brand-refresh-link" id="client-brand-refresh-logo">
-                    <div class="sidebar-brand-vector">
-                        <svg viewBox="0 0 24 24"><path fill="#38BDF8" d="M12 3L1 9l11 5 11-5-11-5zm0 18l-11-5 11 5 11-5-11 5zm0-6l-11-5 11 5 11-5-11 5z"/></svg>
-                    </div>
+                    <img src="stackly-logo.png" alt="Stackly Corporate Training Logo" class="sidebar-brand-img">
                     <span class="sidebar-brand-name">Stackly<em>Client</em></span>
                 </a>
                 <!-- Mobile Only Hidden Close Control Button -->
                 <button class="btn-sidebar-close" id="client-close-trigger" aria-label="Close Sidebar Menu">✕</button>
             </div>
 
-            <!-- SCROLLER DOCK FOR SIDEBAR LINKS (Streamlined to 4 items) -->
+            <!-- SCROLLER DOCK FOR SIDEBAR LINKS -->
             <nav class="sidebar-navigation-dock">
                 <ul class="sidebar-menu-list">
                     <li>
@@ -75,64 +73,35 @@
         <div class="dashboard-viewport-console-wrapper">
 
             <!-- FIXED APP TOPHEADER BAR -->
-           <!-- FIXED APP TOPHEADER BAR -->
-<header class="dashboard-app-topheader">
+            <header class="dashboard-app-topheader">
+                <div class="topheader-left-cluster">
+                    <!-- Hamburger icon view button triggers menu stack panels mobile layouts -->
+                    <button class="dashboard-hamburger-trigger" id="client-hamburger-trigger" aria-label="Open Navigation Sidebar">
+                        <svg viewBox="0 0 24 24" class="hamburger-svg-icon"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+                    </button>
+                    <h2 class="topheader-current-workspace">Trainee Terminal Deck</h2>
+                </div>
 
-    <div class="topheader-left-cluster">
+                <div class="topheader-right-cluster">
+                    <!-- Notification Bell Button -->
+                    <button class="topheader-action-bell-btn" aria-label="View Curriculum Alerts">
+                        <svg viewBox="0 0 24 24" class="bell-svg-icon"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1-1.5-1s-1.5.17-1.5 1v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
+                        <span class="bell-pulse-alert-dot"></span>
+                    </button>
+                    
+                    
+                    <div class="topheader-profile-badge-pill">
+                        <div class="profile-avatar-frame-avatar">
+                            <span class="avatar-initials-placeholder">T</span>
+                        </div>
+                        
+                            <span class="operator-first-name-token" id="client-user-first-name">Loading...</span>
+                            <span class="operator-tier-badge">Private Trainee Operator</span>
+                        </div>
+                    </div>
+               
+            </header>
 
-        <!-- Hamburger icon -->
-        <button class="dashboard-hamburger-trigger"
-                id="client-hamburger-trigger"
-                aria-label="Open Navigation Sidebar">
-
-            <svg viewBox="0 0 24 24" class="hamburger-svg-icon">
-                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-            </svg>
-
-        </button>
-
-        <h2 class="topheader-current-workspace">
-            Trainee Terminal Deck
-        </h2>
-
-    </div>
-
-
-    <div class="topheader-right-cluster">
-
-        <!-- Notification Bell Button -->
-        <button class="topheader-action-bell-btn"
-                aria-label="View Curriculum Alerts">
-
-            <svg viewBox="0 0 24 24" class="bell-svg-icon">
-                <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1-1.5-1s-1.5.17-1.5 1v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/>
-            </svg>
-
-            <span class="bell-pulse-alert-dot"></span>
-
-        </button>
-
-
-        <!-- Profile -->
-        <div class="topheader-profile-badge-pill">
-
-            <div class="profile-avatar-frame-avatar">
-                <span class="avatar-initials-placeholder">T</span>
-            </div>
-
-            <span class="operator-first-name-token" id="client-user-first-name">
-                Loading...
-            </span>
-
-            <span class="operator-tier-badge">
-                Private Trainee Operator
-            </span>
-
-        </div>
-
-    </div>
-
-</header>
             <!-- SWITCHABLE MULTI SECTION WORKSPACE MODULE PANELS STACK CANVAS -->
             <main class="dashboard-sections-stack-canvas" id="client-sections-main-container">
                 
@@ -176,118 +145,10 @@
 
         </div>
     </div>
-</body>
-</html>
 
-<style>
-
-    /* =========================================================
-   HEADER WIDTH & PROFILE ALIGNMENT FIX
-   Prevents title wrapping and profile clipping
-   ========================================================= */
-
-.dashboard-app-topheader {
-    width: 100%;
-    min-width: 0;
-    overflow: hidden;
-}
-
-/* Allow left side to shrink without pushing profile outside */
-.topheader-left-cluster {
-    flex: 1 1 auto;
-    min-width: 0;
-    overflow: hidden;
-}
-
-/* Keep dashboard title on one line */
-.topheader-current-workspace {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    min-width: 0;
-}
-
-/* Keep right profile area visible */
-.topheader-right-cluster {
-    flex: 0 0 auto;
-    min-width: max-content;
-    display: flex;
-    align-items: center;
-}
-
-/* Proper 2-row profile layout */
-.topheader-profile-badge-pill {
-    display: grid;
-    grid-template-columns: 40px auto;
-    grid-template-rows: auto auto;
-    column-gap: 14px;
-    row-gap: 2px;
-    align-items: center;
-    flex-shrink: 0;
-}
-
-/* Avatar occupies both rows */
-.profile-avatar-frame-avatar {
-    grid-column: 1;
-    grid-row: 1 / 3;
-}
-
-/* User name */
-.operator-first-name-token {
-    grid-column: 2;
-    grid-row: 1;
-    white-space: nowrap;
-}
-
-/* User role */
-.operator-tier-badge {
-    grid-column: 2;
-    grid-row: 2;
-    white-space: nowrap;
-}
-
-
-/* =========================================================
-   RESPONSIVE HEADER FIX
-   ========================================================= */
-
-@media (max-width: 1024px) {
-
-    .dashboard-app-topheader {
-        padding-left: 24px;
-        padding-right: 24px;
-    }
-
-    .topheader-left-cluster {
-        flex: 1 1 0;
-    }
-
-}
-
-
-@media (max-width: 640px) {
-
-    .dashboard-app-topheader {
-        padding-left: 16px;
-        padding-right: 16px;
-    }
-
-    .topheader-current-workspace {
-        display: none;
-    }
-
-    .topheader-right-cluster {
-        gap: 16px;
-    }
-
-    .topheader-profile-badge-pill {
-        padding-left: 16px;
-    }
-
-}
-
-    /* ========================================================
-   STACKLY STREAMLINED CLIENT TRAINEE DASHBOARD STYLES
+    <style>
+        /* ========================================================
+   STACKLY COMPACT CLIENT TRAINEE PORTAL DASHBOARD STYLES
    ======================================================== */
 
 * {
@@ -303,6 +164,7 @@ body {
     overflow: hidden;
 }
 
+/* MASTER APP CANVASES FRAME STRUCTURE */
 .dashboard-app-frame {
     display: flex;
     width: 100vw;
@@ -344,12 +206,12 @@ body {
     cursor: pointer;
 }
 
-.sidebar-brand-vector {
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.sidebar-brand-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.02);
 }
 
 .sidebar-brand-name {
@@ -414,7 +276,7 @@ body {
 
 .menu-nav-anchor:hover .menu-svg-vector-icon, 
 .menu-nav-anchor.active .menu-svg-vector-icon {
-    fill: #38BDF8; 
+    fill: #38BDF8; /* Icons light up to Client soft theme blue */
 }
 
 .menu-nav-anchor.active {
@@ -617,7 +479,7 @@ body {
 .clean-section-badge {
     font-size: 0.8rem;
     font-weight: 700;
-    color: #38BDF8; 
+    color: #38BDF8; /* Targeted Client domain blue theme accent */
     letter-spacing: 0.14em;
     display: inline-block;
     margin-bottom: 12px;
@@ -709,10 +571,10 @@ body {
     .clean-section-title { font-size: 1.85rem; }
 }
 
-</style>
+    </style>
 
-<script>
-    /**
+    <script>
+        /**
  * STACKLY CLIENT TRAINEE DASHBOARD CONTROLLER SYSTEM
  * High-Performance Session Tracking & Responsive Interface Navigation Engine
  */
@@ -729,6 +591,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (headerUserNameTarget) {
             if (cachedOperatorEmail && cachedOperatorEmail.includes("@")) {
                 const rawUserPrefix = cachedOperatorEmail.split("@")[0];
+                // Parse out numerical strings, periods, or special characters
                 const alphabeticalOnlyString = rawUserPrefix.replace(/[0-9._-]/g, ' ').trim();
                 const fullyFormattedFirstName = alphabeticalOnlyString.charAt(0).toUpperCase() + alphabeticalOnlyString.slice(1);
                 
@@ -849,4 +712,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-</script>
+    </script>
+</body>
+</html>

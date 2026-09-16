@@ -624,7 +624,16 @@ font-weight: 600;color: #CBD5E1;text-decoration: none;transition: all 0.25s ease
             }
         });
 
-      
+        // Strip warnings labels instantly as soon as users write inside input text boxes fields again
+        [emailFieldInput, passwordInput].forEach(field => {
+            if (field) {
+                field.addEventListener("input", () => {
+                    if (warningAlertLabelNode.classList.contains("reveal-notice")) {
+                        warningAlertLabelNode.classList.remove("reveal-notice");
+                    }
+                });
+            }
+        });
     }
 });
 </script>
