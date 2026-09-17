@@ -83,8 +83,8 @@
         
         <a href="#" class="brand-logo" id="brand-logo-trigger" aria-label="Stackly Home - Refresh Portal">
             <!-- Replace 'logo-placeholder.svg' with your actual vector file path -->
-            <img src="logo-placeholder.svg" alt="Stackly Logo" class="logo-img">
-            <span class="brand-name-text">Stackly</span>
+            <img src="./assests/corporate training.webp" alt="Stackly Logo" class="logo-img">
+           
         </a>
 
         <!-- Desktop Navigation Layer (Hidden on mobile via Media Query) -->
@@ -100,7 +100,7 @@
 
         <!-- Right Side Authentication Area -->
         <div class="auth-wrapper">
-            <button class="btn-auth">Sign In</button>
+           <button class="btn-auth" onclick="window.location.href='login.html'">Sign In</button>
             
             <!-- Mobile Hamburger Menu Toggle Trigger Button -->
             <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
@@ -116,11 +116,11 @@
 <div class="mobile-drawer" id="mobile-navigation-drawer">
     <nav class="mobile-nav">
         <ul>
-            <li><a href="#dashboard" class="mobile-nav-item ">Dashboard</a></li>
-            <li><a href="#courses" class="mobile-nav-item">Courses</a></li>
-            <li><a href="#analytics" class="mobile-nav-item">Analytics</a></li>
-            <li><a href="#teams" class="mobile-nav-item">Teams</a></li>
-            <li><a href="#settings" class="mobile-nav-item">Settings</a></li>
+          <li><a href="index.html" class="mobile-nav-item ">Dashboard</a></li>
+            <li><a href="courses.html" class="mobile-nav-item">Courses</a></li>
+            <li><a href="blogs.html" class="mobile-nav-item active">Blogs</a></li>
+            <li><a href="about.html" class="mobile-nav-item">About Us</a></li>
+            <li><a href="contact.html" class="mobile-nav-item">Contact Us</a></li>
         </ul>
     </nav>
 </div>
@@ -172,7 +172,7 @@
 <!-- CORPORATE BLOGS HERO SEGMENT -->
 <section class="blogs-hero-section" id="blogs-hero-viewport">
     <!-- Main catalog visual background layout image tag -->
-    <img src="blogs-hero-bg.jpg" alt="L&D Knowledge Base Infrastructure" class="blogs-hero-bg-img">
+    <img src="./assests/about img 2.webp" alt="L&D Knowledge Base Infrastructure" class="blogs-hero-bg-img">
 
     <div class="blogs-hero-container">
         <!-- CENTERED REGION: Staggered entrance visual control block -->
@@ -234,7 +234,7 @@
     object-position: center 25%;
     z-index: 1;
     pointer-events: none;
-    opacity: 0.15; /* Subdued image layer to preserve absolute text legibility */
+    opacity: 0.85; /* Subdued image layer to preserve absolute text legibility */
 }
 
 /* High-contrast multi-layered protective mask layer ensures text is fully visible */
@@ -471,7 +471,7 @@
             <!-- Article Card Node 1 -->
             <div class="blog-article-card-item scroll-trigger-stagger">
                 <div class="blog-card-image-frame">
-                    <img src="blog-thumb-1.jpg" alt="Generative AI Corporate Integration Models" class="blog-embed-img">
+                    <img src="./assests/AI infra.webp" alt="Generative AI Corporate Integration Models" class="blog-embed-img">
                     <span class="blog-card-tag-badge">AI Infrastructure</span>
                 </div>
                 <div class="blog-card-body-details">
@@ -487,7 +487,7 @@
             <!-- Article Card Node 2 -->
             <div class="blog-article-card-item scroll-trigger-stagger">
                 <div class="blog-card-image-frame">
-                    <img src="blog-thumb-2.jpg" alt="Zero-Trust Workforce Framework Compliance" class="blog-embed-img">
+                    <img src="./assests/risk management.webp" alt="Zero-Trust Workforce Framework Compliance" class="blog-embed-img">
                     <span class="blog-card-tag-badge security">Risk Mitigation</span>
                 </div>
                 <div class="blog-card-body-details">
@@ -503,7 +503,7 @@
             <!-- Article Card Node 3 -->
             <div class="blog-article-card-item scroll-trigger-stagger">
                 <div class="blog-card-image-frame">
-                    <img src="blog-thumb-3.jpg" alt="High-Scale Cloud Warehouse Architectures" class="blog-embed-img">
+                    <img src="./assests/data analytics.webp" alt="High-Scale Cloud Warehouse Architectures" class="blog-embed-img">
                     <span class="blog-card-tag-badge data">Data Ecosystems</span>
                 </div>
                 <div class="blog-card-body-details">
@@ -519,7 +519,7 @@
             <!-- Article Card Node 4 -->
             <div class="blog-article-card-item scroll-trigger-stagger">
                 <div class="blog-card-image-frame">
-                    <img src="blog-thumb-4.jpg" alt="Agile Leadership Matrix Team Sprints" class="blog-embed-img">
+                    <img src="./assests/labs training.webp" alt="Agile Leadership Matrix Team Sprints" class="blog-embed-img">
                     <span class="blog-card-tag-badge strategy">Executive Labs</span>
                 </div>
                 <div class="blog-card-body-details">
@@ -535,7 +535,7 @@
             <!-- Article Card Node 5 -->
             <div class="blog-article-card-item scroll-trigger-stagger">
                 <div class="blog-card-image-frame">
-                    <img src="blog-thumb-5.jpg" alt="Compliance Mandates Regulatory Audit" class="blog-embed-img">
+                    <img src="./assests/about img 2.webp" alt="Compliance Mandates Regulatory Audit" class="blog-embed-img">
                     <span class="blog-card-tag-badge compliance">Compliance</span>
                 </div>
                 <div class="blog-card-body-details">
@@ -551,7 +551,7 @@
             <!-- Article Card Node 6 -->
             <div class="blog-article-card-item scroll-trigger-stagger">
                 <div class="blog-card-image-frame">
-                    <img src="blog-thumb-6.jpg" alt="Decentralized Workforce Telemetry Nodes" class="blog-embed-img">
+                    <img src="./assests/about img 1.webp" alt="Decentralized Workforce Telemetry Nodes" class="blog-embed-img">
                     <span class="blog-card-tag-badge analytics">Analytics</span>
                 </div>
                 <div class="blog-card-body-details">
@@ -907,7 +907,7 @@
             <!-- LEFT REGION: Large Creative Focal Card -->
             <div class="spotlight-focal-card scroll-trigger-stagger animate-in">
                 <div class="focal-image-frame">
-                    <img src="featured-spotlight-1.jpg" alt="Workforce Metrology Analytics" class="focal-embed-img">
+                    <img src="./assests/hero section bg.webp" alt="Workforce Metrology Analytics" class="focal-embed-img">
                     <div class="focal-badge-chip">Must Read</div>
                 </div>
                 <div class="focal-card-content">
@@ -926,7 +926,7 @@
                 <!-- Stacked Item Card 1 -->
                 <div class="stacked-article-node scroll-trigger-stagger animate-in">
                     <div class="stacked-image-frame">
-                        <img src="featured-spotlight-2.jpg" alt="Compliance Mandates Review" class="stacked-embed-img">
+                        <img src="./assests/about img 1.webp" alt="Compliance Mandates Review" class="stacked-embed-img">
                     </div>
                     <div class="stacked-content-body">
                         <span class="stacked-date-meta">L&D Compliance • 5 Mins</span>
@@ -939,13 +939,13 @@
                 <!-- UPDATE: Intermediate Image Tag Inserted Directly Between Right-Side Cards -->
                 <div class="stacked-mid-banner-frame scroll-trigger-stagger animate-in">
                     <!-- Replace 'mid-stack-banner.jpg' with your target corporate image pathway -->
-                    <img src="mid-stack-banner.jpg" alt="Stackly L&D Promotional Grid Tracking" class="stacked-mid-banner-img">
+                    <img src="./assests/about img 2.webp" alt="Stackly L&D Promotional Grid Tracking" class="stacked-mid-banner-img">
                 </div>
 
                 <!-- Stacked Item Card 2 -->
                 <div class="stacked-article-node scroll-trigger-stagger animate-in">
                     <div class="stacked-image-frame">
-                        <img src="featured-spotlight-3.jpg" alt="Agile Leadership Training" class="stacked-embed-img">
+                        <img src="./assests/AI infra.webp" alt="Agile Leadership Training" class="stacked-embed-img">
                     </div>
                     <div class="stacked-content-body">
                         <span class="stacked-date-meta">Executive Labs • 4 Mins</span>
@@ -1410,7 +1410,7 @@
 <!-- DYNAMIC ONE-LINE ENTERPRISE CTA BANNER -->
 <section class="oneline-cta-section" id="oneline-cta-viewport">
     <!-- Visual structural background graphics asset layer -->
-    <img src="oneline-banner-bg-placeholder.jpg" alt="Abstract Corporate Grid Background" class="oneline-bg-img">
+    <img src="./assests/labs training.webp" alt="Abstract Corporate Grid Background" class="oneline-bg-img">
 
     <div class="oneline-banner-container">
         
@@ -1451,7 +1451,7 @@
     object-fit: cover;
     z-index: 1;
     pointer-events: none;
-    opacity: 0.12; /* Keep structural continuity with dark homepage assets */
+    opacity: 0.32; /* Keep structural continuity with dark homepage assets */
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -1627,7 +1627,7 @@
                 <!-- Blog Slide Node 1 -->
                 <div class="blog-trending-card">
                     <div class="trending-card-image-frame">
-                        <img src="trending-blog-1.jpg" alt="Quantitative Trade Systems Implementation" class="trending-card-img">
+                        <img src="./assests/about img 1.webp" alt="Quantitative Trade Systems Implementation" class="trending-card-img">
                         <span class="trending-card-badge-chip">Quantitative Trade</span>
                     </div>
                     <div class="trending-card-body-content">
@@ -1643,7 +1643,7 @@
                 <!-- Blog Slide Node 2 -->
                 <div class="blog-trending-card">
                     <div class="trending-card-image-frame">
-                        <img src="trending-blog-2.jpg" alt="Blockchain Compliance Architectures" class="trending-card-img">
+                        <img src="./assests/about img 2.webp" alt="Blockchain Compliance Architectures" class="trending-card-img">
                         <span class="trending-card-badge-chip security">Web3 Security</span>
                     </div>
                     <div class="trending-card-body-content">
@@ -1659,7 +1659,7 @@
                 <!-- Blog Slide Node 3 -->
                 <div class="blog-trending-card">
                     <div class="trending-card-image-frame">
-                        <img src="trending-blog-3.jpg" alt="Predictive Market Analytics Ecosystems" class="trending-card-img">
+                        <img src="./assests/AI infra.webp" alt="Predictive Market Analytics Ecosystems" class="trending-card-img">
                         <span class="trending-card-badge-chip data">Data Analytics</span>
                     </div>
                     <div class="trending-card-body-content">
@@ -1675,7 +1675,7 @@
                 <!-- Blog Slide Node 4 -->
                 <div class="blog-trending-card">
                     <div class="trending-card-image-frame">
-                        <img src="trending-blog-4.jpg" alt="Agile Leadership Sprint Systems" class="trending-card-img">
+                        <img src="./assests/data analytics.webp" alt="Agile Leadership Sprint Systems" class="trending-card-img">
                         <span class="trending-card-badge-chip strategy">Executive Labs</span>
                     </div>
                     <div class="trending-card-body-content">
@@ -2311,8 +2311,8 @@
         <!-- COLUMN 1: Brand Overview & Fluid SVG Social Controls -->
         <div class="footer-column brand-summary-block">
             <a href="#" class="footer-brand-logo" id="back-to-top-trigger" aria-label="Stackly Portal - Scroll Back To Top">
-                <img src="logo-dark.svg" alt="Stackly Logo" class="footer-logo-img">
-                <span class="footer-brand-name">STACKLY</span>
+                <img src="./assests/CTF.webp" alt="Stackly Logo" class="footer-logo-img">
+               
             </a>
             <p class="footer-brand-desc">
                 Engineering premium scalable corporate learning setups, skill matrices tracking pipelines, and decentralized enterprise upskilling nodes designed to fuel global workforce productivity alike.
@@ -2439,10 +2439,9 @@
 }
 
 .footer-logo-img {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
-    filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.3));
+    width: 130px;
+    height: 50px;
+  
 }
 
 .footer-brand-name {

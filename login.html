@@ -1,136 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stackly Portal - Secure Access Gate</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <!-- MASTER GATEWAY VIEWPORT BACKGROUND -->
-    <div class="auth-gateway-scroll-wrapper">
-        <main class="auth-gateway-viewport">
-            <div class="auth-glass-container">
-                
-                <!-- UPPER ACTION RIBBON -->
-                <div class="auth-header-actions">
-                    <a href="404.html" class="btn-back-home">← HOME</a>
-                </div>
-
-                <!-- CORE BRAND IDENTIFIERS -->
-                <div class="auth-brand-strip">
-                    <span class="auth-pretitle">— STACKLY PORTAL MIGRATION ACCESS —</span>
-                    <h1 class="auth-main-title">Welcome <em>Back.</em></h1>
-                    <p class="auth-subtitle">Select your operational tracking profile access to unlock your targeted group curriculum sandboxes.</p>
-                </div>
-
-                <span class="role-matrix-title">SELECT OPERATIONAL PROFILE ACCESS</span>
-
-                <!-- ROLE VARIANT TRACK INTERACTIVE TOGGLES -->
-                <div class="role-selector-matrix">
-                    <!-- Option A: Enterprise Manager Dashboard Node -->
-                    <div class="role-toggle-node active" id="role-node-owner" data-role="owner">
-                        <span class="role-icon-vector">
-                            <!-- Corporate Hierarchy Vector Icon -->
-                            <svg viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
-                        </span>
-                        <div class="role-meta-info">
-                            <h4>L&D Manager</h4>
-                            <p>STUDIO DASHBOARD</p>
-                        </div>
-                    </div>
-
-                    <!-- Option B: Operator Trainee Registry Deck Node -->
-                    <div class="role-toggle-node" id="role-node-client" data-role="client">
-                        <span class="role-icon-vector">
-                            <!-- Trainee / Individual Path Vector Icon -->
-                            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                        </span>
-                        <div class="role-meta-info">
-                            <h4>Trainee Operator</h4>
-                            <p>REGISTRY DECK</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SECURE AUTHENTICATION ENTRY MATRIX FORM -->
-                <form class="auth-form-element" id="portal-secure-login-form" novalidate>
-                    
-                    <!-- Email Core Field Block -->
-                    <div class="auth-input-group">
-                        <label class="auth-field-label">CORPORATE EMAIL ADDRESS</label>
-                        <input type="email" class="auth-input-field" id="auth-email-input" placeholder="name@company.com" autocomplete="email">
-                    </div>
-
-                    <!-- Password Core Field Block -->
-                    <div class="auth-input-group">
-                        <label class="auth-field-label">SECURITY PASSWORD KEY</label>
-                        <div class="password-field-wrapper">
-                            <input type="password" class="auth-input-field" id="auth-password-input" placeholder="••••••••">
-                            <span class="password-toggle-eye">👁️</span>
-                        </div>
-                    </div>
-
-                    <!-- RETENTION AND FORGOT UTILITY ROW -->
-                    <div class="auth-utilities-row">
-                        <label class="custom-checkbox-container">
-                            <input type="checkbox" id="remember-me-checkbox">
-                            <span class="checkmark-box"></span>
-                            <span class="checkbox-label-text">Remember device</span>
-                        </label>
-                        <a href="404.html" class="auth-forgot-trigger">Forgot Password Key?</a>
-                    </div>
-
-                    <!-- SUBMIT ACTIONS EXECUTIONS BUTTON MODULE -->
-                    <div class="auth-submit-wrapper">
-                        <button type="submit" class="btn-auth-secure-submit">LOG IN SECURELY →</button>
-                        <!-- Floating validation warning alert message overlay -->
-                        <span class="auth-validation-notice" id="auth-warning-alert-label">Please fill the fields</span>
-                    </div>
-
-                </form>
-
-                <!-- THIRD-PARTY IDENTITY DIRECT ROUTING LINK BAR -->
-                <div class="social-sign-divider">
-                    <span class="divider-line-span">OR ACCESS INTEGRATION ENGINE</span>
-                </div>
-
-                <div class="social-links-matrix-dock">
-                    <!-- Google Button (Full Width Row) -->
-                    <a href="404.html" class="btn-social-gate-link google-row">
-                        <span class="social-brand-letter">G</span> Google Workspace
-                    </a>
-                    <!-- Facebook & Microsoft Buttons (Aligned side-by-side on the same horizontal row line) -->
-                    <div class="social-twin-row-grid">
-                        <a href="404.html" class="btn-social-gate-link">
-                            <span class="social-brand-letter font-facebook">f</span> Enterprise Meta
-                        </a>
-                        <a href="404.html" class="btn-social-gate-link">
-                            <!-- Microsoft vector symbol block layout -->
-                            <svg class="microsoft-vector-icon" viewBox="0 0 23 23">
-                                <path fill="#F25022" d="M0 0h11v11H0z"/>
-                                <path fill="#7FBA00" d="M12 0h11v11H12z"/>
-                                <path fill="#00A4EF" d="M0 12h11v11H0z"/>
-                                <path fill="#FFB900" d="M12 12h11v11H12z"/>
-                            </svg>
-                            Microsoft 365
-                        </a>
-                    </div>
-                </div>
-
-                <!-- REGISTER NAVIGATION LINK BAR FOOTER -->
-                <div class="auth-gateway-footer">
-                    <p>New terminal branch setup needed? <a href="signup.html" class="auth-register-trigger">Request Token Access</a></p>
-                </div>
-
-            </div>
-        </main>
-    </div>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackly Portal - Secure Access Gate</title>
 <style>
-    /* ========================================================
-   STACKLY SECURE AUTHENTICATION GATEWAY CORPORATE PRESENTATION STYLES
+/* ========================================================
+   STACKLY SECURE AUTHENTICATION GATEWAY — CORPORATE STYLES
    ======================================================== */
 
 * {
@@ -140,14 +16,18 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
-    background-color: #050811; /* Deep background canvas maximizing text presence clarity */
+    background-color: #050811;
 }
 
 /* FLUID SCROLL SYSTEM */
 .auth-gateway-scroll-wrapper {
     width: 100%;
-    height: 100vh;
+    min-height: 100dvh;
     overflow-x: hidden;
     overflow-y: auto;
     background-color: #050811;
@@ -156,29 +36,33 @@ body {
 
 .auth-gateway-viewport {
     width: 100%;
-    min-height: 100%;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Strict parameter spacing compliance parameters rules criteria maps safely */
-    padding: 50px 6% 30px 6%;
+    padding: clamp(20px, 5vw, 50px) clamp(16px, 6%, 6%) clamp(20px, 4vw, 30px);
 }
 
-/* HIGH FIDELITY EXTRA DARK MASK CANVASES WINDOWS */
+/* GLASS CARD */
 .auth-glass-container {
     width: 100%;
-    max-width: 540px; 
-    background-color: rgba(18, 24, 41, 0.45); /* High output slate dark glass block backdrop */
+    max-width: 540px;
+    background-color: rgba(18, 24, 41, 0.45);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.03);
     border-radius: 28px;
-    padding: 44px;
+    padding: clamp(24px, 5vw, 44px);
     box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
     position: relative;
     transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.auth-glass-container:hover {
+    border-color: rgba(74, 222, 128, 0.15);
+    box-shadow: 0 0 35px rgba(74, 222, 128, 0.04), 0 30px 70px rgba(0, 0, 0, 0.6);
 }
 
 /* UPPER ACTION RIBBON */
@@ -202,8 +86,9 @@ body {
     transition: all 0.25s ease;
 }
 
-.btn-back-home:hover {
-    color: #4ADE80; /* Changes cleanly onto Stackly Ancient Green highlight focus */
+.btn-back-home:hover,
+.btn-back-home:focus-visible {
+    color: #4ADE80;
     border-color: rgba(74, 222, 128, 0.25);
     background-color: rgba(74, 222, 128, 0.04);
 }
@@ -215,16 +100,16 @@ body {
 }
 
 .auth-pretitle {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 700;
-    color: #475569; /* Slate gray metadata label paths */
+    color: #475569;
     letter-spacing: 0.16em;
     display: inline-block;
     margin-bottom: 12px;
 }
 
 .auth-main-title {
-    font-size: 2.8rem;
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
     font-weight: 400;
     color: #FFFFFF;
     letter-spacing: -0.01em;
@@ -242,6 +127,7 @@ body {
     font-size: 0.95rem;
     line-height: 1.55;
     color: #64748B;
+    max-width: 60ch;
 }
 
 .role-matrix-title {
@@ -251,11 +137,10 @@ body {
     letter-spacing: 0.05em;
     text-align: left;
     margin-bottom: 14px;
+    display: block;
 }
 
-/* ========================================================
-   ROLE SELECTOR TILES GRIDS SYSTEM CONFIGS
-   ======================================================== */
+/* ROLE SELECTOR TILES */
 .role-selector-matrix {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -275,6 +160,12 @@ body {
     cursor: pointer;
     text-align: left;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 0;
+}
+
+.role-toggle-node:focus-visible {
+    outline: 2px solid #4ADE80;
+    outline-offset: 2px;
 }
 
 .role-icon-vector {
@@ -293,12 +184,19 @@ body {
     transition: fill 0.3s ease;
 }
 
+.role-meta-info {
+    min-width: 0;
+}
+
 .role-meta-info h4 {
     font-size: 0.9rem;
     font-weight: 600;
     color: #64748B;
     margin-bottom: 2px;
     transition: color 0.3s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .role-meta-info p {
@@ -308,9 +206,8 @@ body {
     letter-spacing: 0.04em;
 }
 
-/* Active status transformation properties matching layout lookup curves */
 .role-toggle-node.active {
-    border-color: rgba(255, 255, 255, 0.08); 
+    border-color: rgba(255, 255, 255, 0.08);
     background-color: rgba(255, 255, 255, 0.01);
 }
 
@@ -318,9 +215,7 @@ body {
 .role-toggle-node.active .role-meta-info h4 { color: #FFFFFF; }
 .role-toggle-node.active .role-meta-info p { color: #64748B; }
 
-/* ========================================================
-   FORM INTERFACE COMPONENTS CORES
-   ======================================================== */
+/* FORM */
 .auth-form-element {
     display: flex;
     flex-direction: column;
@@ -358,14 +253,18 @@ body {
 
 .auth-input-field::placeholder { color: #334155; }
 
-.auth-input-field:focus {
-    border-color: rgba(74, 222, 128, 0.35); /* Focus boundary box flashes to Ancient Green */
+.auth-input-field:focus-visible {
+    border-color: rgba(74, 222, 128, 0.35);
     box-shadow: 0 0 12px rgba(74, 222, 128, 0.15);
 }
 
 .password-field-wrapper {
     position: relative;
     width: 100%;
+}
+
+.password-field-wrapper .auth-input-field {
+    padding-right: 46px;
 }
 
 .password-toggle-eye {
@@ -378,10 +277,14 @@ body {
     opacity: 0.25;
     user-select: none;
     transition: opacity 0.2s ease;
+    background: none;
+    border: none;
+    color: inherit;
 }
-.password-toggle-eye:hover { opacity: 0.6; }
+.password-toggle-eye:hover,
+.password-toggle-eye:focus-visible { opacity: 0.6; }
 
-/* CHECKBOX STRUCTURAL STRIP */
+/* UTILITIES ROW */
 .auth-utilities-row {
     display: flex;
     justify-content: space-between;
@@ -389,6 +292,8 @@ body {
     width: 100%;
     font-size: 0.92rem;
     margin-top: -4px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .custom-checkbox-container {
@@ -417,10 +322,11 @@ body {
     margin-right: 10px;
     position: relative;
     transition: all 0.2s ease;
+    flex-shrink: 0;
 }
 
 .custom-checkbox-container input:checked ~ .checkmark-box {
-    background-color: #4ADE80; /* Box fills to active brand green tint metrics */
+    background-color: #4ADE80;
     border-color: #4ADE80;
 }
 
@@ -438,13 +344,12 @@ body {
 }
 
 .custom-checkbox-container input:checked ~ .checkmark-box::after { display: block; }
+.custom-checkbox-container input:focus-visible ~ .checkmark-box { outline: 2px solid #4ADE80; outline-offset: 2px; }
 .checkbox-label-text { font-weight: 500; }
 .auth-forgot-trigger { color: #64748B; text-decoration: none; font-weight: 500; transition: color 0.2s ease; }
-.auth-forgot-trigger:hover { color: #FFFFFF; }
+.auth-forgot-trigger:hover, .auth-forgot-trigger:focus-visible { color: #FFFFFF; }
 
-/* ========================================================
-   SUBMIT BUTTON MODULE STRIP EXECUTIONS
-   ======================================================== */
+/* SUBMIT BUTTON */
 .auth-submit-wrapper {
     position: relative;
     width: 100%;
@@ -453,14 +358,14 @@ body {
 
 .btn-auth-secure-submit {
     width: 100%;
-    background-color: #4ADE80; /* Integrated brand Ancient Green directly into core submission button capsule */
-    color: #050811; /* Clean high contrast dark text layer inside bright background */
+    background-color: #4ADE80;
+    color: #050811;
     border: none;
     padding: 16px 32px;
     font-size: 0.95rem;
     font-weight: 700;
     letter-spacing: 0.05em;
-    border-radius: 30px; 
+    border-radius: 30px;
     cursor: pointer;
     box-shadow: 0 6px 20px rgba(74, 222, 128, 0.15);
     transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
@@ -473,6 +378,11 @@ body {
     box-shadow: 0 8px 24px rgba(34, 197, 94, 0.3);
 }
 
+.btn-auth-secure-submit:focus-visible {
+    outline: 2px solid #FFFFFF;
+    outline-offset: 3px;
+}
+
 .auth-validation-notice {
     position: absolute;
     bottom: -24px;
@@ -481,7 +391,7 @@ body {
     text-align: center;
     font-size: 0.8rem;
     font-weight: 600;
-    color: #F87171; 
+    color: #F87171;
     opacity: 0;
     transform: translateY(-4px);
     transition: opacity 0.25s ease, transform 0.25s ease;
@@ -490,9 +400,7 @@ body {
 
 .auth-validation-notice.reveal-notice { opacity: 1; transform: translateY(0); }
 
-/* ========================================================
-   THIRD-PARTY ACCESS INTERMEDIATE PASSTHROUGH INTEGRATION
-   ======================================================== */
+/* SOCIAL DIVIDER */
 .social-sign-divider {
     width: 100%;
     text-align: center;
@@ -514,7 +422,7 @@ body {
 .divider-line-span {
     position: relative;
     z-index: 2;
-    background-color: #050811; /* Perfectly breaks division line path strings behind card background masks */
+    background-color: #050811;
     padding: 0 14px;
     font-size: 0.72rem;
     font-weight: 700;
@@ -539,82 +447,259 @@ body {
     padding: 14px 24px;
     border-radius: 12px;
     font-size: 0.92rem;
-font-weight: 600;color: #CBD5E1;text-decoration: none;transition: all 0.25s ease;}.btn-social-gate-link.google-row { width: 100%; }/* Side-by-side twin layout row matrix architecture for Meta & Microsoft blocks */.social-twin-row-grid {display: grid;grid-template-columns: repeat(2, 1fr);gap: 12px;width: 100%;}.social-brand-letter {font-weight: 800;font-size: 1.1rem;color: #94A3B8;}.microsoft-vector-icon {width: 14px;height: 14px;flex-shrink: 0;}.btn-social-gate-link:hover {background-color: rgba(255, 255, 255, 0.02);border-color: rgba(255, 255, 255, 0.1);color: #FFFFFF;}/* FOOTER SETUP LINK CONNECTOR */.auth-gateway-footer {width: 100%;text-align: center;margin-top: 36px;font-size: 0.88rem;color: #64748B;}.auth-register-trigger {color: #E2E8F0;text-decoration: none;font-weight: 700;margin-left: 4px;transition: color 0.2s ease;}.auth-register-trigger:hover { color: #4ADE80; }/* IMMERSIVE CORES HOVER TRACES GLOWS STATES /.auth-glass-container:hover {border-color: rgba(74, 222, 128, 0.15); / Activates smooth ambient green trace curves on hover focus */box-shadow: 0 0 35px rgba(74, 222, 128, 0.04), 0 30px 70px rgba(0, 0, 0, 0.6);}/* ========================================================FLUID RESPONSIVE DESIGN PARAMETERS MEDIA BREAKPOINTS======================================================== */@media (max-width: 640px) {.auth-gateway-viewport { padding: 36px 4% 24px 4%; }.auth-glass-container { padding: 32px 20px; border-radius: 20px; }.auth-main-title { font-size: 2.1rem; }.role-selector-matrix { grid-template-columns: 1fr; gap: 12px; }.social-twin-row-grid { grid-template-columns: 1fr; gap: 12px; }.auth-input-field { padding: 12px 14px; font-size: 0.95rem; }.btn-auth-secure-submit { padding: 14px 24px; font-size: 0.88rem; }}
+    font-weight: 600;
+    color: #CBD5E1;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
 
+.btn-social-gate-link.google-row { width: 100%; }
+
+.social-twin-row-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    width: 100%;
+}
+
+.social-brand-letter {
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #94A3B8;
+}
+
+.microsoft-vector-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+.btn-social-gate-link:hover,
+.btn-social-gate-link:focus-visible {
+    background-color: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+}
+
+/* FOOTER */
+.auth-gateway-footer {
+    width: 100%;
+    text-align: center;
+    margin-top: 36px;
+    font-size: 0.88rem;
+    color: #64748B;
+}
+
+.auth-register-trigger {
+    color: #E2E8F0;
+    text-decoration: none;
+    font-weight: 700;
+    margin-left: 4px;
+    transition: color 0.2s ease;
+}
+.auth-register-trigger:hover, .auth-register-trigger:focus-visible { color: #4ADE80; }
+
+/* ========================================================
+   RESPONSIVE BREAKPOINTS
+   ======================================================== */
+@media (max-width: 640px) {
+    .auth-gateway-viewport { padding: 28px 4% 20px; align-items: flex-start; }
+    .auth-glass-container { padding: 28px 20px; border-radius: 20px; }
+    .role-selector-matrix { grid-template-columns: 1fr; gap: 10px; }
+    .social-twin-row-grid { grid-template-columns: 1fr; gap: 10px; }
+    .auth-input-field { padding: 12px 14px; font-size: 0.95rem; }
+    .btn-auth-secure-submit { padding: 14px 24px; font-size: 0.88rem; }
+    .auth-utilities-row { font-size: 0.85rem; }
+}
+
+@media (max-width: 380px) {
+    .auth-glass-container { padding: 22px 16px; border-radius: 16px; }
+    .btn-back-home { padding: 6px 14px; font-size: 0.72rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+}
 </style>
+</head>
+<body>
+
+<div class="auth-gateway-scroll-wrapper">
+    <main class="auth-gateway-viewport">
+        <div class="auth-glass-container">
+
+            <div class="auth-header-actions">
+                <a href="index.html" class="btn-back-home">← HOME</a>
+            </div>
+
+            <div class="auth-brand-strip">
+                <span class="auth-pretitle">— STACKLY PORTAL MIGRATION ACCESS —</span>
+                <h1 class="auth-main-title">Welcome <em>Back.</em></h1>
+                <p class="auth-subtitle">Select your operational tracking profile access to unlock your targeted group curriculum sandboxes.</p>
+            </div>
+
+            <span class="role-matrix-title">SELECT OPERATIONAL PROFILE ACCESS</span>
+
+            <div class="role-selector-matrix" role="radiogroup" aria-label="Operational profile">
+                <div class="role-toggle-node active" id="role-node-owner" data-role="owner" role="radio" aria-checked="true" tabindex="0">
+                    <span class="role-icon-vector">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+                    </span>
+                    <div class="role-meta-info">
+                        <h4>L&amp;D Manager</h4>
+                        <p>STUDIO DASHBOARD</p>
+                    </div>
+                </div>
+
+                <div class="role-toggle-node" id="role-node-client" data-role="client" role="radio" aria-checked="false" tabindex="0">
+                    <span class="role-icon-vector">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </span>
+                    <div class="role-meta-info">
+                        <h4>Trainee Operator</h4>
+                        <p>REGISTRY DECK</p>
+                    </div>
+                </div>
+            </div>
+
+            <form class="auth-form-element" id="portal-secure-login-form" novalidate>
+
+                <div class="auth-input-group">
+                    <label class="auth-field-label" for="auth-email-input">CORPORATE EMAIL ADDRESS</label>
+                    <input type="email" class="auth-input-field" id="auth-email-input" placeholder="name@company.com" autocomplete="email">
+                </div>
+
+                <div class="auth-input-group">
+                    <label class="auth-field-label" for="auth-password-input">SECURITY PASSWORD KEY</label>
+                    <div class="password-field-wrapper">
+                        <input type="password" class="auth-input-field" id="auth-password-input" placeholder="••••••••" autocomplete="current-password">
+                        <button type="button" class="password-toggle-eye" aria-label="Show password">👁️</button>
+                    </div>
+                </div>
+
+                <div class="auth-utilities-row">
+                    <label class="custom-checkbox-container">
+                        <input type="checkbox" id="remember-me-checkbox">
+                        <span class="checkmark-box"></span>
+                        <span class="checkbox-label-text">Remember device</span>
+                    </label>
+                    <a href="404.html" class="auth-forgot-trigger">Forgot Password Key?</a>
+                </div>
+
+                <div class="auth-submit-wrapper">
+                    <button type="submit" class="btn-auth-secure-submit">LOG IN SECURELY →</button>
+                    <span class="auth-validation-notice" id="auth-warning-alert-label" role="alert">Please fill the fields</span>
+                </div>
+
+            </form>
+
+            <div class="social-sign-divider">
+                <span class="divider-line-span">OR ACCESS INTEGRATION ENGINE</span>
+            </div>
+
+            <div class="social-links-matrix-dock">
+                <a href="404.html" class="btn-social-gate-link google-row">
+                    <span class="social-brand-letter">G</span> Google Workspace
+                </a>
+                <div class="social-twin-row-grid">
+                    <a href="404.html" class="btn-social-gate-link">
+                        <span class="social-brand-letter font-facebook">f</span> Enterprise Meta
+                    </a>
+                    <a href="404.html" class="btn-social-gate-link">
+                        <svg class="microsoft-vector-icon" viewBox="0 0 23 23" aria-hidden="true">
+                            <path fill="#F25022" d="M0 0h11v11H0z"/>
+                            <path fill="#7FBA00" d="M12 0h11v11H12z"/>
+                            <path fill="#00A4EF" d="M0 12h11v11H0z"/>
+                            <path fill="#FFB900" d="M12 12h11v11H12z"/>
+                        </svg>
+                        Microsoft 365
+                    </a>
+                </div>
+            </div>
+
+            <div class="auth-gateway-footer">
+                <p>New terminal branch setup needed? <a href="signup.html" class="auth-register-trigger">Request Token Access</a></p>
+            </div>
+
+        </div>
+    </main>
+</div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-    
-    // 1. OPERATION ACCOUNT PROFILE ACTIVE SELECTION DECK MANAGER
+document.addEventListener("DOMContentLoaded", () => {
+
+    // 1. ROLE SELECTION
     const roleNodesList = document.querySelectorAll(".role-toggle-node");
-    let activeSelectedRole = "owner"; // Default tracking state configuration setup parameters — re-mapped to L&D Owner/Manager
+    let activeSelectedRole = "owner";
+
+    function selectRole(node) {
+        roleNodesList.forEach(item => {
+            item.classList.remove("active");
+            item.setAttribute("aria-checked", "false");
+        });
+        node.classList.add("active");
+        node.setAttribute("aria-checked", "true");
+        activeSelectedRole = node.getAttribute("data-role");
+    }
 
     roleNodesList.forEach(node => {
-        node.addEventListener("click", () => {
-            // Strip active tags across both blocks indicators arrays
-            roleNodesList.forEach(item => item.classList.remove("active"));
-            
-            // Mount active highlights onto current selected card target node
-            node.classList.add("active");
-            activeSelectedRole = node.getAttribute("data-role");
+        node.addEventListener("click", () => selectRole(node));
+        node.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                selectRole(node);
+            }
         });
     });
 
-    // 2. INPUT SECURITY PASSWORD VISIBILITY CONTROLLER MASK OVERLAY
+    // 2. PASSWORD VISIBILITY TOGGLE
     const passwordInput = document.getElementById("auth-password-input");
     const eyeToggleIcon = document.querySelector(".password-toggle-eye");
 
     if (passwordInput && eyeToggleIcon) {
         eyeToggleIcon.addEventListener("click", () => {
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                eyeToggleIcon.textContent = "🔒"; 
-            } else {
-                passwordInput.type = "password";
-                eyeToggleIcon.textContent = "👁️";
-            }
+            const isHidden = passwordInput.type === "password";
+            passwordInput.type = isHidden ? "text" : "password";
+            eyeToggleIcon.textContent = isHidden ? "🔒" : "👁️";
+            eyeToggleIcon.setAttribute("aria-label", isHidden ? "Hide password" : "Show password");
         });
     }
 
-    // 3. SECURE VERIFICATION SYSTEMS EXECUTIONS ACTION MANAGER HANDLER
+    // 3. FORM VALIDATION + SUBMIT
     const authForm = document.getElementById("portal-secure-login-form");
     const emailFieldInput = document.getElementById("auth-email-input");
     const warningAlertLabelNode = document.getElementById("auth-warning-alert-label");
 
+    function showWarning(message) {
+        warningAlertLabelNode.textContent = message;
+        warningAlertLabelNode.classList.add("reveal-notice");
+        setTimeout(() => warningAlertLabelNode.classList.remove("reveal-notice"), 3500);
+    }
+
     if (authForm && warningAlertLabelNode) {
         authForm.addEventListener("submit", (event) => {
-            event.preventDefault(); // Intercept browser submission actions instantly
-            
+            event.preventDefault();
+
             const emailValueText = emailFieldInput ? emailFieldInput.value.trim() : "";
             const passwordValueText = passwordInput ? passwordInput.value.trim() : "";
 
-            // FIELD VERIFICATION: Cancel lifecycle and dispatch notice if rows text lengths are zero
             if (emailValueText === "" || passwordValueText === "") {
-                warningAlertLabelNode.textContent = "Please fill the fields";
-                warningAlertLabelNode.classList.add("reveal-notice");
-                
-                // Dissolve notice popup banner label cleanly after 3.5 seconds
-                setTimeout(() => {
-                    warningAlertLabelNode.classList.remove("reveal-notice");
-                }, 3500);
-                
-                return; // Break operational flow sequences loops
-            }
-
-            // Syntax verification check metrics loop
-            if (!emailValueText.includes("@") || emailValueText.length < 5) {
-                warningAlertLabelNode.textContent = "Please enter a valid corporate email format";
-                warningAlertLabelNode.classList.add("reveal-notice");
-                setTimeout(() => warningAlertLabelNode.classList.remove("reveal-notice"), 3500);
+                showWarning("Please fill the fields");
                 return;
             }
 
-            // LOCAL PERSISTENCE STORAGE LAYER DATA PERSISTENCE
-            localStorage.setItem("stackly_operator_cached_email", emailValueText);
-            localStorage.setItem("stackly_operator_active_role", activeSelectedRole);
+            if (!emailValueText.includes("@") || emailValueText.length < 5) {
+                showWarning("Please enter a valid corporate email format");
+                return;
+            }
 
-            // CONDITIONAL BACK-END FORWARDING REDIRECT ROUTING LOOPS MAPPED SECURELY
+            try {
+                localStorage.setItem("stackly_operator_cached_email", emailValueText);
+                localStorage.setItem("stackly_operator_active_role", activeSelectedRole);
+            } catch (e) {
+                // storage unavailable — continue without persistence
+            }
+
             if (activeSelectedRole === "owner") {
                 window.location.href = "partner-dashboard.html";
             } else if (activeSelectedRole === "client") {
@@ -624,13 +709,10 @@ font-weight: 600;color: #CBD5E1;text-decoration: none;transition: all 0.25s ease
             }
         });
 
-        // Strip warnings labels instantly as soon as users write inside input text boxes fields again
         [emailFieldInput, passwordInput].forEach(field => {
             if (field) {
                 field.addEventListener("input", () => {
-                    if (warningAlertLabelNode.classList.contains("reveal-notice")) {
-                        warningAlertLabelNode.classList.remove("reveal-notice");
-                    }
+                    warningAlertLabelNode.classList.remove("reveal-notice");
                 });
             }
         });

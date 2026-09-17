@@ -19,7 +19,7 @@
             <div class="sidebar-header-wrapper">
                 <!-- Brand logo behaves as an instant interactive dashboard reset trigger -->
                 <a href="#" class="sidebar-brand-refresh-link" id="client-brand-refresh-logo">
-                    <img src="stackly-logo.png" alt="Stackly Corporate Training Logo" class="sidebar-brand-img">
+                   
                     <span class="sidebar-brand-name">Stackly<em>Client</em></span>
                 </a>
                 <!-- Mobile Only Hidden Close Control Button -->
@@ -84,10 +84,14 @@
 
                 <div class="topheader-right-cluster">
                     <!-- Notification Bell Button -->
-                    <button class="topheader-action-bell-btn" aria-label="View Curriculum Alerts">
-                        <svg viewBox="0 0 24 24" class="bell-svg-icon"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1-1.5-1s-1.5.17-1.5 1v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
-                        <span class="bell-pulse-alert-dot"></span>
-                    </button>
+                  <button class="topheader-action-bell-btn"
+        aria-label="View Training System Alerts"
+        onclick="window.location.href='404.html'">
+    <svg viewBox="0 0 24 24" class="bell-svg-icon">
+        <path d="M12 22c1.1 0 2-.9 2-2h-4c0-1.11.89-2 2-2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1-1.5-1s-1.5.17-1.5 1v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/>
+    </svg>
+    <span class="bell-pulse-alert-dot"></span>
+</button>
                     
                     
                     <div class="topheader-profile-badge-pill">
@@ -105,41 +109,1777 @@
             <!-- SWITCHABLE MULTI SECTION WORKSPACE MODULE PANELS STACK CANVAS -->
             <main class="dashboard-sections-stack-canvas" id="client-sections-main-container">
                 
-                <!-- Section Viewport Panel 1 (My Learning Path) -->
-                <section class="dashboard-section-viewport-panel active-view" id="panel-my-curriculum">
-                    <div class="clean-section-header">
-                        <span class="clean-section-badge">📚 ASSIGNED ROADMAPS</span>
-                        <h1 class="clean-section-title">My Learning Path</h1>
-                        <div class="clean-section-divider"></div>
-                    </div>
-                </section>
+             <!-- Section Viewport Panel 1: Elaborated My Learning Path Portal -->
+<section class="dashboard-section-viewport-panel active-view" id="panel-my-curriculum">
+    
+    <!-- 1. CLEAN TYPOGRAPHIC HEADER BLOCK -->
+    <div class="clean-section-header">
+        <span class="clean-section-badge">📚 ASSIGNED ROADMAPS</span>
+        <h1 class="clean-section-title">My Learning Path</h1>
+        <div class="clean-section-divider"></div>
+    </div>
 
-                <!-- Section Viewport Panel 2 (Sandbox Labs) -->
-                <section class="dashboard-section-viewport-panel" id="panel-sandbox-labs">
-                    <div class="clean-section-header">
-                        <span class="clean-section-badge">🧪 SIMULATED TERMINALS</span>
-                        <h1 class="clean-section-title">Sandbox Labs</h1>
-                        <div class="clean-section-divider"></div>
-                    </div>
-                </section>
+    <!-- 2. PATH PROGRESSION TELEMETRY COUNTERS (Responsive Row Matrix Grid) -->
+    <div class="learning-telemetry-grid">
+        <!-- Card 1 -->
+        <div class="learning-telemetry-card">
+            <div class="telemetry-data-left">
+                <span class="telemetry-metric-num">68%</span>
+                <span class="telemetry-metric-label">Overall Pathway Progress</span>
+            </div>
+            <div class="telemetry-vector-icon icon-tint-cyan">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="learning-telemetry-card">
+            <div class="telemetry-data-left">
+                <span class="telemetry-metric-num">18 / 24</span>
+                <span class="telemetry-metric-label">Modules Completed</span>
+            </div>
+            <div class="telemetry-vector-icon icon-tint-green">
+                <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h6v2zm3-4H7v-2h9v2zm0-4H7V7h9v2z"/></svg>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="learning-telemetry-card">
+            <div class="telemetry-data-left">
+                <span class="telemetry-metric-num">2 Days</span>
+                <span class="telemetry-metric-label">Next Audit Window Goal</span>
+            </div>
+            <div class="telemetry-vector-icon icon-tint-orange">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm0-8h-2V7h2v2z"/></svg>
+            </div>
+        </div>
+    </div>
 
-                <!-- Section Viewport Panel 3 (Compliance Status) -->
-                <section class="dashboard-section-viewport-panel" id="panel-regulatory-compliance">
-                    <div class="clean-section-header">
-                        <span class="clean-section-badge">🛡️ VALIDATION ENDPOINTS</span>
-                        <h1 class="clean-section-title">Compliance Status</h1>
-                        <div class="clean-section-divider"></div>
-                    </div>
-                </section>
+    <!-- 3. INTERACTIVE COURSE VIDEO CANVAS & SYLLABUS SPLIT GRID -->
+    <div class="learning-player-split-grid">
+        
+        <!-- LEFT FLEX SEGMENT: High-Fidelity Video Simulation Deck Viewport -->
+        <div class="video-simulation-canvas-card">
+            <div class="video-viewport-frame">
+                <!-- Replace 'course-video-poster.jpg' with your target corporate video thumbnail layer path -->
+                <img src="./assests/labs training.webp" alt="Compliance Pipeline System Automation Training Session Thumbnail" class="video-embed-poster-img">
+                
+                <!-- Centralized Glassmorphic Play Layer Action Trigger Anchor -->
+                <a href="404.html" class="video-play-glass-capsule" aria-label="Launch Video Training Stream">
+                    <span class="play-vector-triangle">▶</span>
+                </a>
 
-                <!-- Section Viewport Panel 4 (Certification Vault) -->
-                <section class="dashboard-section-viewport-panel" id="panel-certification-vault">
-                    <div class="clean-section-header">
-                        <span class="clean-section-badge">🎓 SECURED CREDENTIALS</span>
-                        <h1 class="clean-section-title">Certification Vault</h1>
-                        <div class="clean-section-divider"></div>
+                <!-- Lower Viewport Floating Progress Timeline Slate -->
+                <div class="video-timeline-controls-overlay">
+                    <span class="time-stamp-label">14:20 / 32:45</span>
+                    <div class="video-scrub-track"><div class="video-scrub-fill-progress"></div></div>
+                </div>
+            </div>
+            
+            <div class="video-meta-description-block">
+                <div class="video-meta-upper">
+                    <span class="active-module-code-tag">MODULE 19</span>
+                    <h3>Automating Core Regulatory Compliance Workflows</h3>
+                </div>
+                <p>
+                    This technical block session addresses compiling automated verification pipelines, writing exception reporting hooks, and cross-validating database metrics rows dynamically inside the sandbox laboratory workspace.
+                </p>
+            </div>
+        </div>
+
+        <!-- RIGHT FLEX SEGMENT: Interactive Lesson Tree Syllabus Navigation Deck -->
+        <div class="syllabus-navigation-tree-card">
+            <div class="syllabus-card-header">
+                <h3>Syllabus Progress Tree</h3>
+                <p>Select a lesson capsule module below to load its target simulation video stream deck fields.</p>
+            </div>
+
+            <!-- Vertical Stack List of Lesson Capsule Nodes -->
+            <div class="syllabus-capsules-vertical-stack">
+                
+                <!-- Node 1: Completed Lesson -->
+                <div class="lesson-capsule-node row-state-completed">
+                    <div class="lesson-node-left">
+                        <div class="status-marker-indicator">✓</div>
+                        <div class="lesson-meta-context">
+                            <h4>01. Foundational Governance Parameters</h4>
+                            <p>Duration: 18 mins • Status: Completed</p>
+                        </div>
                     </div>
-                </section>
+                    <a href="404.html" class="btn-lesson-action-trigger">Review Block</a>
+                </div>
+
+                <!-- Node 2: Currently Active Lesson -->
+                <div class="lesson-capsule-node row-state-active">
+                    <div class="lesson-node-left">
+                        <div class="status-marker-indicator">●</div>
+                        <div class="lesson-meta-context">
+                            <h4>02. Compliance Workflow Automation Loops</h4>
+                            <p>Duration: 32 mins • Status: Currently Active</p>
+                        </div>
+                    </div>
+                    <a href="404.html" class="btn-lesson-action-trigger action-resume-glow">Resume Lesson</a>
+                </div>
+
+                <!-- Node 3: Locked Lesson -->
+                <div class="lesson-capsule-node row-state-locked">
+                    <div class="lesson-node-left">
+                        <div class="status-marker-indicator">🔒</div>
+                        <div class="lesson-meta-context">
+                            <h4>03. Sandbox Metrics Integrity Checking</h4>
+                            <p>Duration: 45 mins • Status: Locked Structural Path</p>
+                        </div>
+                    </div>
+                    <span class="btn-lesson-action-trigger label-dim-lock">Locked</span>
+                </div>
+
+                <!-- Node 4: Locked Lesson -->
+                <div class="lesson-capsule-node row-state-locked">
+                    <div class="lesson-node-left">
+                        <div class="status-marker-indicator">🔒</div>
+                        <div class="lesson-meta-context">
+                            <h4>04. Decentralized Audit Token Ledgers</h4>
+                            <p>Duration: 28 mins • Status: Locked Structural Path</p>
+                        </div>
+                    </div>
+                    <span class="btn-lesson-action-trigger label-dim-lock">Locked</span>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<style>
+    /* ========================================================
+   ELABORATED MY LEARNING PATH COMPONENT STYLES
+   ======================================================== */
+
+/* 1. PATH PROGRESSION TELEMETRY NODES ROW GRID (Fluid Multi-Column Engine) */
+.learning-telemetry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Responsive 3-column data tracking summary cards array */
+    gap: 24px;
+    width: 100%;
+    margin-top: 32px;
+}
+
+.learning-telemetry-card {
+    background-color: #0A0F1D;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease;
+}
+
+.telemetry-data-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.telemetry-metric-num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+}
+
+.telemetry-metric-label {
+    font-size: 0.85rem;
+    color: #64748B;
+    font-weight: 500;
+}
+
+.telemetry-vector-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.telemetry-vector-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Customized Vector Identity Tints matching Stackly Guidelines */
+.icon-tint-cyan { background-color: rgba(56, 189, 248, 0.05); } .icon-tint-cyan svg { fill: #38BDF8; }
+.icon-tint-green { background-color: rgba(74, 222, 128, 0.05); } .icon-tint-green svg { fill: #4ADE80; }
+.icon-tint-orange { background-color: rgba(251, 146, 60, 0.05); } .icon-tint-orange svg { fill: #FB923C; }
+
+.learning-telemetry-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(56, 189, 248, 0.25); /* Boundary ring pops to Client Soft Blue accent */
+    box-shadow: 0 15px 30px rgba(56, 189, 248, 0.03), 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* ========================================================
+   2. INTERACTIVE COURSE VIDEO CANVAS & SYLLABUS SPLIT GRID
+   ======================================================== */
+.learning-player-split-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr; /* Asymmetric split layout configuration precisely matching guides */
+    gap: 28px;
+    width: 100%;
+    margin-top: 36px;
+    align-items: start;
+}
+
+.video-simulation-canvas-card, .syllabus-navigation-tree-card {
+    background-color: #0A0F1D;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.syllabus-card-header {
+    text-align: left;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    padding-bottom: 16px;
+}
+
+.syllabus-card-header h3 { font-size: 1.25rem; font-weight: 600; color: #FFFFFF; margin-bottom: 6px; }
+.syllabus-card-header p { font-size: 0.88rem; color: #64748B; line-height: 1.45; }
+
+/* LEFT SUB-COLUMN: HIGH-FIDELITY VIDEO DECK LAYOUTS */
+.video-viewport-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Perfect wide structural media framing curve limits */
+    border-radius: 14px;
+    overflow: hidden;
+    background-color: #050811;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.video-embed-poster-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7; /* Subdued image brightness maximizes central button visibility */
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Centralized Glassmorphic Play Trigger */
+.video-play-glass-capsule {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 5;
+}
+
+.play-vector-triangle {
+    font-size: 1.2rem;
+    color: #FFFFFF;
+    padding-left: 4px; /* Perfectly centers triangle bounding offsets curves */
+    transition: transform 0.25s ease;
+}
+
+.video-play-glass-capsule:hover {
+    background: #38BDF8; /* Changes seamlessly into soft client theme blue color on cursor track */
+    border-color: #38BDF8;
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+}
+.video-play-glass-capsule:hover .play-vector-triangle { color: #050811; transform: scale(0.95); }
+
+/* Lower Progress Controls Overlay Ribbon Bar */
+.video-timeline-controls-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(30deg, #050811 0%, transparent 100%);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    z-index: 4;
+}
+
+.time-stamp-label { font-size: 0.8rem; font-weight: 700; color: #FFFFFF; font-variant-numeric: tabular-nums; }
+
+.video-scrub-track {
+    flex-grow: 1;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.video-scrub-fill-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 44%; /* Pre-calibrated progress simulation value string index */
+    background-color: #38BDF8; /* Fluid fill line tracing theme blue */
+    border-radius: 2px;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+}
+
+.video-meta-description-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    margin-top: 24px;
+}
+
+.video-meta-upper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.active-module-code-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    background-color: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    color: #38BDF8;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.video-meta-description-block h3 { font-size: 1.35rem; font-weight: 700; color: #FFFFFF; }
+.video-meta-description-block p { font-size: 0.95rem; line-height: 1.6; color: #64748B; margin-top: 4px; }
+
+/* RIGHT SUB-COLUMN: LESSON SYLLABUS DOCK NODES STACK */
+.syllabus-capsules-vertical-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.lesson-capsule-node {
+    background-color: rgba(5, 8, 17, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.lesson-node-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+}
+
+.status-marker-indicator {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.82rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.lesson-meta-context h4 { font-size: 0.95rem; font-weight: 600; color: #FFFFFF; margin-bottom: 2px; }
+.lesson-meta-context p { font-size: 0.8rem; color: #475569; }
+
+.btn-lesson-action-trigger {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #64748B;
+    text-decoration: none;
+    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: all 0.25s ease;
+}
+
+/* Row Conditional State Variant Styling mappings perfectly tailored to design instructions */
+.row-state-completed { border-left: 3px solid rgba(74, 222, 128, 0.4); }
+.row-state-completed .status-marker-indicator { background-color: rgba(74, 222, 128, 0.08); border-color: rgba(74, 222, 128, 0.2); color: #4ADE80; }
+.row-state-completed:hover .btn-lesson-action-trigger { background-color: rgba(255, 255, 255, 0.04); color: #FFFFFF; }
+
+.row-state-active { border-left: 3px solid #38BDF8; background-color: rgba(56, 189, 248, 0.01); border-top: 1px solid rgba(56, 189, 248, 0.08); border-right: 1px solid rgba(56, 189, 248, 0.08); border-bottom: 1px solid rgba(56, 189, 248, 0.08); }
+.row-state-active .status-marker-indicator { background-color: rgba(56, 189, 248, 0.12); border-color: rgba(56, 189, 248, 0.4); color: #38BDF8; animation: beaconPulseWave 2s infinite; }
+.row-state-active .btn-lesson-action-trigger.action-resume-glow { background-color: #38BDF8; border-color: #38BDF8; color: #050811; }
+.row-state-active .btn-lesson-action-trigger.action-resume-glow:hover { background-color: #0EA5E9; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25); }
+
+.row-state-locked { opacity: 0.45; }
+.row-state-locked .status-marker-indicator { background-color: #121829; color: #475569; }
+.label-dim-lock { border: 1px solid transparent; cursor: not-allowed; font-weight: 500; }
+
+/* Immersive Card Core Hover Transformations */
+.video-simulation-canvas-card:hover .video-embed-poster-img { transform: scale(1.02); opacity: 0.8; }
+.video-simulation-canvas-card:hover, .syllabus-navigation-tree-card:hover {
+    border-color: rgba(56, 189, 248, 0.15);
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.03), 0 20px 45px rgba(0, 0, 0, 0.4);
+}
+
+/* ========================================================
+   FLUID RESPONSIVE SYSTEM MEDIA BREAKPOINTS BREAKPOINTS
+   ======================================================== */
+@media (max-width: 1400px) {
+    /* Collapse side-by-side video split grids into vertical full width blocks on mid size screens */
+.learning-player-split-grid { grid-template-columns: 1fr; gap: 24px; }}@media (max-width: 1100px) {/* Fold summary telemetry metrics counters smoothly across table viewports */.learning-telemetry-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }}@media (max-width: 768px) {.video-simulation-canvas-card, .syllabus-navigation-tree-card { padding: 20px; border-radius: 16px; }.video-meta-description-block h3 { font-size: 1.15rem; }.video-meta-description-block p { font-size: 0.88rem; }}@media (max-width: 520px) {.learning-telemetry-grid { grid-template-columns: 1fr; gap: 12px; }.learning-telemetry-card { padding: 16px; }.telemetry-metric-num { font-size: 1.65rem; }.lesson-capsule-node { flex-direction: column; align-items: stretch; gap: 14px; padding: 16px; }.btn-lesson-action-trigger, .label-dim-lock { width: 100%; text-align: center; }}
+</style>
+
+              <!-- Section Viewport Panel 2: Elaborated Sandbox Labs Virtual Terminal Hub -->
+<section class="dashboard-section-viewport-panel" id="panel-sandbox-labs">
+    
+    <!-- 1. CLEAN TYPOGRAPHIC HEADER BLOCK -->
+    <div class="clean-section-header">
+        <span class="clean-section-badge">🧪 SIMULATED TERMINALS</span>
+        <h1 class="clean-section-title">Sandbox Labs</h1>
+        <div class="clean-section-divider"></div>
+    </div>
+
+    <!-- 2. CLOUD RESOURCE TELEMETRY ROW (Responsive Multi-Column Widgets Grid) -->
+    <div class="sandbox-telemetry-grid">
+        <!-- Widget 1 -->
+        <div class="sandbox-telemetry-card">
+            <div class="sandbox-card-data">
+                <span class="sandbox-metric-bold">Active</span>
+                <span class="sandbox-metric-label">Sandbox Terminal Status</span>
+            </div>
+            <div class="sandbox-badge-vector color-glow-green">
+                <span class="pulse-beacon-indicator"></span>
+            </div>
+        </div>
+        <!-- Widget 2 -->
+        <div class="sandbox-telemetry-card">
+            <div class="sandbox-card-data">
+                <span class="sandbox-metric-bold">42m 18s</span>
+                <span class="sandbox-metric-label">Session Time Remaining</span>
+            </div>
+            <div class="sandbox-badge-vector color-glow-blue">
+                <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm3.3 14.79L11 14V7h2v5.2l3.7 2.2-1.41 1.59z"/></svg>
+            </div>
+        </div>
+        <!-- Widget 3 -->
+        <div class="sandbox-telemetry-card">
+            <div class="sandbox-card-data">
+                <span class="sandbox-metric-bold">AWS-US-EAST-1</span>
+                <span class="sandbox-metric-label">Target Cloud Environment</span>
+            </div>
+            <div class="sandbox-badge-vector color-glow-purple">
+                <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-1.63-4.78-4.15-5.36z"/></svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. TERMINAL EMULATOR & TASK SELECTION SPLIT LAYOUT GRID -->
+    <div class="sandbox-split-workspace-grid">
+        
+        <!-- LEFT SUB-COLUMN: Mock Linux Terminal Console Execution Workspace -->
+        <div class="terminal-emulator-panel-card">
+            <div class="terminal-header-strip">
+                <div class="terminal-circles-group">
+                    <span class="circle-dot dot-red"></span>
+                    <span class="circle-dot dot-yellow"></span>
+                    <span class="circle-dot dot-green"></span>
+                </div>
+                <span class="terminal-title-label">bash - stackly_operator@sandbox_lab_19</span>
+            </div>
+            
+            <div class="terminal-code-editor-canvas">
+                <p class="console-line-row comment-line"># Initializing Stackly Compliance API Verification Loop...</p>
+                <p class="console-line-row info-line">[INFO] Connecting securely to telemetry gateway server endpoint...</p>
+                <p class="console-line-row info-line">[INFO] Status: Authentication Token verified successfully.</p>
+                <p class="console-line-row command-line"><span class="terminal-prompt-prefix">stackly_operator@sandbox_lab_19:~$</span> npm run audit:compliance</p>
+                <p class="console-line-row output-line">&gt; stackly-compliance-matrix@2026.1.0 audit:compliance</p>
+                <p class="console-line-row output-line">&gt; node pipelines/verify_regulatory_metrics.js</p>
+                <p class="console-line-row output-line-success">✔ [SUCCESS] 148 global training module objects checked.</p>
+                <p class="console-line-row output-line-success">✔ [SUCCESS] Cross-validation integrity score: 100%.</p>
+                <p class="console-line-row command-line"><span class="terminal-prompt-prefix">stackly_operator@sandbox_lab_19:~$</span> <span class="blinking-terminal-cursor">|</span></p>
+            </div>
+        </div>
+
+        <!-- RIGHT SUB-COLUMN: Lab Task Assignment Progress Validation Tree -->
+        <div class="lab-tasks-tree-panel-card">
+            <div class="lab-panel-header-ribbon">
+                <h3>Laboratory Checklist Tasks</h3>
+                <p>Execute scripts in the console left wrapper to fulfill your active evaluation parameters loops.</p>
+            </div>
+
+            <div class="tasks-vertical-nodes-stack">
+                <!-- Task Node 1 -->
+                <div class="task-checklist-node state-success">
+                    <div class="task-node-left">
+                        <div class="task-status-box">✓</div>
+                        <div class="task-meta-context">
+                            <h4>Task 01: Connect to Telemetry Gateway</h4>
+                            <p>Status: Verified Execution Loop</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task Node 2 -->
+                <div class="task-checklist-node state-success">
+                    <div class="task-node-left">
+                        <div class="task-status-box">✓</div>
+                        <div class="task-meta-context">
+                            <h4>Task 02: Run Module Metrics Cross-Check</h4>
+                            <p>Status: Verified Execution Loop</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task Node 3 -->
+                <div class="task-checklist-node state-active">
+                    <div class="task-node-left">
+                        <div class="task-status-box">●</div>
+                        <div class="task-meta-context">
+                            <h4>Task 03: Extract Exception Audit Logs</h4>
+                            <p>Status: Pending Console Input Commands</p>
+                        </div>
+                    </div>
+                    <a href="404.html" class="btn-task-action-link view-guide-btn">View Lab Guide</a>
+                </div>
+
+                <!-- Task Node 4 -->
+                <div class="task-checklist-node state-locked">
+                    <div class="task-node-left">
+                        <div class="task-status-box">🔒</div>
+                        <div class="task-meta-context">
+                            <h4>Task 04: Generate Encrypted Token Certificates</h4>
+                            <p>Status: Locked Structural Pathway Sequence</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<style>
+    /* ========================================================
+   ELABORATED SANDBOX LABS COMPONENT PRESENTATION STYLES
+   ======================================================== */
+
+/* 1. RESOURCE TELEMETRY ROW GRID (Fluid Multi-Column Engine) */
+.sandbox-telemetry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Premium 3-column structural layout array */
+    gap: 24px;
+    width: 100%;
+    margin-top: 32px;
+}
+
+.sandbox-telemetry-card {
+    background-color: #0A0F1D;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease;
+}
+
+.sandbox-card-data {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.sandbox-metric-bold {
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+}
+
+.sandbox-metric-label {
+    font-size: 0.85rem;
+    color: #64748B;
+    font-weight: 500;
+}
+
+.sandbox-badge-vector {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.sandbox-badge-vector svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Customized Vector Identity Tints matching Stackly Client Guidelines */
+.color-glow-green { background-color: rgba(74, 222, 128, 0.05); } 
+.color-glow-blue { background-color: rgba(56, 189, 248, 0.05); } .color-glow-blue svg { fill: #38BDF8; }
+.color-glow-purple { background-color: rgba(167, 139, 250, 0.05); } .color-glow-purple svg { fill: #A78BFA; }
+
+/* Pulsing beacon custom setup specifically for Live Terminal status indicators */
+.pulse-beacon-indicator {
+    width: 12px;
+    height: 12px;
+    background-color: #4ADE80;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #4ADE80;
+    animation: terminalBeaconPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes terminalBeaconPulse {
+    0% { transform: scale(0.9); opacity: 0.6; }
+    50% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 14px #4ADE80; }
+    100% { transform: scale(0.9); opacity: 0.6; }
+}
+
+.sandbox-telemetry-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(56, 189, 248, 0.25); /* Highlights to Client domain soft blue accent */
+    box-shadow: 0 15px 30px rgba(56, 189, 248, 0.03), 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* ========================================================
+   2. TERMINAL EMULATOR & TASK SELECTION SPLIT LAYOUT GRID
+   ======================================================== */
+.sandbox-split-workspace-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr; /* Symmetrical split panel layouts matched image guides */
+    gap: 28px;
+    width: 100%;
+    margin-top: 36px;
+    align-items: start;
+}
+
+.terminal-emulator-panel-card, .lab-tasks-tree-panel-card {
+    background-color: #0A0F1D;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.lab-panel-header-ribbon {
+    text-align: left;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    padding-bottom: 16px;
+}
+
+.lab-panel-header-ribbon h3 { font-size: 1.25rem; font-weight: 600; color: #FFFFFF; margin-bottom: 6px; }
+.lab-panel-header-ribbon p { font-size: 0.88rem; color: #64748B; line-height: 1.45; }
+
+/* LEFT FLEX COMPONENT: MOCK LINUX TERMINAL EDITOR WORKSPACE */
+.terminal-emulator-panel-card { padding: 0; overflow: hidden; background-color: #05070F; border-color: #121829; } /* Deep black code theme editor backgrounds */
+
+.terminal-header-strip {
+    background-color: #0A0F1D;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+}
+
+.terminal-circles-group { display: flex; gap: 8px; }
+.circle-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.dot-red { background-color: #EF4444; } .dot-yellow { background-color: #F59E0B; } .dot-green { background-color: #10B981; }
+
+.terminal-title-label {
+    font-size: 0.78rem;
+    color: #475569;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.terminal-code-editor-canvas {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: 'Courier New', Courier, monospace; /* Clean monospace layout typography */
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: left;
+    background-color: #05070F;
+    min-height: 280px;
+}
+
+.console-line-row { word-break: break-all; }
+.console-line-row.comment-line { color: #475569; }
+.console-line-row.info-line { color: #94A3B8; }
+.console-line-row.command-line { color: #FFFFFF; font-weight: 700; }
+.terminal-prompt-prefix { color: #38BDF8; } /* Prompt line traces set to soft blue client theme */
+.console-line-row.output-line { color: #64748B; }
+.console-line-row.output-line-success { color: #4ADE80; font-weight: 600; }
+
+.blinking-terminal-cursor {
+    color: #38BDF8;
+    font-weight: 900;
+    animation: cursorFlash 1s infinite step-end;
+}
+
+@keyframes cursorFlash {
+    from, to { opacity: 0; } 50% { opacity: 1; }
+}
+
+/* RIGHT FLEX COMPONENT: TASKS VERTICAL CHECKLIST NODES STACK */
+.tasks-vertical-nodes-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.task-checklist-node {
+    background-color: rgba(5, 8, 17, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    transition: all 0.3s ease;
+}
+
+.task-node-left { display: flex; align-items: center; gap: 16px; text-align: left; }
+
+.task-status-box {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.task-meta-context h4 { font-size: 0.95rem; font-weight: 600; color: #FFFFFF; margin-bottom: 2px; }
+.task-meta-context p { font-size: 0.8rem; color: #475569; }
+
+.btn-task-action-link {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #E2E8F0;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: all 0.25s ease;
+}
+
+/* Row Status Variant Styling parameters matching target guidelines */
+.task-checklist-node.state-success { border-left: 3px solid rgba(74, 222, 128, 0.4); }
+.task-checklist-node.state-success .task-status-box { background-color: rgba(74, 222, 128, 0.06); border-color: rgba(74, 222, 128, 0.15); color: #4ADE80; }
+
+.task-checklist-node.state-active { border-left: 3px solid #38BDF8; background-color: rgba(56, 189, 248, 0.01); }
+.task-checklist-node.state-active .task-status-box { background-color: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.3); color: #38BDF8; }
+.task-checklist-node.state-active .btn-task-action-link.view-guide-btn { background-color: #38BDF8; border-color: #38BDF8; color: #050811; }
+.task-checklist-node.state-active .btn-task-action-link.view-guide-btn:hover { background-color: #0EA5E9; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2); }
+
+.task-checklist-node.state-locked { opacity: 0.45; }
+.task-checklist-node.state-locked .task-status-box { background-color: #121829; color: #475569; }
+
+/* Immersive General Card Focus Hover Anchors */
+.lab-tasks-tree-panel-card:hover {
+    border-color: rgba(56, 189, 248, 0.15);
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.03), 0 20px 45px rgba(0, 0, 0, 0.4);
+}
+
+/* ========================================================
+   FLUID RESPONSIVE SYSTEM MEDIA BREAKPOINTS BREAKPOINTS
+   ======================================================== */
+@media (max-width: 1400px) {
+    /* Collapse side-by-side terminal splits rows into full columns lists on mid-size views */
+    .sandbox-split-workspace-grid { grid-template-columns: 1fr; gap: 24px; }
+}
+
+@media (max-width: 1100px) {
+    .sandbox-telemetry-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+
+@media (max-width: 768px) {
+    .lab-tasks-tree-panel-card { padding: 20px; border-radius: 16px; }
+    .terminal-header-strip { padding: 12px; }
+    .terminal-title-label { display: none; } /* Conceals terminal path titles row to minimize micro text space layouts mobile */
+    .terminal-code-editor-canvas { padding: 16px; min-height: 220px; font-size: 0.82rem; }
+}
+
+@media (max-width: 520px) {
+    .sandbox-telemetry-grid { grid-template-columns: 1fr; gap: 12px; }
+    .sandbox-telemetry-card { padding: 16px; }
+    .sandbox-metric-bold { font-size: 1.65rem; }
+    .task-checklist-node { flex-direction: column; align-items: stretch; gap: 14px; padding: 16px; }
+    .btn-task-action-link { width: 100%; text-align: center; }
+}
+
+</style>
+
+               <!-- Section Viewport Panel 3: Elaborated Regulatory Compliance Status Hub -->
+<section class="dashboard-section-viewport-panel" id="panel-regulatory-compliance">
+    
+    <!-- 1. CLEAN TYPOGRAPHIC HEADER BLOCK -->
+    <div class="clean-section-header">
+        <span class="clean-section-badge">🛡️ VALIDATION ENDPOINTS</span>
+        <h1 class="clean-section-title">Compliance Status</h1>
+        <div class="clean-section-divider"></div>
+    </div>
+
+    <!-- 2. PLATFORM COMPLIANCE DIAGNOSTIC STATUS COUNTERS (Responsive Row Matrix Grid) -->
+    <div class="compliance-status-stats-grid">
+        <!-- Card 1 -->
+        <div class="compliance-status-card">
+            <div class="status-card-data">
+                <span class="status-metric-bold">92%</span>
+                <span class="status-metric-label">Your Compliance Score</span>
+            </div>
+            <div class="status-badge-vector glow-tint-green">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="compliance-status-card">
+            <div class="status-card-data">
+                <span class="status-metric-bold">3 / 4</span>
+                <span class="status-metric-label">Core Mandates Verified</span>
+            </div>
+            <div class="status-badge-vector glow-tint-blue">
+                <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="compliance-status-card">
+            <div class="status-card-data">
+                <span class="status-metric-bold">1 Pending</span>
+                <span class="status-metric-label">Upcoming Refresher Audit</span>
+            </div>
+            <div class="status-badge-vector glow-tint-amber">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-1.9 1.14-2.56l1.24-1.26c.37-.36.56-.86.56-1.38 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. COMPLIANCE GAUGES & CHRONOLOGICAL AUDIT TRAIL TIMELINE GRID -->
+    <div class="compliance-asymmetric-split-grid">
+        
+        <!-- LEFT SUB-COLUMN: Pure CSS Typographic Progress Fulfillment Gauges -->
+        <div class="compliance-gauges-panel-card">
+            <div class="compliance-panel-header-strip">
+                <h3>Mandatory Training Requirements</h3>
+                <p>Track fulfillment pacing indices across verified organizational compliance endpoints.</p>
+            </div>
+
+            <div class="compliance-bars-vertical-stack">
+                <!-- Bar Item 1 -->
+                <div class="compliance-bar-item">
+                    <div class="bar-label-meta-row">
+                        <span class="bar-title-text-label">SOC2 Systems Security Mandate</span>
+                        <span class="bar-pct-value-text text-color-green">100% Secure</span>
+                    </div>
+                    <div class="bar-track-line-bg"><div class="bar-fill-line-pct filled-100"></div></div>
+                </div>
+
+                <!-- Bar Item 2 -->
+                <div class="compliance-bar-item">
+                    <div class="bar-label-meta-row">
+                        <span class="bar-title-text-label">ISO/IEC 27001 Training Standard</span>
+                        <span class="bar-pct-value-text text-color-green">100% Secure</span>
+                    </div>
+                    <div class="bar-track-line-bg"><div class="bar-fill-line-pct filled-100"></div></div>
+                </div>
+
+                <!-- Bar Item 3 -->
+                <div class="compliance-bar-item">
+                    <div class="bar-label-meta-row">
+                        <span class="bar-title-text-label">Global Corporate Governance Regulations</span>
+                        <span class="bar-pct-value-text text-color-blue">75% Fulfilled</span>
+                    </div>
+                    <div class="bar-track-line-bg"><div class="bar-fill-line-pct filled-75"></div></div>
+                </div>
+
+                <!-- Bar Item 4 -->
+                <div class="compliance-bar-item">
+                    <div class="bar-label-meta-row">
+                        <span class="bar-title-text-label">Data Privacy Matrix & GDPR Sandbox</span>
+                        <span class="bar-pct-value-text text-color-amber">42% In Progress</span>
+                    </div>
+                    <div class="bar-track-line-bg"><div class="bar-fill-line-pct filled-42"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT SUB-COLUMN: Chronological Audit Trail Timeline Track List -->
+        <div class="compliance-timeline-panel-card">
+            <div class="compliance-panel-header-strip">
+                <h3>Compliance Audit Log Trail</h3>
+                <p>Chronological verification timestamps recorded by international regulatory supervisors.</p>
+            </div>
+
+            <div class="audit-timeline-vertical-stack">
+                
+                <!-- Timeline Node 1 -->
+                <div class="audit-timeline-node node-status-verified">
+                    <div class="timeline-node-dot"></div>
+                    <div class="timeline-node-content-box">
+                        <div class="node-meta-ribbon-upper">
+                            <span class="timestamp-pill badge-green">VERIFIED SEP 2026</span>
+                            <h4>SOC2 Security Verification Passed</h4>
+                        </div>
+                        <p>Laboratory sandbox infrastructure nodes audited and approved by L&D Manager supervisors.</p>
+                        <a href="404.html" class="btn-timeline-action">Download Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Timeline Node 2 -->
+                <div class="audit-timeline-node node-status-verified">
+                    <div class="timeline-node-dot"></div>
+                    <div class="timeline-node-content-box">
+                        <div class="node-meta-ribbon-upper">
+                            <span class="timestamp-pill badge-green">VERIFIED AUG 2026</span>
+                            <h4>ISO/IEC 27001 Alignment Passed</h4>
+                        </div>
+                        <p>Completed mandatory module blocks and curriculum parameter test evaluations successfully.</p>
+                        <a href="404.html" class="btn-timeline-action">Download Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Timeline Node 3 -->
+                <div class="audit-timeline-node node-status-pending">
+                    <div class="timeline-node-dot"></div>
+                    <div class="timeline-node-content-box">
+                        <div class="node-meta-ribbon-upper">
+                            <span class="timestamp-pill badge-amber">REFRESHER DUE IN 12 DAYS</span>
+                            <h4>Data Privacy Refresher Action Required</h4>
+                        </div>
+                        <p>Trainee operator terminal entries require localized refresher commands sequence execution loops.</p>
+                        <a href="404.html" class="btn-timeline-action action-glow-amber">Launch Sandbox Exam</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<style>
+    /* ========================================================
+   ELABORATED COMPLIANCE STATUS PANEL CONFIG STYLES
+   ======================================================== */
+
+/* 1. STATUS DIAGNOSTIC METRICS CARDS ROW (Fluid Multi-Column Engine) */
+.compliance-status-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Premium 3-column data tracker metrics array */
+    gap: 24px;
+    width: 100%;
+    margin-top: 32px;
+}
+
+.compliance-status-card {
+    background-color: #0A0F1D;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease;
+}
+
+.status-card-data {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.status-metric-bold {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+}
+
+.status-metric-label {
+    font-size: 0.85rem;
+    color: #64748B;
+    font-weight: 500;
+}
+
+.status-badge-vector {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.status-badge-vector svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Customized Vector Identity Tints matching Stackly Client Guidelines */
+.glow-tint-green { background-color: rgba(74, 222, 128, 0.05); } .glow-tint-green svg { fill: #4ADE80; }
+.glow-tint-blue { background-color: rgba(56, 189, 248, 0.05); } .glow-tint-blue svg { fill: #38BDF8; }
+.glow-tint-amber { background-color: rgba(251, 146, 60, 0.05); } .glow-tint-amber svg { fill: #FB923C; }
+
+.compliance-status-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(56, 189, 248, 0.25); /* Highlights border frame to Client Soft Blue accent */
+    box-shadow: 0 15px 30px rgba(56, 189, 248, 0.03), 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* ========================================================
+   2. COMPLIANCE GAUGES & CHRONOLOGICAL TIMELINE RECREATION
+   ======================================================== */
+.compliance-asymmetric-split-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr; /* Asymmetric distribution blueprint optimized for timeline cards flow */
+    gap: 28px;
+    width: 100%;
+    margin-top: 36px;
+    align-items: start;
+}
+
+.compliance-gauges-panel-card, .compliance-timeline-panel-card {
+    background-color: #0A0F1D;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.compliance-panel-header-strip {
+    text-align: left;
+    margin-bottom: 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    padding-bottom: 16px;
+}
+
+.compliance-panel-header-strip h3 { font-size: 1.25rem; font-weight: 600; color: #FFFFFF; margin-bottom: 6px; }
+.compliance-panel-header-strip p { font-size: 0.88rem; color: #64748B; line-height: 1.45; }
+
+/* LEFT FLEX COMPONENT: PURE CSS PROGRESS GAUGES STACK */
+.compliance-bars-vertical-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    width: 100%;
+}
+
+.compliance-bar-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.bar-label-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.bar-title-text-label { font-size: 0.92rem; font-weight: 600; color: #CBD5E1; }
+.bar-pct-value-text { font-size: 0.88rem; font-weight: 700; }
+.text-color-green { color: #4ADE80; }
+.text-color-blue { color: #38BDF8; }
+.text-color-amber { color: #FB923C; }
+
+.bar-track-line-bg {
+    width: 100%;
+    height: 6px;
+    background-color: #050811;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.bar-fill-line-pct {
+    height: 100%;
+    background-color: #4ADE80; 
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.2);
+}
+/* Individual horizontal percentage values tracking fill lines indices */
+.filled-100 { width: 100%; box-shadow: 0 0 10px rgba(74, 222, 128, 0.3); }
+.filled-75 { width: 75%; background-color: #38BDF8; box-shadow: 0 0 10px rgba(56, 189, 248, 0.3); }
+.filled-42 { width: 42%; background-color: #FB923C; box-shadow: 0 0 10px rgba(251, 146, 60, 0.3); }
+
+/* RIGHT FLEX COMPONENT: CHRONOLOGICAL AUDIT TIMELINE TRACK LIST */
+.audit-timeline-vertical-stack {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-left: 20px;
+    width: 100%;
+}
+
+/* Linear central vertical line connector track tracking timeline nodes nodes */
+.audit-timeline-vertical-stack::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background-color: rgba(255, 255, 255, 0.03);
+    z-index: 1;
+}
+
+.audit-timeline-node {
+    position: relative;
+    padding-bottom: 28px;
+    width: 100%;
+}
+.audit-timeline-node:last-child { padding-bottom: 0; }
+
+.timeline-node-dot {
+    position: absolute;
+    left: -20px;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #1E293B;
+    border: 2px solid #050811;
+    z-index: 5;
+    transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.timeline-node-content-box {
+    background-color: rgba(5, 8, 17, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    text-align: left;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.node-meta-ribbon-upper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.timestamp-pill {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: #FFFFFF;
+    letter-spacing: 0.02em;
+}
+.badge-green { background-color: #10B981; }
+.badge-amber { background-color: #F59E0B; }
+
+.timeline-node-content-box h4 { font-size: 1rem; font-weight: 600; color: #FFFFFF; }
+.timeline-node-content-box p { font-size: 0.85rem; color: #64748B; line-height: 1.5; }
+
+.btn-timeline-action {
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 6px;
+    color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    white-space: nowrap;
+    transition: all 0.25s ease;
+}
+
+/* Conditional Row Hover state modifications precisely driving structural triggers overrides */
+.node-status-verified:hover .timeline-node-dot { background-color: #4ADE80; transform: scale(1.2); }
+.node-status-verified:hover .timeline-node-content-box { border-color: rgba(74, 222, 128, 0.15); }
+.node-status-verified .timeline-node-content-box:hover .btn-timeline-action { background-color: rgba(255, 255, 255, 0.04); color: #FFFFFF; }
+
+.node-status-pending:hover .timeline-node-dot { background-color: #FB923C; transform: scale(1.2); }
+.node-status-pending:hover .timeline-node-content-box { border-color: rgba(251, 146, 60, 0.15); }
+.node-status-pending .timeline-node-content-box .btn-timeline-action.action-glow-amber { background-color: #FB923C; border-color: #FB923C; color: #050811; }
+.node-status-pending .timeline-node-content-box .btn-timeline-action.action-glow-amber:hover { background-color: #F97316; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(251, 146, 60, 0.25); }
+
+.compliance-gauges-panel-card:hover, .compliance-timeline-panel-card:hover {
+    border-color: rgba(56, 189, 248, 0.15);
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.03), 0 20px 45px rgba(0, 0, 0, 0.4);
+}
+
+/* ========================================================
+   FLUID RESPONSIVE SYSTEM MEDIA BREAKPOINTS BREAKPOINTS
+   ======================================================== */
+@media (max-width: 1400px) {
+    /* Collapse split workspace row into a single column vertical stack flow layout canvas */
+    .compliance-asymmetric-split-grid { grid-template-columns: 1fr; gap: 24px; }
+}
+
+@media (max-width: 1100px) {
+    .compliance-status-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+
+@media (max-width: 768px) {
+    .compliance-gauges-panel-card, .compliance-timeline-panel-card { padding: 20px; border-radius: 16px; }
+    .timeline-node-content-box { padding: 16px; }
+}
+
+@media (max-width: 520px) {
+    .compliance-status-stats-grid { grid-template-columns: 1fr; gap: 12px; }
+    .compliance-status-card { padding: 16px; }
+    .status-metric-bold { font-size: 1.65rem; }
+}
+
+</style>
+
+              <!-- Section Viewport Panel 4: Elaborated Certification Vault Repository -->
+<section class="dashboard-section-viewport-panel" id="panel-certification-vault">
+    
+    <!-- 1. CLEAN TYPOGRAPHIC HEADER BLOCK -->
+    <div class="clean-section-header">
+        <span class="clean-section-badge">🎓 SECURED CREDENTIALS</span>
+        <h1 class="clean-section-title">Certification Vault</h1>
+        <div class="clean-section-divider"></div>
+    </div>
+
+    <!-- 2. ARCHIVE STATUS WIDGET COUNTERS (Responsive Row Matrix Grid) -->
+    <div class="vault-metrics-grid">
+        <!-- Widget 1 -->
+        <div class="vault-metric-card">
+            <div class="vault-card-data-left">
+                <span class="vault-metric-bold">06</span>
+                <span class="vault-metric-label">Earned Certificates</span>
+            </div>
+            <div class="vault-badge-vector glow-tint-green">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            </div>
+        </div>
+        <!-- Widget 2 -->
+        <div class="vault-metric-card">
+            <div class="vault-card-data-left">
+                <span class="vault-metric-bold">02</span>
+                <span class="vault-metric-label">Verifications In Progress</span>
+            </div>
+            <div class="vault-badge-vector glow-tint-blue">
+                <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+            </div>
+        </div>
+        <!-- Widget 3 -->
+        <div class="vault-metric-card">
+            <div class="vault-card-data-left">
+                <span class="vault-metric-bold">100%</span>
+                <span class="vault-metric-label">Audit Authenticity Score</span>
+            </div>
+            <div class="vault-badge-vector glow-tint-cyan">
+                <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1-1.5-1s-1.5.17-1.5 1v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. DIGITAL SHOWCASE VIEWPORT & BADGE GRID SPLIT GRID -->
+    <div class="vault-asymmetric-split-grid">
+        
+        <!-- LEFT SUB-COLUMN: High-Fidelity Active Certificate Showcase Card -->
+        <div class="vault-showcase-panel-card">
+            <div class="vault-panel-header-strip">
+                <h3>Active Credential Showcase</h3>
+                <p>Previewing your highest verified upskilling rank credential token.</p>
+            </div>
+
+            <div class="certificate-mockup-frame">
+                <!-- Pure CSS-drawn minimalist digital certificate profile template card -->
+                <div class="cert-mockup-canvas">
+                    <div class="cert-border-tracing-ring"></div>
+                    <div class="cert-inner-content">
+                        <span class="cert-watermark-logo">STACKLY ARCHITECT</span>
+                        <h2>CERTIFICATE OF FULFILLMENT</h2>
+                        <p class="cert-sub-text">This document validates that the private operator has finalized the criteria loops for</p>
+                        <h3 class="cert-title-highlight">SOC2 Enterprise Compliance Automation</h3>
+                        <div class="cert-signature-row-strip">
+                            <div class="cert-sig-block">
+                                <span class="sig-line">Jeevi Stackly</span>
+                                <span class="sig-label">L&D Platform Supervisor</span>
+                            </div>
+                            <div class="cert-id-block">
+                                <span class="sig-line alphanumeric-id">#STK-99281-2026</span>
+                                <span class="sig-label">Verification Hex Token</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vault-action-dock-bar">
+                <a href="404.html" class="btn-vault-action-trigger action-download-blue">Download Secure PDF</a>
+                <a href="404.html" class="btn-vault-action-trigger action-share-wire">Share Credentials Link</a>
+            </div>
+        </div>
+
+        <!-- RIGHT SUB-COLUMN: Organized Historical Verification Badges Grid List -->
+        <div class="vault-badges-panel-card">
+            <div class="vault-panel-header-strip">
+                <h3>Historical Credentials Vault</h3>
+                <p>Extract encrypted document files or review archived certification tracks elements.</p>
+            </div>
+
+            <div class="archived-badges-vertical-stack">
+                
+                <!-- Badge Item 1 -->
+                <div class="badge-item-node-row status-verified-true">
+                    <div class="badge-node-left">
+                        <div class="format-badge-icon type-pdf">PDF</div>
+                        <div class="badge-node-meta">
+                            <h4>ISO/IEC 27001 Training Standard</h4>
+                            <p>Verified Audit Path • Hash ID #2026-A11</p>
+                        </div>
+                    </div>
+                    <a href="404.html" class="btn-badge-download-redirect">Download</a>
+                </div>
+
+                <!-- Badge Item 2 -->
+                <div class="badge-item-node-row status-verified-true">
+                    <div class="badge-node-left">
+                        <div class="format-badge-icon type-pdf">PDF</div>
+                        <div class="badge-node-meta">
+                            <h4>Foundational Governance Parameters</h4>
+                            <p>Verified Audit Path • Hash ID #2026-F04</p>
+                        </div>
+                    </div>
+                    <a href="404.html" class="btn-badge-download-redirect">Download</a>
+                </div>
+
+                <!-- Badge Item 3 -->
+                <div class="badge-item-node-row status-verified-true">
+                    <div class="badge-node-left">
+                        <div class="format-badge-icon type-pdf">PDF</div>
+                        <div class="badge-node-meta">
+                            <h4>Agile Sprints Divisional Velocity</h4>
+                            <p>Verified Audit Path • Hash ID #2026-V88</p>
+                        </div>
+                    </div>
+                    <a href="404.html" class="btn-badge-download-redirect">Download</a>
+                </div>
+
+                <!-- Badge Item 4 -->
+                <div class="badge-item-node-row status-verified-true">
+                    <div class="badge-node-left">
+                        <div class="format-badge-icon type-pdf">PDF</div>
+                        <div class="badge-node-meta">
+                            <h4>Technical Sandbox Architecture</h4>
+                            <p>Verified Audit Path • Hash ID #2026-T19</p>
+                        </div>
+                    </div>
+                    <a href="404.html" class="btn-badge-download-redirect">Download</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<style>
+    /* ========================================================
+   ELABORATED CERTIFICATION VAULT SYSTEM PRESENTATION STYLES
+   ======================================================== */
+
+/* 1. STATUS WIDGET COUNTERS ROW GRID (Fluid Multi-Column Engine) */
+.vault-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Responsive 3-column status widgets architecture array */
+    gap: 24px;
+    width: 100%;
+    margin-top: 32px;
+}
+
+.vault-metric-card {
+    background-color: #0A0F1D;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease;
+}
+
+.vault-card-data-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.vault-metric-bold {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+}
+
+.vault-metric-label {
+    font-size: 0.85rem;
+    color: #64748B;
+    font-weight: 500;
+}
+
+.vault-badge-vector {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.vault-badge-vector svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Customized Vector Identity Tints matching Stackly Client Guidelines */
+.glow-tint-green { background-color: rgba(74, 222, 128, 0.05); } .glow-tint-green svg { fill: #4ADE80; }
+.glow-tint-blue { background-color: rgba(56, 189, 248, 0.05); } .glow-tint-blue svg { fill: #38BDF8; }
+.glow-tint-cyan { background-color: rgba(34, 211, 238, 0.05); } .glow-tint-cyan svg { fill: #0EA5E9; }
+
+.vault-metric-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(56, 189, 248, 0.25); /* Boundary line traces shift to Client soft blue accent */
+    box-shadow: 0 15px 30px rgba(56, 189, 248, 0.03), 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* ========================================================
+   2. DIGITAL SHOWCASE VIEWPORT & BADGE GRID SPLIT ENGINE
+   ======================================================== */
+.vault-asymmetric-split-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr; /* Asymmetric distribution layout framework */
+    gap: 28px;
+    width: 100%;
+    margin-top: 36px;
+    align-items: start;
+}
+
+.vault-showcase-panel-card, .vault-badges-panel-card {
+    background-color: #0A0F1D;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.vault-panel-header-strip {
+    text-align: left;
+    margin-bottom: 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    padding-bottom: 16px;
+}
+
+.vault-panel-header-strip h3 { font-size: 1.25rem; font-weight: 600; color: #FFFFFF; margin-bottom: 6px; }
+.vault-panel-header-strip p { font-size: 0.88rem; color: #64748B; line-height: 1.45; }
+
+/* LEFT FLEX COMPONENT: PURE CSS-DRAWN DIGITAL CERTIFICATE WORKSPACE */
+.certificate-mockup-frame {
+    width: 100%;
+    background-color: #050811;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    padding: 24px;
+    border-radius: 14px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cert-mockup-canvas {
+    width: 100%;
+    background-color: #0C1226; /* Specialized warm-dark card profile container color background */
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 8px;
+    padding: 36px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.cert-border-tracing-ring {
+    position: absolute;
+    top: 10px; left: 10px; right: 10px; bottom: 10px;
+    border: 1px dashed rgba(56, 189, 248, 0.2);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.cert-inner-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.cert-watermark-logo {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: rgba(56, 189, 248, 0.4);
+    letter-spacing: 0.25em;
+    margin-bottom: 16px;
+}
+
+.cert-inner-content h2 {
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: #94A3B8;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+}
+
+.cert-sub-text {
+    font-size: 0.8rem;
+    color: #475569;
+    max-width: 340px;
+    line-height: 1.4;
+    margin-bottom: 14px;
+}
+
+.cert-title-highlight {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
+}
+
+.cert-signature-row-strip {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    padding-top: 16px;
+    gap: 16px;
+}
+
+.cert-sig-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.cert-id-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.sig-line { font-size: 0.85rem; font-weight: 600; color: #E2E8F0; }
+.sig-line.alphanumeric-id { font-family: monospace; color: #38BDF8; }
+.sig-label { font-size: 0.65rem; font-weight: 700; color: #475569; text-transform: uppercase; margin-top: 4px; }
+
+/* Lower Action Row Pill Dock buttons */
+.vault-action-dock-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.btn-vault-action-trigger {
+    flex-grow: 1;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 10px;
+    white-space: nowrap;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-vault-action-trigger.action-download-blue {
+    background-color: #38BDF8; /* Interactive soft blue primary client action plate */
+    color: #050811;
+    border: none;
+}
+.btn-vault-action-trigger.action-download-blue:hover { background-color: #0EA5E9; transform: translateY(-1px); box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3); }
+
+.btn-vault-action-trigger.action-share-wire {
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.btn-vault-action-trigger.action-share-wire:hover { background-color: rgba(255, 255, 255, 0.02); border-color: rgba(255, 255, 255, 0.25); transform: translateY(-1px); }
+
+/* RIGHT FLEX COMPONENT: HISTORICAL CREDENTIAL ARCHIVE NODES VERTICAL STACK */
+.archived-badges-vertical-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.badge-item-node-row {
+    background-color: rgba(5, 8, 17, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.badge-node-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+}
+
+.format-badge-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+.format-badge-icon.type-pdf { background-color: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); color: #38BDF8; }
+
+.badge-node-meta h4 { font-size: 0.95rem; font-weight: 600; color: #FFFFFF; margin-bottom: 2px; }
+.badge-node-meta p { font-size: 0.8rem; color: #475569; }
+
+.btn-badge-download-redirect {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #64748B;
+    text-decoration: none;
+    padding: 6px 14px;
+    background-color: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    white-space: nowrap;
+    transition: all 0.25s ease;
+}
+
+/* Row Hover State adjustments matching platform standard traces rules guides */
+.badge-item-node-row:hover { border-color: rgba(255, 255, 255, 0.05); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); }
+.badge-item-node-row:hover .btn-badge-download-redirect {
+    background-color: #38BDF8; /* Actions flip to clear theme blue on active row hover focus cross tracks */
+    border-color: #38BDF8;
+    color: #050811;
+}
+
+.vault-showcase-panel-card:hover, .vault-badges-panel-card:hover {
+    border-color: rgba(56, 189, 248, 0.15);
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.03), 0 20px 45px rgba(0, 0, 0, 0.4);
+}
+
+/* ========================================================
+   FLUID RESPONSIVE SYSTEM MEDIA BREAKPOINTS BREAKPOINTS
+   ======================================================== */
+@media (max-width: 1400px) {
+    /* Collapse split layout canvas into a single cohesive vertical columns stack flow layout */
+    .vault-asymmetric-split-grid { grid-template-columns: 1fr; gap: 24px; }
+}
+
+@media (max-width: 1100px) {
+    .vault-metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+
+@media (max-width: 768px) {
+    .vault-showcase-panel-card, .vault-badges-panel-card { padding: 20px; border-radius: 16px; }
+    .cert-mockup-canvas { padding: 24px 16px; }
+    .cert-title-highlight { font-size: 1.15rem; }
+    .cert-inner-content h2 { font-size: 1rem; }
+}
+
+@media (max-width: 520px) {
+    .vault-metrics-grid { grid-template-columns: 1fr; gap: 12px; }
+    .vault-metric-card { padding: 16px; }
+    .vault-metric-bold { font-size: 1.65rem; }
+    .vault-action-dock-bar { flex-direction: column; align-items: stretch; gap: 10px; }
+    .badge-item-node-row { flex-direction: column; align-items: stretch; gap: 14px; padding: 16px; }
+    .btn-badge-download-redirect { width: 100%; text-align: center; }
+    .cert-signature-row-strip { flex-direction: column; align-items: center; text-align: center; gap: 12px; }
+    .cert-id-block { align-items: center; text-align: center; }
+}
+
+</style>
 
             </main>
 

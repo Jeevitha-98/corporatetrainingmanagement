@@ -83,8 +83,8 @@
         
         <a href="#" class="brand-logo" id="brand-logo-trigger" aria-label="Stackly Home - Refresh Portal">
             <!-- Replace 'logo-placeholder.svg' with your actual vector file path -->
-            <img src="logo-placeholder.svg" alt="Stackly Logo" class="logo-img">
-            <span class="brand-name-text">Stackly</span>
+            <img src="./assests/corporate training.webp" alt="Stackly Logo" class="logo-img">
+       
         </a>
 
         <!-- Desktop Navigation Layer (Hidden on mobile via Media Query) -->
@@ -100,7 +100,7 @@
 
         <!-- Right Side Authentication Area -->
         <div class="auth-wrapper">
-            <button class="btn-auth">Sign In</button>
+        <button class="btn-auth" onclick="window.location.href='login.html'">Sign In</button>
             
             <!-- Mobile Hamburger Menu Toggle Trigger Button -->
             <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
@@ -116,11 +116,11 @@
 <div class="mobile-drawer" id="mobile-navigation-drawer">
     <nav class="mobile-nav">
         <ul>
-            <li><a href="#dashboard" class="mobile-nav-item ">Dashboard</a></li>
-            <li><a href="#courses" class="mobile-nav-item">Courses</a></li>
-            <li><a href="#analytics" class="mobile-nav-item">Analytics</a></li>
-            <li><a href="#teams" class="mobile-nav-item">Teams</a></li>
-            <li><a href="#settings" class="mobile-nav-item">Settings</a></li>
+            <li><a href="index.html" class="mobile-nav-item ">Dashboard</a></li>
+            <li><a href="courses.html" class="mobile-nav-item">Courses</a></li>
+            <li><a href="blogs.html" class="mobile-nav-item">Blogs</a></li>
+            <li><a href="about.html" class="mobile-nav-item active">About Us</a></li>
+            <li><a href="contact.html" class="mobile-nav-item">Contact Us</a></li>
         </ul>
     </nav>
 </div>
@@ -171,7 +171,7 @@
 
 <!-- DYNAMIC L&D SYSTEM HERO SECTION -->
 <section class="about-hero-section" id="about-hero-viewport">
-    <img src="about-hero-bg.jpg" alt="Corporate Training Environment" class="about-hero-bg-img">
+    <img src="./assests/about img 1.webp" alt="Corporate Training Environment" class="about-hero-bg-img">
 
     <div class="about-hero-container">
         <div class="about-hero-content-block">
@@ -257,7 +257,7 @@
     object-position: center;
     z-index: 1;
     pointer-events: none;
-    opacity: 0.15; 
+    opacity: 0.85; 
 }
 
 .about-hero-section::before {
@@ -931,7 +931,7 @@
             <div class="ld-morph-card node-small">
                 <div class="ld-card-inner-canvas">
                     <div class="ld-image-media-layer">
-                        <img src="corporate-category-1.jpg" alt="Compliance Mandates Track" class="ld-embed-img">
+                        <img src="./assests/AI infra.webp" alt="Compliance Mandates Track" class="ld-embed-img">
                         <div class="ld-image-matte-filter"></div>
                         <span class="ld-top-floating-label">Compliance Paths</span>
                     </div>
@@ -947,7 +947,7 @@
             <div class="ld-morph-card node-medium">
                 <div class="ld-card-inner-canvas">
                     <div class="ld-image-media-layer">
-                        <img src="corporate-category-2.jpg" alt="Agile Leadership Sprints" class="ld-embed-img">
+                        <img src="./assests/data analytics.webp" alt="Agile Leadership Sprints" class="ld-embed-img">
                         <div class="ld-image-matte-filter"></div>
                         <span class="ld-top-floating-label">Agile Sprints</span>
                     </div>
@@ -962,7 +962,7 @@
             <div class="ld-morph-card node-large active-default-focus">
                 <div class="ld-card-inner-canvas">
                     <div class="ld-image-media-layer">
-                        <img src="corporate-category-3.jpg" alt="Technical Micro-Architecture Sandboxes" class="ld-embed-img">
+                        <img src="./assests/labs training.webp" alt="Technical Micro-Architecture Sandboxes" class="ld-embed-img">
                         <div class="ld-image-matte-filter"></div>
                         <span class="ld-top-floating-label">Technical Labs</span>
                     </div>
@@ -1078,7 +1078,7 @@
     left: 0;
     font-size: 0.85rem;
     font-weight: 600;
-    color: #64748B;
+    color: rgb(180, 224, 6);
     z-index: 3;
     opacity: 0.7;
     letter-spacing: 0.04em;
@@ -1176,7 +1176,7 @@
 .ld-drawer-heading {
     font-size: 1.65rem; /* High visibility typography font scale factor increase */
     font-weight: 700;
-    color: #FFFFFF;
+    color: #ffffff;
     margin-bottom: 12px;
     letter-spacing: 0.01em;
 }
@@ -1347,7 +1347,7 @@
 
 <section class="oneline-cta-section" id="oneline-cta-viewport">
     <!-- Visual structural background graphics asset layer -->
-    <img src="oneline-banner-bg-placeholder.jpg" alt="Abstract Corporate Grid Background" class="oneline-bg-img">
+    <img src="./assests/AI infra.webp" alt="Abstract Corporate Grid Background" class="oneline-bg-img">
 
     <div class="oneline-banner-container">
         
@@ -1388,7 +1388,7 @@
     object-fit: cover;
     z-index: 1;
     pointer-events: none;
-    opacity: 0.12; /* Keep structural continuity with dark homepage assets */
+    opacity: 0.32; /* Keep structural continuity with dark homepage assets */
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -2345,6 +2345,457 @@
     .panel-summary-text, .bullet-metrics-strip li { font-size: 0.88rem; }
 }
 
+/* =========================================================
+   RESPONSIVE ADD-ON
+   Timeline Section - Tablet + Mobile Optimization
+   Add this AFTER your existing timeline CSS
+   ========================================================= */
+
+
+/* =========================================================
+   LARGE TABLET / SMALL LAPTOP
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .timeline-section {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .timeline-container {
+        max-width: 100%;
+    }
+
+    .timeline-year-node-block {
+        grid-template-columns: minmax(0, 1fr) 140px minmax(0, 1fr);
+        column-gap: 10px;
+    }
+
+    .timeline-panel-card {
+        padding: 20px;
+    }
+
+    .timeline-details-list {
+        padding: 0 6px;
+    }
+
+    .bullet-metrics-strip li,
+    .panel-summary-text {
+        font-size: 0.9rem;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .timeline-section {
+        padding: 50px 30px 35px;
+    }
+
+    .timeline-container {
+        gap: 45px;
+    }
+
+    .timeline-main-title {
+        font-size: clamp(2.2rem, 5vw, 2.8rem);
+        line-height: 1.2;
+    }
+
+    /*
+       Convert the desktop 3-column timeline into
+       a clean single vertical timeline.
+    */
+
+    .timeline-backbone-track {
+        gap: 36px;
+        padding: 15px 0;
+    }
+
+    .timeline-backbone-track::before {
+        left: 24px;
+        transform: none;
+        width: 2px;
+    }
+
+    .timeline-year-node-block {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        padding-left: 64px;
+        width: 100%;
+    }
+
+    .timeline-spine-center {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .left-panel,
+    .right-panel {
+        width: 100%;
+        text-align: left !important;
+    }
+
+    .timeline-details-list {
+        padding: 0;
+    }
+
+    .lines-right-bound li {
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+    .lines-right-bound li .list-bullet {
+        order: -1;
+        margin-right: 0;
+    }
+
+    .timeline-panel-card {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE - 640px
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+    .timeline-section {
+        padding: 40px 18px 28px;
+    }
+
+    .timeline-container {
+        gap: 32px;
+    }
+
+    .timeline-header-block {
+        width: 100%;
+        padding: 0 5px;
+    }
+
+    .timeline-badge {
+        font-size: 0.68rem;
+        padding: 5px 11px;
+        margin-bottom: 12px;
+    }
+
+    .timeline-main-title {
+        font-size: clamp(1.75rem, 8vw, 2.2rem);
+        line-height: 1.25;
+        gap: 0 8px;
+    }
+
+    /*
+       Timeline vertical spine
+    */
+
+    .timeline-backbone-track {
+        gap: 30px;
+        padding: 10px 0;
+    }
+
+    .timeline-backbone-track::before {
+        left: 18px;
+        width: 2px;
+    }
+
+    /*
+       Timeline row
+    */
+
+    .timeline-year-node-block {
+        padding-left: 50px;
+        gap: 14px;
+    }
+
+    /*
+       Central year/node
+    */
+
+    .timeline-spine-center {
+        left: 0;
+        top: 0;
+        width: 36px;
+    }
+
+    .node-circle-icon {
+        width: 36px;
+        height: 36px;
+        border-width: 2px;
+    }
+
+    .node-circle-icon svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .spine-year-label {
+        font-size: 0.95rem;
+        margin-top: 3px;
+    }
+
+    /*
+       Cards
+    */
+
+    .timeline-panel-card {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .panel-badge-label {
+        font-size: 0.65rem;
+        padding: 4px 8px;
+        margin-bottom: 9px;
+    }
+
+    .panel-summary-text {
+        font-size: 0.84rem;
+        line-height: 1.55;
+    }
+
+    /*
+       Bullet list
+    */
+
+    .timeline-details-list {
+        padding: 0;
+    }
+
+    .bullet-metrics-strip {
+        gap: 10px;
+    }
+
+    .bullet-metrics-strip li {
+        font-size: 0.82rem;
+        line-height: 1.45;
+        gap: 9px;
+        align-items: flex-start;
+    }
+
+    .list-bullet {
+        width: 7px;
+        height: 7px;
+        margin-top: 6px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE - 480px
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .timeline-section {
+        padding: 34px 14px 24px;
+    }
+
+    .timeline-container {
+        gap: 28px;
+    }
+
+    .timeline-main-title {
+        font-size: 1.7rem;
+        line-height: 1.25;
+        gap: 0 6px;
+    }
+
+    .timeline-badge {
+        font-size: 0.63rem;
+        letter-spacing: 0.04em;
+    }
+
+    .timeline-backbone-track {
+        gap: 26px;
+    }
+
+    .timeline-backbone-track::before {
+        left: 16px;
+    }
+
+    .timeline-year-node-block {
+        padding-left: 43px;
+        gap: 12px;
+    }
+
+    .timeline-spine-center {
+        width: 32px;
+    }
+
+    .node-circle-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .node-circle-icon svg {
+        width: 12px;
+        height: 12px;
+    }
+
+    .spine-year-label {
+        font-size: 0.82rem;
+    }
+
+    .timeline-panel-card {
+        padding: 14px;
+        border-radius: 10px;
+    }
+
+    .panel-summary-text {
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+
+    .bullet-metrics-strip {
+        gap: 9px;
+    }
+
+    .bullet-metrics-strip li {
+        font-size: 0.78rem;
+        line-height: 1.45;
+        gap: 8px;
+    }
+
+    .list-bullet {
+        width: 6px;
+        height: 6px;
+        margin-top: 5px;
+    }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL MOBILE - 360px
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .timeline-section {
+        padding-left: 11px;
+        padding-right: 11px;
+    }
+
+    .timeline-main-title {
+        font-size: 1.5rem;
+    }
+
+    .timeline-year-node-block {
+        padding-left: 39px;
+    }
+
+    .timeline-backbone-track::before {
+        left: 14px;
+    }
+
+    .timeline-spine-center {
+        width: 28px;
+    }
+
+    .node-circle-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .node-circle-icon svg {
+        width: 11px;
+        height: 11px;
+    }
+
+    .spine-year-label {
+        font-size: 0.75rem;
+    }
+
+    .timeline-panel-card {
+        padding: 12px;
+    }
+
+    .panel-summary-text {
+        font-size: 0.76rem;
+    }
+
+    .bullet-metrics-strip li {
+        font-size: 0.74rem;
+    }
+
+}
+
+
+/* =========================================================
+   PREVENT HORIZONTAL OVERFLOW
+   ========================================================= */
+
+.timeline-section,
+.timeline-container,
+.timeline-backbone-track,
+.timeline-year-node-block,
+.timeline-panel-card,
+.timeline-details-list {
+    max-width: 100%;
+    min-width: 0;
+}
+
+.timeline-main-title span,
+.panel-summary-text,
+.bullet-metrics-strip li {
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+   Prevent hover effects from feeling stuck on mobile
+   ========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .timeline-year-node-block:hover .node-circle-icon {
+        transform: none;
+    }
+
+    .timeline-year-node-block:hover .node-circle-icon {
+        border-color: rgba(255, 255, 255, 0.12);
+        background-color: #0A0F1D;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .timeline-year-node-block:hover .node-circle-icon svg {
+        fill: inherit;
+    }
+
+    .timeline-year-node-block:hover .spine-year-label {
+        color: #FFFFFF;
+        text-shadow: none;
+    }
+
+    .timeline-year-node-block:hover .timeline-panel-card {
+        border-color: rgba(255, 255, 255, 0.04);
+        background-color: rgba(30, 41, 59, 0.35);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .timeline-year-node-block:hover .bullet-metrics-strip li {
+        color: #94A3B8;
+    }
+
+}
 </style>
 
 <script>
@@ -2430,7 +2881,7 @@
  <!-- CORPORATE TESTIMONIAL MATRIX SECTION -->
 <section class="testimonials-section" id="testimonials-viewport">
     <!-- Visual background image tag layer -->
-    <img src="testimonials-bg-placeholder.jpg" alt="Corporate Network Grid Background" class="testimonials-bg-img">
+    <img src="./assests/AI infra.webp" alt="Corporate Network Grid Background" class="testimonials-bg-img">
 
     <div class="testimonials-container">
         
@@ -2455,7 +2906,7 @@
                         "The Compliance Path Matrix completely transformed our department onboarding lifecycle. We went from manual, scattered spreadsheet auditing to streamlined, automated skill validation pipelines within days."
                     </p>
                     <div class="client-profile-row">
-                        <img src="avatar-1.jpg" alt="Cameron Williamson" class="client-avatar-img">
+                        <img src="./assests/aris.webp" alt="Cameron Williamson" class="client-avatar-img">
                         <div class="client-metadata">
                             <h4>Cameron Williamson</h4>
                             <span>VP of Organizational Development</span>
@@ -2470,7 +2921,7 @@
                         "This infrastructure completely changed how we approach continuous upskilling. Our development velocity increased, skill competency gaps collapsed, and our tech teams finally innovate with confidence."
                     </p>
                     <div class="client-profile-row">
-                        <img src="avatar-2.jpg" alt="Kristin Watson" class="client-avatar-img">
+                        <img src="./assests/arjun.webp" alt="Kristin Watson" class="client-avatar-img">
                         <div class="client-metadata">
                             <h4>Kristin Watson</h4>
                             <span>Director of Engineering</span>
@@ -2485,7 +2936,7 @@
                         "The predictive analytics metrics delivered exactly the micro-learning intelligence mapping our leadership boards needed. Tracking certification expiration thresholds is now entirely hands-free."
                     </p>
                     <div class="client-profile-row">
-                        <img src="avatar-3.jpg" alt="Darlene Robertson" class="client-avatar-img">
+                        <img src="./assests/devon mill.webp" alt="Darlene Robertson" class="client-avatar-img">
                         <div class="client-metadata">
                             <h4>Darlene Robertson</h4>
                             <span>Chief Information Officer</span>
@@ -2505,7 +2956,7 @@
                         "From chaotic regulatory updates to structured corporate compliance confidence, Stackly scaled our training nodes flawlessly. Highly recommended for international operations tracking."
                     </p>
                     <div class="client-profile-row">
-                        <img src="avatar-4.jpg" alt="Theresa Webb" class="client-avatar-img">
+                        <img src="./assests/testimonial 1.webp" alt="Theresa Webb" class="client-avatar-img">
                         <div class="client-metadata">
                             <h4>Theresa Webb</h4>
                             <span>Global Compliance Manager</span>
@@ -2520,7 +2971,7 @@
                         "What I love most is the practical enterprise approach. Real infrastructure sandbox setups, true compliance path renewals, and zero academic fluff. This completely rewired our workforce training curves."
                     </p>
                     <div class="client-profile-row">
-                        <img src="avatar-5.jpg" alt="Jane Cooper" class="client-avatar-img">
+                        <img src="./assests/testimonial 3.webp" alt="Jane Cooper" class="client-avatar-img">
                         <div class="client-metadata">
                             <h4>Jane Cooper</h4>
                             <span>Senior Systems Architect</span>
@@ -2535,7 +2986,7 @@
                         "Our global management teams now align with corporate objectives across distinct branches effortlessly. The localized course paths solved our language barriers instantly."
                     </p>
                     <div class="client-profile-row">
-                        <img src="avatar-6.jpg" alt="Arlene McCoy" class="client-avatar-img">
+                        <img src="./assests/rose.webp" alt="Arlene McCoy" class="client-avatar-img">
                         <div class="client-metadata">
                             <h4>Arlene McCoy</h4>
                             <span>Human Resources Director</span>
@@ -3563,8 +4014,8 @@
         <!-- COLUMN 1: Brand Overview & Fluid SVG Social Controls -->
         <div class="footer-column brand-summary-block">
             <a href="#" class="footer-brand-logo" id="back-to-top-trigger" aria-label="Stackly Portal - Scroll Back To Top">
-                <img src="logo-dark.svg" alt="Stackly Logo" class="footer-logo-img">
-                <span class="footer-brand-name">STACKLY</span>
+                <img src="./assests/CTF.webp" alt="Stackly Logo" class="footer-logo-img">
+               
             </a>
             <p class="footer-brand-desc">
                 Engineering premium scalable corporate learning setups, skill matrices tracking pipelines, and decentralized enterprise upskilling nodes designed to fuel global workforce productivity alike.
@@ -3691,10 +4142,9 @@
 }
 
 .footer-logo-img {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
-    filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.3));
+    width: 130px;
+    height: 50px;
+ 
 }
 
 .footer-brand-name {

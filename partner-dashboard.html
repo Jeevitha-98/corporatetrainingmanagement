@@ -19,7 +19,7 @@
             <div class="sidebar-header-wrapper">
                 <!-- Brand logo behaves as an instant interactive dashboard reset trigger -->
                 <a href="#" class="sidebar-brand-refresh-link" id="sidebar-brand-refresh-logo">
-                    <img src="stackly-logo.png" alt="Stackly Corporate Training Logo" class="sidebar-brand-img">
+                 
                     <span class="sidebar-brand-name">Stackly<em>L&D</em></span>
                 </a>
                 <!-- Mobile Only Hidden Close Control Button -->
@@ -36,13 +36,7 @@
                             <span class="anchor-item-text">Curriculum Overview</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="menu-nav-anchor" data-target-section="panel-trainer-matrix">
-                            <!-- Trainer Roster Icon -->
-                            <svg class="menu-svg-vector-icon" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-                            <span class="anchor-item-text">Trainer Roster</span>
-                        </a>
-                    </li>
+                  
                     <li>
                         <a href="#" class="menu-nav-anchor" data-target-section="panel-compliance-tracks">
                             <!-- Compliance Tracks Icon -->
@@ -91,10 +85,14 @@
 
                 <div class="topheader-right-cluster">
                     <!-- Notification Bell Component -->
-                    <button class="topheader-action-bell-btn" aria-label="View Training System Alerts">
-                        <svg viewBox="0 0 24 24" class="bell-svg-icon"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1-1.5-1s-1.5.17-1.5 1v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
-                        <span class="bell-pulse-alert-dot"></span>
-                    </button>
+                   <button class="topheader-action-bell-btn"
+        aria-label="View Training System Alerts"
+        onclick="window.location.href='404.html'">
+    <svg viewBox="0 0 24 24" class="bell-svg-icon">
+        <path d="M12 22c1.1 0 2-.9 2-2h-4c0-1.11.89-2 2-2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1-1.5-1s-1.5.17-1.5 1v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/>
+    </svg>
+    <span class="bell-pulse-alert-dot"></span>
+</button>
                     
                     <!-- Dynamic user name token component -->
                     <div class="topheader-profile-badge-pill">
@@ -112,50 +110,1789 @@
             <!-- SWITCHABLE MULTI-SECTION WORKSPACE CANVASES -->
             <main class="dashboard-sections-stack-canvas" id="dashboard-sections-main-container">
                 
-                <!-- Section Viewport Panel 1 -->
-                <section class="dashboard-section-viewport-panel active-view" id="panel-curriculum-overview">
-                    <div class="clean-section-header">
-                        <span class="clean-section-badge">📚 CENTRALIZED BLUEPRINTS</span>
-                        <h1 class="clean-section-title">Curriculum Overview</h1>
-                        <div class="clean-section-divider"></div>
-                    </div>
-                </section>
+             <!-- Section Viewport Panel 1: Elaborated Curriculum Overview -->
+<section class="dashboard-section-viewport-panel active-view" id="panel-curriculum-overview">
+    
+    <!-- 1. CLEAN TYPOGRAPHIC HEADER BLOCK -->
+    <div class="clean-section-header">
+        <span class="clean-section-badge">📚 CENTRALIZED BLUEPRINTS</span>
+        <h1 class="clean-section-title">Curriculum Overview</h1>
+        <div class="clean-section-divider"></div>
+    </div>
 
-                <!-- Section Viewport Panel 2 -->
-                <section class="dashboard-section-viewport-panel" id="panel-trainer-matrix">
-                    <div class="clean-section-header">
-                        <span class="clean-section-badge">👥 INSTRUCTOR MATRIX</span>
-                        <h1 class="clean-section-title">Trainer Roster</h1>
-                        <div class="clean-section-divider"></div>
-                    </div>
-                </section>
+    <!-- 2. LIVE METRICS TELEMETRY ROW (Responsive 4-Column Grid Layout) -->
+    <div class="curriculum-stats-grid">
+        <!-- Card 1 -->
+        <div class="curriculum-stat-card">
+            <div class="stat-card-left">
+                <span class="stat-num-metric">148</span>
+                <span class="stat-label-text">Total Modules</span>
+            </div>
+            <div class="stat-card-vector icon-blue">
+                <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 5 11-5-11-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="curriculum-stat-card">
+            <div class="stat-card-left">
+                <span class="stat-num-metric">94.2%</span>
+                <span class="stat-label-text">Avg. Completion</span>
+            </div>
+            <div class="stat-card-vector icon-green">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="curriculum-stat-card">
+            <div class="stat-card-left">
+                <span class="stat-num-metric">4,820</span>
+                <span class="stat-label-text">Active Operators</span>
+            </div>
+            <div class="stat-card-vector icon-purple">
+                <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+            </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="curriculum-stat-card">
+            <div class="stat-card-left">
+                <span class="stat-num-metric">12</span>
+                <span class="stat-label-text">Tracks Pending Audit</span>
+            </div>
+            <div class="stat-card-vector icon-orange">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            </div>
+        </div>
+    </div>
 
-                <!-- Section Viewport Panel 3 -->
-                <section class="dashboard-section-viewport-panel" id="panel-compliance-tracks">
-                    <div class="clean-section-header">
-                        <span class="clean-section-badge">🛡️ REGULATORY AUDITING</span>
-                        <h1 class="clean-section-title">Compliance Tracks</h1>
-                        <div class="clean-section-divider"></div>
-                    </div>
-                </section>
+    <!-- 3. INTERACTIVE CURRICULUM MANAGEMENT TOOLBAR ROW -->
+    <div class="curriculum-action-toolbar">
+       
+        <div class="toolbar-btn-group">
+            <a href="404.html" class="btn-toolbar action-primary">+ Deploy New Track</a>
+            <a href="404.html" class="btn-toolbar action-secondary">Export Matrix</a>
+        </div>
+    </div>
 
-                <!-- Section Viewport Panel 4 -->
-                <section class="dashboard-section-viewport-panel" id="panel-program-velocity">
-                    <div class="clean-section-header">
-                        <span class="clean-section-badge">⚡ COMPLETION INDICES</span>
-                        <h1 class="clean-section-title">Program Velocity</h1>
-                        <div class="clean-section-divider"></div>
-                    </div>
-                </section>
+    <!-- 4. HIGH-PERFORMANCE DATA TABLE TREE CONTAINER (With horizontal responsive lane) -->
+    <div class="curriculum-table-responsive-lane">
+        <table class="curriculum-data-table">
+            <thead>
+                <tr>
+                    <th>TRACK SCHEME / CODE</th>
+                    <th>DISCIPLINE CATEGORY</th>
+                    <th>ENROLLED TRAINEES</th>
+                    <th>COMPLIANCE WEIGHT</th>
+                    <th>TRACK STATUS</th>
+                    <th class="text-right-alignment">ACTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Row 1 -->
+                <tr>
+                    <td class="table-bold-title-cell">
+                        <div class="track-title-block">
+                            <span class="track-code-pill">CMP-2026</span>
+                            <h4>Enterprise Compliance Matrix Automation</h4>
+                        </div>
+                    </td>
+                    <td><span class="discipline-badge badge-slate">Regulatory Compliance</span></td>
+                    <td class="text-light-slate">1,240 Operators</td>
+                    <td>
+                        <div class="weight-progress-wrapper">
+                            <span class="weight-percentage-text">100%</span>
+                            <div class="progress-bar-track"><div class="progress-bar-fill filled-max"></div></div>
+                        </div>
+                    </td>
+                    <td><span class="status-neon-badge label-green">✓ Active Track</span></td>
+                    <td class="text-right-alignment">
+                        <div class="table-action-dots-row">
+                            <a href="404.html" class="btn-table-action" title="Edit Track Parameters">⚙️</a>
+                            <a href="404.html" class="btn-table-action" title="View Real-Time Metrics">📈</a>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 2 -->
+                <tr>
+                    <td class="table-bold-title-cell">
+                        <div class="track-title-block">
+                            <span class="track-code-pill">AGL-504</span>
+                            <h4>Agile Sprints & Divisional Velocity Matrix</h4>
+                        </div>
+                    </td>
+                    <td><span class="discipline-badge badge-slate">Management Sprints</span></td>
+                    <td class="text-light-slate">850 Operators</td>
+                    <td>
+                        <div class="weight-progress-wrapper">
+                            <span class="weight-percentage-text">75%</span>
+                            <div class="progress-bar-track"><div class="progress-bar-fill filled-high"></div></div>
+                        </div>
+                    </td>
+                    <td><span class="status-neon-badge label-green">✓ Active Track</span></td>
+                    <td class="text-right-alignment">
+                        <div class="table-action-dots-row">
+                            <a href="404.html" class="btn-table-action" title="Edit Track Parameters">⚙️</a>
+                            <a href="404.html" class="btn-table-action" title="View Real-Time Metrics">📈</a>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 3 -->
+                <tr>
+                    <td class="table-bold-title-cell">
+                        <div class="track-title-block">
+                            <span class="track-code-pill">TEC-902</span>
+                            <h4>Technical Micro-Architecture Sandbox Clinics</h4>
+                        </div>
+                    </td>
+                    <td><span class="discipline-badge badge-slate">Technical Labs</span></td>
+                    <td class="text-light-slate">2,410 Operators</td>
+                    <td>
+                        <div class="weight-progress-wrapper">
+                            <span class="weight-percentage-text">42%</span>
+                            <div class="progress-bar-track"><div class="progress-bar-fill filled-mid"></div></div>
+                        </div>
+                    </td>
+                    <td><span class="status-neon-badge label-orange">⏰ Auditing Phase</span></td>
+                    <td class="text-right-alignment">
+                        <div class="table-action-dots-row">
+                            <a href="404.html" class="btn-table-action" title="Edit Track Parameters">⚙️</a>
+                            <a href="404.html" class="btn-table-action" title="View Real-Time Metrics">📈</a>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 4 -->
+                <tr>
+                    <td class="table-bold-title-cell">
+                        <div class="track-title-block">
+                            <span class="track-code-pill">LND-102</span>
+                            <h4>Asymmetric Advanced Leadership Sandbox</h4>
+                        </div>
+                    </td>
+                    <td><span class="discipline-badge badge-slate">Strategic Consulting</span></td>
+                    <td class="text-light-slate">320 Operators</td>
+                    <td>
+                        <div class="weight-progress-wrapper">
+                            <span class="weight-percentage-text">15%</span>
+                            <div class="progress-bar-track"><div class="progress-bar-fill filled-low"></div></div>
+                        </div>
+                    </td>
+                    <td><span class="status-neon-badge label-gray">⤗ Uninitialized</span></td>
+                    <td class="text-right-alignment">
+                        <div class="table-action-dots-row">
+                            <a href="404.html" class="btn-table-action" title="Edit Track Parameters">⚙️</a>
+                            <a href="404.html" class="btn-table-action" title="View Real-Time Metrics">📈</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-                <!-- Section Viewport Panel 5 -->
-                <section class="dashboard-section-viewport-panel" id="panel-enterprise-analytics">
-                    <div class="clean-section-header">
-                        <span class="clean-section-badge">📈 TELEMETRY ANALYTICS</span>
-                        <h1 class="clean-section-title">Enterprise Analytics</h1>
-                        <div class="clean-section-divider"></div>
+</section>
+
+<style>
+    /* ========================================================
+   ELABORATED CURRICULUM OVERVIEW WORKSPACE COMPONENT STYLES
+   ======================================================== */
+
+/* 1. LIVE TELEMETRY STATS CARDS ROW (Fluid Multi-Column Engine) */
+.curriculum-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Responsive 4-column master matrix array */
+    gap: 24px;
+    width: 100%;
+    margin-top: 32px;
+}
+
+.curriculum-stat-card {
+    background-color: #0A0F1D; 
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.stat-num-metric {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+}
+
+.stat-label-text {
+    font-size: 0.85rem;
+    color: #64748B;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.stat-card-vector {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.stat-card-vector svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Customized Vector Identity Tints matching Stackly Guidelines */
+.icon-blue { background-color: rgba(56, 189, 248, 0.05); } .icon-blue svg { fill: #38BDF8; }
+.icon-green { background-color: rgba(74, 222, 128, 0.05); } .icon-green svg { fill: #4ADE80; }
+.icon-purple { background-color: rgba(167, 139, 250, 0.05); } .icon-purple svg { fill: #A78BFA; }
+.icon-orange { background-color: rgba(251, 146, 60, 0.05); } .icon-orange svg { fill: #FB923C; }
+
+/* Micro interaction card hover buoyancy shifts */
+.curriculum-stat-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(74, 222, 128, 0.25); /* Boundary ring pops to Ancient Green */
+    box-shadow: 0 15px 30px rgba(74, 222, 128, 0.03), 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* ========================================================
+   2. INTERACTIVE CURRICULUM MANAGEMENT TOOLBAR ROW
+   ======================================================== */
+.curriculum-action-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 36px;
+    background-color: rgba(10, 15, 29, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 16px 24px;
+    border-radius: 14px;
+    gap: 20px;
+}
+
+.toolbar-search-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: rgba(5, 8, 17, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 10px 16px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.search-lens-vector { font-size: 0.9rem; opacity: 0.4; }
+
+.toolbar-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #FFFFFF;
+    font-size: 0.95rem;
+}
+.toolbar-input::placeholder { color: #334155; }
+
+.toolbar-btn-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-toolbar {
+    padding: 10px 22px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+}
+
+.btn-toolbar.action-primary {
+    background-color: #4ADE80; /* Primary Ancient Green Activation Key */
+    color: #050811;
+}
+.btn-toolbar.action-primary:hover { background-color: #22C55E; transform: translateY(-1px); }
+
+.btn-toolbar.action-secondary {
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.btn-toolbar.action-secondary:hover { background-color: rgba(255, 255, 255, 0.02); border-color: rgba(255, 255, 255, 0.25); }
+
+/* ========================================================
+   3. HIGH-PERFORMANCE DATA TABLE MATRIX
+   ======================================================== */
+.curriculum-table-responsive-lane {
+    width: 100%;
+    overflow-x: auto; /* Restores global layout native horizontal overflow scrolling boundaries */
+    margin-top: 24px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background-color: #0A0F1D;
+    -webkit-overflow-scrolling: touch;
+}
+
+.curriculum-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 900px; /* Locks table width boundaries to preserve column metrics rows formatting */
+}
+
+.curriculum-data-table th {
+    background-color: rgba(5, 8, 17, 0.4);
+    padding: 18px 24px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #475569;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.curriculum-data-table td {
+    padding: 20px 24px;
+    font-size: 0.95rem;
+    color: #94A3B8;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    vertical-align: middle;
+}
+
+.curriculum-data-table tr:last-child td { border-bottom: none; }
+.curriculum-data-table tr:hover td { background-color: rgba(255, 255, 255, 0.01); }
+
+.table-bold-title-cell { width: 38%; }
+
+.track-title-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.track-code-pill {
+    font-size: 0.72rem;
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: #E2E8F0;
+}
+
+.track-title-block h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 1.3;
+}
+
+/* Category Badges Styling Profiles */
+.discipline-badge {
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 6px;
+    display: inline-block;
+}
+.discipline-badge.badge-slate { background-color: rgba(51, 65, 85, 0.3); color: #94A3B8; border: 1px solid rgba(51, 65, 85, 0.5); }
+
+.text-light-slate { color: #64748B; font-weight: 500; }
+
+/* Progress Completion Telemetry Meters components */
+.weight-progress-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 140px;
+}
+
+.weight-percentage-text { font-size: 0.8rem; font-weight: 700; color: #FFFFFF; line-height: 1; }
+
+.progress-bar-track {
+    width: 100%;
+    height: 4px;
+    background-color: #121829;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+}
+.filled-max { width: 100%; background-color: #4ADE80; box-shadow: 0 0 8px rgba(74, 222, 128, 0.4); }
+.filled-high { width: 75%; background-color: #38BDF8; }
+.filled-mid { width: 42%; background-color: #A78BFA; }
+.filled-low { width: 15%; background-color: #FB923C; }
+
+/* Neon Status Badge Elements Group precisely matching template domain configurations */
+.status-neon-badge {
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+}
+.label-green { background-color: rgba(74, 222, 128, 0.05); color: #4ADE80; border: 1px solid rgba(74, 222, 128, 0.15); }
+.label-orange { background-color: rgba(251, 146, 60, 0.05); color: #FB923C; border: 1px solid rgba(251, 146, 60, 0.15); }
+.label-gray { background-color: rgba(71, 85, 105, 0.2); color: #64748B; border: 1px solid rgba(71, 85, 105, 0.3); }
+
+.text-right-alignment { text-align: right; }
+
+.table-action-dots-row {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.btn-table-action {
+    text-decoration: none;
+    font-size: 0.95rem;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+.btn-table-action:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
+}
+
+/* ========================================================
+   FLUID RESPONSIVE SYSTEM MEDIA BREAKPOINTS PANELS
+   ======================================================== */
+@media (max-width: 1400px) {
+    /* Compress stats grid columns dynamically to fit smaller screens comfortably */
+    .curriculum-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+
+@media (max-width: 768px) {
+    .curriculum-action-toolbar { flex-direction: column; align-items: stretch; gap: 16px; padding: 16px; }
+    .toolbar-search-box { max-width: 100%; }
+    .toolbar-btn-group { width: 100%; }
+    .btn-toolbar { flex-grow: 1; text-align: center; justify-content: center; }
+}
+
+@media (max-width: 520px) {
+    /* Force telemetry stats rows into a 1-column single fluid flow layout on compact mobile devices */
+    .curriculum-stats-grid { grid-template-columns: 1fr; gap: 12px; }
+    .curriculum-stat-card { padding: 16px; }
+    .stat-num-metric { font-size: 1.65rem; }
+}
+
+</style>
+
+             
+
+               <!-- Section Viewport Panel 3: Elaborated Compliance Tracks Auditing Slate -->
+<section class="dashboard-section-viewport-panel" id="panel-compliance-tracks">
+    
+    <!-- 1. CLEAN TYPOGRAPHIC HEADER BLOCK -->
+    <div class="clean-section-header">
+        <span class="clean-section-badge">🛡️ REGULATORY AUDITING</span>
+        <h1 class="clean-section-title">Compliance Tracks</h1>
+        <div class="clean-section-divider"></div>
+    </div>
+
+    <!-- 2. COMPLIANCE THRESHOLD SUMMARY WIDGETS (Responsive Row Matrix Grid) -->
+    <div class="compliance-summary-grid">
+        <!-- Widget 1: Overall Platform Compliance Index -->
+        <div class="compliance-widget-card border-glow-green">
+            <div class="widget-data-left">
+                <span class="widget-metric-value">96.8%</span>
+                <span class="widget-metric-label">Global Compliance Index</span>
+            </div>
+            <div class="widget-vector-icon icon-bg-green">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            </div>
+        </div>
+
+        <!-- Widget 2: Pending Mandatory Re-Certifications -->
+        <div class="compliance-widget-card border-glow-amber">
+            <div class="widget-data-left">
+                <span class="widget-metric-value">14</span>
+                <span class="widget-metric-label">Impending Expirations</span>
+            </div>
+            <div class="widget-vector-icon icon-bg-amber">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-1.9 1.14-2.56l1.24-1.26c.37-.36.56-.86.56-1.38 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+            </div>
+        </div>
+
+        <!-- Widget 3: Active Monitored Corporate Divisions -->
+        <div class="compliance-widget-card border-glow-blue">
+            <div class="widget-data-left">
+                <span class="widget-metric-value">26</span>
+                <span class="widget-metric-label">Monitored Segments</span>
+            </div>
+            <div class="widget-vector-icon icon-bg-blue">
+                <svg viewBox="0 0 24 24"><path d="M12 22C6.49 22 2 17.51 2 12S6.49 2 12 2s10 4.49 10 10-4.49 10-10 10zm0-18c-4.41 0-8 3.59-8 8s3.59 8 8 8 8-3.59 8-8-3.59-8-8-8z"/></svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. DETAILED REGULATORY TRACKS MATRIX & RISK PANEL SPLIT -->
+    <div class="compliance-split-layout-grid">
+        
+        <!-- LEFT FLEX SUB-COLUMN: Interactive Auditing Database Lane -->
+        <div class="compliance-database-card">
+            <div class="sub-card-header">
+                <h3>Monitored Division Verification Track</h3>
+                <p>Real-time regulatory tracking log across primary enterprise learning blocks.</p>
+            </div>
+            
+            <div class="compliance-responsive-table-holder">
+                <table class="compliance-data-table">
+                    <thead>
+                        <tr>
+                            <th>AUDIT CATEGORY</th>
+                            <th>DEPARTMENT DIVISION</th>
+                            <th>COMPLIANCE STATUS</th>
+                            <th class="text-right-alignment">LOG TRACK</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="bold-text-white">Legal Mandate Sync</td>
+                            <td>Engineering Matrix</td>
+                            <td><span class="compliance-neon-tag tag-green">✓ Validated</span></td>
+                            <td class="text-right-alignment"><a href="404.html" class="btn-table-arrow">➔</a></td>
+                        </tr>
+                        <tr>
+                            <td class="bold-text-white">ISO Cert Renewal</td>
+                            <td>Operations Pipeline</td>
+                            <td><span class="compliance-neon-tag tag-green">✓ Validated</span></td>
+                            <td class="text-right-alignment"><a href="404.html" class="btn-table-arrow">➔</a></td>
+                        </tr>
+                        <tr>
+                            <td class="bold-text-white">Data Privacy Audit</td>
+                            <td>Product Sandbox</td>
+                            <td><span class="compliance-neon-tag tag-amber">⚠ Refresher Needed</span></td>
+                            <td class="text-right-alignment"><a href="404.html" class="btn-table-arrow">➔</a></td>
+                        </tr>
+                        <tr>
+                            <td class="bold-text-white">SOC2 Validation</td>
+                            <td>Infrastructure Core</td>
+                            <td><span class="compliance-neon-tag tag-red">🞈 Urgent Renewal</span></td>
+                            <td class="text-right-alignment"><a href="404.html" class="btn-table-arrow">➔</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- RIGHT FLEX SUB-COLUMN: Compliance Risk & Expiration Forecast Panel -->
+        <div class="compliance-forecast-card">
+            <div class="sub-card-header">
+                <h3>Risk & Expiration Forecast</h3>
+                <p>System warnings on mandatory training windows entering critical horizons.</p>
+            </div>
+
+            <div class="forecast-alerts-stack">
+                <!-- Alert 1 -->
+                <div class="forecast-alert-node row-alert-red">
+                    <div class="alert-node-left">
+                        <span class="alert-timer-pill background-red">EXPIRING IN 4 DAYS</span>
+                        <h4>SOC2 Systems Security Validation</h4>
+                        <p>Division Focus: Infrastructure Core Sandbox Labs</p>
                     </div>
-                </section>
+                    <a href="404.html" class="btn-alert-action-trigger">Launch Renewal</a>
+                </div>
+
+                <!-- Alert 2 -->
+                <div class="forecast-alert-node row-alert-amber">
+                    <div class="alert-node-left">
+                        <span class="alert-timer-pill background-amber">EXPIRING IN 12 DAYS</span>
+                        <h4>Data Privacy Matrix Certification</h4>
+                        <p>Division Focus: Product Sprints & Analytics Registry</p>
+                    </div>
+                    <a href="404.html" class="btn-alert-action-trigger">Launch Renewal</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<style>
+    /* ========================================================
+   ELABORATED COMPLIANCE TRACKS AUDITING COMPONENT STYLES
+   ======================================================== */
+
+/* 1. COMPLIANCE SUMMARY WIDGETS ROW GRID (Fluid Multi-Column Engine) */
+.compliance-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Balanced 3-column tracking widgets array */
+    gap: 24px;
+    width: 100%;
+    margin-top: 32px;
+}
+
+.compliance-widget-card {
+    background-color: #0A0F1D;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease;
+}
+
+.widget-data-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.widget-metric-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+}
+
+.widget-metric-label {
+    font-size: 0.85rem;
+    color: #64748B;
+    font-weight: 500;
+}
+
+.widget-vector-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.widget-vector-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Customized Vector & Boundary Highlights based on Stackly Guidelines */
+.icon-bg-green { background-color: rgba(74, 222, 128, 0.05); } .icon-bg-green svg { fill: #4ADE80; }
+.icon-bg-amber { background-color: rgba(251, 146, 60, 0.05); } .icon-bg-amber svg { fill: #FB923C; }
+.icon-bg-blue { background-color: rgba(56, 189, 248, 0.05); } .icon-bg-blue svg { fill: #38BDF8; }
+
+.compliance-widget-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+}
+.compliance-widget-card.border-glow-green:hover { border-color: rgba(74, 222, 128, 0.25); }
+.compliance-widget-card.border-glow-amber:hover { border-color: rgba(251, 146, 60, 0.25); }
+.compliance-widget-card.border-glow-blue:hover { border-color: rgba(56, 189, 248, 0.25); }
+
+/* ========================================================
+   2. DETAILED REGULATORY TRACKS MATRIX & RISK PANEL SPLIT
+   ======================================================== */
+.compliance-split-layout-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr; /* Asymmetric split workspace distribution matching domain guides */
+    gap: 28px;
+    width: 100%;
+    margin-top: 36px;
+    align-items: start;
+}
+
+.compliance-database-card, .compliance-forecast-card {
+    background-color: #0A0F1D;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.sub-card-header {
+    text-align: left;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    padding-bottom: 16px;
+}
+
+.sub-card-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+}
+
+.sub-card-header p {
+    font-size: 0.88rem;
+    color: #64748B;
+    line-height: 1.45;
+}
+
+/* LEFT FLEX PANEL: DATABASE INTERACTIVE LANE */
+.compliance-responsive-table-holder {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.compliance-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 500px;
+}
+
+.compliance-data-table th {
+    padding: 14px 16px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #475569;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.compliance-data-table td {
+    padding: 16px;
+    font-size: 0.92rem;
+    color: #94A3B8;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    vertical-align: middle;
+}
+
+.compliance-data-table tr:last-child td { border-bottom: none; }
+.bold-text-white { font-weight: 600; color: #FFFFFF; }
+
+/* Dynamic Colored Neon Tags matching visual design Instructions */
+.compliance-neon-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    white-space: nowrap;
+}
+.tag-green { background-color: rgba(74, 222, 128, 0.05); color: #4ADE80; border: 1px solid rgba(74, 222, 128, 0.15); }
+.tag-amber { background-color: rgba(251, 146, 60, 0.05); color: #FB923C; border: 1px solid rgba(251, 146, 60, 0.15); }
+.tag-red { background-color: rgba(248, 113, 113, 0.05); color: #F87171; border: 1px solid rgba(248, 113, 113, 0.15); }
+
+.btn-table-arrow {
+    text-decoration: none;
+    color: #475569;
+    font-size: 0.95rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+.compliance-data-table tr:hover .btn-table-arrow { color: #FFFFFF; transform: translateX(2px); }
+
+/* RIGHT FLEX PANEL: EXPIRATION ALERT NODES STACK */
+.forecast-alerts-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.forecast-alert-node {
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    text-align: left;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.alert-node-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.alert-timer-pill {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: #FFFFFF;
+    letter-spacing: 0.02em;
+}
+.background-red { background-color: #EF4444; }
+.background-amber { background-color: #F59E0B; }
+
+.alert-node-left h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+
+.alert-node-left p {
+    font-size: 0.82rem;
+    color: #64748B;
+    line-height: 1.4;
+}
+
+.btn-alert-action-trigger {
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.25s ease;
+}
+
+/* Hover Accent Shifting Rules matching Alert State Metrics */
+.row-alert-red:hover { border-color: rgba(239, 68, 68, 0.3); box-shadow: 0 0 15px rgba(239, 68, 68, 0.03); }
+.row-alert-red:hover .btn-alert-action-trigger { background-color: #EF4444; border-color: #EF4444; color: #050811; }
+
+.row-alert-amber:hover { border-color: rgba(245, 158, 11, 0.3); box-shadow: 0 0 15px rgba(245, 158, 11, 0.03); }
+.row-alert-amber:hover .btn-alert-action-trigger { background-color: #F59E0B; border-color: #F59E0B; color: #050811; }
+
+/* ========================================================
+   FLUID RESPONSIVE SYSTEM MEDIA BREAKPOINTS BREAKPOINTS
+   ======================================================== */
+@media (max-width: 1400px) {
+    /* Collapse split workspace row into single vertical columns flows on narrow layouts */
+    .compliance-split-layout-grid { grid-template-columns: 1fr; gap: 24px; }
+}
+
+@media (max-width: 1100px) {
+    .compliance-summary-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+
+@media (max-width: 768px) {
+    .compliance-database-card, .compliance-forecast-card { padding: 20px; border-radius: 16px; }
+}
+
+@media (max-width: 520px) {
+    .compliance-summary-grid { grid-template-columns: 1fr; gap: 12px; }
+    .compliance-widget-card { padding: 16px; }
+    .widget-metric-value { font-size: 1.65rem; }
+}
+
+</style>
+
+              <!-- Section Viewport Panel 4: Elaborated Program Velocity Console -->
+<section class="dashboard-section-viewport-panel" id="panel-program-velocity">
+    
+    <!-- 1. CLEAN TYPOGRAPHIC HEADER BLOCK -->
+    <div class="clean-section-header">
+        <span class="clean-section-badge">⚡ COMPLETION INDICES</span>
+        <h1 class="clean-section-title">Program Velocity</h1>
+        <div class="clean-section-divider"></div>
+    </div>
+
+    <!-- 2. SPEED VELOCITY TELEMETRY NODES (Responsive Row Matrix Grid) -->
+    <div class="velocity-metrics-grid">
+        <!-- Card 1 -->
+        <div class="velocity-counter-card">
+            <div class="velocity-card-data">
+                <span class="velocity-num-string">4.2 Weeks</span>
+                <span class="velocity-label-string">Avg. Track Acceleration</span>
+            </div>
+            <div class="velocity-badge-icon badge-tint-cyan">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="velocity-counter-card">
+            <div class="velocity-card-data">
+                <span class="velocity-num-string">+18.4%</span>
+                <span class="velocity-label-string">Month-over-Month Velocity</span>
+            </div>
+            <div class="velocity-badge-icon badge-tint-green">
+                <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6z"/></svg>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="velocity-counter-card">
+            <div class="velocity-card-data">
+                <span class="velocity-num-string">91.5%</span>
+                <span class="velocity-label-string">First-Time Pass Index</span>
+            </div>
+            <div class="velocity-badge-icon badge-tint-purple">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. SPLIT TIMELINE GRID & LEADERBOARD SYSTEM CONTROLS -->
+    <div class="velocity-asymmetric-split-grid">
+        
+        <!-- LEFT SUB-COLUMN: Interactive Program Tracker Logs List -->
+        <div class="velocity-tracking-panel-card">
+            <div class="velocity-panel-header">
+                <h3>Active Cohort Program Streams</h3>
+                <p>Real-time progress telemetry across primary company department training tracks.</p>
+            </div>
+
+            <div class="velocity-table-overflow-lane">
+                <table class="velocity-data-table">
+                    <thead>
+                        <tr>
+                            <th>COHORT FLAVOR</th>
+                            <th>PROGRESS RATIO</th>
+                            <th>VELOCITY CURVE</th>
+                            <th class="text-right-alignment">DOCK</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="cohort-bold-title">Engineering Core (Batch A)</td>
+                            <td>
+                                <div class="mini-bar-wrapper">
+                                    <span class="mini-percent-text">88%</span>
+                                    <div class="mini-bar-track"><div class="mini-bar-fill pct-88"></div></div>
+                                </div>
+                            </td>
+                            <td><span class="velocity-trend-tag curve-fast">▲ Fast Track</span></td>
+                            <td class="text-right-alignment"><a href="404.html" class="btn-toolbar-redirect">➔</a></td>
+                        </tr>
+                        <tr>
+                            <td class="cohort-bold-title">Operations Pipeline (Batch B)</td>
+                            <td>
+                                <div class="mini-bar-wrapper">
+                                    <span class="mini-percent-text">64%</span>
+                                    <div class="mini-bar-track"><div class="mini-bar-fill pct-64"></div></div>
+                                </div>
+                            </td>
+                            <td><span class="velocity-trend-tag curve-optimal">● Optimal</span></td>
+                            <td class="text-right-alignment"><a href="404.html" class="btn-toolbar-redirect">➔</a></td>
+                        </tr>
+                        <tr>
+                            <td class="cohort-bold-title">Infrastructure Core Sandbox</td>
+                            <td>
+                                <div class="mini-bar-wrapper">
+                                    <span class="mini-percent-text">41%</span>
+                                    <div class="mini-bar-track"><div class="mini-bar-fill pct-41"></div></div>
+                                </div>
+                            </td>
+                            <td><span class="velocity-trend-tag curve-optimal">● Optimal</span></td>
+                            <td class="text-right-alignment"><a href="404.html" class="btn-toolbar-redirect">➔</a></td>
+                        </tr>
+                        <tr>
+                            <td class="cohort-bold-title">Product Design Sprints</td>
+                            <td>
+                                <div class="mini-bar-wrapper">
+                                    <span class="mini-percent-text">12%</span>
+                                    <div class="mini-bar-track"><div class="mini-bar-fill pct-12"></div></div>
+                                </div>
+                            </td>
+                            <td><span class="velocity-trend-tag curve-delayed">▼ Delayed</span></td>
+                            <td class="text-right-alignment"><a href="404.html" class="btn-toolbar-redirect">➔</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- RIGHT SUB-COLUMN: Divisional Completion Leaderboard System Panel -->
+        <div class="velocity-leaderboard-panel-card">
+            <div class="velocity-panel-header">
+                <h3>Divisional Completion Leaderboard</h3>
+                <p>Performance indices comparison rows ranked by active workforce certification pacing.</p>
+            </div>
+
+            <!-- Leaderboard Nodes Strip Stack -->
+            <div class="leaderboard-nodes-stack-list">
+                
+                <!-- Node 1 -->
+                <div class="leaderboard-item-row rank-first">
+                    <div class="leaderboard-item-left">
+                        <div class="rank-badge-circle">01</div>
+                        <div class="rank-meta-context">
+                            <h4>Global Engineering Division</h4>
+                            <p>Compliance Target Met: 42 Tracks Completed</p>
+                        </div>
+                    </div>
+                    <a href="404.html" class="btn-rank-action-link">View Stats</a>
+                </div>
+
+                <!-- Node 2 -->
+                <div class="leaderboard-item-row rank-second">
+                    <div class="leaderboard-item-left">
+                        <div class="rank-badge-circle">02</div>
+                        <div class="rank-meta-context">
+                            <h4>Operations & Logistics Node</h4>
+                            <p>Compliance Target Met: 28 Tracks Completed</p>
+                        </div>
+                    </div>
+                    <a href="404.html" class="btn-rank-action-link">View Stats</a>
+                </div>
+
+                <!-- Node 3 -->
+                <div class="leaderboard-item-row">
+                    <div class="leaderboard-item-left">
+                        <div class="rank-badge-circle">03</div>
+                        <div class="rank-meta-context">
+                            <h4>Infrastructure Support Atelier</h4>
+                            <p>Compliance Target Met: 15 Tracks Completed</p>
+                        </div>
+                    </div>
+                    <a href="404.html" class="btn-rank-action-link">View Stats</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<style>
+    /* ========================================================
+   ELABORATED PROGRAM VELOCITY WORKSPACE COMPONENT STYLES
+   ======================================================== */
+
+/* 1. SPEED VELOCITY TELEMETRY NODES GRID (Fluid Multi-Column Engine) */
+.velocity-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Balanced 3-column structural analytics distribution */
+    gap: 24px;
+    width: 100%;
+    margin-top: 32px;
+}
+
+.velocity-counter-card {
+    background-color: #0A0F1D;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease;
+}
+
+.velocity-card-data {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.velocity-num-string {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+}
+
+.velocity-label-string {
+    font-size: 0.85rem;
+    color: #64748B;
+    font-weight: 500;
+}
+
+.velocity-badge-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.velocity-badge-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Customized Vector Identity Tints matching Stackly Guidelines */
+.badge-tint-cyan { background-color: rgba(56, 189, 248, 0.05); } .badge-tint-cyan svg { fill: #38BDF8; }
+.badge-tint-green { background-color: rgba(74, 222, 128, 0.05); } .badge-tint-green svg { fill: #4ADE80; }
+.badge-tint-purple { background-color: rgba(167, 139, 250, 0.05); } .badge-tint-purple svg { fill: #A78BFA; }
+
+.velocity-counter-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(74, 222, 128, 0.25); /* Boundary ring highlights to Ancient Green */
+    box-shadow: 0 15px 30px rgba(74, 222, 128, 0.03), 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* ========================================================
+   2. TIMELINE GRID & LEADERBOARD ASYMMETRIC SYSTEM PANEL
+   ======================================================== */
+.velocity-asymmetric-split-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr; /* Asymmetric balance distribution layout matched images guides */
+    gap: 28px;
+    width: 100%;
+    margin-top: 36px;
+    align-items: start;
+}
+
+.velocity-tracking-panel-card, .velocity-leaderboard-panel-card {
+    background-color: #0A0F1D;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.velocity-panel-header {
+    text-align: left;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    padding-bottom: 16px;
+}
+
+.velocity-panel-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+}
+
+.velocity-panel-header p {
+    font-size: 0.88rem;
+    color: #64748B;
+    line-height: 1.45;
+}
+
+/* LEFTFLEX COHORT LOGS LANE LIST INTERACTIVE SYSTEM */
+.velocity-table-overflow-lane {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.velocity-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 520px;
+}
+
+.velocity-data-table th {
+    padding: 14px 16px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #475569;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.velocity-data-table td {
+    padding: 16px;
+    font-size: 0.92rem;
+    color: #94A3B8;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    vertical-align: middle;
+}
+
+.velocity-data-table tr:last-child td { border-bottom: none; }
+.cohort-bold-title { font-weight: 600; color: #FFFFFF; }
+
+/* Micro Progress Bar telemetries row lines customization blocks inside cells */
+.mini-bar-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 110px;
+}
+
+.mini-percent-text { font-size: 0.78rem; font-weight: 700; color: #E2E8F0; line-height: 1; }
+
+.mini-bar-track {
+    width: 100%;
+    height: 3px;
+    background-color: #121829;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.mini-bar-fill { height: 100%; border-radius: 2px; }
+.pct-88 { width: 88%; background-color: #4ADE80; }
+.pct-64 { width: 64%; background-color: #38BDF8; }
+.pct-41 { width: 41%; background-color: #A78BFA; }
+.pct-12 { width: 12%; background-color: #FB923C; }
+
+/* Curve Vector Status Trends Tags cloud overlays definitions */
+.velocity-trend-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    white-space: nowrap;
+}
+.curve-fast { background-color: rgba(74, 222, 128, 0.05); color: #4ADE80; border: 1px solid rgba(74, 222, 128, 0.12); }
+.curve-optimal { background-color: rgba(56, 189, 248, 0.05); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.12); }
+.curve-delayed { background-color: rgba(251, 146, 60, 0.05); color: #FB923C; border: 1px solid rgba(251, 146, 60, 0.12); }
+
+.btn-toolbar-redirect {
+    text-decoration: none;
+    color: #475569;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+.velocity-data-table tr:hover .btn-toolbar-redirect { color: #FFFFFF; }
+
+/* ========================================================
+   RIGHTFLEX LEADERBOARD LIST CONTAINER PACK
+   ======================================================== */
+.leaderboard-nodes-stack-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.leaderboard-item-row {
+    background-color: rgba(5, 8, 17, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.leaderboard-item-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+}
+
+.rank-badge-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #121829;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #64748B;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.rank-meta-context h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 2px;
+}
+
+.rank-meta-context p {
+    font-size: 0.8rem;
+    color: #475569;
+}
+
+.btn-rank-action-link {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #64748B;
+    text-decoration: none;
+    padding: 6px 14px;
+    background-color: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    white-space: nowrap;
+    transition: all 0.25s ease;
+}
+
+/* Highlight Rank Traces overlays based on leadership parameters */
+.leaderboard-item-row.rank-first { border-left: 3px solid #4ADE80; }
+.leaderboard-item-row.rank-first .rank-badge-circle { background-color: rgba(74, 222, 128, 0.1); border-color: rgba(74, 222, 128, 0.3); color: #4ADE80; }
+
+.leaderboard-item-row.rank-second { border-left: 3px solid #38BDF8; }
+.leaderboard-item-row.rank-second .rank-badge-circle { background-color: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.3); color: #38BDF8; }
+
+.leaderboard-item-row:hover {
+    border-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+.leaderboard-item-row:hover .btn-rank-action-link {
+    background-color: #4ADE80; /* Action triggers convert to signature brand green on hover focus tracks */
+    border-color: #4ADE80;
+    color: #050811;
+}
+
+/* ========================================================
+   FLUID RESPONSIVE SYSTEM MEDIA BREAKPOINTS BREAKPOINTS
+   ======================================================== */
+@media (max-width: 1400px) {
+    /* Collapse asymmetric split rows into unified single vertical columns flows safely */
+    .velocity-asymmetric-split-grid { grid-template-columns: 1fr; gap: 24px; }
+}
+
+@media (max-width: 1100px) {
+    .velocity-metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+
+@media (max-width: 768px) {
+    .velocity-tracking-panel-card, .velocity-leaderboard-panel-card { padding: 20px; border-radius: 16px; }
+}
+
+@media (max-width: 520px) {
+    .velocity-metrics-grid { grid-template-columns: 1fr; gap: 12px; }
+    .velocity-counter-card { padding: 16px; }
+    .velocity-num-string { font-size: 1.65rem; }
+    .leaderboard-item-row { flex-direction: column; align-items: stretch; gap: 14px; }
+    .btn-rank-action-link { width: 100%; text-align: center; }
+}
+
+</style>
+
+               <!-- Section Viewport Panel 5: Elaborated Enterprise Analytics Telemetry Core -->
+<section class="dashboard-section-viewport-panel" id="panel-enterprise-analytics">
+    
+    <!-- 1. CLEAN TYPOGRAPHIC HEADER BLOCK -->
+    <div class="clean-section-header">
+        <span class="clean-section-badge">📈 TELEMETRY ANALYTICS</span>
+        <h1 class="clean-section-title">Enterprise Analytics</h1>
+        <div class="clean-section-divider"></div>
+    </div>
+
+    <!-- 2. SYSTEM REPORT LEVEL STATUS WIDGETS (Responsive Row Grid) -->
+    <div class="analytics-system-grid">
+        <!-- Widget 1 -->
+        <div class="analytics-system-card">
+            <div class="system-meta-left">
+                <span class="system-metric-bold">428,940</span>
+                <span class="system-metric-label">Total Sandbox Lab Hours Logged</span>
+            </div>
+            <div class="system-badge icon-tint-green">
+                <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm3.3 14.79L11 14V7h2v5.2l3.7 2.2-1.41 1.59z"/></svg>
+            </div>
+        </div>
+        <!-- Widget 2 -->
+        <div class="analytics-system-card">
+            <div class="system-meta-left">
+                <span class="system-metric-bold">$14.2K</span>
+                <span class="system-metric-label">Estimated Compliance Capital Saved</span>
+            </div>
+            <div class="system-badge icon-tint-blue">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-1.9 1.14-2.56l1.24-1.26c.37-.36.56-.86.56-1.38 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+            </div>
+        </div>
+        <!-- Widget 3 -->
+        <div class="analytics-system-card">
+            <div class="system-meta-left">
+                <span class="system-metric-bold">99.98%</span>
+                <span class="system-metric-label">Telemetry Pipeline SLA Uptime</span>
+            </div>
+            <div class="system-badge icon-tint-cyan">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. DETAILED VISUAL REPORTS & EXPORT PIPELINE ROW SPLIT -->
+    <div class="analytics-split-workspace-grid">
+        
+        <!-- LEFT SUB-COLUMN: Pure CSS Typographic Report Metrics Bar Layout -->
+        <div class="analytics-chart-panel-card">
+            <div class="analytics-card-header-bar">
+                <h3>Training Fulfillment Metric Lines</h3>
+                <p>Real-time visual monitoring indicators showing target workforce completion benchmarks.</p>
+            </div>
+
+            <div class="custom-metrics-bars-stack">
+                <!-- Bar Item 1 -->
+                <div class="metric-bar-item">
+                    <div class="metric-bar-label-row">
+                        <span class="bar-title-text">Compliance Certifications Met</span>
+                        <span class="bar-value-text">92%</span>
+                    </div>
+                    <div class="bar-track-line"><div class="bar-fill-line width-92"></div></div>
+                </div>
+
+                <!-- Bar Item 2 -->
+                <div class="metric-bar-item">
+                    <div class="metric-bar-label-row">
+                        <span class="bar-title-text">Sandbox Sandbox Laboratories Finalized</span>
+                        <span class="bar-value-text">74%</span>
+                    </div>
+                    <div class="bar-track-line"><div class="bar-fill-line width-74"></div></div>
+                </div>
+
+                <!-- Bar Item 3 -->
+                <div class="metric-bar-item">
+                    <div class="metric-bar-label-row">
+                        <span class="bar-title-text">Instructor-Led Sprints Sprints Fullfillment</span>
+                        <span class="bar-value-text">58%</span>
+                    </div>
+                    <div class="bar-track-line"><div class="bar-fill-line width-58"></div></div>
+                </div>
+
+                <!-- Bar Item 4 -->
+                <div class="metric-bar-item">
+                    <div class="metric-bar-label-row">
+                        <span class="bar-title-text">API Integration Webhooks Auditing</span>
+                        <span class="bar-value-text">31%</span>
+                    </div>
+                    <div class="bar-track-line"><div class="bar-fill-line width-31"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT SUB-COLUMN: Centralized Telemetry Document Generation & Export Pipeline -->
+        <div class="analytics-export-panel-card">
+            <div class="analytics-card-header-bar">
+                <h3>Centralized Export Pipeline</h3>
+                <p>Extract encrypted database ledger rows directly into system templates files.</p>
+            </div>
+
+            <div class="export-pipeline-nodes-stack">
+                <!-- Export Node 1 -->
+                <div class="export-item-node">
+                    <div class="export-node-left">
+                        <div class="file-format-icon ext-pdf">PDF</div>
+                        <div class="export-node-meta">
+                            <h4>Q3 Executive L&D Compliance Audit</h4>
+                            <p>Compiled Summary Sheet • 4.2 MB</p>
+                        </div>
+                    </div>
+                    <a href="404.html" class="btn-pipeline-download-trigger">Download PDF</a>
+                </div>
+
+                <!-- Export Node 2 -->
+                <div class="export-item-node">
+                    <div class="export-node-left">
+                        <div class="file-format-icon ext-csv">CSV</div>
+                        <div class="export-node-meta">
+                            <h4>Trainee Competency Raw Datasets</h4>
+                            <p>Encrypted Tabular Stream • 18.9 MB</p>
+                        </div>
+                    </div>
+                    <a href="404.html" class="btn-pipeline-download-trigger">Extract CSV</a>
+                </div>
+
+                <!-- Export Node 3 -->
+                <div class="export-item-node">
+                    <div class="export-node-left">
+                        <div class="file-format-icon ext-xlsx">XLS</div>
+                        <div class="export-node-meta">
+                            <h4>Trainer Velocity Roster Master Ledger</h4>
+                            <p>Comprehensive Matrix Data • 8.1 MB</p>
+                        </div>
+                    </div>
+                    <a href="404.html" class="btn-pipeline-download-trigger">Extract XLS</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<style>
+    /* ========================================================
+   ELABORATED ENTERPRISE ANALYTICS COMPONENTRY STYLES
+   ======================================================== */
+
+/* 1. STATUS WIDGET COUNTERS ROW GRID (Fluid Multi-Column Engine) */
+.analytics-system-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Symmetrical 3-column data tracker layout */
+    gap: 24px;
+    width: 100%;
+    margin-top: 32px;
+}
+
+.analytics-system-card {
+    background-color: #0A0F1D;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease;
+}
+
+.system-meta-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.system-metric-bold {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+}
+
+.system-metric-label {
+    font-size: 0.85rem;
+    color: #64748B;
+    font-weight: 500;
+}
+
+.system-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.system-badge svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Customized Vector Identity Tints matching Stackly Guidelines */
+.icon-tint-green { background-color: rgba(74, 222, 128, 0.05); } .icon-tint-green svg { fill: #4ADE80; }
+.icon-tint-blue { background-color: rgba(56, 189, 248, 0.05); } .icon-tint-blue svg { fill: #38BDF8; }
+.icon-tint-cyan { background-color: rgba(34, 211, 238, 0.05); } .icon-tint-cyan svg { fill: #22D3EE; }
+
+.analytics-system-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(74, 222, 128, 0.25); /* Boundary line shifts to brand Green */
+    box-shadow: 0 15px 30px rgba(74, 222, 128, 0.03), 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* ========================================================
+   2. INTERACTIVE DUAL DISPLAY SPLIT WORKSPACE
+   ======================================================== */
+.analytics-split-workspace-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Symmetrical split panel layouts distribution */
+    gap: 28px;
+    width: 100%;
+    margin-top: 36px;
+    align-items: start;
+}
+
+.analytics-chart-panel-card, .analytics-export-panel-card {
+    background-color: #0A0F1D;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.analytics-card-header-bar {
+    text-align: left;
+    margin-bottom: 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    padding-bottom: 16px;
+}
+
+.analytics-card-header-bar h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+}
+
+.analytics-card-header-bar p {
+    font-size: 0.88rem;
+    color: #64748B;
+    line-height: 1.45;
+}
+
+/* LEFTFLEX SUBCELL: CLEAN PROGRESS METRIC BARS STACK */
+.custom-metrics-bars-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    width: 100%;
+}
+
+.metric-bar-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.metric-bar-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.bar-title-text { font-size: 0.92rem; font-weight: 600; color: #CBD5E1; }
+.bar-value-text { font-size: 0.9rem; font-weight: 700; color: #4ADE80; }
+
+.bar-track-line {
+    width: 100%;
+    height: 6px;
+    background-color: #050811;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.bar-fill-line {
+    height: 100%;
+    background-color: #4ADE80; /* Clean execution fill line mapped to Ancient Green */
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+}
+/* Individual horizontal width fills metrics definitions */
+.width-92 { width: 92%; }
+.width-74 { width: 74%; background-color: #38BDF8; box-shadow: 0 0 10px rgba(56, 189, 248, 0.3); }
+.width-58 { width: 58%; background-color: #A78BFA; box-shadow: 0 0 10px rgba(167, 139, 250, 0.3); }
+.width-31 { width: 31%; background-color: #FB923C; box-shadow: 0 0 10px rgba(251, 146, 60, 0.3); }
+
+/* RIGHTFLEX SUBCELL: EXTRACT DOCUMENTS DATA PIPELINE NODES STACK */
+.export-pipeline-nodes-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}
+
+.export-item-node {
+    background-color: rgba(5, 8, 17, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.export-node-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+}
+
+/* File extension vector blocks placeholders */
+.file-format-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+.ext-pdf { background-color: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); color: #EF4444; }
+.ext-csv { background-color: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.2); color: #34D399; }
+.ext-xlsx { background-color: rgba(251, 191, 36, 0.1); border: 1px solid rgba(251, 191, 36, 0.2); color: #FBBF24; }
+
+.export-node-meta h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 2px;
+}
+
+.export-node-meta p {
+    font-size: 0.8rem;
+    color: #475569;
+}
+
+.btn-pipeline-download-trigger {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #64748B;
+    text-decoration: none;
+    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: all 0.25s ease;
+}
+
+.export-item-node:hover {
+    border-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.export-item-node:hover .btn-pipeline-download-trigger {
+    background-color: #4ADE80; /* Flips download triggers to active green on row hover cross track */
+    border-color: #4ADE80;
+    color: #050811;
+    transform: scale(1.02);
+}
+
+/* ========================================================
+   FLUID RESPONSIVE SYSTEM MEDIA BREAKPOINTS BREAKPOINTS
+   ======================================================== */
+@media (max-width: 1400px) {
+    /* Collapse side-by-side split panels into single vertical columns stacks flows safely */
+    .analytics-split-workspace-grid { grid-template-columns: 1fr; gap: 24px; }
+}
+
+@media (max-width: 1100px) {
+    .analytics-system-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+
+@media (max-width: 768px) {
+    .analytics-chart-panel-card, .analytics-export-panel-card { padding: 20px; border-radius: 16px; }
+}
+
+@media (max-width: 520px) {
+    .analytics-system-grid { grid-template-columns: 1fr; gap: 12px; }
+    .analytics-system-card { padding: 16px; }
+    .system-metric-bold { font-size: 1.65rem; }
+    .export-item-node { flex-direction: column; align-items: stretch; gap: 14px; }
+    .btn-pipeline-download-trigger { width: 100%; text-align: center; }
+}
+
+</style>
 
             </main>
 

@@ -220,12 +220,9 @@ body.loaded {
 }
 
 .logo-img {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
-    /* Clean Ancient Green structural hue mask if fallback or blank is used */
-    background-color: var(--ancient-green-light);
-    border-radius: 6px;
+    width: 130px;
+    height: 50px;
+  
 }
 
 .brand-name-text {

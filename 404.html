@@ -1,289 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stackly Portal - Terminal Overlap 404</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <!-- MASTER VIEWPORT CANVAS CONTAINER -->
-    <main class="error-canvas-wrapper">
-        
-        <!-- Hardware accelerated glowing grid matrix background -->
-        <div class="error-perspective-grid"></div>
-        <div class="error-ambient-vignette"></div>
-
-        <!-- CENTERED REGION: High Visibility Content Core -->
-        <div class="error-content-block">
-            
-            <!-- Giant high-contrast neon textured state number -->
-            <div class="error-glitch-badge-frame">
-                <span class="error-badge-pretitle">⚠️ ACCESS CELL OVERLAP</span>
-                <h1 class="error-code-num">404</h1>
-            </div>
-            
-            <h2 class="error-main-heading">Terminal Route Not Found</h2>
-            
-            <p class="error-description">
-                The requested capability registry endpoint or system metric dashboard section does not exist or has been migrated to an alternative administrative network branch layer.
-            </p>
-
-            <!-- Dual Action Button Group Row -->
-            <div class="error-action-row">
-                <!-- Primary Action Button: Returns operator to exact previous active section via history cache -->
-                <button class="btn-error-action primary-sand" id="btn-history-back">
-                    <span class="btn-vector-icon">←</span> Go Back
-                </button>
-                
-                <!-- Secondary Wireframe Button: Routes safely back to index.html -->
-                <a href="index.html" class="btn-error-action secondary-wire">
-                    Return Home <span class="btn-vector-icon">➔</span>
-                </a>
-            </div>
-
-        </div>
-    </main>
-
-  <style>
-    /* ========================================================
-   STACKLY EXTRA HIGH-CONTRAST 404 CANVASES ENVIRONMENT STYLES
-   ======================================================== */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 - Route Not Found | Stackly Training Portal</title>
+<style>
+:root {
+    --bg: #050811;
+    --card-glow: rgba(74, 222, 128, 0.04);
+    --white: #FFFFFF;
+    --muted: #64748B;
+    --muted-dim: #475569;
+    --danger: #F87171;
+    --danger-bg: rgba(248, 113, 113, 0.08);
+    --danger-border: rgba(248, 113, 113, 0.25);
+    --accent-green: #4ADE80;
+    --cream: #F4EFE6;
+    --cream-text: #050811;
+    --font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: var(--font-stack);
+}
+
+html, body {
+    height: 100%;
 }
 
 body {
-    background-color: #050811;
-    overflow: hidden; /* Locks layout boundaries cleanly to eliminate screen edge shifting */
-}
-
-.error-canvas-wrapper {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
+    background-color: var(--bg);
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Strict parameter spacing compliance: 50px Top Padding / 30px Bottom Padding */
-    padding: 50px 6% 30px 6%;
-    background-color: #050811;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
 }
 
-/* ========================================================
-   CREATIVE ADVANCED METRIC GRADIENT OVERLAY INFRASTRUCTURE
-   ======================================================== */
-.error-perspective-grid {
+/* Ambient backdrop glow, consistent with the portal's login screen */
+.route-glow-backdrop {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(rgba(74, 222, 128, 0.05) 1px, transparent 1px);
-    background-size: 24px 24px;
-    z-index: 1;
-    opacity: 0.8;
-}
-
-/* Dark polarizing vignette mask provides extreme text clarity curves */
-.error-ambient-vignette {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, transparent 20%, #050811 80%),
-                linear-gradient(180deg, #050811 0%, transparent 40%, #050811 100%);
-    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, var(--card-glow) 0%, transparent 70%);
     pointer-events: none;
+    z-index: 0;
 }
 
-/* ========================================================
-   CENTER COMPONENT CONTENT ARCHITECTURE
-   ======================================================== */
-.error-content-block {
+.route-error-stage {
     position: relative;
-    z-index: 3;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 640px; /* Constrained visual footprint for sleek centering */
-    animation: errorContentEntrance LIFT 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-@keyframes errorContentEntrance {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-.error-glitch-badge-frame {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 16px;
-}
-
-.error-badge-pretitle {
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: #F87171; /* High alert crimson text highlight */
-    background-color: rgba(248, 113, 113, 0.06);
-    border: 1px solid rgba(248, 113, 113, 0.15);
-    padding: 6px 14px;
-    border-radius: 20px;
-    letter-spacing: 0.12em;
-    margin-bottom: 12px;
-}
-
-.error-code-num {
-    font-size: 8rem; /* Giant high-visibility scaling factor preference */
-    font-weight: 800;
-    color: #FFFFFF;
-    line-height: 1;
-    letter-spacing: -0.04em;
-    text-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-.error-main-heading {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #FFFFFF;
-    letter-spacing: -0.02em;
-    line-height: 1.25;
-    margin-bottom: 16px;
-}
-
-.error-description {
-    font-size: 1.05rem; /* Medium visibility text scale parameters */
-    line-height: 1.6;
-    color: #64748B; /* Subdued gray readability copy path lines */
-    margin-bottom: 40px;
-    font-weight: 400;
-}
-
-/* ========================================================
-   DUAL ACTION BUTTON DOCK STRIPS CONTROLS
-   ======================================================== */
-.error-action-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
+    z-index: 1;
     width: 100%;
+    max-width: 680px;
+    padding: clamp(24px, 6vw, 60px) clamp(20px, 6vw, 40px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-.btn-error-action {
-    padding: 14px 32px;
-    font-size: 0.95rem;
-    font-weight: 700;
-    border-radius: 30px; /* Precise capsule trajectory track geometry button shape values */
-    text-decoration: none;
-    cursor: pointer;
+/* Status badge */
+.route-status-badge {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    gap: 8px;
+    background-color: var(--danger-bg);
+    border: 1px solid var(--danger-border);
+    color: var(--danger);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border-radius: 30px;
+    margin-bottom: clamp(28px, 6vw, 48px);
 }
 
-/* Primary Sand-Beige Solid Button precisely matching your login/signup palette configs */
-.btn-error-action.primary-sand {
-    background-color: #E7D4C5; 
-    color: #050811;
-    border: none;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+.route-status-badge svg {
+    width: 13px;
+    height: 13px;
+    fill: var(--danger);
+    flex-shrink: 0;
 }
 
-.btn-error-action.primary-sand:hover {
-    background-color: #D6BEAE;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
-}
-
-/* Secondary Wireframe Border Accent Link Line */
-.btn-error-action.secondary-wire {
-    background-color: transparent;
-    color: #FFFFFF;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.btn-error-action.secondary-wire:hover {
-    background-color: rgba(74, 222, 128, 0.04); /* Flashes background tint into brand green on focus */
-    border-color: #4ADE80; /* Outlines light up to crisp signature Ancient Green */
-    color: #4ADE80;
-    transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(74, 222, 128, 0.2);
-}
-
-.btn-vector-icon {
-    font-size: 1.05rem;
+/* Big 404 numeral */
+.route-numeral {
+    font-size: clamp(4.5rem, 16vw, 8rem);
+    font-weight: 800;
     line-height: 1;
-    transition: transform 0.2s ease;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    margin-bottom: clamp(16px, 3vw, 24px);
 }
 
-.btn-error-action.secondary-wire:hover .btn-vector-icon {
-    transform: translateX(4px); /* Interactive visual extension step multiplier */
+/* Headline */
+.route-headline {
+    font-size: clamp(1.6rem, 5vw, 2.3rem);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    margin-bottom: clamp(14px, 3vw, 20px);
+}
+
+/* Description */
+.route-description {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 46ch;
+    margin-bottom: clamp(28px, 6vw, 44px);
+}
+
+/* Action buttons */
+.route-action-group {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn-route {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-route-back {
+    background-color: var(--cream);
+    color: var(--cream-text);
+    border: none;
+}
+
+.btn-route-back:hover,
+.btn-route-back:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(244, 239, 230, 0.12);
+}
+
+.btn-route-home {
+    background-color: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.btn-route-home:hover,
+.btn-route-home:focus-visible {
+    border-color: rgba(74, 222, 128, 0.35);
+    background-color: rgba(74, 222, 128, 0.04);
+    transform: translateY(-2px);
+}
+
+.btn-route:focus-visible {
+    outline: 2px solid var(--accent-green);
+    outline-offset: 3px;
 }
 
 /* ========================================================
-   MASTER IMMERSIVE TEXT HOVER GLOW TRANSLATIONS
-   ======================================================== */
-.error-content-block:hover .error-code-num {
-    color: #4ADE80; /* Giant text numbers seamlessly light up to Stackly Green on block focus */
-    text-shadow: 0 0 35px rgba(74, 222, 128, 0.35);
-}
-
-/* ========================================================
-   FLUID RESPONSIVE SYSTEM MEDIA BREAKPOINTS PANELS
+   RESPONSIVE BREAKPOINTS
    ======================================================== */
 @media (max-width: 640px) {
-    .error-canvas-wrapper { padding: 40px 4% 24px 4%; }
-    .error-code-num { font-size: 5.5rem; }
-    .error-main-heading { font-size: 1.65rem; }
-    .error-description { font-size: 0.95rem; margin-bottom: 32px; }
-    
-    /* Collapse the button rows cleanly into single vertical column streams on mobile screen widths */
-    .error-action-row { flex-direction: column; gap: 12px; }
-    .btn-error-action { width: 100%; justify-content: center; border-radius: 12px; }
+    .route-error-stage { padding: 24px 20px; }
+    .route-action-group { flex-direction: column; width: 100%; max-width: 320px; }
+    .btn-route { width: 100%; padding: 14px 20px; }
+    .route-status-badge { font-size: 0.7rem; padding: 7px 14px; }
 }
 
-  </style>
+@media (max-width: 360px) {
+    .route-numeral { font-size: 3.6rem; }
+    .route-headline { font-size: 1.35rem; }
+    .route-description { font-size: 0.88rem; }
+}
 
-  <script>
-    /**
- * STACKLY 404 GATE CONTROLLER
- * Asynchronous Navigation History Router Engine
- */
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
 
+<div class="route-glow-backdrop" aria-hidden="true"></div>
+
+<main class="route-error-stage">
+    <span class="route-status-badge">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+        Curriculum Access Overlap
+    </span>
+
+    <h1 class="route-numeral">404</h1>
+    <h2 class="route-headline">Terminal Route Not Found</h2>
+    <p class="route-description">The requested course module or trainee dashboard route could not be resolved. It may have been retired from the active curriculum or migrated to a different training branch.</p>
+
+    <div class="route-action-group">
+        <button type="button" id="route-trigger-go-back" class="btn-route btn-route-back">
+            <span aria-hidden="true">←</span> Go Back
+        </button>
+        <a href="index.html" class="btn-route btn-route-home">
+            Return Home <span aria-hidden="true">→</span>
+        </a>
+    </div>
+</main>
+
+<script>
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // ========================================================
-    // INTELLIGENT BACKWARD ROUTING LIFE-CYCLE CONTROLLER
-    // ========================================================
-    const historyBackButton = document.getElementById("btn-history-back");
+    const goBackTrigger = document.getElementById("route-trigger-go-back");
 
-    if (historyBackButton) {
-        historyBackButton.addEventListener("click", (event) => {
-            event.preventDefault();
-
-            // STEP A: Verify browser length logs matrix threshold
-            if (document.referrer !== "" && window.history.length > 1) {
-                // Return operator seamlessly to previous page frame and open active section directly
+    if (goBackTrigger) {
+        goBackTrigger.addEventListener("click", () => {
+            // Prefer real browser history navigation first: it restores the
+            // previous page's scroll position / section (via bfcache) instead
+            // of a fresh reload that always lands at the top of the page.
+            if (window.history.length > 1) {
                 window.history.back();
+            } else if (document.referrer && document.referrer !== "") {
+                window.location.href = document.referrer;
             } else {
-                // If history thread index is completely blank, fallback route safely to dashboard index
-                window.location.href = "login.html";
+                window.location.href = "index.html";
             }
         });
     }
 });
 
-  </script>
+
+(function () {
+    var STORAGE_PREFIX = "scrollPos::";
+    var key = STORAGE_PREFIX + window.location.pathname;
+    var saveTimer = null;
+
+    function saveScrollPosition() {
+        try {
+            sessionStorage.setItem(key, String(window.scrollY));
+        } catch (e) {
+            /* sessionStorage unavailable — fail silently */
+        }
+    }
+
+    function scheduleSave() {
+        clearTimeout(saveTimer);
+        saveTimer = setTimeout(saveScrollPosition, 120);
+    }
+
+    function restoreScrollPosition() {
+        var saved;
+        try {
+            saved = sessionStorage.getItem(key);
+        } catch (e) {
+            return;
+        }
+        if (saved === null) return;
+
+        var targetY = parseInt(saved, 10);
+        if (isNaN(targetY)) return;
+
+        // Wait a tick so layout/images have settled before scrolling.
+        requestAnimationFrame(function () {
+            window.scrollTo({ top: targetY, behavior: "auto" });
+        });
+    }
+
+    window.addEventListener("scroll", scheduleSave, { passive: true });
+    window.addEventListener("pagehide", saveScrollPosition);
+    window.addEventListener("beforeunload", saveScrollPosition);
+    document.addEventListener("DOMContentLoaded", restoreScrollPosition);
+})();
+</script>
 </body>
 </html>
